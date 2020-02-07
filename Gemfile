@@ -45,7 +45,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'paypal-recurring'
 
 # Styles and template
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass', '3.4.1'
 gem 'bourbon'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
