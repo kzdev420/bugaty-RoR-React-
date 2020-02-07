@@ -1,0 +1,367 @@
+// Twitter Bootstrap
+@import "theme/bourbon/bourbon";
+@import "theme/mq";
+@import "base/variables";
+
+@import "base/fonts";
+@import "base/general";
+
+@import "layout/layout";
+
+@import "module/index";
+@import "module/header_mobile";
+@import "module/text";
+@import "module/ads";
+@import "module/new_add";
+@import "module/user";
+@import "module/ui";
+@import "module/buttons";
+@import "module/popup";
+@import "listings";
+@import "users";
+@import "podcast";
+@import "start_selling";
+@import "subscriptions";
+
+@import "jquery.qtip.min";
+
+.photo-small-img {
+  max-width: 170px;
+  margin: auto;
+}
+.photo-small-serv-img {
+  max-width: 250px;
+  height: auto;
+  margin: auto;
+}
+
+.carousel-change{
+  height: auto;
+  max-width: 100% !important;
+}
+
+.owl-item img.carousel-center {
+  width: auto !important;
+  height: auto;
+  margin: 0 auto;
+  padding-right: 1px;
+}
+.price-size-for-whole{
+  font-size: 16px !important;
+  padding: 2px 10px !important;
+} // scale down font-size for positioned whole price and sale price on one line
+.line-cross-whole {
+  position: relative;
+}
+
+.line-cross-whole::after{
+  content: '';
+  border-bottom: 2px solid black;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+}
+.ad-card-responsive{
+  max-width: 170px;
+}
+.center-image{
+  margin: auto;
+}
+@media (max-width: 767px){
+  .photo-small-img {
+    max-width: 100% !important;
+  }
+  .photo-small-serv-img {
+    max-width: 100% !important;
+
+  }
+  .ad-card-responsive{
+    max-width: 100% !important;
+  }
+}
+
+input[name="search[showonly]"] {
+  display: none;
+}
+
+.payed-until{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: .8;
+}
+.payed-until span{
+  color: green;
+}
+
+.info-tooltip {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #339fe0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.qtip-blue {
+  background-color: #339fe0;
+  border-color: #287db0;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.floatRight {
+  float: right;
+}
+
+.ico-pause {
+  background: url("/img/sprite.png") no-repeat;
+  background-position: -182px -107px;
+  width: 21px;
+  height: 21px;
+  margin-bottom: -4px;
+  margin-right: 3px;
+}
+
+.start-selling-button {
+  background-color: #f21aa5;
+  background-image: linear-gradient(0deg,#f21aa5, #fbc8e9);
+  color: white;
+}
+
+.smaller-pad .reviews-col {
+  padding-left: 0;
+}
+
+.ad-card .col-sm-6:last-of-type {
+  padding-left: 0;
+}
+
+.similar-price {
+  height: 14.2833px;
+}
+
+.similar-added-by {
+  height: 28.5667px;
+}
+
+.ad-card .ad-author {
+  height: 42.85px;
+}
+
+#bbc {
+  width: 154px;
+  height: 45px;
+  background: url('/img/sprite2.png') no-repeat -8px -57px;
+}
+
+#cnn {
+  width: 93px;
+  height: 43px;
+  background: url('/img/sprite2.png') no-repeat -176px -57px;
+}
+
+h1.sitemap {
+  text-align: center;
+}
+.sitemap-column {
+  height: auto;
+  width: 20%;
+  float: left;
+  background-color: #fcfcfc;
+  border: #d5d5d5 1px solid;
+  padding: 0 15px 15px;
+  margin: 2%;
+
+  ul.sitemap {
+    margin-bottom: 5px;
+    li {
+      list-style: none outside none;
+      margin: 10px;
+    }
+    a {
+      color:#369fe0;
+      font-size: 1.2em;
+      font-weight: 400;
+      font-style: italic;
+    }
+    a.country {
+      color:#337ab7;
+      font-size: 1em;
+      font-weight: 200;
+      font-style: normal;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul > li > a {
+      color: #337ab7;
+      font-size: 1em;
+      font-weight: 200;
+      font-style: normal;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sitemap-column {
+    width: 80%;
+    float: none;
+  }
+}
+
+.latent {
+  display: none;
+}
+
+h1.category-content {
+  display: inline;
+}
+
+h2.category-content {
+  font-size: 13px;
+  display: inline;
+}
+
+footer {
+  padding-bottom: 0px;
+}
+
+@media (min-width: 768px){
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1  {
+    width: 100%;
+    *width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
+}
+
+a.green {
+  background: #37a440;
+  border-radius: 5px;
+  border: 1px solid #d8d6d9;
+  color: white;
+  outline: none;
+  padding: 5px 3px;
+}
+
+a.green-color {
+  color: $green
+}
+
+.green {
+  color: $green
+}
+
+.red {
+  color: red;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.table {
+  border: #d5d5d5 1px solid;
+  .col-sm-2, .col-sm-3, .col-sm-5 {
+    border-bottom: #d5d5d5 1px solid;
+  }
+}
+
+.table :last-child {
+  .col-sm-2, .col-sm-3, .col-sm-5 {
+    border-bottom: none;
+  }
+}
+
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: white;
+  color: black;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+/* Individual item */
+.bm-item {
+  padding: 0.8em;
+  padding-top: 20px;
+  display: inline-block;
+  border-bottom-color: rgba(239,239,239,1);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.stretch {
+  align-items: stretch;
+}
+
+.iframeContainer {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+}

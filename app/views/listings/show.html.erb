@@ -1,0 +1,777 @@
+<%= content_for(:title, @listing.seo_title.presence || @listing.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(seo_keywords seo_description).each do |key| %>
+    <% unless @listing.send(key).blank? %>
+      <%= generate_meta(key, @listing.send(key)) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+<% if @listing.user == current_user %>
+  <section style="margin-top: 20px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 flash-message">
+
+        <% if @listing.published == 1 && @listing.user == current_user %>
+                  <div class="alert alert-info">This listing is currently under review by moderators.
+                  </div>
+        <% elsif @listing.published == 3 && @listing.user == current_user %>
+                  <div class="alert alert-danger">Your ad was not pass review. Please fix error send by email and try again</div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+  <!-- CONTENT -->
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 have-pad-50">
+          <div class="content-holder no-pad-b">
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="ad-titles single-title">
+                  <%= @listing.name %>
+                  <div class="signle-id">
+                    Ad ID: <%= @listing.id %>
+                  </div>
+                </div>
+                <div class="ad-reviews single-reviews">
+                  <% if @listing.content_ad? %>
+                    <i class="ico ico-comments-count"></i>
+                    <span class="ad-reviews-counter">(<%= comments_count_str(@listing.comments_count) %>)</span>
+                    <a href="#reviews" class="ad-rew open-bs-tab" data-move="reviews">Add your Comment</a>
+                  <% else %>
+                    <% rating = get_listing_rating(@listing) %>
+                    <%= number_to_stars(rating).html_safe %>
+
+                    <span class="ad-reviews-rating"><%= rating %></span>
+                    <span class="ad-reviews-counter"><%= review_count_string(@listing) %></span>
+
+                    <a href="#reviews" class="ad-rew open-bs-tab" data-move="reviews">Add your Review</a>
+                  <% end %>
+                </div>
+                <div class="ad-category single-category">
+                  <i class="ico ico-category"></i> Listed in <%= link_to @listing.category.name, slugged_category_path(@listing.category.slug) %>
+                    <% if @listing.subcategory.present? %>
+                      , <%= link_to @listing.subcategory.name, slugged_subcategory_path(@listing.category.slug, @listing.subcategory.slug) %>
+                    <% end %>
+                </div>
+                <div class="ad-posted-ago single-posted-ago">
+                  <i class="ico ico-posted-ago--plus"></i> Posted:<span> <%= time_ago_in_words(@listing.created_at) + " ago" %></span>
+
+                  <% if @listing.latitude.present? %>
+                  <div class="single-showonmap">
+                  <a href="#" id="trigger-map"><i class="ico ico-location--big"></i> Map</a>
+                  </div>
+                  <% end %>
+
+                </div>
+
+                <% if @listing.latitude.present? %>
+                <div class="single-gallery" id="listing-show-map">
+                  <iframe width="100%" height="300" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=<%= "#{@listing.latitude}" %>, <%= "#{@listing.longitude}" %>&key=AIzaSyA0ZAGAUkzZ632xFhFs8fEk45-EpKP0kaA" allowfullscreen></iframe>
+                </div>
+                <% end %>
+
+                <% if @listing.photos.present? || @listing.video_url.present? %>
+                <div class="single-gallery">
+                  <div class="gal-main-img owl-carousel" id="single-gallery" data-slider-id="1">
+                    <% @listing.photos.each do |photo| %>
+                    <div>
+                      <%= image_tag photo.image.big.url, class: 'img-responsive carousel-center', alt: "#{@listing.name}" %>
+                    </div>
+                    <% end %>
+                    <% if @listing.video_url.present? %>
+                      <%= embed_video(@listing.video_url) %>
+
+                    <% end %>
+                  </div>
+                  <div class="gal-thumbs owl-thumbs" id="single-gallery-thumbs" data-slider-id="1">
+                    <% @listing.photos.each do |photo| %>
+                    <div class="owl-thumb-item">
+                      <%= image_tag photo.image.thumb.url, class: 'img-responsive' %>
+                    </div>
+                    <% end %>
+                    <% if @listing.video_url.present? %>
+                    <div class="owl-thumb-item">
+                      <img width="60" height="60" src="<%= embed_small_image(@listing.video_url) %>"></img>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+                <% end %>
+
+                <div class="single-controls">
+          <% if current_user %>
+            <% if is_favorited?(@listing.id) %>
+              <%= link_to "<i class='ico ico-favourite'></i> Add to favorites".html_safe,   favorite_listing_path(@listing, type: "favorite"), method: :put %>
+            <% else %>
+            <%= link_to "<i class='ico ico-favourite'></i> Remove from favorites".html_safe, favorite_listing_path(@listing, type: "unfavorite"), method: :put %>
+            <% end %>
+          <% end %>
+                  <div class="single-report">
+                    <% if current_user != @listing.user %>
+                    <a href="#report-ad-popup" class="popup-with-zoom-anim"> <i class="ico ico-report"></i> Report ad</a>
+                    <% end %>
+                  </div>
+                </div>
+                <%= render ('listings/report_ad') %>
+
+                <div class="row single-chars">
+                  <% if @category == 1 %>
+                  <div class="col-sm-5 col-sm-offset-1">
+                    <% if @listing.full_address.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-location-listing"></i> <%= @listing.full_address %>
+                    </div>
+                    <% end %>
+                    <% if @listing.company_website.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-web-listing"></i>
+                      <%= generate_link(@listing.company_website) %>
+                    </div>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-5">
+                    <% if @listing.company_phone.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-phone-listing"></i> Tel: <%= @listing.company_phone%>
+                    </div>
+                    <% end %>
+                    <!--
+                    <div class="single-char-line">
+                      <i class="ico ico-mobile-listing"></i>
+                      Mob: 07889 635427
+                    </div>-->
+                  </div>
+                  <% end %>
+                  <% if @category == 2 %>
+                    <div class="col-sm-5 col-sm-offset-1">
+                      <% if @listing.full_address.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-location"></i> Location: <span><%= @listing.full_address %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.brand.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-make"></i>
+                        Brand: <span><%= @listing.brand %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.sale_price.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-price"></i> Wholesale sale price: <span><%= @listing.sale_price.to_i %> <%= $price.currency%></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.wholesale_price.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-price"></i> Wholesale <strike>price: <span><%= @listing.wholesale_price.to_i %> <%= $price.currency%></span></strike>
+                      </div>
+                      <% end %>
+                      <% if @listing.retail_price.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-price"></i> Retail price: <span><%= @listing.retail_price.to_i %> <%= $price.currency%></span>
+                      </div>
+                      <% end %>
+                    </div>
+                    <div class="col-sm-6">
+                      <% if @listing.wholesale_moq.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-moq"></i>
+                        Minimum quantity: <span><%= @listing.wholesale_moq %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.delivery_time.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-deliverytime"></i>
+                        Delivery time : <span><%= @listing.delivery_time %></span>
+                      </div>
+                      <% end %>
+                      <div class="single-char-line">
+                      <% if @listing.delivery_cost.present? %>
+                        <i class="ico ico-single-price"></i> Deliver cost: <span><%= @listing.delivery_cost %> <%= $price.currency%></span>
+                      <% end %>
+                      <% if @listing.pick_up_only.present? && @listing.pick_up_only == '1' %>
+                        <i class="ico ico-pickup-only"></i><span>Pickup only</span>
+                      <% end %>
+                      </div>
+                      <% unless @listing.price_open_to_offers.to_i.zero? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-open-to-offers"></i><span>Open to offers</span>
+                      </div>
+                      <% end %>
+                    </div>
+                  <% elsif @category == 26 %>
+                    <div class="col-sm-5 col-sm-offset-1">
+                      <% if @listing.full_address.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-location"></i> Location: <span><%= @listing.full_address %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.brand.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-make"></i>
+                        Brand: <span><%= @listing.brand %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.price.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-price"></i> Price: <span><%= @listing.price.to_i %> <%= $price.currency%></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.deal_coupon.present? %>
+                      <div class="single-char-line">
+                        Deal coupon code: <span><%= @listing.deal_coupon %></span>
+                      </div>
+                      <% end %>
+                    </div>
+                    <div class="col-sm-6">
+                      <% if @listing.delivery_time.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-deliverytime"></i>
+                        Delivery time : <span><%= @listing.delivery_time %></span>
+                      </div>
+                      <% end %>
+                      <div class="single-char-line">
+                      <% if @listing.delivery_cost.present? %>
+                        <i class="ico ico-single-price"></i> Deliver cost: <span><%= @listing.delivery_cost %> <%= $price.currency%></span>
+                      <% end %>
+                      <% if @listing.pick_up_only.present? && @listing.pick_up_only == '1' %>
+                        <i class="ico ico-pickup-only"></i><span>Pickup only</span>
+                      <% end %>
+                      </div>
+                      <% unless @listing.price_open_to_offers.to_i.zero? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-open-to-offers"></i><span>Open to offers</span>
+                      </div>
+                      <% end %>
+                      <% if @listing.deal_expire_time.present? %>
+                      <div class="single-char-line">
+                        Deal Expires: <span><%= time_ago_in_words(@listing.deal_expire_time) %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.deal_url.present? %>
+                      <div class="single-char-line">
+                        <%= link_to 'Click to get this deal', @listing.deal_url, class: 'btn-pink have-fill', target: '_blank' %>
+                      </div>
+                      <% end %>
+                    </div>
+                  <% elsif @category == 4 %>
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <% if @listing.full_address.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-location"></i> Location: <span><%= @listing.full_address %></span>
+                      </div>
+                      <% end %>
+                      <%= render 'listings/show/price', listing: @listing %>
+                    </div>
+                    <div class="col-sm-4">
+
+                    </div>
+                  <% elsif @category == 5 %>
+                    <div class="col-sm-6 col-sm-offset-3">
+
+                      <% if @listing.job_type.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-job"></i>
+                        Job type: <span><%= @listing.job_type %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.price.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-price"></i> Salary: <span><%= listing_price(@listing.price) %> <%= $price.currency%> / <%= @listing.salary_per %> </span>
+                      </div>
+                      <% end %>
+                      <% if @listing.full_address.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-location"></i> Location: <span><%= @listing.full_address %></span>
+                      </div>
+                      <% end %>
+                    </div>
+                  <% elsif @category == 6 %>
+                    <div class="col-sm-5 col-sm-offset-1">
+                      <% if @listing.full_address.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-location"></i> Location: <span><%= @listing.full_address %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_make.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-make"></i>
+                        Make: <span><%= @listing.car_make %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_model.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-car"></i>
+                        Model: <span><%= @listing.car_model %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_reg_year.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-registration"></i>
+                        Registration Year: <span><%= @listing.car_reg_year %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_gearbox.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-gearbox"></i>
+                        Gear box : <span><%= @listing.car_gearbox %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_mileage.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-mileage"></i>
+                        Meliage : <span><%= @listing.car_mileage %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.delivery_time.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-deliverytime"></i>
+                        Delivery time : <span><%= @listing.delivery_time %></span>
+                      </div>
+                      <% end %>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="single-char-line">
+                      <% if @listing.delivery_cost.present? %>
+                        <i class="ico ico-single-price"></i> Deliver cost: <span><%= @listing.delivery_cost %> <%= $price.currency%></span>
+                      <% end %>
+                      <% if @listing.pick_up_only.present? && @listing.pick_up_only == '1' %>
+                        <i class="ico ico-pickup-only"></i><span>Pickup only</span>
+                      <% end %>
+                      </div>
+                      <% if @listing.car_engine_size.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-enginesize"></i> Engine size: <span><%= @listing.car_engine_size.to_i %> CC</span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_fuel_type.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-fuletype"></i> Fuel type: <span><%= @listing.car_fuel_type %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_body_type.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-body"></i> Body type: <span><%= @listing.car_body_type %></span>
+                      </div>
+                      <% end %>
+                      <% if @listing.car_color.present? %>
+                      <div class="single-char-line">
+                        <i class="ico ico-single-colour"></i> Colour: <span><%= @listing.car_color %></span>
+                      </div>
+                      <% end %>
+                      <%= render 'listings/show/price', listing: @listing %>
+                    </div>
+                  <% elsif @category == 7 %>
+                  <div class="col-sm-8 col-sm-offset-3">
+                    <% if @listing.full_address.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-location"></i> Location: <span><%= @listing.full_address %></span>
+                    </div>
+                    <% end %>
+                    <% if @listing.property_type.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-propertytype"></i> Property type: <span><%= @listing.property_type %></span>
+                    </div>
+                    <% end %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-propertysize"></i> Property size: <span><%= @listing.property_size_rooms %> rooms, <%= @listing.property_size_meters %> m<sup>2</sup>, <%= @listing.property_size_feets %> ft<sup>2</sup></span>
+                    </div>
+                    <% if @listing.property_date_available.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-deliverytime"></i> Data available: <span><%= @listing.property_date_available %></span>
+                    </div>
+                    <% end %>
+                    <% if @listing.price.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-price"></i> Price: <span><%= $price.currency%> <%= listing_price(@listing.price) %> / <%= @listing.price_per_property %></span>
+                      <% unless @listing.price_open_to_offers.to_i.zero? %>
+                      <i class="ico ico-open-to-offers ml30"></i><span>Open to offers</span>
+                      <% end %>
+                    </div>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-4">
+
+                  </div>
+                  <% elsif @category == 8 %>
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <% if @listing.full_address.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-location"></i> Location: <span><%= @listing.full_address %></span>
+                    </div>
+                    <% end %>
+                    <% if @listing.pet_type.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-pet"></i> Type of pet: <span><%= @listing.pet_type %></span>
+                    </div>
+                    <% end %>
+                    <%= render 'listings/show/price', listing: @listing %>
+                  </div>
+                  <div class="col-sm-4">
+
+                  </div>
+                  <% elsif @category == 9 %>
+                  <div class="col-sm-8 col-sm-offset-2">
+
+                    <% if @listing.full_address.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-location"></i> Location: <span><%= @listing.full_address %></span>
+                    </div>
+                    <% end %>
+                    <%= render 'listings/show/price', listing: @listing %>
+                  </div>
+                  <div class="col-sm-4">
+
+                  </div>
+                  <% else %>
+
+                  <div class="col-sm-5 col-sm-offset-1">
+                    <% if @listing.full_address.present? && @category != 1 %>
+                    <div class="single-char-line">
+                      <i class="ico ico-location"></i> Location: <span><%= @listing.full_address %></span>
+                    </div>
+                    <% end %>
+                    <% if @listing.brand.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-make"></i>
+                      Brand: <span><%= @listing.brand %></span>
+                    </div>
+                    <% end %>
+                    <% if @listing.condition.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-condition"></i>
+                      Condition: <span><%= @listing.condition %></span>
+                    </div>
+                    <% end %>
+                    <% if @listing.delivery_time.present? %>
+                    <div class="single-char-line">
+                      <i class="ico ico-single-deliverytime"></i>
+                      Delivery time : <span><%= @listing.delivery_time %></span>
+                    </div>
+                    <% end %>
+                    <div class="single-char-line">
+                    <% if @listing.delivery_cost.present? %>
+                      <i class="ico ico-single-price"></i> Deliver cost: <span><%= @listing.delivery_cost %> <%= $price.currency%></span>
+                    <% end %>
+                    <% if @listing.pick_up_only.present? && @listing.pick_up_only == '1' %>
+                      <i class="ico ico-pickup-only"></i><span>Pickup only</span>
+                    <% end %>
+                    </div>
+                    <%= render 'listings/show/price', listing: @listing %>
+                  </div>
+                  <% end %>
+                </div>
+
+                <% if @listing.company_ad? %>
+                <div class="row">
+                  <div class="col-sm-5 col-sm-offset-1">
+                    <div class="listing-followus">
+                      <span class="follow-us">Folow us</span>
+                      <% if @listing.company_facebook.present? %>
+                      <a href="<%= @listing.company_facebook %>" target="_blank"><i class="ico ico-fb--grayscale"></i></a>
+                      <% end %>
+                      <% if @listing.company_twitter.present? %>
+                      <a href="<%= @listing.company_twitter %>" target="_blank"><i class="ico ico-tw--grayscale"></i></a>
+                      <% end %>
+                      <% if @listing.company_googleplus.present? %>
+                      <a href="<%= @listing.company_googleplus %>" target="_blank"><i class="ico ico-gplus--grayscale"></i></a>
+                      <% end %>
+                      <% if @listing.company_linkedin.present? %>
+                      <a href="<%= @listing.company_linkedin %>" target="_blank"><i class="ico ico-linkedin--grayscale"></i></a>
+                      <% end %>
+                      <% if @listing.company_youtube.present? %>
+                      <a href="<%= @listing.company_youtube %>" target="_blank"><i class="ico ico-youtube--grayscale"></i></a>
+                      <% end %>
+                      <% if @listing.company_instagram.present? %>
+                      <a href="<%= @listing.company_instagram %>" target="_blank"><i class="ico ico-insta--grayscale"></i></a>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <% if @listing.company_tags.any? %>
+                    <div class="listing-tags">
+                      <span class="follow-us">Listing tags</span>
+                      <div class="tags">
+                      <% @listing.company_tags.each do |tag| %>
+                        <%= "<a href='#'>".html_safe + tag + "</a>".html_safe %>
+                      <% end %>
+                      </div>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+                <% end %>
+
+                <%= render partial: 'listings/description_tabs' %>
+
+                <% if @listing.tags.any? %>
+                  <div class="listing-tags">
+                    <div>
+                      <% @listing.tags.each do |tag| %>
+                        <%= link_to(tag, tag_path(tag)) if tag.strip.present? %>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+
+                <%= render ('listings/listing_tabs') %>
+
+                <%= render ('listings/similar')%>
+              </div>
+
+              <!-- SIDEBAR -->
+
+              <div class="col-sm-4 single-sidebar border-left--gradient">
+                <div class="text-center contact-socials">
+                  <div class="single-sidebar-heading">SHARE</div>
+                  <a href="http://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>&title=<%= "#{@listing.name}" %>" target="_blank"><i class="ico ico-fb--grayscale"></i></a>
+                  <a href="http://twitter.com/intent/tweet?status=<%= "#{@listing.name}" %>+<%= request.original_url %>" target="_blank"><i class="ico ico-tw--grayscale"></i></a>
+                  <a href="https://plus.google.com/share?url=<%= request.original_url %>" target="_blank"><i class="ico ico-gplus--grayscale"></i></a>
+
+                  <a href="https://www.linkedin.com/cws/share?url=<%= request.original_url %>"  target="_blank"><i class="ico ico-linkedin--grayscale"></i></a>
+                  <a href="http://pinterest.com/pin/create/button/?url=<%= request.original_url %>&description=<%= "#{@listing.name}"%>"  target="_blank"><i class="ico ico-pinterest--grayscale"test2></i></a>
+                  <!--
+                  <a href="#" target="_blank"><i class="ico ico-youtube--grayscale"></i></a>
+                  <a href="#" target="_blank"><i class="ico ico-insta--grayscale"></i></a>
+                  -->
+                </div>
+
+                <div class="single-sidebar-profile-pic text-center">
+                  <div class="profile-header-wrap">
+                    <% if @listing.user.profile_photo.present? %>
+                    <%= image_tag @listing.user.profile_photo.small.url, class: 'img-responsive img-circle' %>
+                    <% else %>
+                    <img src="/images/no-avatar.png" class="img-responsive img-circle" alt="No avatar" />
+                    <% end %>
+                  </div>
+                  <div class="single-sidebar-heading--big">
+                    <%= link_to user_path(@listing.user) do %>
+
+                    <% if @listing.user.first_name.present? %>
+                    <%= @listing.user.first_name %> <%= @listing.user.last_name %>
+                    <% else %>
+                    User: <%= @listing.user.email %>
+                    <% end %>
+
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class="single-sidebar-icons">
+                  <!--
+                  <div class="single-sidebar-ico-row">
+                    <i class="ico ico-company"></i> Company
+                  </div>-->
+                  <% if @listing.user.location.present? %>
+                  <div class="single-sidebar-ico-row">
+                    <i class="ico ico-country"></i> <%= @listing.user.location %>
+                  </div>
+                  <% end %>
+                  <div class="single-sidebar-ico-row">
+                    <% if @listing.user.last_seen > Time.now - 5.minute %>
+                    <i class="ico ico-online"></i> Online
+                    <% else %>
+                    <i class="ico ico-offline"></i> Offline
+                    <% end %>
+                  </div>
+                  <div class="single-sidebar-ico-row">
+                    <i class="ico ico-email"></i> <a href="#"><%= @listing.user.email %></a>
+                  </div>
+                  <% if @listing.user.phone.present? %>
+                  <div class="single-sidebar-ico-row">
+                    <i class="ico ico-chat"></i>
+                    Tel: <%= @listing.user.phone %>
+                  </div>
+                  <% end %>
+                  <!--
+                  <div class="single-sidebar-ico-row">
+                    <i class="ico ico-response-time"></i>
+                    Response time
+                  </div>
+                  -->
+                  <% if @listing.user.language.present? %>
+                  <div class="single-sidebar-ico-row">
+                    <i class="ico ico-language"></i><%= @listing.user.language %>
+                  </div>
+                  <% end %>
+                  <div class="single-sidebar-ico-row">
+                    <% if current_user %>
+                      <% if @listing.category.id == 5 %>
+                        <i class="ico ico-person"></i> <a href="#apply-job-popup" class="popup-with-zoom-anim">Apply for job</a>
+                      <% else %>
+                        <i class="ico ico-person"></i> <a href="#send-message-popup" class="popup-with-zoom-anim">Contact Me</a>
+                      <% end %>
+                    <% else %>
+                      Please <%= link_to 'log in', '#login-popup', class: 'popup-with-move-anim', style: 'color:#369fe0' %> to contact me
+                    <% end %>
+                  </div>
+                </div>
+
+                <!-- split-->
+                <div class="single-sidebar-desc">
+                <% if @listing.user.description.present? %>
+                <p><span>Description:</span>  <%= @listing.user.description.html_safe %>   </p>
+                <!--<a href="#" class="read-more">Read more</a>-->
+                <% end %>
+                </div>
+                <!--subscription form-->
+                <div class="single-sidebar-desc">
+                  <%= render 'listings/show/newsletter' -%>
+                </div>
+                <div class="single-sidebar-note">
+                  <div class="single-sidebar-heading blue">Safety advice note</div>
+                  <p><%= $template.safety_text%></p>
+                </div>
+                <div class="single-sidebar-banners">
+                  <%= render ('shared/banner-right-sidebar-short')%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- CONTENT -->
+
+
+<% if @listing.category.id != 5 %>
+<!-- Send message ad -->
+
+<div id="send-message-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Online buying and selling sites in uk" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold popup-heading--blue text-center">Send a message</div>
+    <div class="row">
+
+<%= form_for(@listing, url: new_message_path, :html => {:id => "send-message-box", :class => "contact-form", :'data-type' => 'json'}, :remote => true ) do |f| %>
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <!--<div class="selectbox selectbox--blue-gradient">
+          <select>
+            <option>Select  ad category</option>
+            <option>Select  ad category</option>
+          </select>
+        </div>-->
+        <% if current_user %>
+        <% else %>
+        <div class="form-group">
+          <label>Reply to email</label>
+          <input type="text" name="sender_email" class="form-control" placeholder="Your email">
+        </div>
+        <% end %>
+        <div class="form-group">
+          <textarea name="message" class="form-control ico-textarea-bg" rows="4" placeholder="Your Description"></textarea>
+        </div>
+        <div class="text-center captcha-popup row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= recaptcha_tags %>
+            <!--<div class="form-group">
+              <input type="text" name="" class="form-control small-pad" placeholder="Captcha">
+            </div>-->
+          </div>
+        </div>
+        <div class="two-row-btns pt20">
+          <button type="submit" class="btn-pink have-fill">SEND</button>
+          <button type="" class="btn-blue have-fill">CANCEL</button>
+        </div>
+      </div>
+<% end %>
+
+    </div>
+  </div>
+</div>
+
+<% else %>
+<!-- Apply for job -->
+
+<div id="apply-job-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Websites to sell items online for free" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold text-center">Apply for Job <%= @listing.name %></div>
+    <div class="row">
+
+<%= form_for(@listing, url: new_job_path, :html => {:id => "send-message-job-box", :class => "contact-form", :'data-type' => 'json', :multipart => true}, :remote => true ) do |f| %>
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+      <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+        <% if current_user %>
+        <% else %>
+        <div class="form-group">
+          <label>Reply to email</label>
+          <input type="text" name="sender_email" class="form-control" placeholder="Your email">
+        </div>
+        <% end %>
+        <div class="form-group">
+          <textarea name="message" class="form-control ico-textarea-bg" rows="4" placeholder="Enter your covering later"></textarea>
+        </div>
+         <% if current_user %>
+            <% if current_user.cv.present? %>
+            <% else %>
+            <div class="form-group">
+            Allowed file types: Word, PDF, Richtext. Maximum file size: 6MB
+            </div>
+            <% end %>
+        <% else %>
+        <div class="form-group">
+        Allowed file types: Word, PDF, Richtext. Maximum file size: 6MB
+        </div>
+        <% end %>
+        <div class="form-group">
+          <% if current_user %>
+            <% if current_user.cv.present? %>
+              <style>
+                .contact-form .form-group a{
+                  text-decoration: underline;
+                }
+              </style>
+              Submit your current CV <%= link_to "View your CV", current_user.cv.url %>
+              <input id="upload" type="hidden" name="upload" value="<%= current_user.cv %>" />
+            <% else %>
+            <div class="fileform">
+              <div id="fileformlabel" class="form-control">No file choicen</div>
+              <div class="selectbutton">Choose files</div>
+              <input id="upload" type="file" name="upload" onchange="getName(this.value);" />
+            </div>
+            <% end %>
+          <% else %>
+          <div class="fileform">
+            <div id="fileformlabel" class="form-control">No file choicen</div>
+            <div class="selectbutton">Choose files</div>
+            <input id="upload" type="file" name="upload" onchange="getName(this.value);" />
+          </div>
+          <% end %>
+        </div>
+        <div class="text-center captcha-popup row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= recaptcha_tags %>
+            <!--<div class="form-group">
+              <input type="text" name="" class="form-control small-pad" placeholder="Captcha">
+            </div>-->
+          </div>
+        </div>
+        <div class="two-row-btns pt20">
+          <button type="submit" class="btn-pink have-fill">Apply</button>
+          <button type="" class="btn-blue have-fill">CANCEL</button>
+        </div>
+      </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+<% end %>
+<!-- STATUSES POPUP -->

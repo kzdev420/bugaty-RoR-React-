@@ -1,0 +1,236 @@
+<%= content_for(:title, @page.title.presence || @page.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @page.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @page.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+
+	<!-- START SLIDER -->
+<section class="mainpage-slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="owl-carousel" id="owl-carousel">
+          <div class="mainpage-slider-slide" style="background-image: url('/images/feedback_slides/1.jpg')">
+            <div class="mainpage-slider-slide-title">Feedbacks</div>
+              <a href="#leave-feedback-popup" class="popup-with-zoom-anim btn-pink have-fill mainpage-slider-slide-btn">leave your feedback</a>
+          </div>
+          <div class="mainpage-slider-slide" style="background-image: url('/images/feedback_slides/slider1.jpg')">
+            <div class="mainpage-slider-slide-title">Feedbacks</div>
+              <a href="#leave-feedback-popup" class="popup-with-zoom-anim btn-pink have-fill mainpage-slider-slide-btn">leave your feedback</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+	<!-- END SLIDER -->
+
+
+
+
+	<!-- CONTENT -->
+	<section class="text-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 have-pad-50">
+					<div class="content-holder">
+						<div class="row">
+							<div class="col-sm-12">
+								<%= @page.text.html_safe %>
+							</div>
+						</div>
+						<div class="row">
+							<% @feedbacks.each do |feedback| %>
+							<div class="col-sm-6">
+								<div class="feedback">
+									<div class="row">
+										<div class="col-sm-6">
+                      <div class="feedback-image">
+											  <% if feedback.user.present? %>
+                          <%= image_tag feedback.user.profile_photo.small.url, class: 'img-responsive img-rounded' %>
+  											<% elsif feedback.image.present? %>
+  											  <%= image_tag feedback.image.small.url, class: 'img-responsive img-rounded' %>
+  											<% else %>
+  											  <img src="/images/no-avatar.png" class="img-responsive img-rounded" alt='No avatar'>
+  											<% end %>
+                      </div>
+										</div>
+										<div class="col-sm-6">
+											<% if feedback.first_name.present? %>
+											<div class="feedback-name text-center"><%= feedback.first_name %> <%= feedback.last_name %></div>
+											<% end %>
+											<% if feedback.first_name.present? %>
+											<div class="feedback-ico-row"><i class="ico ico-company"></i> <%= feedback.company %></div>
+											<% end %>
+											<% if feedback.position.present? %>
+											<div class="feedback-ico-row"><i class="ico ico-position"></i> <%= feedback.position %></div>
+											<% end %>
+											<% if feedback.country.present? %>
+											<div class="feedback-ico-row"><i class="ico ico-country"></i> <%= feedback.country %></div>
+											<% end %>
+
+										</div>
+									</div>
+									<% if feedback.content.present? %>
+									<p><span>Feedback:</span>  <%= feedback.content %></p>
+									<% end %>
+								</div>
+							</div>
+							<% end %>
+
+						</div>
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2">
+								<!--<div class="pagination-slider" id="jPaginator">
+								    <div class='paginator_p_wrap'>
+								        <div class='paginator_p_bloc'>
+								        </div>
+								    </div>
+								    <div class='paginator_slider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all'>
+								        <a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a>
+								    </div>
+								    <div class="total-pages-paginator text-right">
+								    36 pages
+								    </div>
+								</div>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--- CONTENT -->
+<script type="text/javascript">
+	$("#jPaginator").jPaginator({
+	    nbPages:54,
+	    nbVisible: 10,
+	    selectedPage: null,
+	    overBtnLeft:'#test1_o_left',
+	    overBtnRight:'#test1_o_right',
+	    maxBtnLeft:'#test1_m_left',
+	    maxBtnRight:'#test1_m_right',
+	    minSlidesForSlider:5,
+	    onPageClicked: function(a,num) {
+	        $("#page1").html("demo1 - page : "+num);
+	    }
+	});
+</script>
+
+
+<!-- Feedback -->
+
+<div id="leave-feedback-popup" class="zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<img src="/img/logo.png" alt="UK classifieds ads sites" class="img-responsive center-block">
+	</div>
+	<div class="popup-content">
+		<div class="popup-heading popup-heading--bold text-center">Leave your feedback </div>
+
+<%= form_for(Feedback.new, url: new_feedback_path, :html => {:id => "leave-feedback-box", :class => "contact-form have-pad-150", :multipart => true, :'data-type' => 'json'}, :remote => true ) do |f| %>
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+			<div class="form-group">
+				<%= f.text_field :first_name, class: 'form-control ico-name-bg', placeholder: 'Your first name' %>
+			</div>
+			<div class="form-group">
+				<%= f.text_field :last_name, class: 'form-control ico-name-bg', placeholder: 'Your surname' %>
+			</div>
+			<% if current_user %>
+			<% else %>
+        <div class="form-group">
+          <div class="fileform-multiple fileform">
+            <%= f.file_field :image, :multiple => false, class: 'inputfile', name: 'feedback[image]' %>
+            <label id="fileformlabel" for="file" class="form-control">Choose an avatar image</label>
+            <div class="selectbutton">Choose photo</div>
+          </div>
+        </div>
+
+			<% end %>
+			<div class="form-group">
+				<%= f.text_field :company, class: 'form-control ico-company-bg', placeholder: 'Your company' %>
+			</div>
+			<div class="form-group">
+				<%= f.text_field :position, class: 'form-control ico-position-bg', placeholder: 'Your position' %>
+			</div>
+			<div class="form-group">
+				<%= f.text_field :country, class: 'form-control ico-country-bg', placeholder: 'Your country' %>
+			</div>
+			<div class="form-group">
+				<textarea name="feedback[content]" class="form-control ico-say-bg" rows="4" placeholder="Share your experience "></textarea>
+			</div>
+			<div class="text-center">
+				<button type="submit" class="btn-pink btn-large have-fill">SUMBIT</button>
+			</div>
+<% end %>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('#leave-feedback-box input[type="file"]').MultiFile({
+    max: 1,
+    accept: 'jpg|png|gif|jpeg',
+    list: false,
+    maxfile: 1,
+  });
+
+	$('#leave-feedback-box').on('submit' ,function(e){
+	  var f_name = $(this).find('input[name="feedback[first_name]"]').val();
+	  var l_name = $(this).find('input[name="feedback[last_name]"]').val();
+	  var company = $(this).find('input[name="feedback[company]"]').val();
+	  var country = $(this).find('input[name="feedback[country]"]').val();
+	  var position = $(this).find('input[name="feedback[position]"]').val();
+	  var content = $(this).find('textarea[name="feedback[content]"]').val();
+
+	  $(this).find('.alert').remove();
+
+	  function arror_m(){
+	    $('.popup-status-content').text('Your feedback has not been sent successfully. Try again');
+	    $('#show-failed').show();
+	  }
+	  if (f_name.length < 3){
+	  	$(this).prepend('<div class="alert alert-danger">Please enter valid first name</div>');
+	  	arror_m();
+	  	return false
+	  }
+
+	  if (l_name.length < 3){
+	  	$(this).prepend('<div class="alert alert-danger">Please enter valid last name</div>');
+	  	arror_m();
+	  	return false
+	  }
+
+	  if (country.length < 3){
+	  	$(this).prepend('<div class="alert alert-danger">Please enter valid country</div>');
+	  	arror_m();
+	  	return false
+	  }
+
+	  if (company.length < 3){
+	  	$(this).prepend('<div class="alert alert-danger">Please enter valid company</div>');
+	  	arror_m();
+	  	return false
+	  }
+
+	  if (position.length < 2){
+	  	$(this).prepend('<div class="alert alert-danger">Please enter valid position</div>');
+	  	arror_m();
+	  	return false
+	  }
+
+	  if (content.length < 10){
+	  	$(this).prepend('<div class="alert alert-danger">Please enter message logner than 10 symbols</div>');
+	  	arror_m();
+	  	return false
+	  }
+
+	});
+});
+</script>

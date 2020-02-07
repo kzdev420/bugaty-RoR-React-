@@ -1,0 +1,316 @@
+<% @listings.each do |listing| %>
+	<% if user_signed_in? && current_user == listing.user && params[:controller] == 'users' %>
+		<div class="listing-select-checkbox">
+			<input type="checkbox" name="selected_listing" value="<%= listing.id %>" id="listing-<%= listing.id %>">
+			<label for="listing-<%= listing.id %>"></label>
+		</div>
+	<% end %>
+
+						<% if listing.urgent? %>
+						<div class="<%= 'paused' if listing.paused %> ad-card ad-card--editable ad-card--urgent">
+						<% elsif listing.featured_cat? %>
+						<div class="<%= 'paused' if listing.paused %> ad-card ad-card--editable ad-card--featured">
+						<% else %>
+						<div class="<%= 'paused' if listing.paused %> ad-card ad-card--editable">
+						<% end %>
+							<div class="row">
+								<div class="col-sm-4 col-md-3 no-pad-r">
+									<div class="ad-card-picture center-image">
+										<%= link_to listing do %>
+											<% if listing.photos.present? %>
+						                    <span class="hidden-xs"><%= image_tag listing.photos.first.image.small.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+						                    <span class="hidden-sm hidden-lg hidden-md"><%= image_tag listing.photos.first.image.big.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+						                    <% else %>
+						                    <img src="/images/nophoto-170.png", class="img-responsive" alt='no photo'>
+						                    <% end %>
+										<% end %>
+                    <% if listing.urgent? %>
+                    <span class="ad-picture-tag tag--urgent">URGENT</span>
+                      <% if listing.featured_cat? %>
+                      <span class="ad-picture-tag tag--featured" style="top: 30px;">FEATURED</span>
+                      <% end %>
+                    <% elsif listing.featured_cat? %>
+                    <span class="ad-picture-tag tag--featured">FEATURED</span>
+                    <% end %>
+									</div>
+									<div class="ad-posted-ago">
+										<i class="ico ico-posted-ago"></i> <span>Posted:</span> <%= time_ago_in_words(listing.created_at) + " ago" %>
+									</div>
+									<div class="ad-reviews">
+										<% rating = get_listing_rating(listing) %>
+										<%= number_to_stars(rating).html_safe %>
+										<span class="ad-reviews-rating"><%= rating %></span>
+										<span class="ad-reviews-counter">
+				                  		  <% if listing.comments.present? %>
+				                          ( <%= pluralize(listing.comments.length, "review") %> )
+				                          <% end %>
+										</span>
+									</div>
+								</div>
+								<div class="col-sm-8 col-md-9">
+									<div class="ad-title">
+										<%= link_to listing.name, listing_path(listing.id) %>
+									</div>
+									<div class="ad-add-favourites">
+										<div class='btn-favourite'><%= clicks(listing.clicks, listing.last_click_at).html_safe %></div>
+										<% if current_user %>
+										  <% if is_favorited?(listing.id) %>
+											  <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe,   favorite_listing_path(listing, type: "favorite"), method: :put, class: 'btn-favourite' %>
+										  <% else %>
+											  <%= link_to "<i class='ico ico-favourite'></i> UNFAVORITE".html_safe, favorite_listing_path(listing, type: "unfavorite"), method: :put, class: 'btn-favourite' %>
+										  <% end %>
+										<% end %>
+
+										<% if current_user && listing.user == current_user %>
+											<div class="ad-toggle-pause">
+												<a href="<%= user_listing_toggle_pause_path(current_user, listing) %>" data-method="PATCH" class="btn-favourite">
+													<i class="ico ico-pause"></i>
+													<% if listing.paused %>
+														UNPAUSE
+													<% else %>
+														PAUSE
+													<% end %>
+												</a>
+											</div>
+
+											<% if listing.subscription_active? && (listing.paypal_id? || listing.subscription_stripe_id?) %>
+												<div>
+													<%= link_to 'Cancel Payment', "#cancel-subscription-#{listing.id}", class: 'btn-favourite popup-with-zoom-anim' %>
+												</div>
+
+												<div id="cancel-subscription-<%="#{listing.id}"%>" class="delete-listing zoom-anim-dialog mfp-hide">
+													<div class="popup-logo text-center">
+														<img src="/img/logo.png" alt="UK based freelance sites" class="img-responsive center-block">
+													</div>
+													<div class="popup-content">
+														<div class="popup-heading popup-heading--bold popup-heading--blue text-center">Are you sure you want to cancel your ad listing payment?<br/>Please note that if you cancel your payment your listing will end and will no longer be visible on the site</div>
+														<div class="row">
+															<div class="col-sm-10 col-sm-offset-1">
+
+																<div class="two-row-btns">
+																	<%= link_to cancel_subscription_path(listing.id), method: :delete do %>
+																	<button type="submit" class="btn-pink have-fill" id="process-redirect">Confirm</button>
+																	<% end %>
+																	<button type="" class="btn-blue have-fill">CANCEL</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											<% end %>
+										<% end %>
+									</div>
+
+									<div class="ad-category">
+										<i class="ico ico-category"></i> Listed in <%=link_to listing.category.name, listing_path(listing.id) %></a>
+									</div>
+
+									<% if listing.category.id == 1 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-5">
+											<% if listing.user.phone.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-phone"></i> <%= listing.user.phone %></div>
+											<% end %>
+											<% if listing.company_phone.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-phone"></i> <%= listing.company_phone %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-7">
+											<i class="ico ico-location"></i> <%= listing.location %>
+										</div>
+									</div>
+									<% elsif listing.category.id == 2 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-7">
+											<% if listing.sale_price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> Wholesale Sale price: <span><%= listing.sale_price %> $</span></div>
+											<% end %>
+											<% if listing.wholesale_price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> Wholesale <strike>price: <span><%= listing.wholesale_price %> $</span></strike></div>
+											<% end %>
+											<% if listing.retail_price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> Retail price: <span><%= listing.retail_price %> $</span></div>
+											<% end %>
+											<% if listing.wholesale_moq.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-moq"></i> Minimum quantity: <span><%= listing.wholesale_moq %></span></div>
+											<% end %>
+										</div>
+										<div class="col-sm-5">
+											<% if listing.delivery_time.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-date-available"></i> <%= listing.delivery_time %> </div>
+											<% end %>
+											<% if listing.location.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-location"></i> <%= listing.location %></div>
+											<% end %>
+										</div>
+									</div>
+									<% elsif listing.category_id == 26 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-7">
+											<% if listing.price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> Price: <span><%= listing.price %> $</span></div>
+											<% end %>
+											<% if listing.deal_url.present? %>
+											<div class="ad-metrics-row"><%= link_to 'Click to get this deal', listing.deal_url, class: 'btn-pink have-fill', target: '_blank' %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-5">
+											<% if listing.delivery_time.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-date-available"></i> <%= listing.delivery_time %> </div>
+											<% end %>
+											<% if listing.location.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-location"></i> <%= listing.location %></div>
+											<% end %>
+										</div>
+									</div>
+									<% elsif listing.category.id == 5 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-4">
+											<% if listing.price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> <%= listing_price(listing.price) %> $</div>
+											<% end %>
+											<% if listing.subcategory.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-web"></i> <%= listing.subcategory.name %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-8">
+											<% if listing.location.present? %>
+											<i class="ico ico-location"></i> <%= listing.location %>
+											<% end %>
+										</div>
+									</div>
+									<% elsif listing.category.id == 6 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-5">
+											<% if listing.price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> <%= listing_price(listing.price) %> $</div>
+											<% end %>
+											<% if listing.car_reg_year.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-cal"></i> <%= listing.car_reg_year %></div>
+											<% end %>
+											<% if listing.car_fuel_type.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-fuel"></i> <%= listing.car_fuel_type %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-7">
+											<% if listing.car_engine_size.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-engine"></i> <%= listing.car_engine_size.to_i %></div>
+											<% end %>
+											<% if listing.car_mileage.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-mileage"></i> <%= listing.car_mileage %></div>
+											<% end %>
+											<% if listing.location.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-location"></i> <%= listing.location %></div>
+											<% end %>
+										</div>
+									</div>
+									<% elsif listing.category.id == 7 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-5">
+											<% if listing.price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> <%= listing_price(listing.price) %> $</div>
+											<% end %>
+											<% if listing.property_type.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-property-type"></i> <%= listing.property_type %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-7">
+											<% if listing.property_type.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-date-available"></i> <%= listing.delivery_time %></div>
+											<% end %>
+											<% if listing.location.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-location"></i> <%= listing.location %></div>
+											<% end %>
+										</div>
+									</div>
+									<% elsif listing.category.id == 8 %>
+									<div class="row ad-metrics">
+										<div class="col-sm-5">
+											<% if listing.price.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> <%= listing_price(listing.price) %> $</div>
+											<% end %>
+											<% if listing.pet_type.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-pet"></i> <%= listing.pet_type %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-7">
+											<% if listing.location.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-location"></i> <%= listing.location %></div>
+											<% end %>
+										</div>
+									</div>
+									<% else %>
+									<div class="row ad-metrics">
+									  <% if listing.price.present? %>
+										<div class="col-sm-5">
+										  <div class="ad-metrics-row">
+                                            <i class="ico ico-price"></i><%= $price.currency %> <%= listing_price(listing.price) %> <%= listing.price_per %>
+                                          </div>
+									    </div>
+                                      <% end %>
+                                      <% unless listing.price_open_to_offers.to_i.zero? %>
+                                        <div class="col-sm-5">
+                                          <div class="ad-metrics-row"><i class="ico ico-open-to-offers ml30"></i><span>Open to offers</span></div>
+                                        </div>
+                                      <% end %>
+										<div class="col-sm-5">
+											<% if listing.user.phone.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-phone"></i> <%= listing.user.phone %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-7">
+											<% if listing.location.present? %>
+											<i class="ico ico-location"></i> <%= listing.location %>
+											<% end %>
+										</div>
+									</div>
+									<% end %>
+									<div class="ad-description">
+										<p><%= truncate(strip_tags(listing.description), length: 100) %></p>
+										<%= link_to "Read more ...", listing_path(listing) %>
+									    <% if listing.user == current_user %>
+									    <%= link_to 'Edit', edit_listing_path(listing) %>
+									    <a href="#delete-listing-<%="#{listing.id}"%>" class="popup-with-zoom-anim">Delete</a>
+									    <% end %>
+
+<div id="delete-listing-<%="#{listing.id}"%>" class="delete-listing zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<img src="/img/logo.png" alt="UK based freelance sites" class="img-responsive center-block">
+	</div>
+	<div class="popup-content">
+		<div class="popup-heading popup-heading--bold popup-heading--blue text-center">Are you sure you want to delete this listing?</div>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+
+				<div class="two-row-btns">
+					<%= link_to listing, method: :delete do %>
+					<button type="submit" class="btn-pink have-fill" id="process-redirect">Delete</button>
+					<% end %>
+					<button type="" class="btn-blue have-fill">CANCEL</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+									</div>
+									<div class="ad-description">
+										<% if listing.user == current_user %>
+						          <%= render 'listings/form/subscription', listing: listing -%>
+										<% end %>
+									</div>
+									<div class="ad-author">
+										<span>Added by:</span>
+				                        <% if listing.user.first_name.present? %>
+				                        <%= link_to "#{listing.user.first_name}" + " " + "#{listing.user.last_name}", user_path(listing.user) %>
+				                        <% else %>
+				                        <%= link_to listing.user.email, user_path(listing.user) %>
+				                        <% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+<% end %>

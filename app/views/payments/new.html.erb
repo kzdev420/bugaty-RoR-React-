@@ -1,0 +1,83 @@
+<%= provide(:title, "Create new listing") %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+
+  <!-- CONTENT -->
+  <section class="ads editable">
+    <div class="container">
+      <div class="row">
+        <!-- START WITH BUSINESS LISTINGS -->
+        <div class="col-sm-8 header-pad-l">
+          <div class="gradient-bg">
+            <div class="ads-list-title">
+            <span>Pay </span> listing fees
+            </div>
+          </div>
+          <div class="whitebox post-new-box">
+
+    <% if @payment.errors.any? %>
+      <div class="alert alert-danger">
+        <ul>
+          <% @payment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+      <%= form_for @payment do |f| %>
+        <div class="form-group">
+          <%= f.label :first_name, class: "control-label" %>
+          <%= f.text_field :first_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :last_name, class: "control-label" %>
+          <%= f.text_field :last_name,class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :credit_card_number, class: "control-label" %>
+          <%= f.text_field :credit_card_number, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :expiration_month, class: "control-label" %>
+          <%= f.select :expiration_month, months, {}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :expiration_year, class: "control-label" %>
+          <%= f.select :expiration_year, years, {}, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :card_security_code, class: "control-label" %>
+          <%= f.text_field :card_security_code, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :amount, class: "control-label" %>
+          <%= f.number_field :amount, class: "form-control", step: "0.01" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Charge Credit Card", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+
+          </div>
+          <div class="banner-bottom text-center pt130">
+            <%= render ('shared/banner-bottom') %>
+          </div>
+        </div>
+        <!-- ANOTHER ADS -->
+        <div class="col-sm-4 header-pad-r">
+          <div class="gradient-bg">
+            <div class="ads-list-title"><span>ADVERTISEMENTS</span></div>
+          </div>
+          <div class="gradient-bg gradient-bg--ads">
+            <%= render ('shared/banner-right-sidebar-long') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- CONTENT --> 
+

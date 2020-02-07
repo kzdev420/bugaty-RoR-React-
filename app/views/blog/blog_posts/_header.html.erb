@@ -1,0 +1,13 @@
+<%=
+  react_component(
+    'BlogHeader',
+    authenticity_token:  form_authenticity_token,
+    categories: ActiveModel::Serializer::CollectionSerializer.new(@blog_category, serializer: BlogCategorySerializer),
+		menu_posts: @menu_posts,
+		activeSubcategory: @subcategory,
+		topMenu: @top_menu
+  )
+%>
+<%= content_for(:footer) do %>
+  <%= render :inline => $template.blog_footer, :layout => false %>
+<% end %>

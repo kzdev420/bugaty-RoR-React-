@@ -1,0 +1,33 @@
+@import '../../../styles/variables'
+
+.meetTheHost h1
+  color: $green
+.meetTheHost
+  border-color: #f5f5f5
+  border-style: solid
+  border-width: 2px
+  border-radius: 10px
+  .hostPhoto img
+    width: 150px
+    height: 150px
+    border-radius: 50%
+    object-fit: cover
+    object-position: center right
+  .hostDescription
+    font-size: 12px
+.subscribe
+  h1
+    font-size: 28px
+    color: black
+.messageBox
+  & > div
+    text-align: center
+    background: #e5e5e5
+
+.pagination
+  a
+    background: $disabled !important
+    color: black !important
+.paginationActive a
+    background: $green !important
+    color: white !important

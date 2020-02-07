@@ -1,0 +1,37 @@
+@import '../../../styles/variables'
+
+$fontColorDescription: #666666
+
+.overlay
+  z-index: -1
+  position: absolute
+  background-color: #000
+  opacity: 0.3
+  cursor: pointer
+.cardImage
+  width: 100%
+  height: 265px
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  position: relative
+  padding: 0
+  z-index: 1
+  &:hover .overlay
+    width: 100%
+    height: 100%
+.cardBody
+  background: white
+  .cardTitle
+    color: black
+    font-weight: 900
+    cursor: pointer
+    font-size: 18px
+    &:hover
+      text-decoration: underline
+  .cardData
+    color: $fontColorDescription
+    font-size: 12px
+    white-space: nowrap
+    .author
+      color: $green

@@ -1,0 +1,55 @@
+
+<%= form_for(listing.payment_requests.new, :html => {:id => "buy-box", :class => "contact-form"}) do |f| %>
+  <%= f.hidden_field :listing_id, value: listing.id %>
+  <%= f.hidden_field :request_type, value: PaymentRequest.request_types[:offer] %>
+
+  <div class='row'>
+    <div class='col-sm-4 col-xs-4'>
+      <div class='field-desc'>Your offer</div>
+    </div>
+    <div class='col-sm-8 col-xs-8'>
+      <%= f.text_field :price, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-sm-4 col-xs-4'>
+      <div class='field-desc'>Delivery Cost</div>
+    </div>
+    <div class='col-sm-8 col-xs-8'>
+      <%= f.text_field :delivery_cost, value: listing.delivery_cost.to_f, class: 'form-control', readonly: true %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='field-desc'><i>Please select your preferred payment method</i></div>
+  </div>
+  <div class='row'>
+    <% listing.payment_methods.each_with_index do |payment_method, index| %>
+      <% unless payment_method.empty? %>
+        <div class='radiobox'>
+          <%= f.radio_button :payment_method, payment_method, id: "pm_#{index}", required: true %>
+          <label for='<%= "pm_#{index}"%>'><%= payment_method %></label>
+        </div>
+      <% end -%>
+    <% end -%>
+  </div>
+
+  <div class='row'>
+    <div class='col-sm-6 col-xs-6'>
+      <div class='field-desc'><strong>Total</strong></div>
+    </div>
+    <div class='col-sm-6 col-xs-6'>
+      <%= text_field_tag :total, '', disabled: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <%= f.text_area :message, placeholder: 'Please enter your comments', maxlength: 300, class: 'form-control' %>
+  </div>
+
+  <div class='two-row-btns pt20'>
+    <%= f.button 'Send offer', class: 'btn-pink have-fill' %>
+    <a href='' id='cancel_link' class='btn-blue have-fill'>CANCEL</a>
+  </div>
+<% end %>

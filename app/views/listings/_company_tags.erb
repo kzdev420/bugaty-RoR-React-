@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-desc">Tags</div>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if @listing.company_tags.any? %>
+        <% @listing.company_tags.each_with_index do |tag, i| %>
+          <div class="company-tags-field-group input-group">
+            <%= text_field_tag "listing[company_tags][]", tag, placeholder: 'Enter tag', class: 'form-control tags-field' %>
+            <a href="#remove" class="input-group-addon remove-tags-field-button">×</a>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="company-tags-field-group input-group">
+          <%= text_field_tag "listing[company_tags][]", '', placeholder: 'Enter tag', class: 'form-control tags-field' %>
+          <a href="#remove" class="input-group-addon remove-tags-field-button">×</a>
+        </div>
+      <% end %>
+
+      <button id="add-tags-button" class="btn pull-right">Add more</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function removeCompanyTagField(e) {
+    e.preventDefault();
+
+    if($('.company-tags-field-group').length > 1)
+      $(this).parents('.company-tags-field-group').remove();
+  }
+
+  $(function() {
+    $('#add-tags-button').click(function(e) {
+      e.preventDefault();
+
+      var n = $('input.tags-field').length;
+      if(n < 4) {
+        var field = $('input.tags-field:last').parent().clone();
+        field.find('input').val('');
+        field.find('a').off('click').click(removeCompanyTagField);
+        field.insertAfter($('input.tags-field:last').parent());
+      }
+    });
+
+    $('.remove-tags-field-button').click(removeCompanyTagField);
+  });
+</script>

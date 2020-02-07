@@ -1,0 +1,41 @@
+<%= content_for(:title, @user.title.presence || [@user.first_name, @user.last_name].join(' ')) %>
+
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @user.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @user.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('users/header')%>
+
+
+	<!-- CONTENT -->
+	<section class="text-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 have-pad-50">
+					<div class="content-holder no-pad-b">
+						<div class="row">
+							<div class="col-sm-6">
+								<%= render 'form' %>
+							</div>
+							<div class="col-sm-4 col-sm-offset-2 border-left--gradient">
+								<%= render ('users/user-sidebar')%>
+								<!-- ads-->
+								<div class="profile-stats ads">
+									<%= render ('shared/banner-right-sidebar-long')%>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--- CONTENT --> 
+
+

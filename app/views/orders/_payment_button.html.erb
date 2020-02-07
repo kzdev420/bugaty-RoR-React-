@@ -1,0 +1,44 @@
+<div>
+  <%= button_tag 'Proceed to secure payment', class: 'form-control', id: 'process-subscription-stripe', style: 'display: none;' %>
+  <%= button_tag 'Proceed to secure payment', class: 'form-control', id: 'process-subscription-paypal' %>
+  <%= form_tag stripe_checkout_do_path(@listing), id: 'payment-form' do -%>
+    <%= hidden_field_tag(:listing_id, @listing.id) %>
+    <%= hidden_field_tag(:coupon_id) %>
+    <%= hidden_field_tag(:payment_description) %>
+    <%= hidden_field_tag(:stripe_token) %>
+    <%= hidden_field_tag(:amount_to_pay) %>
+    <script type="text/javascript" src="https://checkout.stripe.com/checkout.js" ></script>
+    <script type="text/javascript">
+      var handler = StripeCheckout.configure({
+        key: '<%= ENV['STRIPE_PUB_KEY'] %>',
+        locale: 'auto',
+        name: 'Bugaty Ad',
+        email: '<%= @listing.user.email %>',
+        currency: 'GBP',
+        image: 'https://bugaty.com/img/stripe_logo.png',
+        description: $('input#payment_description').val(),
+        token: function(token) {
+          $('input#stripe_token').val(token.id);
+          $('form').submit();
+        }
+      });
+
+      $('button#process-subscription-stripe').click(function(event){
+        event.preventDefault();
+
+        var amount = $('input#amount_to_pay').val();
+        amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+        amount = parseFloat(amount);
+
+        if (amount) {
+          amount = amount * 100; // Needs to be an integer!
+          handler.open({
+            amount: Math.round(amount)
+          })
+        }
+      })
+    </script>
+  <% end -%>
+  <p></p>
+</div>

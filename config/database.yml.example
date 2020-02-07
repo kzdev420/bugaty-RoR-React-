@@ -1,0 +1,42 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: glob_development
+
+
+production:
+  <<: *default
+  database: glob_production
+  username: glob
+  password: <%= ENV['PRINTAPP_DATABASE_PASSWORD'] %>
+
+
+
+
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: 5
+#   host: localhost
+#   port: 3306
+#   database: glob_dev
+#   username: root
+#   password: abc123
+
+
+# AWS
+
+# production:
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: 5
+#   host: <%= ENV['DATABASE_URL'] %>
+#   port: 3306
+#   database: <%= ENV['DATABASE_NAME'] %>
+#   username: <%= ENV['DATABASE_USER'] %>
+#   password: <%= ENV['DATABASE_PASSWORD'] %>

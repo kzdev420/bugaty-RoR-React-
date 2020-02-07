@@ -1,0 +1,15 @@
+<div class='subscription-header'>
+  G<div>Join our weekly newsletter to learn<br />how to create a business you love</div>
+</div>
+<div class='subscription-form'>
+  <%= form_for(:subscription, url: subscribe_path, :method => :post) do |f| %>
+    <%= f.label :name, 'Name' -%>
+    <%= f.text_field :name, { class: 'form-control', placeholder: 'Your name' } %>
+    <%= f.label :email, 'Email' -%>
+    <%= f.text_field :email, { class: 'form-control', placeholder: 'Your email' } %>
+    <div>
+      <%= f.submit 'Subscribe', class: 'btn-pink have-fill' %>
+      <div class='no-spam'>No spam guaranteed.<br />Unsubscribe anytime!</div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-profile-form {
+  #user_profile_photo, #user_cover_photo {
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    opacity: 0;
+    width: 150px;
+    cursor: pointer;
+  }
+}

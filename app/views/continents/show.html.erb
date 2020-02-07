@@ -1,0 +1,25 @@
+<%= content_for(:title, @continent.title.presence || @continent.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @continent.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @continent.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+<!-- CONTENT -->
+<section class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="content-holder" style="float:inherit; width: 100%">
+          <h1 class="sitemap"><%= "#{@continent.name} Classifieds Ads" %></h1>
+          <%= render('links', links: @links, css_class: 'country') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--- CONTENT -->

@@ -1,0 +1,37 @@
+<%= render('meta') %>
+
+<%= render ('layouts/header')%>
+
+<!-- START SLIDER -->
+<section class="mainpage-slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="owl-carousel" id="owl-carousel">
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/1.jpg')">
+            <div class="mainpage-slider-slide-title">About us</div> 
+          </div>
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/slider1.jpg')"></div>
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/slider2.jpg')"></div>
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/slider5.jpg')"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END SLIDER -->
+
+
+<!-- CONTENT -->
+<section class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="content-holder">
+          <%= @page.text.html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--- CONTENT --> 

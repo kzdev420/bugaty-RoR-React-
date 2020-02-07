@@ -1,0 +1,8 @@
+<%= content_for(:title, @page.title.presence || @page.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @page.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @page.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>

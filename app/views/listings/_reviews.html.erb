@@ -1,0 +1,167 @@
+<% action_text = (@listing && @listing.content_ad?) ? 'comment' : 'review' %>
+<div role="tabpanel" class="tab-pane" id="reviews">
+  <div class="tab-content-heading">
+    <span>
+      <div class="ad-reviews">
+        <% unless controller_name == 'listings' && @listing.content_ad? %>
+          <% if controller_name == 'users' %>
+            <% rating = get_listings_rating_for(@user) %>
+          <% else %>
+            <% rating = get_listing_rating(@listing) %>
+          <% end %>
+          <%= number_to_stars(rating).html_safe %>
+          <span class="ad-reviews-rating"><%= rating %></span>
+        <% end %>
+        <span class="ad-reviews-counter">
+          <% if controller_name == 'users' %>
+            <%= review_count_string(@user) %>
+          <% elsif @listing.content_ad? %>
+            <%= comments_count_str(@listing.comments_count).capitalize %>
+          <% else %>
+            <%= review_count_string(@listing) %>
+          <% end %>
+        </span>
+      </div>
+    </span>
+  </div>
+  <div class="tab-content-content">
+    <div class="comments">
+      <% if controller_name == 'users' %>
+        <% @user.listings.each do |listing| %>
+          <%= render 'listings/comments', l: listing %>
+        <% end %>
+      <% else %>
+        <%= render 'listings/comments', l: @listing %>
+      <% end %>
+
+      <% owner = controller_name == 'users' ? @user : @listing.user %>
+      <% if owner == current_user %>
+        <div class="comment-form" style="display: none">
+          <%= form_tag new_comment_reply_path, :method => :post, id: 'reply-form' do %>
+            <div class="bg">
+              <%= hidden_field_tag 'comment_id', 1 %>
+              <div class="heading">Reply to review</div>
+            </div>
+            <%= text_area_tag "content", nil, placeholder: "#{action_text.capitalize} Text here (required)", class: '', rows: '4' %>
+            <div class="form-group">
+              <input name="title" id="comment_titile" placeholder="Enter title (optional)">
+            </div>
+            <%= button_tag "Submit", :class => "btn-submit-comment" %>
+          <% end %>
+          <script>
+            $('.comment-reply-to a').click(function(){
+              $('.comment-form').show();
+              var comment_s = $(this).data('comment');
+              var listing_s = $(this).data('listing');
+              $('#reply-form').find('#comment_id').val(comment_s);
+              $('#reply-form').attr('action', '/listing/' + listing_s + '/reply-comment');
+            });
+          </script>
+        </div>
+      <% end %>
+
+      <% unless controller_name == 'users' %>
+        <% if current_user %>
+          <% @all_comments = @listing.comments.where(user_id: current_user.id) %>
+        <% else %>
+          <% @all_comments = nil %>
+        <% end %>
+        <% if @listing.user == current_user %>
+          <div class="comment-form">You can't <%= action_text %> your own listing</div>
+        <% elsif @all_comments.present? %>
+          <div class="comment-form">You have already <%=action_text%>ed this listing</div>
+        <% elsif @all_comments == nil %>
+          <div class="comment-form">
+            Please <a href="#login-popup" class="popup-with-move-anim" style="color:#369fe0">log in</a> to <%= action_text %>
+          </div>
+        <% else %>
+          <div class="comment-form">
+            <%= form_tag new_comment_path, :method => :post, id: 'new-comment-form' do %>
+              <div class="bg">
+                <%= hidden_field_tag "rating", 1 %>
+                <div class="heading">Add your <%= action_text %></div>
+                <% unless controller_name == 'listings' && @listing.content_ad? %>
+                  <div class="ratings">Rate (required)
+                    <i class="ico ico-star ico-star--rate" id="rating-1"></i>
+                    <i class="ico ico-start-emtpy" id="rating-2"></i>
+                    <i class="ico ico-start-emtpy" id="rating-3"></i>
+                    <i class="ico ico-start-emtpy" id="rating-4"></i>
+                    <i class="ico ico-start-emtpy" id="rating-5"></i>
+                    <span class="ad-reviews-rating" id="calc-rate">1</span>
+                  </div>
+                <% end %>
+              </div>
+              <%= text_area_tag "content", nil, placeholder: "#{action_text.capitalize} Text here (required)", class: 'tinymce', rows: '4' %>
+              <div class="form-group">
+                <input name="title" id="comment_titile" placeholder="Enter title (optional)">
+              </div>
+              <%= button_tag "Submit", :class => "btn-submit-comment" %>
+            <% end %>
+
+            <style>
+            .ratings .ico{
+              cursor: pointer;
+            }
+            .ico-star--rate{
+              transform: scale(1.34);
+              margin: -3px 4px 0px 4px;
+            }
+            </style>
+            <script>
+              $('#rating-1').click(function(){
+                $('#rating').val('1');
+                $('#calc-rate').text('1')
+                $(this).attr("class","ico ico-star ico-star--rate");
+                $('#rating-2').attr("class", "ico ico-start-emtpy");
+                $('#rating-3').attr("class", "ico ico-start-emtpy");
+                $('#rating-4').attr("class", "ico ico-start-emtpy");
+                $('#rating-5').attr("class", "ico ico-start-emtpy");
+              });
+              $('#rating-2').click(function(){
+                $('#rating').val('2');
+                $('#calc-rate').text('2');
+                $(this).attr("class","ico ico-star ico-star--rate");
+                $('#rating-1').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-3').attr("class", "ico ico-start-emtpy");
+                $('#rating-4').attr("class", "ico ico-start-emtpy");
+                $('#rating-5').attr("class", "ico ico-start-emtpy");
+              });
+              $('#rating-3').click(function(){
+                $('#rating').val('3');
+                $('#calc-rate').text('3');
+                $(this).attr("class","ico ico-star ico-star--rate");
+                $('#rating-1').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-2').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-4').attr("class", "ico ico-start-emtpy");
+                $('#rating-5').attr("class", "ico ico-start-emtpy");
+              });
+              $('#rating-4').click(function(){
+                $('#rating').val('4');
+                $('#calc-rate').text('4');
+                $(this).attr("class","ico ico-star ico-star--rate");
+                $('#rating-1').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-2').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-3').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-5').attr("class", "ico ico-start-emtpy");
+              });
+              $('#rating-5').click(function(){
+                $('#rating').val('5');
+                $('#calc-rate').text('5');
+                $(this).attr("class","ico ico-star ico-star--rate");
+                $('#rating-1').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-2').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-3').attr("class", "ico ico-star ico-star--rate");
+                $('#rating-4').attr("class", "ico ico-star ico-star--rate");
+              });
+
+              $('#new-comment-form').submit(function(e){
+                tinymce.get('content').setContent(tinymce.EditorManager.activeEditor.getContent())
+              });
+            </script>
+
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

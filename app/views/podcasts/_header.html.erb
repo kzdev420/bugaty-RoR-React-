@@ -1,0 +1,10 @@
+<%=
+  react_component(
+    'PodcastHeader', {
+      header_menu: @header_menu
+    }
+  )
+%>
+<%= content_for(:footer) do %>
+  <%= render :inline => $template.podcast_footer, :layout => false %>
+<% end %>

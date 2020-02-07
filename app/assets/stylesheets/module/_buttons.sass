@@ -1,0 +1,192 @@
+.btn-pink
+	border: 1px solid $pink
+	font-size: 13px
+	border-radius: 15px
+	padding: 6px 5px
+	text-transform: uppercase
+	display: inline-block
+	margin-right: 5px
+	margin-top: 3px
+	min-width: 90px
+	text-align: center
+	@include mq($until: bp1110)
+		font-size: 12px
+		min-width: 65px
+	@include mq($until: bp920)
+		min-width: 50px
+	@include mq($until: bp890)
+		min-width: 30px
+		font-size: 11px
+		margin-right: 0px
+	&:last-child
+		margin-right: 0
+	&.active, &:hover, &.have-fill
+		@include linear-gradient(0deg, #f21aa5, #fbc8e9)
+		color: white
+		@include transition(background .4s ease)
+	&.btn-large
+		font-size: 20px
+		font-weight: 700
+		font-family: 'Calibri', sans-serif
+		padding: 6px 30px 6px 30px
+		border-radius: 25px
+	&.with-white-bg
+		background: white
+		&:hover, &:focus
+			@include linear-gradient(0deg, #f21aa5, #fbc8e9)
+			color: white
+
+.btn-blue
+	border: 1px solid $blue
+	font-size: 13px
+	border-radius: 15px
+	padding: 6px 5px
+	text-transform: uppercase
+	display: inline-block
+	margin-right: 5px
+	margin-top: 3px
+	min-width: 90px
+	text-align: center
+	&.active, &:hover, &.have-fill
+		@include linear-gradient(0deg, #0a7ff8, #d0e3f7)
+		color: white
+		@include transition(background .4s ease)
+
+.btn-favourite
+	text-transform: uppercase
+	font-size: 10px
+	font-family: 'Roboto Slab', serif
+	position: relative
+	@include linear-gradient(0deg, #f2f2f2, white)
+	border-radius: 3px
+	border: 1px solid #dedede
+	padding: 6px 10px 6px 3px
+	&.btn-large
+		font-size: 14px
+		padding: 6px 10px 6px 10px
+
+	@include mq($until: desktop)
+		font-size: 8px
+	&:hover
+		@include transition (all .4s ease)
+		@include linear-gradient(180deg, #f2f2f2, #d0e3f7)
+
+.ico-favourite
+	width: 21px
+	height: 21px
+	background: url('../img/sprite.png') no-repeat -113px -104px
+	vertical-align: -6px
+	margin-right: 3px
+
+.ico-edit
+	width: 20px
+	height: 15px
+	background: url('../img/sprite.png') no-repeat -140px -110px
+	vertical-align: -4px
+	margin-right: 3px
+
+.ico-green-arrow
+	width: 20px
+	height: 15px
+	background: url('../img/sprite.png') no-repeat -113px -135px
+	vertical-align: -4px
+	margin-right: 3px
+
+.ico-red-arrow
+	width: 20px
+	height: 15px
+	background: url('../img/sprite.png') no-repeat -138px -135px
+	vertical-align: -4px
+	margin-right: 3px
+
+.ico-delete
+	width: 16px
+	height: 15px
+	background: url('../img/sprite.png') no-repeat -162px -112px
+	vertical-align: -4px
+	margin-right: 3px
+
+.ico-tick
+	width: 18px
+	height: 18px
+	background: url('../img/sprite.png') no-repeat -22px -387px
+	vertical-align: -4px
+	margin-right: 3px
+
+.ico-change-user--big
+	background: url('../img/sprite.png') no-repeat -1px -411px
+	width: 34px
+	height: 29px
+.ico-change-email--big
+	background: url('../img/sprite.png') no-repeat -38px -411px
+	width: 34px
+	height: 29px
+.ico-edit--big
+	background: url('../img/sprite.png') no-repeat -148px -411px
+	width: 34px
+	height: 29px
+.ico-star--big
+	background: url('../img/sprite.png') no-repeat -186px -411px
+	width: 34px
+	height: 29px
+.ico-fav-counter
+	background: #ff0000
+	font-style: normal
+	color: white
+	position: absolute
+	left: 2px
+	top: 8px
+	padding: 4px 1px
+	line-height: 1em
+	font-size: 12px
+.ico-upload--big
+	background: url('../img/sprite.png') no-repeat -75px -411px
+	width: 34px
+	height: 29px
+.ico-deactivate--big
+	background: url('../img/sprite.png') no-repeat -111px -411px
+	width: 34px
+	height: 29px
+
+
+.btn-cta--green
+	color: white
+	display: inline-block
+	background: #94d363
+	font-size: 18px
+	font-style: 700
+	border-radius: 7px
+	text-transform: uppercase
+	padding: 12px 10px
+	@include box-shadow(0,3px,0,rgba(#62bd19,1))
+	margin-bottom: 14px
+	&:hover
+		@include transition(all .4s ease)
+		background: #62bd19
+		color: white
+
+.btn-invisible
+	border: none
+	outline: none
+	background: transparent
+	padding: 10px 20px
+.btn-popup-login
+	span
+		vertical-align: 5px
+		font-size: 16px
+		color: #3d3142
+		text-transform: uppercase
+		font-weight: 700
+
+.btn-submit-comment
+	@include linear-gradient(to top, #f9a6f2, white)
+	border: 1px solid #d8d6d9
+	border-radius: 5px
+	padding: 5px 30px
+	color: $blue
+	font-size: 16px
+	font-weight: 700
+	display: inline-block
+	&:hover
+		@include transition(all .4s ease)
+		@include linear-gradient(to bottom, #f9a6f2, white)

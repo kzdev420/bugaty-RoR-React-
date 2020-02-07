@@ -1,0 +1,55 @@
+<%= form_for(payment_request, :html => {class: 'contact-form'}) do |f| %>
+  <% state_value = action == 'accept' ? PaymentRequest.request_states[:accepted] : PaymentRequest.request_states[:rejected] %>
+  <%= f.hidden_field :state, value: state_value %>
+  <div class='row'>
+    <div class='col-sm-2 col-xs-2'>
+      <div class='field-desc'><strong>Total</strong></div>
+    </div>
+    <div class='col-sm-10 col-xs-10'>
+      <%= text_field_tag :total, payment_request.total_amount, disabled: true %>
+    </div>
+  </div>
+
+  <br />
+
+  <div class='row'>
+    <div class='field-desc'><i>Buyer has selected following payment method</i></div>
+  </div>
+  <div class='row'>
+    <div class='radiobox'>
+      <%= f.radio_button :payment_method, payment_request.payment_method, id: "pm" %>
+      <label for='pm'><%= payment_request.payment_method %></label>
+    </div>
+  </div>
+
+  <% if action == 'accept' %>
+    <br />
+
+    <div class='row'>
+      <div class='field-desc'><i>Please enter required account details where the payment should be sent to</i></div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-4 col-xs-4'>
+        <div class='field-desc'><strong>Account Details</strong></div>
+      </div>
+      <div class='col-sm-8 col-xs-8'>
+        <%= f.text_area :details, class: 'form-control', required: true %>
+      </div>
+    </div>
+  <% end %>
+
+  <br />
+
+  <div class='row'>
+    <%= f.text_area :reply_message, placeholder: 'Please enter your comments', maxlength: 300, class: 'form-control' %>
+  </div>
+
+  <div class='two-row-btns pt20'>
+    <% if action == 'accept' %>
+      <%= f.button 'Accept & Send payment details', class: 'btn-pink have-fill btn-width-auto' %>
+    <% else %>
+      <%= f.button 'Reject', class: 'btn-pink have-fill' %>
+    <% end %>
+    <button type='' class='btn-blue have-fill'>CANCEL</button>
+  </div>
+<% end %>

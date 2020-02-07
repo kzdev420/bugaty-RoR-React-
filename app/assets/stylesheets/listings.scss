@@ -1,0 +1,176 @@
+.add-new-form {
+  .existing-photo {
+    width: 80px;
+    height: 50px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+  }
+}
+
+.key-features-field-group, .keywords-field-group, .company-tags-field-group, .opening-hours-field-group {
+  margin-bottom: 5px;
+}
+
+#add-key-features-button, #add-keywords-button, #add-tags-button {
+  margin-bottom: 20px;
+}
+
+.description-tabs .tab-pane {
+  padding: 5px 20px;
+}
+
+.opening-hours-list {
+  margin-left: 10px;
+  list-style-type: none;
+}
+
+.key-features-list {
+  margin-left: 10px;
+}
+
+.add-new-form textarea {
+  resize: vertical;
+  min-height: 50px;
+}
+
+.field-desc.smaller {
+  font-size: 16px;
+}
+
+.top-label {
+  font-size: 18px !important;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.top-label.top-label-small {
+  font-size: 14px !important;
+  font-family: 'Roboto Slab';
+}
+
+.listing-select-checkbox {
+  display: inline-block;
+  width: 16px;
+  margin-top: 16px;
+  margin-right: 8px;
+  vertical-align: top;
+
+  input { display: none; }
+  label {
+    width: 16px;
+    height: 16px;
+    background: url("/img/sprite.png") no-repeat;
+    background-position: -393px -325px;
+    cursor: pointer;
+  }
+
+  input:checked + label {
+    background-position: -411px -325px;
+  }
+}
+
+.listing-select-checkbox + .ad-card {
+  display: inline-block;
+  width: calc(100% - 28px);
+}
+
+.listings-batch-actions {
+  label {
+    margin-top: -8px;
+  }
+
+  .dropdown {
+    display: inline-block;
+  }
+}
+
+.ad-card.paused {
+  opacity: 0.5;
+}
+
+.hours {
+  margin-left: 10px
+}
+
+.open {
+  color: #369fe0;
+}
+
+.closed {
+  color: red;
+}
+
+.subscription-header {
+  div {
+    font-size: 10px;
+    font-weight: normal;
+    text-transform: uppercase;
+    float: right;
+    width: 90%;
+    padding: 12px 4px;
+  }
+
+  background-color: #2dbf00;
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+.subscription-form {
+  label {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+  .form-control {
+    font-size: 10px;
+    height: 30px;
+    border-radius: 0px;
+    margin-bottom: 5px;
+  }
+
+  .no-spam {
+    background-color: #71bbe9;
+    font-size: 11px;
+    font-weight: bolder;
+    float: right;
+    padding: 5px;
+    margin: 10px 0px 5px 0px;
+  }
+
+  .btn-pink {
+    background-color: #f21aa5;
+    background-image: none;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: bold;
+    border-radius: 0px;
+  }
+
+  background-color: #369fe0;
+  padding: 10px;
+}
+
+.subscription-active, .subscription-failed {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.subscription-active {
+  color: green;
+}
+
+.subscription-failed {
+  color: red;
+}
+
+a.subscription-link {
+  text-transform: uppercase;
+  color: #f21ea7;
+}

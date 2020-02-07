@@ -1,0 +1,357 @@
+.popups
+	margin-top: 100px
+	padding-bottom: 100px
+
+button.mfp-close
+	background: url('../img/sprite.png') no-repeat -94px -19px
+	content: ' '
+.mfp-close
+	width: 40px
+	height: 40px
+	line-height: 0em
+	position: absolute
+	right: 0
+	top: 25px
+	opacity: 0.85
+	padding: 0 0 18px 10px
+	font-size: 0px
+	&:active
+		top: 25px
+
+// Forms width
+.delete-listing, #deactivate-account-popup, #upload-cv-popup, #change-mail-popup, #forget-pass-popup, #change-pass-popup, #send-u-message-popup, #email-reference-popup, #leave-feedback-popup, #login-popup, #signup-popup, #user-registration-popup, #free-ad-popup, #send-message-popup, #apply-job-popup, #report-ad-popup, #buy-popup, #offer-popup
+	background: white
+	border-radius: 20px
+	padding: 0
+	text-align: left
+	margin: 40px auto
+	position: relative
+	max-width: 600px
+
+#upload-cv-popup, #change-mail-popup, #forget-pass-popup, #change-pass-popup, #email-reference-popup, #report-ad-popup
+	max-width: 750px
+
+#deactivate-account-popup, #leave-feedback-popup, #login-popup, #signup-popup, #user-registration-popup, #free-ad-popup, #send-message-popup, #send-u-message-popup, #apply-job-popup, #buy-popup, #offer-popup
+	max-width: 950px
+
+.request-popup
+	background: white
+	border-radius: 20px
+	padding: 0
+	text-align: left
+	margin: 40px auto
+	position: relative
+	max-width: 950px
+
+////////////
+// Content
+////////////
+
+.popup-logo
+	padding-top: 15px
+	img
+		@include mq($until: tablet)
+			padding-left: 30px
+			padding-right: 30px
+	&:after
+		background: url('../img/dash-line.png') repeat-x center
+		display: block
+		content: ' '
+		width: 100%
+		height: 30px
+
+.popup-content
+	padding: 40px 80px 30px 80px
+	position: relative
+	@include mq($until: wide)
+		padding-left: 20px
+		padding-right: 20px
+	.two-row-btns
+		padding-top: 40px
+		padding-bottom: 50px
+		@include mq($until: desktop)
+			.btn-pink
+				float: left
+			.btn-blue
+				float: right
+				margin-top: 0
+		@include mq($until: tablet)
+			.btn-pink
+				float: none
+			.btn-blue
+				float: none
+				margin: 0
+				margin-top: 20px
+		&.pt130
+			padding-top: 130px
+.popup-heading
+	font-size: 24px
+	font-family: 'Roboto Slab', serif
+	color: #32281e
+	text-transform: uppercase
+	margin-bottom: 30px
+	@include mq($until: tablet)
+		font-size: 20px
+	span
+		font-weight: 300
+	&.popup-heading--bold
+		font-size: 23px
+		font-weight: 700
+	&.popup-heading--blue
+		color: $blue
+
+.popup-action
+	font-size: 20px
+	font-family: 'Calibri', sans-serif
+	font-weight: 300
+	margin-bottom: 20px
+	@include mq($until: tablet)
+		font-size: 16px
+
+.popup-switch
+	font-size: 20px
+	font-family: 'Calibri', sans-serif
+	margin-bottom: 10px
+	@include mq($until: tablet)
+		font-size: 16px
+	.switch
+		float: right
+
+.login-nearlogo
+	font-size: 24px
+	font-family: 'Roboto Slab', serif
+	color: #32281e
+	margin-right: 10px
+
+.not-a-block
+	display: inline-block !important
+
+.login-socials
+	padding-top: 20px
+	border-top: 3px solid #d4d4d4
+	margin-top: 25px
+	color: white
+	font-size: 0px
+	font-family: 'Calibri', sans-serif
+	text-transform: uppercase
+.login-with-facebook
+	background: #4773a5
+	span
+		vertical-align: 15px
+		padding-left: 10px
+		font-size: 14px
+	&:hover
+		opacity: 0.8
+		@include transition(all .4s ease)
+.login-with-google
+	background: #cf4332
+	span
+		vertical-align: 15px
+		font-size: 14px
+		padding-left: 10px
+	&:hover
+		opacity: 0.8
+		@include transition(all .4s ease)
+.ico-loginwith-fb
+	width: 39px
+	height: 39px
+	background: url('../img/sprite.png') no-repeat -406px -16px
+.ico-loginwith-google
+	width: 39px
+	height: 39px
+	background: url('../img/sprite.png') no-repeat -449px -16px
+
+.login-helpers
+	padding-top: 5px
+	a
+		font-size: 16px
+		text-decoration: underline
+		color: #0018ff
+		font-family: 'Roboto Slab', serif
+
+.popup-login-newmember
+	font-family: 'Roboto Slab', serif
+	font-size: 20px
+	font-weight: 700
+	color: $brown
+	padding-top: 40px
+	padding-bottom: 15px
+	.align-fix
+		vertical-align: -3px
+		span
+			vertical-align: 4px
+	a
+		font-size: 15px
+		margin-left: 4px
+		margin-right: 4px
+		&:hover
+			opacity: .7
+
+.captcha-popup
+	padding-top: 10px
+	img
+		margin: 0 auto
+		padding-bottom: 15px
+	.form-control
+		&.small-pad
+			padding-left: 10px
+
+
+.popup-overlay
+	//background: rgba(black, .5)
+	width: 100%
+	height: 100%
+	position: fixed
+	top: 0
+	left: 0
+	content: ' '
+	z-index: 9999
+	display: none
+
+.popup-status
+	position: absolute
+	top: 50%
+	left: 50%
+	@include transform(translate(-50%, -50%))
+	background: white
+	border-radius: 10px
+	padding: 20px
+	border: 2px solid #d2d2d2
+	max-width: 400px
+	width: 400px
+	@include mq($until: tablet)
+		max-width: 340px
+
+.popup-ok
+	&:before
+		background: url('../img/popup-ok.png') no-repeat 0 0
+		display: block
+		width: 140px
+		height: 140px
+		content: ' '
+		position: absolute
+		top: -70px
+		left: 50%
+		@include transform(translateX(-50%))
+
+.popup-fail
+	&:before
+		background: url('../img/popup-fail.png') no-repeat 0 0
+		display: block
+		width: 140px
+		height: 140px
+		content: ' '
+		position: absolute
+		top: -70px
+		left: 50%
+		@include transform(translateX(-50%))
+
+.popup-status-heading
+	font-size: 24px
+	font-weight: 700
+	padding-bottom: 20px
+	padding-top: 80px
+
+.popup-status-content
+	font-size: 24px
+	padding-bottom: 30px
+
+.btn-status-btn
+	font-size: 24px
+	font-weight: 700
+	width: 100%
+	display: inline-block
+	padding: 17px
+	color: white
+	border-radius: 5px
+	border: 1px solid #cfcfcf
+	@include box-shadow(0,2px,2px,rgba(black, .75))
+	@include linear-gradient(to top, #27822f, #37a440)
+	&.btn-fail
+		@include linear-gradient(to top, #ab0000, #ff0000)
+		&:hover
+			color: white
+			@include linear-gradient(to bottom, #ab0000, #ff0000)
+	&:hover
+		color: white
+		@include linear-gradient(to bottom, #27822f, #37a440)
+
+
+////////////
+// Helpers
+////////////
+
+.my-mfp-zoom-in
+	.zoom-anim-dialog
+		opacity: 0
+		-webkit-transition: all 0.2s ease-in-out
+		-moz-transition: all 0.2s ease-in-out
+		-o-transition: all 0.2s ease-in-out
+		transition: all 0.2s ease-in-out
+		-webkit-transform: scale(0.8)
+		-moz-transform: scale(0.8)
+		-ms-transform: scale(0.8)
+		-o-transform: scale(0.8)
+		transform: scale(0.8)
+	&.mfp-ready .zoom-anim-dialog
+		opacity: 1
+		-webkit-transform: scale(1)
+		-moz-transform: scale(1)
+		-ms-transform: scale(1)
+		-o-transform: scale(1)
+		transform: scale(1)
+	&.mfp-removing .zoom-anim-dialog
+		-webkit-transform: scale(0.8)
+		-moz-transform: scale(0.8)
+		-ms-transform: scale(0.8)
+		-o-transform: scale(0.8)
+		transform: scale(0.8)
+		opacity: 0
+	&.mfp-bg
+		opacity: 0
+		-webkit-transition: opacity 0.3s ease-out
+		-moz-transition: opacity 0.3s ease-out
+		-o-transition: opacity 0.3s ease-out
+		transition: opacity 0.3s ease-out
+	&.mfp-ready.mfp-bg
+		opacity: 0.8
+	&.mfp-removing.mfp-bg
+		opacity: 0
+
+
+.my-mfp-slide-bottom
+	.zoom-anim-dialog
+		opacity: 0
+		-webkit-transition: all 0.2s ease-out
+		-moz-transition: all 0.2s ease-out
+		-o-transition: all 0.2s ease-out
+		transition: all 0.2s ease-out
+		-webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+		-moz-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+		-ms-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+		-o-transform: translateY(-20px) perspective(600px) rotateX(10deg)
+		transform: translateY(-20px) perspective(600px) rotateX(10deg)
+	&.mfp-ready .zoom-anim-dialog
+		opacity: 1
+		-webkit-transform: translateY(0) perspective(600px) rotateX(0)
+		-moz-transform: translateY(0) perspective(600px) rotateX(0)
+		-ms-transform: translateY(0) perspective(600px) rotateX(0)
+		-o-transform: translateY(0) perspective(600px) rotateX(0)
+		transform: translateY(0) perspective(600px) rotateX(0)
+	&.mfp-removing .zoom-anim-dialog
+		opacity: 0
+		-webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+		-moz-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+		-ms-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+		-o-transform: translateY(-10px) perspective(600px) rotateX(10deg)
+		transform: translateY(-10px) perspective(600px) rotateX(10deg)
+	&.mfp-bg
+		opacity: 0
+		-webkit-transition: opacity 0.3s ease-out
+		-moz-transition: opacity 0.3s ease-out
+		-o-transition: opacity 0.3s ease-out
+		transition: opacity 0.3s ease-out
+	&.mfp-ready.mfp-bg
+		opacity: 0.8
+	&.mfp-removing.mfp-bg
+		opacity: 0

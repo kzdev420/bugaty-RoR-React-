@@ -1,0 +1,11 @@
+
+    <div class="container">
+      <div class="row">
+        <% flash.each do |message_type, message| %>
+        <div class="col-xs-8 col-xs-offset-2 flash-message" style="maring-top:20px">
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>

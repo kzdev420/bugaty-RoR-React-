@@ -1,0 +1,36 @@
+<%= render('meta') %>
+
+<%= render ('layouts/header')%>
+
+
+<!-- CONTENT -->
+<section class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="content-holder" style="float:inherit; width:100%">
+          <h1 class="sitemap">Sitemap</h1>
+            <div class="sitemap-column">
+              <ul class="sitemap">
+                <% column_number = 1 %>
+                <% ind = 0 %>
+                <% common_count = sitemap_weight(@sitemap.links) %>
+                <% @sitemap.links.each do |link| %>
+                  <%= sitemap_link(link).html_safe %>
+                  <% ind += link[:weight] %>
+                  <% if ind > (common_count / 4.0 * column_number) %>
+                    </ul>
+                  </div>
+                  <div class="sitemap-column">
+                    <ul class="sitemap">
+                    <% column_number += 1 %>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--- CONTENT -->

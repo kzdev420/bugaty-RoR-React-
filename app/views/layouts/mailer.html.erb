@@ -1,0 +1,7 @@
+ <%= render :inline => $email_template.email_global_header, :layout => false %>
+
+
+<%= yield %>
+
+
+ <%= render :inline => $email_template.email_global_footer, :layout => false %>

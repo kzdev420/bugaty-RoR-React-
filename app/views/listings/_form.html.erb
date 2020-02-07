@@ -1,0 +1,1154 @@
+
+<% if action_name == 'edit' %>
+  <% @selected_category = @listing.category.id.to_s %>
+<% end %>
+
+
+<%= form_for(listing, :html => {:class => 'add-new-form', :multipart => true}) do |f| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if params[:action] == "new" %>
+    <%= f.hidden_field :category_id, :value => @selected_category.to_i %>
+  <% end %>
+
+  <!-- title -->
+  <% if @listing.company_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Company name</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control", placeholder: "Enter company name" %>
+        </div>
+      </div>
+    </div>
+  <% elsif @listing.content_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">SEO Title</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control", placeholder: "Enter seo title" %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">
+          Title
+          <% if @listing.company_ad? %>
+            <span class="info-tooltip" data-tooltip="Describe your company in short text of maximum length 55 characters. Be specific to increase potential customers interest.">i</span>
+          <% elsif @listing.job_ad? %>
+            <span class="info-tooltip" data-tooltip="Describe your job in short text of maximum length 55 characters. Be specific to increase employers/employees interest.">i</span>
+          <% elsif @listing.service? %>
+            <span class="info-tooltip" data-tooltip="Describe your service in short text of maximum length 55 characters. Be specific to increase more interest.">i</span>
+          <% else %>
+            <span class="info-tooltip" data-tooltip="Describe your item in short text of maximum length 55 characters. Be specific to increase buyers interest.">i</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control", placeholder: "Enter title" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- subcategory -->
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="field-desc">
+        Select category
+        <% if @listing.company_ad? %>
+          <span class="info-tooltip" data-tooltip="Select category that describes your company.">i</span>
+        <% elsif @listing.job_ad? %>
+          <span class="info-tooltip" data-tooltip="Describe your job in short text of maximum length 55 characters. Be specific to increase employers/employees interest.">i</span>
+        <% elsif @listing.service? %>
+          <span class="info-tooltip" data-tooltip="Select category that describes your services ad">i</span>
+        <% else %>
+          <span class="info-tooltip" data-tooltip="Select category that describes your item.">i</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="selectbox-multiple">
+        <% selected_category_arr = @category.subcategories.order(:name) %>
+        <%= f.select(:subcategory_id, options_from_collection_for_select(selected_category_arr, "id", "name"), {}, { :multiple => true, :size => 10, :class => "form-control", name: 'listing[subcategory_id]' } ) %>
+      </div>
+    </div>
+  </div>
+
+  <% if @listing.company_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Phone number</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_phone, class: "form-control", placeholder: "Enter phone number" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- next row -->
+    <%= render 'location', f: f %>
+
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc"> website</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_website, class: "form-control", placeholder: "Enter website" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Video url</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :video_url, class: "form-control", placeholder: "https://www.youtube.com/watch?v=5Nrv5teMc9Y" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- next row -->
+    <%= render partial: 'company_tags', locals: { f: f } %>
+
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Facebook</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_facebook, class: "form-control", placeholder: "Enter facebook profile URL" %>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Twitter</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_twitter, class: "form-control", placeholder: "Enter Twitter profile URL" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Google plus</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_googleplus, class: "form-control", placeholder: "Enter Google plus profile URL" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Instagram</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_instagram, class: "form-control", placeholder: "Enter Instagram profile URL" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">YouTube</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_youtube, class: "form-control", placeholder: "Enter YouTube profile URL" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Linked in</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :company_linkedin, class: "form-control", placeholder: "Enter Linked in profile URL" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- brand -->
+  <% if @listing.wholesale_ad? || @listing.stuff_ad? || @listing.deal_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">
+          Brand
+          <span class="info-tooltip" data-tooltip="Enter your brand name or leave it blank if item is unbranded">i</span>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :brand, class: "form-control", placeholder: "Enter brand" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.stuff_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">
+          Condition:
+          <span class="info-tooltip" data-tooltip="Select condition of your item, if unsure select “other” and explain it in description">i</span>
+        </div>
+
+      </div>
+      <div class="col-sm-8">
+
+        <div class="form-group inline-radios">
+          <div class="radiobox">
+            <input type="radio" name="listing[condition]" id="listing_condition_1" value="New">
+            <label for="listing_condition_1">New </label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[condition]" id="listing_condition_2" value="Used">
+            <label for="listing_condition_2">Used</label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[condition]" id="listing_condition_3" value="Refurbished">
+            <label for="listing_condition_3">Refurbished</label>
+          </div>
+
+          <div class="radiobox">
+            <input type="radio" name="listing[condition]" id="listing_condition_4" value="For parts & not working">
+            <label for="listing_condition_4">For parts & not working </label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[condition]" id="listing_condition_5" value="other">
+            <label for="listing_condition_5">other</label>
+          </div>
+
+        <div class="form-group">
+
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% unless @listing.company_ad? || @listing.content_ad? %>
+    <!-- next row -->
+    <%= render 'location', f: f %>
+  <% end %>
+
+  <% if @listing.pet_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Type of pet</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :pet_type, class: "form-control", placeholder: "Enter Type of pet" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- description -->
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="field-desc">
+      <% if @listing.job_ad? %>
+        Job Description:
+      <% else %>
+        Description:
+      <% end %>
+      <% if @listing.company_ad? %>
+        <span class="info-tooltip" data-tooltip="Describe your company clearly by using as many details you can.">i</span>
+      <% elsif @listing.job_ad? %>
+        <span class="info-tooltip" data-tooltip="Describe your job post clearly by using as many details you can.">i</span>
+      <% elsif @listing.service? %>
+        <span class="info-tooltip" data-tooltip="Describe your service post clearly by using as many details you can.">i</span>
+      <% else %>
+        <span class="info-tooltip" data-tooltip="Describe your item clearly by using as many details you can.">i</span>
+      <% end %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= f.text_area :description, class: 'tinymce', rows: 3, maxlength: 1100 %>
+      </div>
+    </div>
+  </div>
+
+  <% if @listing.company_ad? || @listing.job_ad? || @listing.service_ad? %>
+    <%= render 'opening_hours', f: f %>
+  <% end %>
+
+  <!-- key features & keywords -->
+  <% if @listing.company_ad? || @listing.job_ad? || @listing.property_ad? %>
+    <%= render partial: 'key_features_fields', locals: { f: f } %>
+    <%= render partial: 'keywords_fields', locals: { f: f } %>
+  <% elsif @listing.service? %>
+    <%= render partial: 'key_features_fields', locals: { f: f } %>
+    <%= render partial: 'cancellations_and_returns_field', locals: { f: f } %>
+    <%= render partial: 'keywords_fields', locals: { f: f } %>
+  <% elsif @listing.content_ad? %>
+    <%= render partial: 'keywords_fields', locals: { f: f } %>
+    <%= render partial: 'tags', locals: { f: f } %>
+  <% else %>
+    <%= render partial: 'key_features_fields', locals: { f: f } %>
+    <%= render partial: 'cancellations_and_returns_field', locals: { f: f } %>
+    <%= render partial: 'warranty_field', locals: { f: f } %>
+    <%= render partial: 'keywords_fields', locals: { f: f } %>
+  <% end %>
+
+  <% if @listing.deal_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">
+          Deal Url:
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :deal_url, class: "form-control", placeholder: 'Enter Deal URL' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.motor_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Make</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_make, class: "form-control", placeholder: "Enter make" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Model</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_model, class: "form-control", placeholder: "Enter model" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Registration Year</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_reg_year, class: "form-control", placeholder: "Enter Registration Year (YYYY)" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Gearbox </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_gearbox, class: "form-control", placeholder: "Enter Gearbox (Manual, Automatic or Other)" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Mileage </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_mileage, class: "form-control", placeholder: "Enter Mileage" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Engine size </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_engine_size, class: "form-control", placeholder: "Enter Engine size (format 2.0 L or 2000 cc)" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Fuel type </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_fuel_type, class: "form-control", placeholder: "Enter Fuel type" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Body type</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_body_type, class: "form-control", placeholder: "Enter Body type" %>
+        </div>
+      </div>
+    </div>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Color</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :car_color, class: "form-control", placeholder: "Enter Color" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= render partial: 'image_fields', locals: { f: f, listing: listing } %>
+
+  <% if @listing.job_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Type of job:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <div class="checkbox inline">
+            <input type="checkbox" name="" id="listing_job_type_1" value="Permanent">
+            <label for="listing_job_type_1">Permanent </label>
+          </div>
+          <div class="checkbox inline">
+            <input type="checkbox" name="" id="listing_job_type_2" value="Temporary">
+            <label for="listing_job_type_2">Temporary </label>
+          </div>
+          <div class="checkbox inline">
+            <input type="checkbox" name="" id="listing_job_type_3" value="Part time">
+            <label for="listing_job_type_3">Part time </label>
+          </div>
+          <input type="hidden" name="listing[job_type]">
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.wholesale_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Price <%= $price.currency%></div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4">
+              Sale price <%= $price.currency%>
+              <div class="input-group">
+                <div class="input-group-addon">£</div>
+                <%= f.text_field :sale_price, class: "form-control", placeholder: "price" %>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              Wholesale price <%= $price.currency%>
+              <div class="input-group">
+                <div class="input-group-addon">£</div>
+                <%= f.text_field :wholesale_price, class: "form-control", placeholder: "price" %>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              Retail price <%= $price.currency%>
+              <div class="input-group">
+                <div class="input-group-addon">£</div>
+                <%= f.text_field :retail_price, class: "form-control", placeholder: "price" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.property_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Property type:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group ">
+          <div class="row">
+        <div class="col-sm-4">
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_1" value="House">
+            <label for="listing_property_type_1">House </label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_2" value="Caravan">
+            <label for="listing_property_type_2">Caravan</label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_3" value="Shop">
+            <label for="listing_property_type_3">Shop</label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_4" value="Flat">
+            <label for="listing_property_type_4">Flat </label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_5" value="Unit">
+            <label for="listing_property_type_5">Unit</label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_6" value="Land">
+            <label for="listing_property_type_6">Land</label>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_7" value="Room">
+            <label for="listing_property_type_7">Room </label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_8" value="Office">
+            <label for="listing_property_type_8">Office</label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[property_type]" id="listing_property_type_9" value="Other">
+            <label for="listing_property_type_9">other</label>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Property size</div>
+      </div>
+      <div class="col-sm-8">
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4">
+              Number of rooms:
+              <%= f.text_field :property_size_rooms, class: "form-control", placeholder: "" %>
+            </div>
+            <div class="col-sm-4">
+              Size in m2
+              <%= f.text_field :property_size_meters, class: "form-control", placeholder: "" %>
+            </div>
+            <div class="col-sm-4">
+              Size in ft2:
+              <%= f.text_field :property_size_feets, class: "form-control", placeholder: "" %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Date available</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :property_date_available, class: "form-control", placeholder: "Enter available date" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.wholesale_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc" style="margin-top: 20px;">Delivery</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group" >
+              <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+                <div class="col-sm-4">
+                  <%= f.label :delivery_time, 'Time', class: 'top-label top-label-small' %>
+                  <%= f.text_field :delivery_time, class: "form-control", placeholder: '3 days' %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.label :delivery_cost, 'Cost', class: 'top-label top-label-small' %>
+                  <div class="input-group">
+                    <div class="input-group-addon">£</div>
+                    <%= f.text_field :delivery_cost, class: "form-control", placeholder: '3.99' %>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  MOQ
+                  <%= f.text_field :wholesale_moq, class: "form-control", placeholder: "moq" %>
+                </div>
+                <div class="col-sm-4 tr pull-right" style="padding-left: 20px">
+                  <%= f.check_box :pick_up_only %> <label for="listing_pick_up_only" style="font-size: 14px; padding-top: 5px;">Pick up only</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.stuff_ad? || @listing.motor_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Delivery</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <div class="row" style="padding-top: 10px; padding-bottom: 10px;">
+                <div class="col-sm-4">
+                  <%= f.label :delivery_time, 'Time', class: 'top-label' %>
+                  <%= f.text_field :delivery_time, class: "form-control", placeholder: "3 days" %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.label :delivery_cost, 'Cost', class: 'top-label' %>
+                  <div class="input-group">
+                    <div class="input-group-addon">£</div>
+                    <%= f.text_field :delivery_cost, class: "form-control", placeholder: '3.99' %>
+                  </div>
+                </div>
+                <div class="col-sm-4 tr pull-right" style="padding-left: 20px; padding-top: 30px">
+                  <%= f.check_box :pick_up_only %> <label for="listing_pick_up_only" style="font-size: 14px; padding-top: 5px;">Pick up only</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.service? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Embedded Video url:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+        <%= f.text_field :video_url, class: "form-control", placeholder: "https://www.youtube.com/watch?v=5Nrv5teMc9Y" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.stuff_ad? || @listing.motor_ad? || @listing.pet_ad? || @listing.neighborhood_ad? || @listing.deal_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Price <%= $price.currency%>:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon">£</div>
+            <% if @listing.free_stuff_ad? %>
+              <%= f.text_field :price, class: "form-control w50", value: "Free", disabled: true %>
+            <% else %>
+              <%= f.text_field :price, class: "form-control w50", placeholder: "Enter your price" %>
+            <% end %>
+          </div>
+          <div class="checkbox w40">
+            <%= f.check_box :price_open_to_offers %>
+            <label for="listing_price_open_to_offers">Open to offers</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @listing.service? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Price <%= $price.currency%>:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+        <div class="input-group">
+              <div class="input-group-addon">£</div>
+          <%= f.text_field :price, class: "form-control w50", placeholder: "Enter your price" %>
+          </div>
+          <div class="checkbox w40">
+            <%= f.check_box :price_open_to_offers %>
+            <label for="listing_price_open_to_offers">Open to offers</label>
+          </div>
+        </div>
+        <div class="form-group inline-radios ">
+          <div class="row">
+          <div class="col-sm-6  radiobox">
+            <input type="radio" name="listing[price_per]" id="listing_price_per_1" value="Fixed">
+            <label for="listing_price_per_1">Fixed </label>
+          </div>
+          <div class="col-sm-6  radiobox">
+            <input type="radio" name="listing[price_per]" id="listing_price_per_2" value="per hour">
+            <label for="listing_price_per_2">per hour</label>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @listing.job_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Salary <%= $price.currency%>:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+        <div class="input-group">
+              <div class="input-group-addon">£</div>
+          <%= f.text_field :price, class: "form-control", placeholder: "Enter Your salary" %>
+          </div>
+        </div>
+        <div class="form-group inline-radios">
+          <div class="radiobox">
+            <input type="radio" name="listing[salary_per]" id="listing_salary_per_1" value="per annum">
+            <label for="listing_salary_per_1">per annum</label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[salary_per]" id="listing_salary_per_2" value="per hour">
+            <label for="listing_salary_per_2">per hour</label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[salary_per]" id="listing_salary_per_3" value="per week">
+            <label for="listing_salary_per_3">per week </label>
+          </div>
+          <div class="radiobox">
+            <input type="radio" name="listing[salary_per]" id="listing_salary_per_4" value="per month">
+            <label for="listing_salary_per_4">per month</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @listing.property_ad? %>
+    <!-- next row -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Price <%= $price.currency%>:</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+        <div class="input-group">
+              <div class="input-group-addon">£</div>
+          <input type="text" name="listing[price]" class="form-control w50" placeholder="Enter your price ">
+          </div>
+          <div class="checkbox w40">
+            <%= f.check_box :price_open_to_offers %>
+            <label for="listing_price_open_to_offers">Open to offers</label>
+          </div>
+        </div>
+        <div class="form-group inline-radios ">
+          <div class="row">
+          <div class="col-sm-3  radiobox">
+            <input type="radio" name="listing[price_per_property]" id="listing_price_per_property_1" value="Daily">
+            <label for="listing_price_per_property_1">Daily </label>
+          </div>
+          <div class="col-sm-3  radiobox">
+            <input type="radio" name="listing[price_per_property]" id="listing_price_per_property_2" value="Weekly">
+            <label for="listing_price_per_property_2">Weekly</label>
+          </div>
+          <div class="col-sm-3 radiobox">
+            <input type="radio" name="listing[price_per_property]" id="listing_price_per_property_3" value="Monthly">
+            <label for="listing_price_per_property_3">Monthly </label>
+          </div>
+          <div class="col-sm-3 radiobox">
+            <input type="radio" name="listing[price_per_property]" id="listing_price_per_property_4" value="Yearly">
+            <label for="listing_price_per_property_4">Yearly</label>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.deal_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">
+          Deal Expires:
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.date_field :deal_expire_time %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @listing.available_for_payments? %>
+    <%= render partial: 'payments_fields', locals: { f: f } %>
+  <% end %>
+
+  <% if @listing.deal_ad? %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">
+          Deal Coupon Code:
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= f.text_field :deal_coupon, class: "form-control", placeholder: 'Enter Deal Coupon Code' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="field-desc">Terms:</div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="checkbox">
+        <input type="checkbox" name="listing[agree_to_terms]" id="listing_terms" value="1" checked="checked">
+        <label for="listing_terms">
+          I acknowledge that I have read, understand, and agree to our policies and posting rules. Only sell or advertise what you have. Do not sell or provide a service you cannot fulfill only things that you already possess. See <a href="/terms">T&Cs</a>
+        </label>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <% if (params[:action] == "new") && (@listing.content_ad?) %>
+      <%= f.button "PUBLISH ARTICLE", class: 'btn-pink btn-large have-fill' %>
+    <% elsif params[:action] == "new" %>
+      <%= f.button "POST AD", class: 'btn-pink btn-large have-fill' %>
+    <% else %>
+      <%= f.button "EDIT AD", class: 'btn-pink btn-large have-fill' %>
+    <% end %>
+  </div>
+<% end %>
+
+
+
+<script>
+$(document).ready(function(){
+  $('.checkbox.inline input').on('change', function(){
+    // need refactor here
+    $(this).closest('.form-group').find('input[type=hidden]').val('')
+    if ( $('#listing_job_type_1').is(':checked') ){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Permanent')
+    }
+    if ( $('#listing_job_type_2').is(':checked') ){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Temporary')
+    }
+    if ( $('#listing_job_type_3').is(':checked') ){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Part time')
+    }
+
+    if ( $('#listing_job_type_1').is(':checked') && $('#listing_job_type_2').is(':checked')){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Permanent, Temporary')
+    }
+
+    if ( $('#listing_job_type_1').is(':checked') && $('#listing_job_type_3').is(':checked')){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Permanent, Part time')
+    }
+    if ( $('#listing_job_type_1').is(':checked') && $('#listing_job_type_3').is(':checked')){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Permanent, Temporary')
+    }
+    if ( $('#listing_job_type_2').is(':checked') && $('#listing_job_type_3').is(':checked')){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Temporary, Part time')
+    }
+    if ( $('#listing_job_type_1').is(':checked') && $('#listing_job_type_2').is(':checked') && $('#listing_job_type_3').is(':checked') ){
+      $(this).closest('.form-group').find('input[type=hidden]').val('Permanent, Temporary, Part time')
+    }
+
+  });
+
+  $('.add-new-form').submit(function(e){
+    var title = $(this).find('#listing_name');
+    var maxDescriptionLength = 1100;
+    if (title.attr('placeholder') === 'Enter seo title') {
+      maxDescriptionLength = 6000;
+    }
+    var company_country = $(this).find('#listing_company_country');
+    var phone_number = $(this).find('#listing_company_phone');
+
+    // set default rel and class values for tinyMCE links
+    $(tinymce.activeEditor.getBody()).find('a').attr('rel', 'nofollow');
+    $(tinymce.activeEditor.getBody()).find('a').attr('class', 'green-color');
+    var desc_body = tinymce.EditorManager.activeEditor.getBody(), desc = tinymce.trim(desc_body.innerText || desc_body.textContent);
+    var brand = $(this).find('#listing_brand');
+    var pet_type = $(this).find('#listing_pet_type');
+    var car_make = $(this).find('#listing_car_make');
+    var car_model = $(this).find('#listing_car_model');
+    var car_reg_year = $(this).find('#listing_car_reg_year');
+    var car_mileage = $(this).find('#listing_car_mileage');
+    var car_engine_size = $(this).find('#listing_car_engine_size');
+    var car_fuel_type = $(this).find('#listing_car_fuel_type');
+    var car_color = $(this).find('#listing_car_color');
+    var wholesale_price = $(this).find('#listing_wholesale_price');
+    var sale_price = $(this).find('#listing_sale_price');
+    var retail_price = $(this).find('#listing_retail_price');
+    var property_size_rooms = $(this).find('#listing_property_size_rooms');
+    var property_size_meters = $(this).find('#listing_property_size_meters');
+    var property_size_feets = $(this).find('#listing_property_size_feets');
+//    var delivery_time = $(this).find('#listing_delivery_time');
+//    var delivery_cost = $(this).find('#listing_delivery_cost');
+    var price = $(this).find('#listing_price');
+    var co_disp = $(this).find('#listing_company_displayed');
+    var terms = $(this).find('#listing_terms');
+
+
+    $(this).find('.alert').remove();
+    $(this).find('.has-error').removeClass('has-error');
+    if (co_disp.length > 0 && co_disp.val() == 0 ){
+      $(this).prepend('<div class="alert alert-danger">Please select Company display options</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please select Company display options</div>');
+      co_disp.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+    if (title.length > 0 && title.val().length < 3 || title.val().length > 55){
+      $(this).prepend('<div class="alert alert-danger">Please enter valid title (3 to 50 characters)</div>');
+      $(this).append('<div class="alert alert-danger">Please fill all required fields</div>');
+      title.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (company_country.length > 0 && company_country.val().length < 3 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter country</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      company_country.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (phone_number.length > 0 && phone_number.val().length < 8 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter phone number</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      phone_number.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (location.length > 0 && location.val().length < 3 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter location</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      location.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (desc.length < 120 || desc.length > maxDescriptionLength) {
+      $(this).prepend('<div class="alert alert-danger">Please enter valid description (120 to 1100 characters)</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please check description (120 to 1100 characters)</div>');
+      e.stopPropagation();
+      return false
+    } else {
+      tinymce.get('listing_description').setContent(tinymce.EditorManager.activeEditor.getContent())
+    }
+
+    if (brand.length > 0 && brand.val().length < 3 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter brand</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      brand.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (pet_type.length > 0 && pet_type.val().length < 3 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter pet type</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      pet_type.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_make.length > 0 && car_make.val().length < 2 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter pet car make</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_make.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_model.length > 0 && car_model.val().length < 3 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter pet car model</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_model.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_reg_year.length > 0 && car_reg_year.val().length < 4 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter pet Registration year</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_reg_year.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_mileage.length > 0 && car_mileage.val().length < 2 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter pet Mileage</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_mileage.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_engine_size.length > 0 && car_engine_size.val().length < 2 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter engine size</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_engine_size.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_fuel_type.length > 0 && car_fuel_type.val().length < 2 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter fuel type</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_fuel_type.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (car_color.length > 0 && car_color.val().length < 3 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter color</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      car_color.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (wholesale_price.length > 0 && wholesale_price.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter wholesale price</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      wholesale_price.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+    if (sale_price.length > 0 && sale_price.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter sale price</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      sale_price.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (retail_price.length > 0 && retail_price.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter retail price</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      retail_price.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (property_size_rooms.length > 0 && property_size_rooms.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter property size rooms</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      property_size_rooms.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (property_size_meters.length > 0 && property_size_meters.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter property size meters</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      property_size_meters.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if (property_size_feets.length > 0 && property_size_feets.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter property size feets</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      property_size_feets.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+//    if (delivery_time.length > 0 && delivery_time.val().length < 1 ){
+//      $(this).prepend('<div class="alert alert-danger">Please enter delivery time</div>');
+//      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+//      delivery_time.parent('.form-group').addClass('has-error');
+//      e.stopPropagation();
+//      return false
+//    }
+//
+//    if (delivery_cost.length > 0 && delivery_cost.val().length < 1 ){
+//      $(this).prepend('<div class="alert alert-danger">Please enter delivery cost</div>');
+//      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+//      delivery_cost.parent('.form-group').addClass('has-error');
+//      e.stopPropagation();
+//      return false
+//    }
+
+    if (price.length > 0 && price.val().length < 1 ){
+      $(this).prepend('<div class="alert alert-danger">Please enter price</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      price.parent('.form-group').addClass('has-error');
+      e.stopPropagation();
+      return false
+    }
+
+    if(!terms.is(':checked')) {
+      $(this).prepend('<div class="alert alert-danger">You must accept the T&CS before continuing</div>');
+      $(this).append('<div class="alert alert-danger" style="margin-top:15px;">Please fill all required fields</div>');
+      terms.parents('.form-group').addClass('has-error');
+      return false;
+    }
+
+  });
+});
+</script>

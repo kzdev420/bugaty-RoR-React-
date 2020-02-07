@@ -1,0 +1,425 @@
+	<!-- START ADS LIST -->
+	<section class="ads-list">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="whitebox">
+						<div class="ads-list-title"><span>Job</span> ads</div>
+						<% @job_ads.each do |listing| %>
+						<% if listing.urgent? %>
+						<div class="ad-card ad-card--urgent">
+						<% elsif listing.featured_home? %>
+						<div class="ad-card ad-card--featured">
+						<% else %>
+						<div class="ad-card">
+						<% end %>
+							<div class="row">
+								<div class="col-sm-4 no-pad-r">
+									<div class="ad-card-picture center-image">
+
+										<%= link_to listing_path(listing) do %>
+											<% if listing.photos.present? %>
+						                    <span class="hidden-xs"><%= image_tag listing.photos.first.image.small.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+						                    <span class="hidden-sm hidden-lg hidden-md"><%= image_tag listing.photos.first.image.big.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+						                    <% else %>
+						                    <img src="/images/nophoto-170.png" class="img-responsive" alt='No photo'>
+						                    <% end %>
+					                    <% end %>
+
+										<% if listing.urgent? %>
+										<span class="ad-picture-tag tag--urgent">URGENT</span>
+										  <% if listing.featured_home? %>
+										  <span class="ad-picture-tag tag--featured" style="top: 30px;">FEATURED</span>
+										  <% end %>
+										<% elsif listing.featured_home? %>
+										<span class="ad-picture-tag tag--featured">FEATURED</span>
+										<% end %>
+									</div>
+									<div class="ad-posted-ago">
+										<i class="ico ico-posted-ago"></i> <span>Posted:</span> <%= shorter_time_ago_in_words(listing.created_at) + " ago" %>
+									</div>
+									<div class="ad-reviews">
+										<% rating = get_listing_rating(listing) %>
+										<%= number_to_stars(rating).html_safe %>
+										<span class="ad-reviews-rating"><%= rating %></span>
+										<span class="ad-reviews-counter">
+				                  		  <% if listing.comments.present? %>
+				                          ( <%= pluralize(listing.comments.length, "review") %> )
+				                          <% else %>
+				                          <% end %>
+										</span>
+									</div>
+								</div>
+								<div class="col-sm-8">
+									<div class="ad-title">
+										<%= link_to listing.name, listing_path(listing) %>
+									</div>
+									<div class="ad-add-favourites">
+					<% if current_user %>
+					  <% if is_favorited?(listing.id) %>
+						  <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe,   favorite_listing_path(listing, type: "favorite"), method: :put, class: 'btn-favourite' %>
+					  <% else %>
+					  <%= link_to "<i class='ico ico-favourite'></i> UNFAVORITE".html_safe, favorite_listing_path(listing, type: "unfavorite"), method: :put, class: 'btn-favourite' %>
+					  <% end %>
+                    <% else %>
+				      <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe, '#login-popup', class: 'btn-favourite popup-with-zoom-anim' %>
+					<% end %>
+									</div>
+									<div class="ad-category">
+										<i class="ico ico-category"></i> Listed in <%=link_to listing.category.name, listing_path(listing) %></a>
+									</div>
+									<div class="row ad-metrics">
+										<div class="col-sm-4">
+											<div class="ad-metrics-row"><i class="ico ico-price"></i> <%= listing_price(listing.price) %> <%= listing.salary_per %></div>
+											<% if listing.subcategory.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-web"></i> <%= listing.subcategory.name %></div>
+											<% end %>
+										</div>
+										<div class="col-sm-8">
+											<i class="ico ico-location"></i> <%= listing.location %>
+										</div>
+									</div>
+									<div class="ad-description">
+										<p><%= truncate(strip_tags(listing.description), length: 100) %></p>
+										<%= link_to "Read more...", listing_path(listing) %>
+									    <% if listing.user == current_user %>
+									    <%= link_to 'Edit', edit_listing_path(listing) %>
+									    <%= link_to 'Delete', listing, data: { confirm: 'Are you sure?' }, method: :delete %>
+									    <% end %>
+									</div>
+									<div class="ad-author">
+										<span>Added by:</span>
+				                        <% if listing.user.first_name.present? %>
+				                        <%= link_to "#{listing.user.first_name}" + " " + "#{listing.user.last_name}", user_path(listing.user) %>
+				                        <% else %>
+				                        <%= link_to listing.user.email, user_path(listing.user) %>
+				                        <% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- last card: end -->
+						<% end %>
+
+						<!-- COMPANY ADS -->
+						<div class="ads-list-title"><span>COMPANY</span> LISTINGS</div>
+						<% @company_ads.each do |listing| %>
+              <% if listing.urgent? %>
+              <div class="ad-card ad-card--urgent">
+              <% elsif listing.featured_home? %>
+              <div class="ad-card ad-card--featured">
+              <% else %>
+              <div class="ad-card">
+              <% end %>
+                <div class="row">
+                  <div class="col-sm-4 no-pad-r">
+                    <div class="ad-card-picture center-image">
+										<%= link_to listing_path(listing) do %>
+											<% if listing.photos.present? %>
+						                    <span class="hidden-xs"><%= image_tag listing.photos.first.image.small.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+						                    <span class="hidden-sm hidden-lg hidden-md"><%= image_tag listing.photos.first.image.big.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+						                    <% else %>
+						                    <img src="/images/nophoto-170.png" class="img-responsive" alt="No photo">
+						                    <% end %>
+					                    <% end %>
+										<% if listing.urgent? %>
+										<span class="ad-picture-tag tag--urgent">URGENT</span>
+										  <% if listing.featured_home? %>
+										  <span class="ad-picture-tag tag--featured" style="top: 30px;">FEATURED</span>
+										  <% end %>
+										<% elsif listing.featured_home? %>
+										<span class="ad-picture-tag tag--featured">FEATURED</span>
+										<% end %>
+									</div>
+									<div class="ad-posted-ago">
+										<i class="ico ico-posted-ago"></i> <span>Posted:</span> <%= shorter_time_ago_in_words(listing.created_at) + " ago" %>
+									</div>
+									<div class="ad-reviews">
+										<% rating = get_listing_rating(listing) %>
+										<%= number_to_stars(rating).html_safe %>
+										<span class="ad-reviews-rating"><%= rating %></span>
+										<span class="ad-reviews-counter">
+				                  		  <% if listing.comments.present? %>
+				                          ( <%= pluralize(listing.comments.length, "review") %> )
+				                          <% else %>
+				                          <% end %>
+										</span>
+									</div>
+								</div>
+								<div class="col-sm-8">
+									<div class="ad-title">
+										<%= link_to listing.name, listing_path(listing) %>
+									</div>
+									<div class="ad-add-favourites">
+					<% if current_user %>
+					  <% if is_favorited?(listing.id) %>
+						  <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe,   favorite_listing_path(listing, type: "favorite"), method: :put, class: 'btn-favourite' %>
+					  <% else %>
+					  <%= link_to "<i class='ico ico-favourite'></i> UNFAVORITE".html_safe, favorite_listing_path(listing, type: "unfavorite"), method: :put, class: 'btn-favourite' %>
+					  <% end %>
+                    <% else %>
+				      <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe, '#login-popup', class: 'btn-favourite popup-with-zoom-anim' %>
+					<% end %>
+									</div>
+									<div class="ad-category">
+										<i class="ico ico-category"></i> Listed in <%=link_to listing.category.name, listing_path(listing) %></a>
+									</div>
+									<div class="row ad-metrics">
+										<div class="col-sm-5">
+											<% if listing.user.phone.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-phone"></i> <%= listing.user.phone %></div>
+											<% end %>
+											<% if listing.category.id == 1 && listing.company_phone.present? %>
+											<div class="ad-metrics-row"><i class="ico ico-phone"></i> <%= listing.company_phone %></div>
+											<% end %>
+											<!--<div class="ad-metrics-row"><i class="ico ico-mobile"></i> $get_mobile</div>-->
+										</div>
+										<div class="col-sm-7">
+											<i class="ico ico-location"></i> <%= listing.location %>
+										</div>
+									</div>
+									<div class="ad-description">
+										<p><%= truncate(strip_tags(listing.description), length: 100) %></p>
+										<a href="#">Read more ...</a>
+									    <% if listing.user == current_user %>
+									    <%= link_to 'Edit', edit_listing_path(listing) %>
+									    <%= link_to 'Delete', listing, data: { confirm: 'Are you sure?' }, method: :delete %>
+									    <% end %>
+									</div>
+									<div class="ad-author">
+										<span>Added by:</span>
+				                        <% if listing.user.first_name.present? %>
+				                        <%= link_to "#{listing.user.first_name}" + " " + "#{listing.user.last_name}", user_path(listing.user) %>
+				                        <% else %>
+				                        <%= link_to listing.user.email, user_path(listing.user) %>
+				                        <% end %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% end %>
+					</div>
+				</div>
+
+				<!-- START SERVICES ADS-->
+				<div class="col-sm-6">
+					<div class="whitebox">
+						<div class="ads-list-title"><span>Services</span> ads</div>
+						<div class="row">
+							<% @service_ads.each do |listing| %>
+							<div class="col-sm-6">
+							<% if listing.urgent? %>
+							<div class="ad-card ad-card-service ad-card--urgent">
+							<% elsif listing.featured_home? %>
+							<div class="ad-card ad-card-service ad-card--featured">
+							<% else %>
+							<div class="ad-card ad-card-service">
+							<% end %>
+									<div class="ad-card-picture center-image">
+										<%= link_to listing_path(listing) do %>
+											<% if listing.photos.present? %>
+						                    <%= image_tag listing.photos.first.image.small_serv_v1.url, class: 'img-responsive photo-small-serv-img', alt: "#{listing.name}" %>
+						                    <% else %>
+						                    <img src="/images/photo-290.png" class="img-responsive" alt="No photo">
+						                    <% end %>
+					                    <% end %>
+										<div class="ad-add-favourites ad-add-favourites--services-absolute">
+					<% if current_user %>
+					  <% if is_favorited?(listing.id) %>
+						  <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe,   favorite_listing_path(listing, type: "favorite"), method: :put, class: 'btn-favourite' %>
+					  <% else %>
+					  <%= link_to "<i class='ico ico-favourite'></i> UNFAVORITE".html_safe, favorite_listing_path(listing, type: "unfavorite"), method: :put, class: 'btn-favourite' %>
+					  <% end %>
+                    <% else %>
+				      <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe, '#login-popup', class: 'btn-favourite popup-with-zoom-anim' %>
+					<% end %>
+										</div>
+										<% if listing.urgent? %>
+										<span class="ad-picture-tag tag--service tag--urgent">URGENT</span>
+										  <% if listing.featured_home? %>
+										  <span class="ad-picture-tag tag--service tag--featured" style="top: 30px;">FEATURED</span>
+										  <% end %>
+										<% elsif listing.featured_home? %>
+										<span class="ad-picture-tag tag--service tag--featured">FEATURED</span>
+										<% end %>
+									</div>
+									<div class="mainpage ad-title text-center">
+										<%= link_to listing.name, listing_path(listing) %>
+									</div>
+									<div class="row">
+										<div class="col-sm-6 no-pad-r">
+											<%= link_to user_path(listing.user) do %>
+												<% if listing.user.profile_photo.present? %>
+												<div class="ad-author-avatar" style="background-image: url('<%= "#{listing.user.profile_photo.thumb.url}" %>')">
+												</div>
+												<% else %>
+												<div class="ad-author-avatar" style="background-image: url('/images/no-avatar.png')">
+												</div>
+												<% end %>
+											<% end %>
+											<div class="ad-author no-align">
+												<span>Added by:</span>
+						                        <% if listing.user.first_name.present? %>
+						                        <%= link_to "#{listing.user.first_name}" + " " + "#{listing.user.last_name}", user_path(listing.user) %>
+						                        <% else %>
+						                        <%= link_to listing.user.email, user_path(listing.user) %>
+						                        <% end %>
+											</div>
+											<div class="ad-serv-location">
+												<i class="ico ico-location"></i> <%= listing.location %>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="ad-price">
+												<span class="ad-price-tag">£ <%= listing_price(listing.price) %></span>
+											</div>
+											<div class="ad-posted-ago">
+												<i class="ico ico-posted-ago"></i> <span>Posted:</span> <%= shorter_time_ago_in_words(listing.created_at) + " ago" %>
+											</div>
+											<div class="ad-reviews ad-reviews--smaller">
+
+										<% rating = get_listing_rating(listing) %>
+										<%= number_to_stars(rating).html_safe %>
+										<span class="ad-reviews-rating"><%= rating %></span>
+										<span class="ad-reviews-counter">
+				                  		  <% if listing.comments.present? %>
+				                          ( <%= pluralize(listing.comments.length, "review") %> )
+				                          <% else %>
+				                          <% end %>
+										</span>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<!-- END SERVICES ADS-->
+			</div>
+		</div>
+	</section>
+	<!-- END ADS LIST -->
+
+	<!-- START OTHER ADS LIST -->
+	<section class="ads-list-more">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="whitebox">
+						<div class="ads-list-title"><span>OTHER</span> ads</div>
+						<div class="row">
+							<% @other_ads.each_with_index do |listing, index| %>
+
+							<% if index == 3 %>
+								<div class="row">
+						    <% end %>
+						    	<div class="col-sm-3">
+
+							<% if listing.urgent? %>
+							<div class="ad-card ad-card-service ad-card--urgent">
+							<% elsif listing.featured_home? %>
+							<div class="ad-card ad-card-service ad-card--featured">
+							<% else %>
+							<div class="ad-card ad-card-service">
+							<% end %>
+									<div class="ad-card-picture center-image">
+										<%= link_to listing_path(listing) do %>
+											<% if listing.photos.present? %>
+						                    <span class="hidden-xs"><%= image_tag listing.photos.first.image.small_serv_v1.url, class: 'img-responsive photo-small-serv-img', alt: "#{listing.name}" %></span>
+						                    <span class="hidden-sm hidden-lg hidden-md"><%= image_tag listing.photos.first.image.big.url, class: 'img-responsive photo-small-serv-img', alt: "#{listing.name}" %></span>
+						                    <% else %>
+						                    <img src="/images/photo-290.png" class="img-responsive" alt="No photo">
+						                    <% end %>
+					                    <% end %>
+										<div class="ad-add-favourites ad-add-favourites--services-absolute">
+					<% if current_user %>
+					  <% if is_favorited?(listing.id) %>
+						  <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe,   favorite_listing_path(listing, type: "favorite"), method: :put, class: 'btn-favourite' %>
+					  <% else %>
+					  <%= link_to "<i class='ico ico-favourite'></i> UNFAVORITE".html_safe, favorite_listing_path(listing, type: "unfavorite"), method: :put, class: 'btn-favourite' %>
+					  <% end %>
+                    <% else %>
+				      <%= link_to "<i class='ico ico-favourite'></i> <span class='visible-md-inline visible-lg-inline'>ADD TO</span> FAVORITES".html_safe, '#login-popup', class: 'btn-favourite popup-with-zoom-anim' %>
+					<% end %>
+										</div>
+										<% if listing.urgent? %>
+										<span class="ad-picture-tag tag--service tag--urgent">URGENT</span>
+										  <% if listing.featured_home? %>
+										  <span class="ad-picture-tag tag--service tag--featured" style="top: 30px;">FEATURED</span>
+										  <% end %>
+										<% elsif listing.featured_home? %>
+										<span class="ad-picture-tag tag--service tag--featured">FEATURED</span>
+										<% end %>
+									</div>
+									<div class="mainpage ad-title text-center">
+										<%= link_to listing.name, listing_path(listing) %>
+									</div>
+									<div class="row">
+										<div class="col-sm-6 no-pad-r">
+											<%= link_to user_path(listing.user) do %>
+												<% if listing.user.profile_photo.present? %>
+												<div class="ad-author-avatar" style="background-image: url('<%= "#{listing.user.profile_photo.thumb.url}" %>')">
+												</div>
+												<% else %>
+												<div class="ad-author-avatar" style="background-image: url('/images/no-avatar.png')">
+												</div>
+												<% end %>
+											<% end %>
+											<div class="ad-author no-align">
+												<span>Added by:</span>
+						                        <% if listing.user.first_name.present? %>
+						                        <%= link_to "#{listing.user.first_name}" + " " + "#{listing.user.last_name}", user_path(listing.user) %>
+						                        <% else %>
+						                        <%= link_to listing.user.email, user_path(listing.user) %>
+						                        <% end %>
+											</div>
+											<div class="ad-serv-location">
+												<i class="ico ico-location"></i> <%= listing.location %>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="ad-price">
+											  <% if listing.category_id == 2 %>
+											    <% if listing.sale_price.present? %>
+												  <span class="ad-price-tag price-size-for-whole">£ <%= listing.sale_price %></span>
+												  <span class="ad-price-tag price-size-for-whole line-cross-whole">£ <%= listing.wholesale_price %></span>
+												<% else %>
+												  <span class="ad-price-tag price-size-for-whole">£ <%= listing.wholesale_price %></span>
+												<% end %>
+											  <% else %>
+											    <span class="ad-price-tag">£ <%= listing_price(listing.price) %></span>
+											  <% end %>
+											</div>
+											<div class="ad-posted-ago">
+												<i class="ico ico-posted-ago"></i> <span>Posted:</span> <%= shorter_time_ago_in_words(listing.created_at) + " ago" %>
+											</div>
+											<div class="ad-reviews ad-reviews--smaller">
+										<% rating = get_listing_rating(listing) %>
+										<%= number_to_stars(rating).html_safe %>
+										<span class="ad-reviews-rating"><%= rating %></span>
+										<span class="ad-reviews-counter">
+				                  		  <% if listing.comments.present? %>
+				                          ( <%= pluralize(listing.comments.length, "review") %> )
+				                          <% else %>
+				                          <% end %>
+										</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<% if index == 3 %>
+								</div>
+						    <% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- END OTHER ADS LIST -->

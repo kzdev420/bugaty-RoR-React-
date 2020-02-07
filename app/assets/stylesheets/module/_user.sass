@@ -1,0 +1,298 @@
+////////////
+//USER PAGES
+////////////
+
+
+.ad-card--editable
+	.btn-favourite
+		display: block
+		margin-bottom: 10px
+	.ad-category
+		margin: 0
+
+.ad-viewed
+	text-align: right
+	font-size: 12px
+
+.viewes-times
+
+
+///////
+// EDIT PROFILE
+///////
+
+.profile-header
+	background: #e1e5e5
+	padding-top: 35px
+	background-position: center
+	background-repeat: no-repeat
+	padding-bottom: 80px
+
+.profile-header-info
+	color: #adb0ad
+	font-size: 24px
+
+	a
+		color: $blue
+
+
+.profile-header-name
+	font-size: 80px
+	font-family: 'Roboto Slab', serif
+	font-weight: 700
+	@include mq($until: tablet)
+		font-size: 40px
+
+.profile-header-stars
+	border-radius: 25px
+	background: rgba(white, .5)
+	border: 1px solid #c6c4c4
+	padding: 5px 70px
+	display: inline-block
+	@include mq($until: desktop)
+		padding: 5px 30px
+	@include mq($until: tablet)
+		padding: 5px 15px
+
+//sub
+.profile-header-sub
+	background: #eff1f1
+	padding: 10px 0
+	border-top: 2px solid #d1d1d1
+	border-bottom: 2px solid #d1d1d1
+	position: relative
+	&:after
+		display: block
+		background: url('../img/slider-shade.png') no-repeat center bottom
+		width: 100%
+		height: 27px
+		position: absolute
+		bottom: -25px
+		left: 0
+		z-index: 1
+		content: ' '
+
+.profile-header-picture
+	border-radius: 50%
+	border: 1px solid #aeafaf
+	background: white
+	display: inline-block
+	position: absolute
+	top: -115px
+	z-index: 9
+	max-width: 180px
+	@include mq($until: tablet)
+		max-width: 100px
+		top: -50px
+
+
+.profile-header-wrap
+	padding: 7px
+	border: 1px solid #aeafaf
+	border-radius: 50%
+	position: relative
+	@include mq($until: tablet)
+		padding: 3px
+
+.change-image-link
+	position: absolute
+	left: 50%
+	bottom: 30px
+	@include transform(translateX(-50%))
+	font-size: 24px
+	font-weight: 700
+	font-family: 'Roboto Slab', serif
+	color: $blue
+	text-shadow: -0   -2px 0   #FFFFFF, 0   -2px 0   #FFFFFF, -0    2px 0   #FFFFFF, 0    2px 0   #FFFFFF, -2px -0   0   #FFFFFF, 2px -0   0   #FFFFFF,-2px  0   0   #FFFFFF,2px  0   0   #FFFFFF,-1px -2px 0   #FFFFFF,1px -2px 0   #FFFFFF,-1px  2px 0   #FFFFFF,1px  2px 0   #FFFFFF,-2px -1px 0   #FFFFFF,2px -1px 0   #FFFFFF,-2px  1px 0   #FFFFFF, 2px  1px 0   #FFFFFF,-2px -2px 0   #FFFFFF,2px -2px 0   #FFFFFF,-2px  2px 0   #FFFFFF, 2px  2px 0   #FFFFFF,-2px -2px 0   #FFFFFF, 2px -2px 0   #FFFFFF,-2px  2px 0   #FFFFFF,2px  2px 0   #FFFFFF
+	z-index: 10
+
+.profile-header-joined-ago
+	font-size: 14px
+	font-weight: 700
+	font-family: 'Roboto Slab', serif
+	padding-right: 80px
+	@include mq($until: wide)
+		padding-right: 60px
+	@include mq($until: desktop)
+		padding-right: 30px
+	span
+		color: $green
+	span.blue
+		color: #369fe0
+
+.two-row-btns
+	padding-top: 100px
+	padding-bottom: 100px
+	@include mq($until: desktop)
+		padding-top: 30px
+		padding-top: 30px
+	.btn-pink, .btn-blue
+		margin: 0
+		font-size: 20px
+		font-weight: 700
+		font-family: 'Calibri', sans-serif
+		padding: 5px 5px
+		width: 180px
+		border-radius: 30px
+		&:hover
+			@include transition(all .4s ease)
+			opacity: .7
+	.btn-pink
+		float: left
+		@include box-shadow(0, 2px, 4px, rgba(0, 0, 0, 0.25))
+	.btn-blue
+		float: right
+		@include box-shadow(0, 2px, 4px, rgba(0, 0, 0, 0.25))
+		@include mq($until: desktop)
+			float: left
+			margin-top: 15px
+	.btn-width-auto
+		width: auto
+
+// Sidebar
+
+.profile-stats
+	font-family: 'Roboto Slab', serif
+	padding-top: 60px
+	&.buttons
+		.profile-stat-btn--line
+			display: block
+			margin-bottom: 10px
+		.btn-favourite
+			height: 38px
+			border-radius: 5px
+			width: 190px
+			padding-right: 0
+			display: inline-block
+			text-transform: none
+			.ico
+				vertical-align: -10px
+			span
+				vertical-align: 2px
+	&.ads
+		padding-top: 45px
+		padding-left: 30px
+		@include mq($until: desktop)
+			padding-left: 15px
+		@include mq($until: tablet)
+			padding-left: 0px
+		img
+			margin-bottom: 5px
+
+
+.profile-stats-heading
+	color: $green
+	font-size: 18px
+	text-align: right
+	margin-bottom: 10px
+
+.profile-stats-verification-row
+	padding-top: 7px
+	.ico
+		margin-right: 5px
+		vertical-align: -3px
+.ico-email--fill
+	background: url('../img/sprite.png') no-repeat 0 -387px
+	width: 18px
+	height: 18px
+.ico-fb--fill
+	background: url('../img/sprite.png') no-repeat -86px -387px
+	width: 18px
+	height: 18px
+.ico-google--fill
+	background: url('../img/sprite.png') no-repeat -65px -387px
+	width: 18px
+	height: 18px
+.ico-tw--fill
+	background: url('../img/sprite.png') no-repeat -42px -387px
+	width: 18px
+	height: 18px
+.ico-tick--white
+	background: url('../img/sprite.png') no-repeat -22px -387px
+	width: 18px
+	height: 18px
+	margin-right: 0
+
+.profile-stats-verification-name
+	color: $blue
+
+.profile-stats-verification-status
+	text-align: right
+	float: right
+	span
+		background: $green
+		color: white
+		font-weight: 700
+		padding: 2px 5px
+		font-size: 12px
+		display: inline-block
+		border-radius: 3px
+
+.profile-stats-link
+	a
+		color: $blue
+		font-family: 'Roboto Slab', serif
+		font-size: 14px
+		&:hover
+			color: $pink
+			@include transition(all .4s ease)
+
+
+//////////////////
+///// USER PROFILE
+//////////////////
+
+.user-metrics
+	margin-top: 35px
+	margin-left: -50px
+	@include mq($until: desktop)
+		margin-left: -30px
+
+	@include mq($until: tablet)
+		margin-left: -15px
+	.col-sm-4
+		padding-right: 0
+
+.btn-contact
+	border-radius: 25px
+	@include linear-gradient(to top, #f2f2f2, white)
+	color: $blue
+	display: inline-block
+	padding: 4px 15px 4px 10px
+	border: 1px solid #eaeaea
+	.ico
+		vertical-align: -4px
+	&:hover
+		@include linear-gradient(to bottom, #f2f2f2, white)
+		color: darken($blue, 5%)
+
+.user-metrics-row
+	margin-bottom: 7px
+	color: $brown
+	@include mq($until: desktop)
+		font-size: 12px
+	.green
+		color: $green
+	.ico-mobile2
+		margin-right: 11px
+		margin-left: 5px
+	.ico-email
+		margin-right: 5px
+
+.ico-seen
+	background: url('../img/ico-lastseen.png') no-repeat 0 0
+	width: 24px
+	height: 16px
+	margin-right: 5px
+	vertical-align: -2px
+
+.profile-description-text
+	border-top: 2px solid #d1d1d1
+	margin-top: 15px
+	padding-top: 60px
+	padding-bottom: 120px
+	@include mq($until: tablet)
+		padding-bottom: 40px
+		padding-top: 30px
+	.green
+		color: $green

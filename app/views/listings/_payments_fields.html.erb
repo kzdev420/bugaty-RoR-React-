@@ -1,0 +1,26 @@
+<!-- next row -->
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-desc">
+      Payment methods:
+      <span class="info-tooltip" data-tooltip="Please enter up to 3 payment methods buyer can make payment with">i</span>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if @listing.payment_methods.any? %>
+        <% @listing.payment_methods.each do |payment_method| %>
+          <%= text_field_tag 'listing[payment_methods][]', payment_method, placeholder: 'Enter payment method', class: 'form-control' %>
+          <br />
+        <% end %>
+      <% end %>
+
+      <% ind = @listing.payment_methods.count %>
+      <% while ind < 3 do %>
+        <%= text_field_tag 'listing[payment_methods][]', '', placeholder: 'Enter payment method', class: 'form-control' %>
+        <br />
+        <% ind += 1 %>
+      <% end %>
+    </div>
+  </div>
+</div>

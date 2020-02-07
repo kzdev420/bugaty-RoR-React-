@@ -1,0 +1,21 @@
+<%= content_for(:title, 'All World Classifieds Ads | Bugaty.com') %>
+<%= content_for(:meta_tags) do %>
+  <meta property="keywords" content="Free business advertising sites uk, Uk free classified ads website, best classifieds ads websites, free business ads listing sites, Websites to sell items online for free" />
+<% end %>
+
+<%= render ('layouts/header') %>
+
+<!-- CONTENT -->
+<section class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="content-holder" style="float:inherit; width: 100%">
+          <h1 class="sitemap">All World Classifieds Ads</h1>
+          <%= render('links', links: @links, css_class: '') %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--- CONTENT -->

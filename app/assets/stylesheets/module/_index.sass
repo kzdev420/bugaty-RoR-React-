@@ -1,0 +1,1045 @@
+
+// Header
+
+.header-logo
+  display: inline-block
+
+.header-banner-top
+  text-align: right
+  display: inline-block
+
+.header-login
+  margin-top: 15px
+  color: $fontColor2
+  font-size: 16px
+  text-transform: uppercase
+  a
+    display: inline-block
+    margin-right: 15px
+    &:last-child
+      margin-right: 0
+  span
+    vertical-align: 3px
+
+.header-search-form
+  font-size: 19px
+  input[type="text"]
+    color: #32281e
+    border-radius: 5px
+    border: 1px solid #d8d6d9
+    padding: 5px 10px
+    &:focus
+      outline: none
+      @include box-shadow(0,2px,2px,rgba(black, .3))
+  button
+    background: #37a440
+    border-radius: 5px
+    border: 1px solid #d8d6d9
+    color: white
+    outline: none
+    padding: 5px 3px
+    &:hover
+      animation: blinker 1s linear infinite
+
+  .text-search
+    width: 100%
+    padding-left: 70px !important
+  .text-search-slider
+    width: 80%
+    padding-left: 20px !important
+    margin: 0
+    border-radius: 5px 0 0 5px
+  .button-slider
+    width: 20%
+    margin: 0
+    border: 1px solid #37a440
+    border-radius: 0 5px 5px 0
+  .loc-search
+    width: 30%
+
+  &.mobile-header-search-form
+    font-size: 16px
+    input[type="text"]
+      padding-top: 7px
+      padding-bottom: 7px
+      color: $fontColor
+      &::-webkit-input-placeholder
+        color: #777
+      &::-moz-placeholder
+        color:  #777
+      &:-ms-input-placeholder
+        color:  #777
+      &:-moz-placeholder
+        color:  #777
+    button
+      max-width: 10%
+      padding: 7px 3px
+    .multiple-form
+      @include mq($until: tablet)
+        width: 57%
+      @include mq($until: bp340)
+        width: 50%
+
+.slider-search-form
+  font-size: 18px
+  input[type="text"]
+    width: 80%
+    color: #32281e
+    border-radius: 5px 0 0 5px
+    border: 1px solid #d8d6d9
+    margin: 0
+    padding: 5px 10px 5px 20px
+    outline: none
+    &:focus
+      outline: none
+      @include box-shadow(0,2px,2px,rgba(black, .3))
+    @include mq($until: tablet)
+      padding: 2px 1px
+      border-radius: 1px 0 0 1px
+    @include mq($from: tablet, $until: desktop)
+      padding: 3px 7px 3px 14px
+  button
+    width: 20%
+    margin: 0
+    background: #37a440
+    border: 1px solid #37a440
+    border-radius: 0 5px 5px 0
+    font-size: 18px
+    color: white
+    outline: none
+    padding: 5px 3px
+    &:hover
+      animation: blinker 1s linear infinite
+    @include mq($until: tablet)
+      font-size: 10px
+      padding: 2px 1px
+      border-radius: 0 1px 1px 0
+    @include mq($from: tablet, $until: desktop)
+      font-size: 15px
+      padding: 3px 2px
+  .slider-form
+    position: relative
+    display: inline-block
+    width: 60%
+    @include mq($until: desktop)
+      width: 75%
+    @include mq($until: tablet)
+      width: 95%
+
+  @include mq($until: tablet)
+    font-size: 10px
+  @include mq($from: tablet, $until: desktop)
+    font-size: 15px
+
+@keyframes blinker
+  50%
+    opacity: 0.65
+
+.multiple-form
+  position: relative
+  display: inline-block
+  width: 60%
+  @include mq($until: bp890)
+    width: 55%
+
+  .select
+    background: #f1f1f1
+    //url('../img/selector.png') no-repeat 50px 10px
+    position: absolute
+    top: 1px
+    left: 1px
+    height: 37px
+    @include border-left-radius(5px)
+    width: 60px
+    select
+      background: transparent
+      border: none
+      height: 37px
+      width: 60px
+
+
+.ico-login
+  background: url('../img/sprite.png') no-repeat -22px -20px
+  width: 15px
+  height: 19px
+
+.ico-signup
+  background: url('../img/sprite.png') no-repeat -48px -18px
+  width: 19px
+  height: 19px
+
+
+
+// Top menu
+
+.header-menu-list
+  list-style: none
+  margin: 0
+  padding: 0
+  font-size: 0
+  line-height: 1em
+  text-align: justify
+  padding-left: 35px
+  padding-right: 35px
+  position: relative
+  @include mq($until: wide)
+    padding-left: 0
+    padding-right: 0
+  &:after
+    display: inline-block
+    width: 100%
+    height: 1px
+    content: ' '
+  li
+    display: inline-block
+    text-transform: uppercase
+    font-size: 18px
+    padding-top: 20px
+    padding-bottom: 15px
+    @include mq($from: bp1155)
+      font-size: 13px
+    @include mq($until: bp1155)
+      font-size: 12px
+    @include mq($until: bp1110)
+      font-size: 10px
+    @include mq($until: bp930)
+      font-size: 8px
+
+    &:after
+      display: inline-block
+      width: 9px
+      height: 9px
+      background: $green
+      border: 1px solid $pink
+      content: ' '
+      vertical-align: 3px
+      margin-left: 5px
+      @include mq($until: bp1110)
+        vertical-align: 2px
+      @include mq($until: bp930)
+        width: 7px
+        height: 7px
+        vertical-align: 2px
+        margin-left: 4px
+    &:last-child:after
+      display: none
+    &:hover
+      color: $pink
+      &>.header-submenu-list
+        display: block
+    &.have-ul
+      &:hover
+        background: $pink
+        color: white
+
+.header-submenu-list
+  &:hover
+    display: block
+  display: none
+  color: $fontColor
+  position: absolute
+  background: #f2f2f4
+  border-top: 5px solid $pink
+  padding-top: 20px
+  padding-bottom: 50px
+  padding-left: 20px
+  padding-right: 20px
+  top: 40px
+  left: 0
+  width: 100%
+  z-index: 9999
+  text-align: left
+  font-size: 16px
+  line-height: 1.2em
+  @include mq($from: bp1155)
+    font-size: 14px
+  @include mq($until: bp1155)
+    font-size: 13px
+  @include mq($until: bp1110)
+    font-size: 12px
+  @include mq($until: bp930)
+    font-size: 8px
+  a
+    display: block
+    margin-top: 5px
+    &:hover
+      color: $pink
+
+.header-submenu-category
+  font-size: 24px
+  font-weight: 700
+  border-bottom: 1px solid #000000
+  margin-bottom: 5px
+  padding-bottom: 5px
+  display: inline-block
+// Slider
+.mainpage-slider-slide
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  height: 430px
+  width: 100%
+  padding-left: 40%
+  padding-top: 7%
+  @include mq($until: desktop)
+    height: 350px
+  @include mq($until: tablet)
+    height: 200px
+    background-size: cover
+  h3
+    font-size: 34px
+    color: white
+    margin-bottom: 20px
+    @include mq($until: tablet)
+      font-size: 20px
+      margin-top: 5px
+      margin-bottom: 5px
+
+  p
+    font-size: 20px
+    color: white
+    @include mq($until: desktop)
+      font-size: 15px
+    @include mq($until: tablet)
+      font-size: 12px
+
+.contact-slide
+  background-image: url('../images/contact-us-pic.png')
+
+#owl-mainpage
+  p
+    padding-bottom: 9%
+
+.owl-dots
+  position: absolute
+  bottom: 15px
+  left: 50%
+  @include transform(translateX(-50%))
+  @include mq($until: tablet)
+    bottom: 5px
+  .owl-dot
+    background: transparent
+    border: 2px solid white
+    border-radius: 50%
+    display: inline-block
+    width: 15px
+    height: 15px
+    margin-right: 5px
+    content: ' '
+    &.active
+      background: white
+
+.owl-prev
+  background: url('../img/sprite.png') no-repeat -1px -48px
+  width: 32px
+  height: 32px
+  display: inline-block
+  font-size: 0
+  opacity: 0.5
+  position: absolute
+  top: 50%
+  left: 25px
+  @include transform(translateY(-50%))
+  &:hover
+    opacity: 1
+
+.owl-next
+  background: url('../img/sprite.png') no-repeat -35px -48px
+  width: 32px
+  height: 32px
+  display: inline-block
+  font-size: 0
+  opacity: 0.5
+  position: absolute
+  top: 50%
+  right: 25px
+  @include transform(translateY(-50%))
+  &:hover
+    opacity: 1
+
+// ADS list
+.ads-list .whitebox .row .col-sm-6
+  display: inline-block
+  float: none
+  width: 49%
+
+.col-sm-3
+  .ads-list-title
+    font-size: 28px
+    @include mq($until: wide)
+      font-size: 24px
+    @include mq($until: desktop)
+      font-size: 20px
+    @include mq($until: tablet)
+      font-size: 24px
+
+.ads-list-title
+  font-size: 32px
+  color: $brown
+  font-family: 'Calibri', sans-serif
+  text-align: center
+  text-transform: uppercase
+  padding: 15px 15px 10px 15px
+  overflow: hidden
+  word-wrap: break-word
+  @include mq($until: desktop)
+    font-size: 28px
+  @include mq($until: tablet)
+    font-size: 24px
+  span
+    font-weight: 700
+  &:after
+    display: block
+    width: 100%
+    height: 10px
+    background: url('../img/sprite.png') repeat-x -2px -82px
+    content: ' '
+
+.ad-card
+  border: 1px solid #dedede
+  border-radius: 5px
+  padding: 10px 10px 5px 10px
+  margin-top: 15px
+  color: #343434
+  @include background(linear-gradient(0deg, rgba(#d6d6d6, .5) 0%, rgba(white, .1) 50%, rgba(white, 1) 100%))
+
+.ad-card--no-cat
+  .ad-title
+    margin-bottom: 10px
+.ad-card--featured
+  @include background(linear-gradient(0deg, rgba(#fb6cc7, .25) 0%, rgba(white, .1) 50%, rgba(white, 1) 100%))
+.ad-card--urgent
+  @include background(linear-gradient(0deg, rgba(#faa462, .25) 0%, rgba(white, .1) 50%, rgba(white, 1) 100%))
+  border: 2px solid #ff7f00
+.ad-card-service
+  padding: 3px 7px
+.ad-card-picture
+  padding: 0px
+  overflow: hidden
+  border-radius: 5px
+  border: 1px solid #7e7b7b
+  background: white
+  position: relative
+  margin-bottom: 15px
+  @include mq($until: tablet)
+    width: 95%
+  img
+    @include mq($until: tablet)
+      width: 100%
+  a:hover
+    @icnlude transition(all .4s ease)
+    opacity: 0.85
+
+.ad-picture-tag
+  position: absolute
+  top: 3px
+  left: -1px
+  text-transform: uppercase
+  font-size: 14px
+  line-height: 1em
+  color: white
+  font-family: 'Calibri', sans-serif
+  padding: 2px 10px
+  border: 1px solid #366b00
+  @include border-right-radius(5px)
+  &:before
+    display: block
+    position: absolute
+    top: 18px
+    left: -1px
+    background: url('../img/sprite.png') no-repeat -1px -105px
+    width: 10px
+    height: 10px
+    content: ' '
+    z-index: 2
+
+.tag--featured
+  @include linear-gradient(0deg, #f21aa5, #fc9fdb)
+.tag--urgent
+  @include linear-gradient(0deg, #c96b00, #ff7103)
+.tag--service
+  top: 7px
+  left: -6px
+  padding: 2px 15px
+.ad-posted-ago
+  font-size: 10px
+  margin-bottom: 5px
+  font-family: 'Roboto Slab', serif
+  span
+    font-weight: 700
+
+.ico-posted-ago
+  width: 13px
+  height: 13px
+  background: url('../img/sprite.png') no-repeat -14px -105px
+  margin-right: 4px
+  vertical-align: -2px
+
+.ad-reviews
+  font-size: 10px
+  font-family: 'Roboto Slab', serif
+
+.add-rev
+  color: $blue
+  display: inline-block
+  padding-left: 10px
+  font-size: 12px
+.ad-reviews--smaller
+  font-size: 8px
+  .ico-star
+    @include transform(scale(.65))
+    margin-left: -4px
+    margin-right: -3px
+    vertical-align: -5px
+  .ad-reviews-rating
+    font-size: 7px
+    padding: 2px 2px
+
+.ico-star
+  width: 14px
+  height: 15px
+  margin-right: 0px
+  background: url('../img/sprite.png') no-repeat -31px -104px
+  vertical-align: -3px
+  font-size: 0
+  &.ico-star--blank
+    background-position: -92px -104px
+  &.ico-star--half
+    background-position: -77px -104px
+
+.ad-reviews-rating
+  background: $green
+  color: white
+  border-radius: 5px
+  font-size: 11px
+  padding: 2px
+
+.profile-header-joined-ago
+  .blank-left
+    @include mq($until: tablet)
+      width: 35%
+      min-width: 100px
+    display: inline-block
+    margin: 0
+    width: 17%
+    min-width: 180px
+  .ad-reviews
+    @include mq($until: tablet)
+      width: 55%
+    display: inline-block
+    margin: 0
+    width: 30%
+    .ad-reviews-rating
+      background: white
+  .text-right
+    @include mq($until: tablet)
+      width: 100%
+    display: inline-block
+    margin: 0
+    width: 40%
+
+.ad-reviews-counter
+
+.ad-title
+  text-align: left
+  font-size: 14px
+  line-height: 14px
+  height: 28px
+  max-width: 100%
+  word-wrap: break-word
+  overflow: hidden
+  font-weight: 700
+  color: $blue
+  font-family: 'Roboto Slab', serif
+  display: inline-block
+  @include mq($until: tablet)
+    margin-top: 10px
+
+
+.ad-add-favourites
+  float: right
+  &:after
+    clear: both
+    content: ' '
+    display: block
+.ad-add-favourites--services-absolute
+  position: absolute
+  top: 7px
+  right: 2px
+
+.ad-category
+  color: #716f6f
+  font-family: 'Roboto Slab', serif
+  font-weight: 300
+  margin-top: 15px
+  margin-bottom: 7px
+  a
+    color: $blue
+
+.ico-category
+  width: 12px
+  height: 12px
+  background: url('../img/sprite.png') no-repeat -33px -133px
+  vertical-align: -1px
+  margin-right: 5px
+
+.ad-metrics
+  color: #32281e
+  font-size: 12px
+  font-family: 'Roboto Slab', serif
+.ad-metrics-row
+  font-family: 'Roboto Slab', serif
+  span
+    font-weight: 700
+.ico-price
+  width: 16px
+  height: 14px
+  background: url('../img/sprite.png') no-repeat -3px -121px
+  vertical-align: -2px
+
+.ico-web
+  background: url('../img/sprite.png') no-repeat -5px -136px
+  width: 14px
+  height: 15px
+  vertical-align: -2px
+  margin-right: 3px
+
+.ico-location
+  background: url('../img/sprite.png') no-repeat -5px -155px
+  width: 17px
+  height: 14px
+  vertical-align: -3px
+
+.ico-phone
+  background: url('../img/sprite.png') no-repeat -5px -175px
+  width: 16px
+  height: 11px
+  vertical-align: 0px
+
+.ico-mobile
+  background: url('../img/sprite.png') no-repeat -5px -189px
+  width: 16px
+  height: 13px
+  vertical-align: -1px
+.ico-cal
+  background: url('../img/sprite.png') no-repeat -1px -447px
+  width: 16px
+  height: 17px
+  vertical-align: -2px
+.ico-fuel
+  background: url('../img/sprite.png') no-repeat -2px -466px
+  width: 15px
+  height: 17px
+  vertical-align: -4px
+
+.ico-engine
+  background: url('../img/sprite.png') no-repeat 0px -486px
+  width: 17px
+  height: 12px
+  vertical-align: 0px
+.ico-mileage
+  background: url('../img/sprite.png') no-repeat -1px -505px
+  width: 17px
+  height: 12px
+  vertical-align: 0px
+
+.ico-property-type
+  background: url('../img/sprite.png') no-repeat -25px -466px
+  width: 14px
+  height: 18px
+  vertical-align: -4px
+.ico-date-available
+  background: url('../img/sprite.png') no-repeat -25px -487px
+  width: 17px
+  height: 18px
+  vertical-align: -4px
+
+.ico-pet
+  background: url('../img/sprite.png') no-repeat -22px -444px
+  width: 17px
+  height: 14px
+  vertical-align: -2px
+
+.ico-moq
+  background: url('../img/sprite.png') no-repeat -23px -507px
+  width: 17px
+  height: 13px
+  vertical-align: -2px
+
+.ad-description
+  font-family: 'Roboto Slab', serif
+  margin-top: 5px
+  font-size: 12px
+  line-height: 14px
+  p
+    font-size: 12px
+    line-height: 14px
+    margin: 0
+    padding: 0
+  a
+    color: $blue
+    &:hover
+      @include transition(all .4s ease)
+      color: $fontColor
+  .two-row-btns
+    padding-top: 0px
+    padding-bottom: 0px
+.ad-author
+  font-family: 'Roboto Slab', serif
+  text-align: right
+  font-size: 12px
+  &.no-align
+    text-align: left
+  span
+    color: #343434
+  a
+    color: $blue
+
+.ad-card-service
+  .ad-card-picture
+    margin-bottom: 10px
+  .ad-title
+    margin-bottom: 45px
+    @include mq($until: desktop)
+      margin-bottom: 30px
+    @include mq($until: tablet)
+      margin-bottom: 20px
+  .mainpage
+    margin-bottom: 0px
+  .ad-serv-location
+    font-size: 9px
+    font-family: 'Roboto Slab', serif
+  .ico-location
+    @include transform(scale(.7))
+    margin-left: -4px
+    margin-right: -4px
+  .ad-author
+    font-size: 10px
+  .ad-posted-ago
+    margin-bottom: 3px
+    margin-top: 62px
+
+.ad-author-avatar
+  width: 60px
+  height: 60px
+  border-radius: 50%
+  overflow: hidden
+  border: 1px solid #c2a2ae
+  background-position: 50% 50%
+  background-size: cover
+  margin-bottom: 5px
+
+
+.ad-price
+  text-align: right
+  margin-bottom: 30px
+  position: absolute
+  right: 15px
+  top: 0
+  span
+    background: #369fe0
+    font-family: 'Roboto Slab', serif
+    font-size: 28px
+    font-weight: 700
+    padding: 2px 15px
+    display: inline-block
+    color: white
+    line-height: 1em
+    @include mq($until: wide)
+      font-size: 24px
+    @include mq($until: desktop)
+      font-size: 20px
+      padding: 2px 10px
+//benefits
+.benefits-box
+  background: white url('../images/benefits-bg.png') no-repeat right top
+  padding: 0
+  @include mq($until: wide)
+    background-size: cover
+
+.benefits-ico-box
+  padding: 0 30px 70px 30px
+  @include mq($until: desktop)
+    padding: 0 30px 40px 30px
+
+.benefits-title
+  color: $blue
+  font-size: 38px
+  font-family: 'Calibri', sans-serif
+  line-height: 1em
+  padding-top: 15px
+  @include mq($until: tablet)
+    font-size: 24px
+
+  span
+    font-size: 48px
+    @include mq($until: tablet)
+      font-size: 28px
+
+.benefits-list
+  list-style: none
+  margin-top: 10px
+  li
+    margin-bottom: 5px
+    position: relative
+    @include mq($until: tablet)
+      margin-bottom: 30px
+
+    &:before
+      background: url('../img/sprite.png') no-repeat -77px -55px
+      display: inline-block
+      margin-right: 10px
+      width: 19px
+      height: 19px
+      content: ' '
+      vertical-align: 3px
+      @include mq($until: tablet)
+        margin-left: 5px
+
+  span
+    font-family: 'Calibri', sans-serif
+    font-size: 16px
+    font-style: italic
+    color: #000000
+    margin-left: 30px
+    position: absolute
+    top: 0
+    left: 0px
+    line-height: 14px
+    @include mq($until: desktop)
+      font-size: 14px
+    @include mq($until: tablet)
+      font-size: 12px
+      left: 0
+
+.benefits-ico-title
+  font-size: 60px
+  font-family: 'Roboto Slab', serif
+  font-weight: 300
+  margin-top: 5px
+  margin-bottom: 20px
+  @include mq($until: wide)
+    font-size: 50px
+
+  @include mq($until: desktop)
+    font-size: 40px
+  @include mq($until: tablet)
+    font-size: 22px
+    line-height: 24px
+    margin-top: 10px
+
+.ico-benefit-1
+  background: url('../img/sprite.png') no-repeat -43px -150px
+  width: 124px
+  height: 170px
+.ico-benefit-2
+  background: url('../img/sprite.png') no-repeat -181px -150px
+  width: 165px
+  height: 170px
+.ico-benefit-3
+  background: url('../img/sprite.png') no-repeat -354px -143px
+  width: 124px
+  height: 170px
+
+.benefits-ico-box
+  .ico
+    @include mq($until: wide)
+      @include transform(scale(.8))
+      margin-top: -20px
+      margin-bottom: -20px
+    @include mq($until: desktop)
+      @include transform(scale(.6))
+      margin-top: -30px
+      margin-bottom: -30px
+    @include mq($until: tablet)
+      @include transform(scale(.4))
+      margin-top: -40px
+.ico-benefit-heading
+  font-size: 28px
+  font-family: 'Roboto Slab', serif
+  font-weight: 700
+  display: block
+  margin-top: 20px
+  @include mq($until: wide)
+    font-size: 24px
+  @include mq($until: desktop)
+    font-size: 20px
+  @include mq($until: tablet)
+    font-size: 18px
+    margin-top: -10px
+
+.ico-benefit-description
+  font-size: 16px
+  font-family: 'Roboto Slab', serif
+  font-weight: 700
+  @include mq($until: wide)
+    font-size: 14px
+  @include mq($until: desktop)
+    font-size: 12px
+  @include mq($until: tablet)
+  margin-bottom: 20px
+
+.featured-box
+  padding: 45px 70px 35px 70px
+  @include mq($until: wide)
+    padding-left: 50px
+    padding-right: 50px
+  @include mq($until: desktop)
+    padding-left: 30px
+    padding-right: 30px
+  @include mq($until: tablet)
+    padding-left: 10px
+    padding-right: 10px
+.featured-in-list
+  list-style: none
+  text-align: justify
+  line-height: 0em
+  @include mq($until: tablet)
+    text-align: center
+  &:after
+    display: inline-block
+    content: ' '
+    width: 100%
+    height: 1px
+  li
+    line-height: 1em
+    display: inline-block
+    &:hover
+      opacity: 0.7
+      @include transition(all .4s ease)
+    @include mq($until: tablet)
+      display: block
+      margin-bottom: 10px
+  img
+
+
+// Footer
+
+footer
+  .col-sm-1 a
+    text-align: center
+    font-size: 12px
+    line-height: 1.4em
+    font-family: 'Roboto', sans-serif
+    display: block
+    color: #949698
+    // font-family: 'Roboto Slab', serif
+    transition: all .4s ease
+    @include mq($until: wide)
+      font-size: 14px
+    @include mq($until: desktop)
+      font-size: 10px
+    &:hover
+      color: #94d363
+      text-decoration: underline
+.footer-col
+  font-size: 21px
+  font-family: 'Roboto', sans-serif
+  // text-transform: uppercase
+  font-weight: 700
+  display: block
+  margin-bottom: 35px
+  @include mq($until: wide)
+    font-size: 16px
+  @include mq($until: desktop)
+    font-size: 13px
+  @include mq($until: tablet)
+    margin-top: 10px
+
+.footer-desc
+  margin-top: 50px
+  display: inline-block
+  font-family: 'Roboto Slab', serif
+  font-weight: 300
+  font-size: 16px
+  @include mq($until: wide)
+    font-size: 14px
+  @include mq($until: desktop)
+    font-size: 12px
+  @include mq($until: tablet)
+    margin-top: 20px
+
+footer .socials
+  .ico
+    width: 40px
+    height: 40px
+    transition: background .3s ease
+    border-radius: 50%
+    &:hover
+      background-color: #94d363
+      opacity: 1
+  .ico-fb
+    background: rgba(0,0,0,0) url('../img/sprite2.png') no-repeat -9px -9px
+  .ico-tw
+    background: rgba(0,0,0,0) url('../img/sprite2.png') no-repeat -161px -8px
+  .ico-gplus
+    background: rgba(0,0,0,0) url('../img/sprite2.png') no-repeat -63px -9px
+  .ico-instagram
+    background: rgba(0,0,0,0) url('../img/sprite2.png') no-repeat -11px -105px
+  .ico-youtube
+    background: rgba(0,0,0,0) url('../img/sprite2.png') no-repeat -209px -8px
+  .ico-linkedin
+    background: rgba(0,0,0,0) url('../img/sprite2.png') no-repeat -113px -8px
+
+
+.ico-fb
+  width: 42px
+  height: 42px
+  background: url('../img/sprite.png') no-repeat -150px -14px
+
+.ico-tw
+  width: 42px
+  height: 42px
+  background: url('../img/sprite.png') no-repeat -199px -14px
+.ico-gplus
+  width: 42px
+  height: 42px
+  background: url('../img/sprite.png') no-repeat -248px -14px
+.ico-youtube
+  width: 42px
+  height: 42px
+  background: url('../img/sprite.png') no-repeat -298px -14px
+.socials .ico
+  margin-right: 5px
+  @include mq($until: desktop)
+    @include transform(scale(.7))
+    margin-left: -5px
+    margin-right: -5px
+  &:hover
+    opacity: 0.7
+    @include transition(all .4s ease)
+
+.footer-logo
+  margin-top: 30px
+  display: inline-block
+
+.footer-copywrite
+
+.underfooter-navi
+  a
+    display: inline-block
+    margin: 0 1em
+  a:last-child
+    margin-right: 0
+
+.backToTop
+  display: block
+  visibility: hidden
+  position: fixed
+  bottom: 50px
+  right: 40px
+  width: 40px
+  height: 40px
+  text-decoration: none
+  cursor: pointer
+  z-index: 10
+  background: url("../img/sprite2.png") no-repeat -257px -8px #292c31
+  /* fallback for older browsers */
+  background: url("../img/sprite2.png") no-repeat -257px -8px rgba(0, 0, 0, 1)
+  border-radius: 0
+  transition: all .4s ease
+  &:hover
+    background-color: #94d363
+  &.active
+    visibility: visible
+  @include mq($until: tablet)
+    display: none

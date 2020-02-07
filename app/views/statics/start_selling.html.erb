@@ -1,0 +1,164 @@
+<%= render('meta') %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+<%= @page.text.html_safe %>
+
+<% if false %>
+<section class="start-selling">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 slide">
+        <img src="/img/start_selling/slide.png" alt="Place free classified ads online uk">
+
+        <p class="text1">
+          Proin gravida nibh vel velit auctor aliquet. <br>
+          Aenean sollicitudin, lorem quis bibendum auctor, <br>
+          nisi elit consequat ipsum, nec sagittis sem nibh id elit.  odio sit amet nibh vulputate cursus a sit amet mauris.
+        </p>
+
+        <p class="text2">
+          Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.  odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.
+        </p>
+
+        <a href="#signup-popup" class="popup-with-zoom-anim"><img src="/img/start_selling/button.png" alt="Free local business listing sites uk"></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default first-panel">
+          <div class="panel-body">
+            <strong>TEXT</strong> TITLE1
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="panel panel-default second-panel">
+        <div class="panel-body">
+          <div class="col-md-4">
+            <img src="/img/start_selling/img1.png" alt="Post free business ads uk">
+            <p>
+              <strong>Lorem Ipsum. Proin gravida nibh vel velit</strong>
+              <br>
+              Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <img src="/img/start_selling/img2.png" alt="Post free business ads uk">
+            <p>
+              <strong>Lorem Ipsum. Proin gravida nibh vel velit</strong>
+              <br>
+              Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
+            </p>
+          </div>
+
+          <div class="col-md-4">
+            <img src="/img/start_selling/img3.png" alt="Post free business ads uk">
+            <p>
+              <strong>Lorem Ipsum. Proin gravida nibh vel velit</strong>
+              <br>
+              Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default third-panel">
+          <div class="panel-body">
+            <strong>TEXT</strong> TITLE
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="panel panel-default fourth-panel">
+        <a href="/companies" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Companies</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/wholesale" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Wholesale</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/stuff-for-sale" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Stuff for sale</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/services" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Services</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/jobs" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Jobs</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/motors" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Motors</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/properties" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Properties</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/pets" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Pets</span>
+          <div class="overlay"></div>
+        </a>
+
+        <a href="/neighbourhood" class="category-box">
+          <img src="http://placehold.it/270x176">
+          <span class="name">Neighbourhood</span>
+          <div class="overlay"></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default fifth-panel">
+          <div class="panel-body">
+            <p><strong>Sign up</strong> and <strong>post</strong> your first Ad <strong>today!</strong></p>
+            <a href="#signup-popup" class="popup-with-zoom-anim"><img src="/img/start_selling/button-large.png" alt="Free uk business directory database"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  $(function() {
+    $('.category-box').hover(function(e) {
+      $(this).removeClass('obscured').siblings().addClass('obscured')
+    }, function(e) {
+      $(this).siblings().removeClass('obscured');
+    });
+  });
+</script>
+
+<% end %>

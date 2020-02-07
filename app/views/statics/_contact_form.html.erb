@@ -1,0 +1,61 @@
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 have-pad-50">
+					<div class="content-holder no-pad-b">
+						<div class="row">
+							<div class="col-sm-6" style="margin-bottom: 50px;">
+								<h1>Send us a message</h1>
+<%= form_for(:contact, url: contact_form_path, :html => {:id => "send-contact-message", :class => "contact-form", :'data-type' => 'json'}) do |f| %>
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+                                    <div class="form-group">
+										<input type="text" name="first_name" value="<%= message_hash[:first_name] %>" class="form-control ico-name-bg" placeholder="Your full name">
+									</div>
+									<div class="form-group">
+										<input type="email" name="email" value="<%= message_hash[:email] %>" class="form-control ico-email-bg" placeholder="Your e-mail">
+									</div>
+									<div class="form-group">
+										<input type="email" name="c_email" value="<%= message_hash[:c_email] %>" class="form-control ico-email-bg" placeholder="Confirm e-mail">
+									</div>
+									<div class="form-group">
+										<input type="phone" name="phone" value="<%= message_hash[:phone] %>" class="form-control ico-phone-bg" placeholder="Your phone number">
+									</div>
+									<div class="form-group">
+                                        <%= select_tag 'subject', options_for_select(contact_subject_options, message_hash[:subject]), prompt: 'Select one of the appropriate options' %>
+									</div>
+									<div class="form-group">
+                                        <%= text_area_tag 'message', message_hash[:message], placeholder: 'Enter your message', rows: 4, class: 'form-control ico-textarea-bg' %>
+									</div>
+									<div class="form-group">
+										<div class="fileform-multiple fileform">
+											<%= f.file_field :attachment, :multiple => false, class: 'inputfile', name: 'attachment' %>
+											<label id="fileformlabel" for="file" class="form-control">No file chosen</label>
+											<div class="selectbutton">Choose a file</div>
+										</div>
+									</div>
+									<div class="captcha-container">
+										<%= recaptcha_tags %>
+									</div>
+									<div class="text-center">
+										<button type="submit" class="btn-pink have-fill">SUBMIT</button>
+									</div>
+<% end %>
+							</div>
+							<div class="col-sm-4 col-sm-offset-2 border-left--gradient">
+								<h1>Contact details</h1>
+								<%= @page.text.html_safe %>
+
+								<!--<div class="contact-map">
+								</div>-->
+								<div class="text-center contact-socials">
+									<a href="<%= "#{$template.facebook_link}" %>" target="_blank"><i class="ico ico-fb--grayscale"></i></a>
+									<a href="<%= "#{$template.twitter_link}" %>" target="_blank"><i class="ico ico-tw--grayscale"></i></a>
+									<a href="<%= "#{$template.googleplus_link}" %>" target="_blank"><i class="ico ico-gplus--grayscale"></i></a>
+									<a href="<%= "#{$template.youtube_link}" %>" target="_blank"><i class="ico ico-youtube--grayscale"></i></a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

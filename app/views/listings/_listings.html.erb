@@ -1,0 +1,13 @@
+<% grouped_listings = group_listings(listings) %>
+<% number_in_row = 0 %>
+<% grouped_listings.each_with_index do |listing, i| %>
+  <%= render partial: 'listings/listing', locals: { listing: listing } %>
+  <% if listing.service_ad? %>
+    <% if (grouped_listings[i + 1].nil? || !grouped_listings[i + 1].service_ad? || (number_in_row == 2)) %>
+      <div style="clear: both"></div>
+      <% number_in_row = 0 %>
+    <% else %>
+      <% number_in_row += 1 %>
+    <% end %>
+  <% end %>
+<% end %>

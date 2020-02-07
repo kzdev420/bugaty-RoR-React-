@@ -1,0 +1,7 @@
+<%= render ('blog/blog_posts/header')%>
+
+<%=
+  react_component( 'Content', { featuredBlogs: @featured_blogs, blogs: @blogs }, tag: :div, class: 'container react' )
+%>
+
+<%= render ('layouts/popup')%>

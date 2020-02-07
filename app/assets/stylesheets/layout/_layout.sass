@@ -1,0 +1,217 @@
+// HELPERS
+.no-pad-r
+  padding-right: 0
+  @include mq($until: tablet)
+    padding-right: 15px
+
+.smaller-pad
+  padding: 0 7px
+  @include mq($until: tablet)
+    padding: 0 15px
+
+.all-listing-pads
+  padding-right: 50px
+  @include mq($until: tablet)
+    padding-right: 15px
+.pt5
+  padding-top: 7px
+.pt15
+  padding-top: 15px
+.pt30
+  padding-top: 30px
+.pb25
+  padding-bottom: 25px
+.pt50
+  padding-top: 50px
+.have-pad-50
+  padding-right: 50px
+  padding-left: 50px
+  @include mq($until: desktop)
+    padding-left: 15px
+    padding-right: 15px
+.have-pad-150
+  padding-right: 150px
+  padding-left: 150px
+  @include mq($until: desktop)
+    padding-left: 80px
+    padding-right: 80px
+  @include mq($until: tablet)
+    padding-left: 20px
+    padding-right: 20px
+
+
+.pt130
+  padding-top: 130px
+  @include mq($until: desktop)
+    padding-top: 80px
+  @include mq($until: tablet)
+    padding-top: 40px
+
+
+.pr30
+  padding-right: 30px
+  @include mq($until: desktop)
+    padding-right: 0
+// General
+.container
+  max-width: 1200px
+  width: 100%
+  @media (max-width: 768px)
+    &.react, &.react div
+      padding-right: 0
+      padding-left: 0
+
+
+header
+  background: white
+  padding-top: 30px
+  padding-bottom: 20px
+  font-family: 'Calibri', sans-serif
+
+.header-pad-l
+  padding-left: 50px
+  @include mq($until: desktop)
+    padding-left: 15px
+
+.header-pad-r
+  padding-right: 50px
+  @include mq($until: desktop)
+    padding-right: 15px
+
+footer
+  background: #32353b
+  color: white
+  padding-top: 70px
+  padding-bottom: 70px
+  .copy-right
+    flex-wrap: wrap
+    justify-content: space-between
+    display: flex
+    align-items: start
+    div
+      margin-top: 10px
+      justify-content: center
+      @include mq($until: tablet)
+        text-align: center
+
+  .socials
+    p
+      text-align: right
+      @include mq($until: tablet)
+        text-align: center
+  .site
+    font-size: 24px
+  .about-us
+    p
+      color: #676b6e
+  @include mq($until: wide)
+    padding-bottom: 60px
+  @include mq($until: desktop)
+    padding-bottom: 40px
+    padding-top: 40px
+  @include mq($until: tablet)
+    text-align: center
+  .img-responsive
+    @include mq($until: tablet)
+      margin: 0 auto
+
+.under-footer
+  background: #000000
+  color: white
+  font-size: 14px
+  padding: 15px 0px 10px 0
+  font-family: 'Calibri', sans-serif
+  @include mq($until: tablet)
+    text-align: center !important
+
+.header-menu
+  background: #f2f2f4
+  border-top: 2px solid #d1d1d1
+  padding: 0
+  border-bottom: 2px solid #d1d1d1
+  font-family: 'Calibri', sans-serif
+
+// SECTIONS
+.mainpage-slider
+  position: relative
+  &:after
+    display: block
+    background: url('../img/slider-shade.png') no-repeat center bottom
+    width: 100%
+    height: 27px
+    position: absolute
+    bottom: -25px
+    left: 0
+    z-index: 1
+    content: ' '
+
+.whitebox
+  background: white
+  border-radius: 5px
+  border: 1px solid #dedede
+  padding: 0 10px 40px 10px
+
+.ads-list
+  margin-top: 25px
+.ads-list-more
+  margin-top: 25px
+
+.benefits
+  margin-top: 90px
+  @include mq($until: wide)
+    margin-top: 70px
+  @include mq($until: desktop)
+    margin-top: 50px
+
+.benefits-icons
+  margin-top: 85px
+  @include mq($until: wide)
+    margin-top: 65px
+  @include mq($until: desktop)
+    margin-top: 50px
+
+.featured-in
+  margin-top: 75px
+  margin-bottom: 100px
+  @include mq($until: wide)
+    margin-bottm: 60px
+    margin-top: 60px
+  @include mq($until: desktop)
+    margin-bottom: 60px
+    margin-top: 40px
+
+//////////////
+// INNER PAGES
+//////////////
+.text-page
+  p
+    font-size: 14px
+    line-height: 21px
+    font-weight: 300
+  h1
+    margin-top: 30px
+
+
+.banner-top
+  padding: 25px 0
+  background: #e1e5e5
+  position: relative
+  overflow: visible
+  &:after
+    display: block
+    background: url('../img/top-ad-shade.png') no-repeat center bottom
+    width: 100%
+    height: 27px
+    position: absolute
+    bottom: -18px
+    left: 0
+    z-index: -1
+    content: ' '
+
+.banner-bottom
+  margin-bottom: 100px
+  @include mq($until: tablet)
+    margin-bottom: 50px
+
+.ads
+  padding-top: 20px

@@ -1,0 +1,71 @@
+<%= provide(:title, "Pay for your listing subscriptions") %>
+
+<%= render ('layouts/header') %>
+
+<section class="ads">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="gradient-bg">
+          <div class="ads-list-title">
+            <span>Pay for your</span> LISTING SUBSCRIPTIONS
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="gradient-bg">
+          <div class="title">
+            Your selection
+            <hr width="10%" />
+          </div>
+          <div>
+            <%= select_tag(:subscription_plan, options_for_select(subscription_plans_array, @subscription_plan.stripe_id)) %>
+          </div>
+          <div class="title">
+            Payment method
+            <hr width="10%" />
+          </div>
+          <div class='image-container'>
+            <%= image_tag('paypal', alt: 'PayPal', id: 'paypal-payment', class: 'payment-method-active') %>
+          </div>
+          <div class='image-container'>
+            <%= image_tag('card', alt: 'Card via Stripe', id: 'stripe-payment') %>
+          </div>
+          <div class="title">
+            Promotional code
+            <hr width="10%" />
+          </div>
+          <div>
+            <p>Click here to enter your promotional code</p>
+            <%= form_for(:coupon, :html => { class: 'form-inline coupon' }) do |f| %>
+              <%= f.text_field :promotional_code, class: 'form-control', placeholder: 'Coupon code' %>
+              <%= f.button 'APPLY COUPON', class: 'form-control', id: 'apply_coupon' %>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="gradient-bg total-subscription">
+          <div class="title">
+            Total amount
+            <hr width="20%" />
+          </div>
+          <div class='subscription-details'>
+            <span><%= "#{currency_sign($price.currency)}#{@subscription_plan.price}" %></span>
+
+            <ul>
+              <li id='subscription-options-price'><%= "#{currency_sign($price.currency)}#{@subscription_plan.price} #{@subscription_plan.period}" %></li>
+              <li id='subscription-options-method'><%= payment_method(@listing) %></li>
+              <li id='subscription-options-coupon'>Code not applied</li>
+            </ul>
+
+            <% if @listing.subscribed_until && (@listing.subscribed_until > Time.current) %>
+              <p>Your listing paid until <%= @listing.subscribed_until.strftime("%m/%d/%Y") %></p>
+            <% end %>
+          </div>
+          <%= render 'subscriptions/payment_button' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

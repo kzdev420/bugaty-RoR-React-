@@ -1,0 +1,66 @@
+<div class="listings-tabs description-tabs">
+  <ul class="nav nav-tabs" role="tablist">
+    <% active_tab = nil %>
+    <% if @listing.description.present? %>
+      <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+      <% active_tab ||= 'description' %>
+    <% end %>
+    <% if @listing.opening_hours.reject(&:empty?).any? %>
+      <li role="presentation">
+        <a href="#opening-hours" aria-controls="opening-hours" role="tab" data-toggle="tab">Opening Hours</a>
+      </li>
+      <% active_tab ||= 'opening-hours' %>
+    <% end %>
+    <% if @listing.key_features.present? && @listing.key_features.any? %>
+      <li role="presentation"><a href="#key-features" aria-controls="key-features" role="tab" data-toggle="tab">Key Features</a></li>
+      <% active_tab ||= 'key-features' %>
+    <% end %>
+    <% if @listing.cancellations_and_returns.present? %>
+      <li role="presentation"><a href="#cancellations-and-returns" aria-controls="cancellations-and-returns" role="tab" data-toggle="tab">Cancellations &amp; Returns</a></li>
+      <% active_tab ||= 'cancellations-and-returns' %>
+    <% end %>
+    <% if @listing.warranty.present? %>
+      <li role="presentation"><a href="#warranty" aria-controls="warranty" role="tab" data-toggle="tab">Warranty</a></li>
+      <% active_tab ||= 'warranty' %>
+    <% end %>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane  <%= 'active' if active_tab == 'description' %>" id="description">
+      <%= @listing.description.html_safe %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane <%= 'active' if active_tab == 'opening-hours' %>" id="opening-hours">
+      <div class="single-char-line">
+        <%= image_tag 'clock-icon.png', size: '30x30', alt: 'Opening hours' %>
+        <% if @listing.open? %>
+          <span class='hours open'>Open Now</span>
+        <% else %>
+          <span class='hours closed'>Closed Now</span>
+        <% end -%>
+      </div>
+      <strong>Business opening hours</strong>
+      <ul class="opening-hours-list">
+        <% @listing.opening_hours.reject(&:empty?).each do |hours_item| %>
+          <li><%= hours_item %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div role="tabpanel" class="tab-pane <%= 'active' if active_tab == 'key-features' %>" id="key-features">
+      <ul class="key-features-list">
+        <% @listing.key_features.each do |key_feature| %>
+          <li><%= key_feature %></li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div role="tabpanel" class="tab-pane <%= 'active' if active_tab == 'cancellations-and-returns' %>" id="cancellations-and-returns">
+      <%= @listing.cancellations_and_returns %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane <%= 'active' if active_tab == 'warranty' %>" id="warranty">
+      <%= @listing.warranty %>
+    </div>
+  </div>
+</div>

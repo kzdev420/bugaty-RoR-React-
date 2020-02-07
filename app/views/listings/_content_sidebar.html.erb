@@ -1,0 +1,69 @@
+        <div class="col-sm-3">
+          <%= form_for(@search, url: search_path, method: 'POST') do |f| %>
+          <div class="gradient-bg">
+            <div class="form-inline search-keyword">
+              <%= f.text_field :keywords, class: 'form-control', placeholder: 'Search by keyword' %>
+              <%= f.button "Go" %>
+            </div>
+          </div>
+          <div class="gradient-bg">
+            <div class="search-form">
+              <% if @category.present? %>
+              <%= f.hidden_field :main_category, :value => @category.id.to_i %>
+              <% end %>
+              <!-- category filter -->
+              <% if @category.present? %>
+                <% if controller_name == 'subcategories' %>
+                  <%= f.hidden_field :category_id, value: @subcategory.id %>
+                <% else %>
+                  <div class="form-group one-line-group--right">
+                    <label class="green-label">Category name</label>
+                    <% @category.subcategories.order(:name).each_with_index do |c, index| %>
+                      <div class="radiobox<%= (index > 19) && (c.id != @search.category_id) ? ' latent' : '' %>">
+                        <%= f.radio_button :category_id, c.id, id: "search_category_id#{c.id}" %>
+                        <label for="search_category_id<%= "#{c.id}" %>"><%= c.name %> (<%= ads_count(subcategory: c) %>)</label>
+                      </div>
+                    <% end %>
+                    <a href="#" id="show_more" class="show_cats">Show more</a>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="form-group one-line-group--right">
+                  <label class="green-label">Category name</label>
+                  <% Category.order(:name).each_with_index do |c, index| %>
+                    <div class="radiobox<%= (index > 19) && (c.id != @search.main_category) ? ' latent' : '' %>">
+                      <%= f.radio_button :main_category, c.id, id: "search_main_category#{c.id}" %>
+                      <label for="search_main_category<%= "#{c.id}" %>"><%= c.name %> (<%= ads_count(category: c) %>)</label>
+                    </div>
+                  <% end %>
+                  <a href="#" id="show_more" class="show_cats">Show more</a>
+                </div>
+              <% end %>
+
+              <!-- show only -->
+              <div class="form-group one-line-group--right">
+                <label class="green-label">Show only</label>
+                <div class="radiobox">
+                  <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+                  <label for="featured_1">Featured Ads</label>
+                </div>
+                <div class="radiobox">
+                  <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+                  <label for="featured_3">Urgent Ads</label>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <% if @category.present? %>
+                  <%= link_to "Clear all".html_safe, category_path(@category.id.to_i), class: 'btn-pink with-white-bg' %>
+                <% elsif params[:controller] == 'search' %>
+                  <%= link_to "Clear all", search_path, class: 'btn-pink with-white-bg' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="gradient-bg gradient-bg--ads">
+            <%= render ('shared/banner-left-sidebar')%>
+          </div>
+          <% end %>
+        </div>

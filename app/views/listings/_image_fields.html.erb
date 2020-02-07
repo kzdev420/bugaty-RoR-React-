@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-4">
+    <% if @selected_category == "3" %>
+      <div class="field-desc">Photos:</div>
+    <% elsif @selected_category == "4" || @selected_category == "1" %>
+      <div class="field-desc">Files:</div>
+    <% else %>
+      <div class="field-desc">Image:</div>
+    <% end %>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if params[:action] == 'edit' %>
+        <div class="listing-thumbs">
+          <%= f.fields_for :photos do |photo| %>
+            <div class="existing-photo" style="display: inline-block">
+              <img src="<%= photo.object.image.thumb.url %>">
+              <%= photo.hidden_field :id %>
+              <%= photo.check_box '_destroy' %>
+              <%= photo.label '_destroy', 'delete', style: 'font-size: 12px; font-weight: normal; position: relative; top: -2px; margin-left: 3px;' %>
+            </div>
+          <% end %>
+        </div>
+
+        <br><br>
+      <% end %>
+
+      <div class="fileform-multiple">
+        <%= f.fields_for :photos, Photo.new do |photo| %>
+        <%= photo.file_field :image, :"data-multiple-caption" => :"{count} files selected", 'data-max-files' => (5 - listing.photos.count), class: 'inputfile skip-auto listing', name: "listing[photos_attributes][][image]" %>
+        <% end %>
+        <label for="file" class="form-control">Choose a file</label>
+        <div class="selectbutton">Choose photo</div>
+        <div class="inputfile-list"></div>
+        <small>Maximum 5 files, each less than 2Mb</small>
+      </div>
+    </div>
+  </div>
+</div>

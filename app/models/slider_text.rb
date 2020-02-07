@@ -1,0 +1,2 @@
+class SliderText < ApplicationRecord
+end

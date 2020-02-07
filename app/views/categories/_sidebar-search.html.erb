@@ -1,0 +1,522 @@
+				<div class="col-sm-3">
+					<%= form_for(@search, url: search_path, method: 'POST') do |f| %>
+					<div class="gradient-bg">
+						<div class="form-inline search-keyword">
+							<%= f.text_field :keywords, class: 'form-control', placeholder: 'Search by keyword' %>
+							<%= f.button "Go" %>
+						</div>
+					</div>
+					<div class="gradient-bg">
+						<div class="search-form">
+							<% if @category.present? %>
+							<%= f.hidden_field :main_category, :value => @category.id.to_i %>
+							<% end %>
+							<!-- sort by -->
+							<div class="form-group one-line-group--right">
+								<label>Sort by</label>
+								<div class="selectbox">
+									<%= f.select :sortby, Search::SORTBY_VALUES, id: 'search_distance' %>
+								</div>
+							</div>
+							<div class="text-center">
+								<% if @category.present? %>
+								<%= link_to "<span>Refine</span> search".html_safe, category_path(@category.id.to_i), class: 'blue-text' %>
+								<% end %>
+								<%= f.button "Update", class: 'btn-pink with-white-bg' %>
+							</div>
+							<div class="form-group">
+								<label>Location</label>
+								<div class="selectbox">
+									<%= f.text_field :location, class: 'form-control' %>
+								</div>
+							</div>
+							<div class="form-group one-line-group--right">
+								<label>Distance</label>
+								<div class="selectbox">
+									<%= f.select :distance, (Search::DISTANCE_VALUES.map { |distance| ["#{distance}#{' miles' unless distance == 'Default'}", distance] }.to_h) %>
+								</div>
+							</div>
+                            <!-- country filter -->
+                            <div class="form-group one-line-group--right">
+                              <label class="green-label">Continent</label>
+                              <% @continents.each do |cont| %>
+                              <div class="radiobox">
+                                <%= f.radio_button :continent_id, cont.id, id: "search_continent_id#{cont.id}" %>
+                                  <label for="search_continent_id<%= cont.id %>"><%= "#{cont.name} (#{ads_count(continent: cont)})" %></label>
+                              </div>
+                              <% end %>
+                            </div>
+                            <% if @search.continent_id.present? %>
+                            <div class="form-group one-line-group--right">
+                              <label class="green-label">Country</label>
+                              <% @countries.each_with_index do |country, index| %>
+                              <% country_id = country[0].id %>
+                              <% country_name = country[0].name %>
+                              <% listings_count = country[1] %>
+                              <div class="radiobox<%= (index > 19) && (country_id != @search.country_id) ? ' latent' : '' %>">
+                                <%= f.radio_button :country_id, country_id, id: "search_country_id#{country_id}" %>
+                                  <label for="search_country_id<%= country_id %>"><%= "#{country_name} (#{listings_count})" %></label>
+                              </div>
+                              <% end %>
+                              <a href="#" id="show_more" class="show_countries">Show more</a>
+                            </div>
+                            <% if @search.country_id.present? %>
+                            <div class="form-group one-line-group--right">
+                              <label class="green-label">Region</label>
+                              <% @regions.each_with_index do |region, index| %>
+                              <% region_id = region[0].id %>
+                              <% region_name = region[0].name %>
+                              <% listings_count = region[1] %>
+                              <div class="radiobox<%= (index > 19) && (region_id != @search.region_id) ? ' latent' : '' %>">
+                                <%= f.radio_button :region_id, region_id, id: "search_region_id#{region_id}" %>
+                                  <label for="search_region_id<%= region_id %>"><%= "#{region_name} (#{listings_count})" %></label>
+                              </div>
+                              <% end %>
+                              <a href="#" id="show_more" class="show_regions">Show more</a>
+                            </div>
+                            <% if @search.region_id.present? %>
+                            <div class="form-group one-line-group--right">
+                              <label class="green-label">City</label>
+                              <% @cities.each_with_index do |city, index| %>
+                              <% city_id = city[0].id %>
+                              <% city_name = city[0].name %>
+                              <% listings_count = city[1] %>
+                              <div class="radiobox<%= (index > 19) && (city_id != @search.city_id) ? ' latent' : '' %>">
+                                <%= f.radio_button :city_id, city_id, id: "search_city_id#{city_id}" %>
+                                  <label for="search_city_id<%= city_id %>"><%= "#{city_name} (#{listings_count})" %></label>
+                              </div>
+                              <% end %>
+                              <a href="#" id="show_more" class="show_cities">Show more</a>
+                            </div>
+                            <% end %>
+                            <% end %>
+                            <% end %>
+							<!-- category filter -->
+							<% if @category.present? %>
+                              <% if controller_name == 'subcategories' %>
+                                <%= f.hidden_field :category_id, value: @subcategory.id %>
+                              <% else %>
+							<div class="form-group one-line-group--right">
+                              <label class="green-label">Category name</label>
+                              <% @category.subcategories.order(:name).each_with_index do |c, index| %>
+                              <div class="radiobox<%= (index > 19) && (c.id != @search.category_id) ? ' latent' : '' %>">
+                                <%= f.radio_button :category_id, c.id, id: "search_category_id#{c.id}" %>
+                                <label for="search_category_id<%= "#{c.id}" %>"><%= c.name %> (<%= ads_count(subcategory: c) %>)</label>
+                              </div>
+                              <% end %>
+                              <a href="#" id="show_more" class="show_cats">Show more</a>
+							</div>
+                              <% end %>
+                            <% else %>
+							<div class="form-group one-line-group--right">
+                              <label class="green-label">Category name</label>
+                              <% Category.order(:name).each_with_index do |c, index| %>
+                              <div class="radiobox<%= (index > 19) && (c.id != @search.main_category) ? ' latent' : '' %>">
+                                <%= f.radio_button :main_category, c.id, id: "search_main_category#{c.id}" %>
+                                <label for="search_main_category<%= "#{c.id}" %>"><%= c.name %> (<%= ads_count(category: c) %>)</label>
+                              </div>
+                              <% end %>
+                              <a href="#" id="show_more" class="show_cats">Show more</a>
+							</div>
+							<% end %>
+							<% if @category.present? && @category.id == 1 %>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Show only</label>
+								<div class="radiobox">
+									<%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+									<label for="featured_1">Featured products</label>
+								</div>
+								<div class="radiobox">
+									<%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+									<label for="featured_2">Reviewed listings</label>
+								</div>
+								<div class="radiobox">
+									<%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+									<label for="featured_3">Urgent listings</label>
+								</div>
+							</div>
+							<% elsif @category.present? && @category.id == 2 %>
+                                                        <div class="form-group one-line-group--right">
+                                                          <label class="green-label">Wholesale Sale Price</label>
+                                                          <div class="input-group one-line-input">
+                                                            <label>From</label>
+					                    <%= f.text_field :sale_min, class: 'form-control' %>
+                                                            <label>To</label>
+                                                            <%= f.text_field :sale_max, class: 'form-control' %>
+                                                          </div>
+                                                        </div>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+						          <label class="green-label">Wholesale Price</label>
+						          <div class="input-group one-line-input">
+						            <label>From</label>
+                                                            <%= f.text_field :wholesale_min, class: 'form-control' %>
+                                                            <label>To</label>
+                                                            <%= f.text_field :wholesale_max, class: 'form-control' %>
+                                                          </div>
+							</div>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+							  <label class="green-label">Retail Price</label>
+							  <div class="input-group one-line-input">
+							    <label>From</label>
+							    <%= f.text_field :retail_min, class: 'form-control' %>
+							    <label>To</label>
+							    <%= f.text_field :retail_max, class: 'form-control' %>
+							  </div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+                                                          <label class="green-label">Show only</label>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'featured' %>
+                                                            <label for="search_showonly_featured">Featured products</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'reviewed' %>
+                                                            <label for="search_showonly_reviewed">Reviewed products</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'urgent' %>
+                                                            <label for="search_showonly_urgent">Urgent products</label>
+                                                          </div>
+							</div>
+							<% elsif @category.present? && @category.id == 3 %>
+                                                        <!-- price -->
+                                                        <div class="form-group one-line-group--right">
+                                                          <label class="green-label">Price</label>
+                                                          <div class="input-group one-line-input">
+                                                            <label>From</label>
+                                                            <%= f.text_field :min_price, class: 'form-control' %>
+                                                            <label>To</label>
+                                                            <%= f.text_field :max_price, class: 'form-control' %>
+                                                          </div>
+                                                        </div>
+                                                        <!-- show only -->
+                                                        <div class="form-group one-line-group--right">
+                                                          <label class="green-label">Show only</label>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+                                                            <label for="featured_1">Featured Ads</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                                            <label for="featured_2">Reviewed Ads</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+                                                            <label for="featured_3">Urgent Ads</label>
+                                                          </div>
+                                                        </div>
+                                                        <!-- condition -->
+                                                        <div class="form-group one-line-group--right">
+                                                          <label class="green-label">Condition</label>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :condition, 'New', id: 'condition_1' %>
+                                                            <label for="condition_1">New</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :condition, 'Used', id: 'condition_2' %>
+                                                            <label for="condition_2">Used</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :condition, 'Refurbished', id: 'condition_3' %>
+                                                            <label for="condition_3">Refurbished</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :condition, 'For parts & not working', id: 'condition_4' %>
+                                                            <label for="condition_4">For parts &amp; not working</label>
+                                                          </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :condition, 'other', id: 'condition_5' %>
+                                                            <label for="condition_5">Other</label>
+                                                          </div>
+                                                        </div>
+							<% elsif @category.present? && @category.id == 4  %>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Price</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :min_price, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :max_price, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+							  <label class="green-label">Show only</label>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'fixed_price', id: 'featured_1' %>
+							    <label for="featured_1">Fixed price</label>
+							  </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'hourly_price', id: 'featured_2' %>
+							    <label for="featured_2">Hourly price</label>
+							  </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'featured', id: 'featured_3' %>
+							    <label for="featured_3">Featured services</label>
+							  </div>
+                                                          <div class="radiobox">
+                                                            <%= f.radio_button :showonly, 'reviewed', id: 'featured_4' %>
+                                                            <label for="featured_4">Reviewed services</label>
+                                                          </div>
+				                          <div class="radiobox">
+							    <%= f.radio_button :showonly, 'urgent', id: 'featured_5' %>
+							    <label for="featured_5">Urgent services</label>
+							  </div>
+							</div>
+							<% elsif @category.present? && @category.id == 5 %>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Salary</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :salary_min, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :salary_max, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+                              <label class="green-label">Show only</label>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+								<label for="featured_1">Featured jobs</label>
+				              </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                <label for="featured_2">Reviewed jobs</label>
+                              </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+								<label for="featured_3">Urgent jobs</label>
+				              </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'permanent', id: 'featured_4' %>
+				                <label for="featured_4">Permanent jobs</label>
+				              </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'temporary', id: 'featured_5' %>
+				                <label for="featured_5">Temporary jobs</label>
+				              </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'part_time', id: 'featured_6' %>
+								<label for="featured_6">Part time jobs</label>
+				              </div>
+							</div>
+							<% elsif @category.present? && @category.id == 6 %>
+
+							<div class="form-group one-line-group--right car-max-w">
+								<label>Make</label>
+								<div class="selectbox">
+									<select name="search[car_make]" id="search_car_make">
+										<option value="0">All</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group one-line-group--right car-max-w">
+								<label>Model</label>
+								<div class="selectbox">
+									<select name="search[car_model]" id="search_car_model">
+										<option value="0">Select make first</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group one-line-group--right car-max-w">
+								<label>Age</label>
+								<div class="selectbox">
+									<%= f.select :car_age, Search::CAR_AGE_VALUES %>
+								</div>
+							</div>
+							<div class="form-group one-line-group--right car-max-w">
+								<label>Mileage</label>
+								<div class="selectbox">
+									<%= f.select :car_mileage, Search::CAR_MILEAGE_VALUES %>
+								</div>
+							</div>
+							<div class="form-group one-line-group--right car-max-w">
+								<label>Engine size</label>
+								<div class="selectbox">
+									<%= f.select :car_engine_size, Search::CAR_ENGINE_SIZE_VALUES %>
+								</div>
+							</div>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Price</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :min_price, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :max_price, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Show only</label>
+								<div class="radiobox">
+									<%= f.radio_button :showonly, 'featured', class: 'featured_1' %>
+									<label for="featured_1">Featured cars</label>
+								</div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                <label for="featured_2">Reviewed cars</label>
+                              </div>
+								<div class="radiobox">
+									<%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+									<label for="featured_3">Urgent cars</label>
+								</div>
+								<div class="radiobox">
+									<%= f.radio_button :showonly, 'petrol', id: 'featured_4' %>
+									<label for="featured_4">Petrol cars</label>
+								</div>
+								<div class="radiobox">
+									<%= f.radio_button 'showonly', 'diesel', id: 'featured_5' %>
+									<label for="featured_5">Diesel cars</label>
+								</div>
+                                <div class="radiobox">
+									<%= f.radio_button :showonly, 'automatic', id: 'featured_6' %>
+									<label for="featured_6">Automatic transmission</label>
+								</div>
+                                <div class="radiobox">
+									<%= f.radio_button :showonly, 'manual', id: 'featured_7' %>
+									<label for="featured_7">Manual transmission</label>
+								</div>
+
+							</div>
+							<% elsif @category.present? && @category.id == 7 %>
+							<!-- category filter -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Property type</label>
+								<% Search::PROPERTY_TYPE_VALUES.each_with_index do |val, i| %>
+									<div class="radiobox">
+										<%= f.radio_button :property_type, val, id: "search_property_type_#{i + 1}" %>
+										<label for="search_property_type_<%= i + 1 %>"><%= val %></label>
+									</div>
+								<% end %>
+							</div>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Price</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :min_price, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :max_price, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+							  <label class="green-label">Show only</label>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+				                <label for="featured_1">Featured Ads</label>
+							  </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                <label for="featured_2">Reviewed Ads</label>
+                              </div>
+							  <div class="radiobox">
+							    <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+				                <label for="featured_3">Urgent Ads</label>
+				              </div>
+							</div>
+							<% elsif @category.present? && @category.id == 8  %>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Price</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :min_price, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :max_price, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+				              <label class="green-label">Show only</label>
+				              <div class="radiobox">
+				                <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+				                <label for="featured_1">Featured Ads</label>
+				              </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                <label for="featured_2">Reviewed Ads</label>
+                              </div>
+				              <div class="radiobox">
+				                <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+				                <label for="featured_3">Urgent Ads</label>
+				              </div>
+							</div>
+							<% elsif @category.present? && @category.id == 9  %>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Price</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :min_price, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :max_price, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+                              <label class="green-label">Show only</label>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+                                <label for="featured_1">Featured Ads</label>
+                              </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                <label for="featured_2">Reviewed Ads</label>
+                              </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+                                <label for="featured_3">Urgent Ads</label>
+                              </div>
+							</div>
+							<% else %>
+							<!-- price -->
+							<div class="form-group one-line-group--right">
+								<label class="green-label">Price</label>
+								<div class="input-group one-line-input">
+									<label>From</label>
+									<%= f.text_field :min_price, class: 'form-control' %>
+									<label>To</label>
+									<%= f.text_field :max_price, class: 'form-control' %>
+								</div>
+							</div>
+							<!-- show only -->
+							<div class="form-group one-line-group--right">
+                              <label class="green-label">Show only</label>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'featured', id: 'featured_1' %>
+                                <label for="featured_1">Featured Ads</label>
+                              </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'reviewed', id: 'featured_2' %>
+                                <label for="featured_2">Reviewed Ads</label>
+                              </div>
+                              <div class="radiobox">
+                                <%= f.radio_button :showonly, 'urgent', id: 'featured_3' %>
+                                <label for="featured_3">Urgent Ads</label>
+                              </div>
+							</div>
+							<% end %>
+
+							<div class="text-center">
+								<% if @category.present? %>
+									<%= link_to "Clear all".html_safe, category_path(@category.id.to_i), class: 'btn-pink with-white-bg' %>
+								<% elsif params[:controller] == 'search' %>
+									<%= link_to "Clear all", search_path, class: 'btn-pink with-white-bg' %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+					<div class="gradient-bg gradient-bg--ads">
+						<%= render ('shared/banner-left-sidebar')%>
+					</div>
+					<% end %>
+				</div>

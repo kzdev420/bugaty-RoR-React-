@@ -1,0 +1,89 @@
+
+
+<div id="login-popup" class="zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<span class="login-nearlogo">Log in to</span>
+		<img src="/img/logo.png" alt="Online buying and selling websites in uk" class="img-responsive not-a-block center-block" style="max-width: 370px">
+	</div>
+	<div class="popup-content">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+			<%= render ('devise/sessions/new')%>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- SIGN UP -->
+
+<div id="signup-popup" class="zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<img src="/img/logo.png" alt="Online buying and selling sites in uk" class="img-responsive center-block">
+	</div>
+	<div class="popup-content">
+		<div class="popup-action pb25 text-center">Come join Bugaty<br />Let’s set up your account</div>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+			<%= render ('devise/registrations/new')%>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- REGISTER -->
+
+<!-- Free ad -->
+
+<div id="free-ad-popup" class="zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<img src="/img/logo.png" alt="Websites to sell items online for free" class="img-responsive center-block">
+	</div>
+	<div class="popup-content">
+		<div class="popup-heading popup-heading--bold popup-heading--blue text-center">Post free ad</div>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+				<div class="selectbox selectbox--blue-gradient">
+					 <%= select_tag "post-ad-popup-select", options_for_select(category_collection), {prompt: 'Select category'} %>
+				</div>
+
+				<div class="two-row-btns pt130">
+					<button type="submit" class="btn-pink have-fill" id="process-redirect">CONTINUE</button>
+					<button type="" class="btn-blue have-fill">CANCEL</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Forget pass -->
+
+<div id="forget-pass-popup" class="zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<img src="/img/logo.png" alt="Free online advertising for your business" class="img-responsive center-block">
+	</div>
+	<div class="popup-content">
+<%= render ('devise/passwords/new')%>
+	</div>
+</div>
+
+
+<!-- SUCESS AND FAILED ALERTS -->
+  <div class="popup-overlay" id="show-ok">
+    <div class="popup-status popup-ok text-center">
+      <div class="popup-status-heading">Success</div>
+      <div class="popup-status-content">Message has been sent successfully.</div>
+      <a href="#" class="btn-status-btn hide-status" onclick="$('.popup-overlay').hide();">OK</a>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="show-failed">
+    <div class="popup-status popup-fail text-center">
+      <div class="popup-status-heading">Failed</div>
+      <div class="popup-status-content">Message has not been sent successfully.
+Try again.</div>
+      <a href="#" class="btn-status-btn btn-fail hide-status" onclick="$('.popup-overlay').hide();">OK</a>
+    </div>
+  </div>

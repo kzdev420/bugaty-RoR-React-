@@ -1,0 +1,153 @@
+<%= content_for(:title, @user.title.presence || [@user.first_name, @user.last_name].join(' ')) %>
+
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @user.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @user.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('users/header')%>
+
+
+  <!-- CONTENT -->
+  <section class="text-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 have-pad-50">
+          <div class="content-holder no-pad-b">
+            <div class="row">
+              <div class="col-sm-8">
+
+                <div class="row user-metrics">
+                  <div class="col-sm-4">
+                    <div class="user-metrics-row">
+                      <% if @user == current_user %>
+                      <% elsif current_user %>
+                        <a href="#send-u-message-popup" class="btn-contact popup-with-move-anim"><i class="ico ico-person"></i> Contact me</a>
+                      <% else %>
+                        Please <%= link_to 'log in', '#login-popup', class: 'popup-with-move-anim', style: 'color:#369fe0' %> to contact with user
+                      <% end %>
+                    </div>
+                    <div class="user-metrics-row">
+                      <% if @user.last_seen.present? %>
+                      <i class="ico ico-seen"></i><span class="green"> Last seen</span>
+                      <%= time_ago_in_words(@user.last_seen) + " ago" %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <!--
+                    <div class="user-metrics-row">
+                      <i class="ico ico-response-time"></i> $what? 4 business hours Response time
+                    </div>-->
+                    <% if @user.language.present? %>
+                    <div class="user-metrics-row">
+                      <i class="ico ico-chat"></i> <%= @user.language %>
+                    </div>
+                    <% end %>
+                    <% if @user.phone.present? %>
+                    <div class="user-metrics-row">
+                      <i class="ico ico-mobile2"></i> <%= @user.phone %>
+                    </div>
+                    <% end %>
+                  </div>
+                  <div class="col-sm-4">
+                    <% if @user.location.present? %>
+                    <div class="user-metrics-row">
+                      <i class="ico ico-country"></i> <%= @user.location %>
+                    </div>
+                    <% end %>
+                    <div class="user-metrics-row">
+                      <% if (@user.last_seen || DateTime.yesterday) > Time.now - 5.minute %>
+                      <i class="ico ico-online"></i> Online
+                      <% else %>
+                      <i class="ico ico-offline"></i> Offline
+                      <% end %>
+                    </div>
+                    <div class="user-metrics-row">
+                      <i class="ico ico-email"></i> <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="profile-description-text">
+                  <% if @user.description.present? %>
+                    <p><span class="green">Description:</span> <%= @user.description %>
+                  <% end %>
+                </div>
+
+                <%= render partial: '/listings/listing_tabs' %>
+
+                <%= render ('listings/similar')%>
+
+              </div>
+              <div class="col-sm-4 border-left--gradient">
+
+                <%= render ('users/user-sidebar')%>
+                <!-- ads-->
+                <div class="profile-stats ads">
+                  <%= render ('shared/banner-right-sidebar-long')%>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- CONTENT -->
+
+
+
+
+<!-- Send message ad -->
+
+<div id="send-u-message-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Online buying and selling websites in uk" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold popup-heading--blue text-center">Send a message</div>
+    <div class="row">
+
+<%= form_for(@user, url: new_u_message_path, :html => {:id => "send-u-message-box", :class => "contact-form", :'data-type' => 'json'}, :remote => true ) do |f| %>
+      <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <!--<div class="selectbox selectbox--blue-gradient">
+          <select>
+            <option>Select  ad category</option>
+            <option>Select  ad category</option>
+          </select>
+        </div>-->
+        <% if current_user %>
+        <% else %>
+        <div class="form-group">
+          <label>Reply to email</label>
+          <input type="text" name="sender_email" class="form-control" placeholder="Your email">
+        </div>
+        <% end %>
+        <div class="form-group">
+          <textarea name="message" class="form-control ico-textarea-bg" rows="4" placeholder="Your Description"></textarea>
+        </div>
+        <div class="text-center captcha-popup row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= recaptcha_tags %>
+            <!--<div class="form-group">
+              <input type="text" name="" class="form-control small-pad" placeholder="Captcha">
+            </div>-->
+          </div>
+        </div>
+        <div class="two-row-btns pt20">
+          <button type="submit" class="btn-pink have-fill">SEND</button>
+          <button type="" class="btn-blue have-fill">CANCEL</button>
+        </div>
+      </div>
+<% end %>
+
+    </div>
+  </div>
+</div>

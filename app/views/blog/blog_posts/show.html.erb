@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+
+<%= render ('header')%>
+
+<%=
+  react_component( 'BlogPostShow', {
+    blogPost: @blog_post,
+    authenticity_token:  form_authenticity_token,
+    currentUser: current_user ? UserSerializer.new(current_user) : nil
+  }, tag: :div, class: 'container' )
+%>
+
+<%= render ('layouts/popup')%>

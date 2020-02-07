@@ -1,0 +1,44 @@
+<div>
+  <% if (@listing.subscribed_until) && (@listing.subscribed_until - 5.days < Time.current) %>
+    <%= button_tag 'Proceed to secure payment', class: 'form-control', id: 'process-subscription-stripe', style: 'display: none;' %>
+    <%= button_tag 'Proceed to secure payment', class: 'form-control', id: 'process-subscription-paypal' %>
+    <%= form_tag '/subscription_checkout', method: :post do -%>
+      <%= hidden_field_tag(:listing_id, @listing.id) %>
+      <%= hidden_field_tag(:plan_id, @subscription_plan.id) %>
+      <%= hidden_field_tag(:coupon_id) %>
+      <%= hidden_field_tag(:stripe_token) %>
+      <%= hidden_field_tag(:subscription_amount) %>
+      <script type="text/javascript" src="https://checkout.stripe.com/checkout.js" ></script>
+      <script type="text/javascript">
+        var handler = StripeCheckout.configure({
+          key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+          locale: 'auto',
+          name: 'Listing subscription',
+          email: '<%= @listing.user.email %>',
+          currency: 'GBP',
+          token: function(token) {
+            $('input#stripe_token').val(token.id);
+            $('form').submit();
+          }
+        });
+
+        $('button#process-subscription-stripe').click(function(event){
+          event.preventDefault();
+
+          var amount = $('input#subscription_amount').val();
+          amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+          amount = parseFloat(amount);
+
+          if (amount) {
+            amount = amount * 100; // Needs to be an integer!
+            handler.open({
+              amount: Math.round(amount)
+            })
+          }
+        })
+      </script>
+    <% end -%>
+    <p>You will be charged now and yearly at this time when your listing automatically renews. You can cancel automatic renewal at any time.</p>
+  <% end %>
+</div>

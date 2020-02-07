@@ -1,0 +1,14 @@
+  <section class="newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3" style="text-align: center; margin-bottom: 50px; align: center;">
+          <h4 style="font-size: 24px; font-weight: 700; font-family: 'Roboto Slab', serif; margin-bottom: 15px;">Companies, Freelancers, Sellers and Buyers</h4>
+          <span style="font-family: 'Roboto Slab', serif; font-size: 16px;">Join our weekly newsletter to learn how to create a business you love</span>
+          <%= form_for(:subscription, url: subscribe_path, :method => :post) do |f| %>
+            <%= f.text_field :email, {class: 'form-control', placeholder: 'Enter your email', style: 'margin: 15px; border: 3px solid #87c150'} %>
+            <%= f.submit 'Subscribe', class: 'btn-pink have-fill' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>

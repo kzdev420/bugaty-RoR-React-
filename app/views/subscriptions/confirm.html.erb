@@ -1,0 +1,68 @@
+<%= provide(:title, "Confirm your PayPal subscription") %>
+
+<%= render ('layouts/header') %>
+
+<section class="ads">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="gradient-bg">
+          <div class="ads-list-title">
+            <span>Confirm your</span> LISTING SUBSCRIPTION
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="gradient-bg">
+          <div class="title">
+            Your selection
+            <hr width="10%" />
+          </div>
+          <div>
+            <%= "#{currency_sign($price.currency)}#{@subscription_plan.price} #{@subscription_plan.period}" %>
+          </div>
+          <br><br>
+          <div class="title">
+            Payment method
+            <hr width="10%" />
+          </div>
+          <div class='image-container'>
+            <%= image_tag('paypal', alt: 'PayPal', id: 'paypal-payment') %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="gradient-bg total-subscription">
+          <div class="title">
+            Total amount
+            <hr width="20%" />
+          </div>
+          <div class='subscription-details'>
+            <span><%= "#{currency_sign($price.currency)}#{@total_amount}" %></span>
+
+            <ul>
+              <li><%= "#{currency_sign($price.currency)}#{@total_amount} #{@subscription_plan.period}" %></li>
+              <li>Pay With PayPal</li>
+              <% if params[:coupon_id].present? %>
+                <li>Code applied</li>
+              <% else %>
+                <li>Code not applied</li>
+              <% end %>
+            </ul>
+          </div>
+          <div>
+            <%= button_tag 'Confirm subscription', class: 'form-control', id: 'confirm-paypal' %>
+            <%= form_tag '/paypal_subscription', method: :post do -%>
+              <%= hidden_field_tag(:listing_id, @listing.id) %>
+              <%= hidden_field_tag(:plan_id, @subscription_plan.id) %>
+              <%= hidden_field_tag(:paypal_payment_token, @paypal_payment_token) %>
+              <%= hidden_field_tag(:paypal_customer_token, @paypal_customer_token) %>
+              <%= hidden_field_tag(:coupon_id, @coupon_id) %>
+            <% end -%>
+            <p>You will be charged now and yearly at this time when your listing automatically renews. You can cancel automatic renewal at any time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

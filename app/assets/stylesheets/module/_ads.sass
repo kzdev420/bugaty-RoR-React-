@@ -1,0 +1,840 @@
+////////////
+//ADS PAGES (aka CATAGERIES)
+////////////
+
+.gradient-bg
+	@include linear-gradient(0deg, #f2f2f2, white)
+	border: 1px solid #dedede
+	border-radius: 5px
+	padding: 20px 15px
+	margin-bottom: 20px
+	.ads-list-title
+		padding: 0
+		line-height: 1.3em
+		&:after
+			display: none
+.gradient-bg--ads
+	img
+		margin-bottom: 20px
+
+.blue-text
+	font-size: 25px
+	color: $blue
+	text-transform: uppercase
+	font-family: 'Calibri', sans-serif
+	@include mq($until: desktop)
+		font-size: 20px
+		display: block
+	span
+		font-weight: 700
+
+.search-form
+	.btn-pink
+		margin-bottom: 20px
+		@include linear-gradient(0deg, #ebebe7, white)
+
+
+// Rewrite some styles from index page
+.ads, .tab-content-content
+	.whitebox
+		padding-left: 20px
+		padding-right: 20px
+	.ad-card-service
+		.btn-favourite
+			font-size: 8px
+			line-height: 9
+			letter-spacing: -1px
+			padding: 4px 5px 4px 0px
+			.ico-favourite
+				@include transform(scale(.6))
+				margin-bottom: -2px
+				margin-left: -0px
+		.ad-add-favourites--services-absolute
+			top: -20px
+
+		.ad-title
+			margin-bottom: 10px
+			font-size: 14px
+			line-height: 16px
+			height: 32px
+		.ad-picture-tag
+			padding: 3px 5px
+			font-size: 8px
+			&:before
+				top: 14px
+		.ad-author-avatar
+			width: 40px
+			height: 40px
+		.ad-price
+			margin-bottom: 17px
+		.ad-price span
+			font-size: 20px
+			padding: 2px 5px
+
+	.ad-card--featured
+
+
+.ads-pagination
+	background: white
+	border: 1px solid #cdc8c4
+	border-radius: 5px
+	padding: 10px
+	font-size: 12px
+	margin-top: 20px
+	margin-bottom: 110px
+	font-family: 'Roboto Slab', serif
+	@include mq($until: tablet)
+		margin-bottom: 40px
+		a
+			display: inline-block
+			margin-right: 3px
+			&.active,&:hover
+				color: $blue
+	.text-right
+		@include mq($until: tablet)
+			text-align: left !important
+			margin-top: 5px
+	.small-paginator
+		@include mq($until: tablet)
+			vertical-align: -10px
+
+
+.pagination-list
+	font-size: 12px
+	padding-top: 7px
+	a
+		color: $blue
+		padding: 0 3px
+////////////
+//ADS DISPLAY (single item)
+////////////
+
+.single-add
+	font-family: 'Roboto Slab', serif
+.single-title
+	font-size: 20px
+	color: $blue
+	margin-top: 20px
+
+.signle-id
+	float: right
+	font-size: 15px
+	color: #343434
+	margin-top: 3px
+
+.single-reviews
+	font-size: 15px
+	margin-top: 5px
+	.ad-rew
+		color: $blue
+		font-weight: 300
+		padding-left: 20px
+
+.single-category
+	margin-top: 5px
+	font-size: 16px
+
+.single-posted-ago
+	font-size: 15px
+
+.ico-comments-count
+	background: url('../img/sprite.png') no-repeat -3px -319px
+	width: 18px
+	height: 18px
+	vertical-align: -3px
+	margin-right: 5px
+
+.ico-posted-ago--plus
+	background: url('../img/sprite.png') no-repeat -1px -217px
+	width: 18px
+	height: 18px
+	vertical-align: -3px
+	margin-right: 5px
+
+.single-showonmap
+	float: right
+.ico-location--big
+	background: url('../img/sprite.png') no-repeat -1px -239px
+	width: 25px
+	height: 18px
+	vertical-align: -3px
+	margin-right: 5px
+
+.single-gallery
+	@include linear-gradient(to top, #e5c1d8, #e6e6e6)
+	padding: 15px
+	border-radius: 15px
+	margin-top: 20px
+
+.gal-main-img
+	position: relative
+	margin-bottom: 45px
+	.owl-next
+		background: url('../img/gal-slider-next.png') no-repeat 0 0
+		width: 35px
+		height: 35px
+		content: ' '
+		display: block
+		position: absolute
+		top: 50%
+		@include transform(translateY(-50%))
+		right: 15px
+
+	.owl-prev
+		background: url('../img/gal-slider-prev.png') no-repeat 0 0
+		width: 35px
+		height: 35px
+		content: ' '
+		display: block
+		top: 50%
+		@include transform(translateY(-50%))
+		left: 15px
+
+.gal-thumbs
+	position: relative
+	padding-left: 10px
+	padding-right: 10px
+	font-size: 0
+	.owl-thumb-item
+		display: inline-block
+		border: 3px solid transparent
+		margin-left: -3px
+		&.active
+			border: 3px solid #f21aa5
+	.owl-next
+		background: url('../img/gal-slider-next-sm.png') no-repeat 0 0
+		width: 26px
+		height: 26px
+		content: ' '
+		display: block
+		top: 50%
+		@include transform(translateY(-50%))
+		right: 0px
+	.owl-prev
+		background: url('../img/gal-slider-prev-sm.png') no-repeat 0 0
+		width: 26px
+		height: 26px
+		content: ' '
+		display: block
+		top: 50%
+		@include transform(translateY(-50%))
+		left: 0px
+
+.single-controls
+	margin-top: 10px
+
+.single-report
+	float: right
+
+.ico-report
+	background: url('../img/sprite.png') no-repeat -1px -264px
+	width: 22px
+	height: 22px
+	margin-right: 5px
+	vertical-align: -6px
+
+.single-chars
+	margin-top: 35px
+	margin-bottom: 15px
+
+.single-char-line
+	color: $brown
+	margin-bottom: 7px
+	span
+		font-weight: 700
+
+.ml30
+	margin-left: 30px
+.ico-single-price
+	background: url('../img/sprite.png') no-repeat -217px -110px
+	width: 23px
+	height: 16px
+	margin-right: 5px
+	vertical-align: -2px
+
+.ico-single-location
+	background: url('../img/sprite.png') no-repeat -318px -329px
+	width: 26px
+	height: 19px
+	margin-right: 5px
+	vertical-align: -4px
+
+.ico-single-make
+	background: url('../img/sprite.png') no-repeat -320px -354px
+	width: 22px
+	height: 22px
+	margin-right: 5px
+	vertical-align: -5px
+
+// new
+.ico-single-car
+	background: url('../img/sprite.png') no-repeat -319px -382px
+	width: 24px
+	height: 20px
+	margin-right: 5px
+	vertical-align: -4px
+
+.ico-single-registration
+	background: url('../img/sprite.png') no-repeat -320px -409px
+	width: 22px
+	height: 20px
+	margin-right: 5px
+	vertical-align: -4px
+
+.ico-single-gearbox
+	background: url('../img/sprite.png') no-repeat -320px -438px
+	width: 22px
+	height: 19px
+	margin-right: 5px
+	vertical-align: -4px
+
+.ico-single-mileage
+	background: url('../img/sprite.png') no-repeat -320px -464px
+	width: 22px
+	height: 17px
+	margin-right: 5px
+	vertical-align: -3px
+.ico-single-deliverytime
+	background: url('../img/sprite.png') no-repeat -320px -490px
+	width: 22px
+	height: 20px
+	margin-right: 5px
+	vertical-align: -5px
+
+.ico-pickup-only
+	background: url('../img/sprite.png') no-repeat -359px -487px
+	width: 27px
+	height: 25px
+	margin-right: 5px
+	vertical-align: -8px
+
+.ico-single-enginesize
+	background: url('../img/sprite.png') no-repeat -359px -351px
+	width: 22px
+	height: 15px
+	margin-right: 5px
+	vertical-align: -3px
+
+
+.ico-single-fuletype
+	background: url('../img/sprite.png') no-repeat -359px -379px
+	width: 22px
+	height: 16px
+	margin-right: 5px
+	vertical-align: -3px
+
+
+.ico-single-body
+	background: url('../img/sprite.png') no-repeat -357px -407px
+	width: 26px
+	height: 16px
+	margin-right: 0px
+	vertical-align: -5px
+
+.ico-single-colour
+	background: url('../img/sprite.png') no-repeat -359px -432px
+	width: 22px
+	height: 19px
+	margin-right: 5px
+	vertical-align: -3px
+
+.ico-single-propertytype
+	background: url('../img/sprite.png') no-repeat -272px -325px
+	width: 25px
+	height: 22px
+	margin-right: 3px
+	vertical-align: -5px
+.ico-single-propertysize
+	background: url('../img/sprite.png') no-repeat -275px -352px
+	width: 25px
+	height: 20px
+	margin-right: 3px
+	vertical-align: -4px
+
+.ico-single-condition
+	background: url('../img/sprite.png') no-repeat -240px -326px
+	width: 21px
+	height: 20px
+	margin-right: 5px
+	vertical-align: -4px
+
+.ico-single-job
+	background: url('../img/sprite.png') no-repeat 0px -135px
+	width: 20px
+	height: 20px
+	margin-right: 5px
+	vertical-align: -2px
+//
+
+.ico-open-to-offers
+	background: url('../img/sprite.png') no-repeat 0px -291px
+	width: 28px
+	height: 19px
+	margin-right: 5px
+	vertical-align: -3px
+
+.single-description
+	padding: 20px
+	@include mq($until: tablet)
+		padding: 20px 0
+	p
+		font-size: 14px
+		font-weight: 300
+		span
+			color: $green
+
+
+// similar
+
+.single-similar-heading
+	color: $green
+	font-weight: 700
+	font-size: 18px
+	text-transform: uppercase
+	margin-bottom: 20px
+
+#similar-items
+	margin-bottom: 100px
+	position: relative
+	padding-left: 15px
+	padding-right: 15px
+	.col-xs-12
+		padding-left: 2px
+		padding-right: 2px
+	.owl-next
+		background: url('../img/gal-slider-next-sm.png') no-repeat 0 0
+		width: 26px
+		height: 26px
+		content: ' '
+		display: block
+		top: 50%
+		@include transform(translateY(-50%))
+		right: -15px
+	.owl-prev
+		background: url('../img/gal-slider-prev-sm.png') no-repeat 0 0
+		width: 26px
+		height: 26px
+		content: ' '
+		display: block
+		top: 50%
+		@include transform(translateY(-50%))
+		left: -15px
+
+
+.similar-container
+	border-radius: 5px
+	border: 1px solid #e2e2e2
+	padding: 5px 10px 5px 10px
+	@include background(linear-gradient(0deg, rgba(#d6d6d6, .5) 0%, rgba(white, .1) 50%, rgba(white, 1) 100%))
+	font-family: 'Roboto Slab', serif
+	margin-right: 5px
+
+.single-heading
+	font-size: 11px
+	line-height: 11px
+	height: 22px
+	overflow-y: hidden
+	word-break: break-all
+	font-weight: 700
+	color: $blue
+
+.single-img-holder
+	border-radius: 4px
+	border: 1px solid #8f8c8c
+	padding: 5px
+	margin-bottom: 8px
+
+.similar-price
+	color: $brown
+	font-size: 10px
+.similar-added-by
+	font-size: 10px
+	span
+		color: $blue
+
+
+// Sidebar
+
+.single-sidebar
+	padding-top: 40px
+	@include mq($until: tablet)
+		padding-top: 0
+.single-sidebar-heading
+	font-size: 13px
+	font-weight: 700
+	color: $green
+	margin-bottom: 10px
+	&.blue
+		font-size: 20px
+		color: $blue
+		font-weight: 700
+
+.single-sidebar-profile-pic
+	display: block
+	margin: 0 auto
+	margin-top: 50px
+	.profile-header-wrap
+		display: inline-block
+.single-sidebar-heading--big
+	font-size: 20px
+	font-weight: 700
+	color: $green
+	margin-top: 15px
+
+.single-sidebar-icons
+	margin-top: 40px
+
+.single-sidebar-ico-row
+	margin-bottom: 7px
+	a
+		color: $blue
+	.ico-email
+		margin-right: 4px
+
+.ico-online, .ico-offline
+	background: $green
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	margin-right: 10px
+	vertical-align: -3px
+.ico-offline
+	background: gray
+
+.ico-chat
+	background: url('../img/sprite.png') no-repeat -248px -106px
+	width: 23px
+	height: 23px
+	margin-right: 5px
+	vertical-align: -4px
+
+.ico-response-time
+	background: url('../img/sprite.png') no-repeat -274px -106px
+	width: 23px
+	height: 23px
+	margin-right: 5px
+	vertical-align: -5px
+.ico-language
+	background: url('../img/sprite.png') no-repeat -321px -106px
+	width: 17px
+	height: 20px
+	margin-right: 15px
+	vertical-align: -4px
+.ico-person
+	background: url('../img/sprite.png') no-repeat -301px -106px
+	width: 17px
+	height: 17px
+	margin-right: 10px
+	vertical-align: -2px
+
+.single-sidebar-desc
+	margin-top: 40px
+	padding-left: 25px
+	@include mq($until: tablet)
+		margin-top: 20px
+		padding-left: 0
+	p
+		font-size: 14px
+		font-weight: 300
+		span
+			color: $green
+	.read-more
+		font-weight: 300
+		color: $blue
+		border-bottom: 1px dashed $blue
+
+.single-sidebar-note
+	margin-top: 100px
+	@include mq($until: desktop)
+		margin-top: 60px
+	@include mq($until: tablet)
+		margin-top: 25px
+	p
+		font-size: 14px
+		font-weight: 300
+
+.single-sidebar-banners
+	margin-top: 15px
+	img
+		margin-bottom: 10px
+
+
+////////////
+//LISTING
+////////////
+
+.ico-location-listing
+	background: url('../img/sprite.png') no-repeat -353px -106px
+	width: 14px
+	height: 17px
+	margin-right: 5px
+	vertical-align: -2px
+
+.ico-web-listing
+	background: url('../img/sprite.png') no-repeat -419px -106px
+	width: 19px
+	height: 18px
+	margin-right: 5px
+	vertical-align: -2px
+
+.ico-phone-listing
+	background: url('../img/sprite.png') no-repeat -372px -106px
+	width: 22px
+	height: 15px
+	margin-right: 5px
+	vertical-align: -1px
+
+.ico-mobile-listing
+	background: url('../img/sprite.png') no-repeat -402px -106px
+	width: 10px
+	height: 17px
+	margin-right: 10px
+	vertical-align: -2px
+
+.listing-followus
+	margin-top: 30px
+	.follow-us
+		font-weight: 700
+		font-size: 13px
+		vertical-align: 7px
+		margin-right: 10px
+		color: $green
+	.ico
+
+.listing-tags
+	margin-top: 30px
+	.follow-us
+		font-weight: 700
+		font-size: 13px
+
+		margin-right: 10px
+		color: $green
+	.tags
+		float: right
+		width: 65%
+	a
+		display: inline-block
+		background: #d1d1d1
+		border-radius: 3px
+		font-size: 12px
+		color: $blue
+		min-width: 65px
+		text-align: center
+		padding: 2px 5px
+		margin: 2px 2px 2px 0px
+		&:hover
+			@include transition(all .4s ease)
+			opacity: .7
+
+
+.listings-tabs
+	margin-top: 60px
+	margin-bottom: 30px
+	.nav-tabs
+		border-color: transparent
+		margin-left: 15px
+	.nav-tabs>li
+	.nav-tabs>li>a
+		font-family: 'Roboto Slab', serif
+		margin-right: 2px
+		line-height: 1em
+		border: 1px solid #dedede
+		@include linear-gradient(to top, #dbdbdb, white)
+		font-size: 13px
+		color: $blue
+		border-radius: 4px 4px 0 0
+	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+		@include linear-gradient(to bottom, #f21aa5 0%, white 100%)
+		color: white
+	.tab-content
+		border-radius: 15px
+		border: 1px solid #d7d7d7
+		padding: 20px 0
+
+	.tab-content-heading
+		font-size: 13px
+		font-weight: 700
+		color: $brown
+		span
+			padding: 0 20px 15px 20px
+			display: inline-block
+			span.green
+				color: $green
+				padding: 0
+		.ad-reviews-rating
+			color: white !important
+			padding: 2px 5px
+		&:after
+			display: block
+			width: 100%
+			height: 17px
+			background: url('../img/dash-line.png') repeat-x center
+			content: ' '
+
+	.tab-content-content
+		padding: 10px 20px 0 20px
+		p
+			font-size: 16px
+			color: $brown
+
+
+	.owl-carousel
+		margin-bottom: 40px
+		position: relative
+	.owl-next
+		background: url('../img/gal-slider-next.png') no-repeat 0 0
+		width: 34px
+		height: 34px
+		content: ' '
+		display: block
+		top: auto
+		bottom: -60px
+		right: 0px
+	.owl-prev
+		background: url('../img/gal-slider-prev.png') no-repeat 0 0
+		width: 34px
+		height: 34px
+		content: ' '
+		display: block
+		top: auto
+		bottom: -60px
+		left: 0px
+	.ads-slide
+		padding-right: 5px
+		padding-left: 5px
+		.ad-card
+			min-height: 320px
+
+.comments
+
+.comment-parent
+	.col-xs-3
+		@include mq($until: tablet)
+			width: 100%
+	.col-xs-9
+		@include mq($until: tablet)
+			width: 100%
+	.col-xs-2
+		@include mq($until: tablet)
+			width: 80%
+.comment-left
+	border: 1px solid #dedede
+	border-left: 1px solid #f43cb2
+	padding: 5px 15px
+
+.comment-right
+	border: 1px solid #dedede
+	padding: 2px 15px
+
+.reviewer-heading
+	font-size: 12px
+	margin-bottom: 5px
+.reviewer-image
+	padding: 4px
+	border-radius: 50%
+	border: 1px solid #dadada
+	display: inline-block
+
+.reviewer-name
+	font-size: 12px
+	color: $green
+	margin-top: 0px
+.reviewer-count
+	font-size: 12px
+	margin-top: 5px
+	margin-bottom: 5px
+.reviewer-stars
+
+// right
+.comment-title
+	font-size: 18px
+	font-weight: 700
+	color: $blue
+	margin-top: 5px
+	margin-bottom: 16px
+
+.comment-metrics
+	color: $brown
+	.ad-reviews
+		margin-top: 5px
+	span.green
+		color: $green
+
+
+.comment-metrics-star
+	float: right
+
+.comment-content
+	font-size: 12px
+	margin-top: 15px
+	color: $brown
+
+.comment-reply-to
+	margin-top: 5px
+	a
+		color: $blue
+		font-size: 12px
+
+.comment-child
+	margin-top: 4px
+	.reviewer-image
+		margin-top: 5px
+		margin-bottom: 0px
+	.col-xs-3
+		@include mq($until: tablet)
+			width: 100%
+	.col-xs-9
+		@include mq($until: tablet)
+			width: 100%
+	.col-xs-2
+		@include mq($until: tablet)
+			width: 80%
+.comment-form
+	margin-top: 40px
+	.bg
+		@include linear-gradient(to top, #dbdbdb, white)
+		border-radius: 5px
+		padding-bottom: 10px
+	.heading
+		color: $green
+		font-size: 16px
+		padding: 5px 30px 15px 30px
+		font-weight: 700
+		display: inline-block
+		@include linear-gradient(to top, #dbdbdb, white)
+		border-radius: 5px
+		border: 1px solid #d4d4d4
+		@include mq($until: tablet)
+			width: 100%
+	.ratings
+		float: right
+		display: inline-block
+		color: #d8d6d9
+		font-weight: 300
+		padding-top: 7px
+		padding-right: 15px
+		@include mq($until: tablet)
+			margin-top: 20px
+	textarea
+		border: 1px solid #d8d6d9
+		padding: 5px 15px
+		width: 100%
+		display: inline-block
+		border-radius: 5px
+		margin-top: -20px
+		@include mq($until: tablet)
+			margin-top: 15px
+			margin-bottom: 15px
+.ico-start-emtpy
+	background: url('../img/ico-star-silver.png') no-repeat 0 0
+	width: 19px
+	height: 19px
+	margin-right: 5px
+	vertical-align: -4px
+
+
+.all-ads-pagination
+	padding-top: 100px
+	padding-bottom: 100px
+	@include mq($until: desktop)
+		padding: 50px

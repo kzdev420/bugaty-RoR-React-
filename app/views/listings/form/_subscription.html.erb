@@ -1,0 +1,24 @@
+<!-- subscription row -->
+<div class="row">
+  <% if listing.persisted? -%>
+    <% if listing.subscription_active? -%>
+      <div class='alert alert-success' style="margin-top: 10px; width: 90%">
+        <% unless listing.content_ad? %>
+          Listing is paid until <%= (listing.subscribed_until).strftime("%d/%m/%Y") %>
+          <br>
+        <% end %>
+      <% if listing.close_to_expire? %>
+          <%= link_to 'Renew your subscription now', subscription_path(listing), class: 'subscription-link' %>
+      <% else -%>
+        <%= link_to 'Feature or urgent your listing now', stripe_checkout_path(listing), class: 'subscription-link' %>
+      <% end %>
+      </div>
+    <% else -%>
+      <div class='alert alert-danger' style="margin-top: 10px; width: 90%">
+        Listing is unpaid since <%= (listing.subscribed_until).strftime("%d/%m/%Y") %>
+        <br>
+        <%= link_to 'Renew your subscription now', subscription_path(listing), class: 'subscription-link' %>
+      </div>
+    <% end -%>
+  <% end -%>
+</div>

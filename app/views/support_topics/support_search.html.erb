@@ -1,0 +1,82 @@
+<%= provide(:title, "Support") %>
+
+<%= render ('layouts/header')%>
+
+<%= render ('shared/banner-top')%>
+
+	<!-- START SLIDER -->
+<%= render ('shared/support_slider') %>
+	<!-- END SLIDER -->
+
+
+	<!-- CONTENT -->
+	<section class="text-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 have-pad-50">
+					<div class="content-holder smaller-left-pad">
+						<div class="row">
+							<div class="col-sm-3 border-right--gradient">
+								<div class="support-sidebar">
+									<div class="support-sudibar-heading">TOPICS</div>
+									<ul class="sidebar-navigation">
+
+										<% @all_topics.each do |topic| %>
+											<li><%= link_to topic.name, slugged_support_topic_path(topic) %>
+												<% if topic.slug == params[:support_topic_slug] %>
+												<ul>
+													<li>
+													<% topic.support_articles.each do |article| %>
+														<%= link_to article.name, slugged_support_article_path(topic, article) %>
+													<% end %>
+													<li>
+												</ul>
+												<% end %>
+											</li>
+										<% end %>
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="row">
+									<div class="col-sm-8">
+										<div class="support-search">
+										<%= form_tag(support_search_path, :method => "post", id: "search-support-form") do %>
+												<input type="text" name="search" placeholder="" class="form-control">
+												<button type="submit" name="">GO</button>
+											<% end %>
+										</div>
+										<div class="support-heading">
+											<i class="ico ico-help"></i> Need some help?
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="create-ticket">
+										<%= link_to contact_path do %>
+										<img src="/img/create-ticket.png" alt="UK classifieds ads sites" class="img-responsive" />
+										<% end %>
+										</div>
+									</div>
+									<div class="col-sm-12 ticket-content">
+										<% @search_results.each do |res| %>
+											<div style="margin-top: 10px">
+											<%= link_to res.name, slugged_support_article_path(res.support_topic, res) %>
+											</div>
+											<div>
+											<%= truncate(res.content, length: 200) %>
+											</div>
+											
+										<% end %>
+
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      </div>
+	</section>
+	<!--- CONTENT --> 
+	

@@ -1,0 +1,204 @@
+
+.mobile-header{
+	padding: 0;
+	background: $clear-black;
+}
+
+.header-logo--mobile{
+	padding-top: 10px;
+	display: inline-block;
+	position: relative;
+	&:after{
+		font-size: 24px;
+		background: url('../img/logo-footer.png') no-repeat 0 0;
+		content: ' ';
+		width: 250px;
+		height: 74px;
+		display: inline-block;
+		position: absolute;
+		top: 0px;
+		left: 50%;
+		-webkit-transform: translateX(-50%) scale(.7);
+		-moz-transform: translateX(-50%) scale(.7);
+		-ms-transform: translateX(-50%) scale(.7);
+		-o-transform: translateX(-50%) scale(.7);
+		transform: translateX(-50%) scale(.7);
+	}
+}
+
+.hamburger{
+	margin-top: 20px;
+	padding: 10px 0px;
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+.hamburger-box {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: auto;
+}
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before{
+	background-color: white;
+	border-radius: 3px;
+	height: 5px;
+	width: 30px;
+}
+.mobile-nav{
+	display: none;
+	background: rgba($green, .9);
+	padding: 40px 20px;
+	text-align: center;
+	color: white;
+	font-size: 18px;
+	.main-navi{
+		li{
+			display: block; margin-bottom: 7px; text-transform: uppercase;
+			ul{
+				display: none; margin-top: 10px; background: rgba(white, .3); padding-top: 10px; padding-bottom: 10px;
+				&.active{display: none;}
+				li{font-size: 13px; margin-bottom: 5px; text-transform: none;}
+			}
+
+			&:hover{
+				ul a{color: white;}
+				a
+				{color: rgba(white, 0.75);}
+				@include transition(all .4s ease);
+			}
+		}
+	}
+}
+
+.ico-search--header{
+	background: url('../img/ico-search-header.svg') no-repeat 0 0;
+	width: 30px;
+	height:30px;
+	display: inline-block;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	&:hover{
+		opacity: 0.7;
+		@include transition(all .4s ease);
+	}
+}
+
+
+.header-search-input{
+	height: 36px;
+	width: 100%;
+	background: white url('../img/ico-search-blue.svg') no-repeat 96% 10px;
+	border: none;
+	border-radius: 8px;
+	margin-top: 0px;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 9px 18px;
+	color: $gray;
+	@include mq($until: desktop){font-size: 14px;}
+	&:focus{
+		@include box-shadow(3px,3px,0,rgba($pink, 1));
+		border: none;
+		outline: none;
+	}
+}
+
+.mobile-header-search-form{
+	position: relative;
+	input {
+		outline: none;
+	}
+	input[type=search] {
+		position: absolute;
+		right: 0;
+		top: 0;
+		background: transparent url('../img/ico-search-header.svg') no-repeat 0 0;
+		border: none;
+		display: inline-block;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		width: 30px;
+		height:30px;
+		color: transparent;
+		cursor: pointer;
+
+		-webkit-transition: all .5s;
+		-moz-transition: all .5s;
+		transition: all .5s;
+
+		-webkit-appearance: textfield;
+		-webkit-box-sizing: content-box;
+		font-family: inherit;
+		font-size: 100%;
+		&:hover{
+			opacity: 0.7;
+
+		}
+		&:focus{
+			opacity: 1;
+			background: transparent url('../img/ico-search-blue.svg') no-repeat 8px 6px;
+			width: 150px;
+			background-color: #fff;
+			border-color: 1px solid $gray;
+			padding-left: 32px;
+			padding-right: 10px;
+			color: #000;
+			background-color: #fff;
+			cursor: auto;
+
+			-webkit-border-radius: 10em;
+			-moz-border-radius: 10em;
+			border-radius: 10em;
+			-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+			-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+			box-shadow: 0 0 5px rgba(109,207,246,.5);
+		}
+	}
+	input::-webkit-search-decoration,
+	input::-webkit-search-cancel-button {
+		display: none;
+	}
+	input:-moz-placeholder {
+		color: transparent;
+	}
+	input::-webkit-input-placeholder {
+		color: transparent;
+	}
+}
+
+.ico-search-header-ico--xs{
+	background: transparent url('../img/ico-search-header.svg') no-repeat 0 0;
+	width: 30px;
+	height:30px;
+	display: inline-block;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	&:hover{
+		opacity: 0.7;
+	}
+}
+.mobile-search{
+	display: none;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid $pink;
+	background: rgba(black,.2);
+	.mobile-search-form{
+		height: 34px;
+		width: 100%;
+		background: white url('../img/ico-search-blue.svg') no-repeat 96% 8px;
+		border: none;
+		border-radius: 5px;
+		margin-top: 0px;
+		font-size: 15px;
+		font-weight: 300;
+		padding: 8px 18px;
+		color: $gray;
+		&:focus{
+			border: none;
+			outline: none;
+		}
+	}
+}

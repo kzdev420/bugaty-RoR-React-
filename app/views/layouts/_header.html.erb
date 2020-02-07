@@ -1,0 +1,214 @@
+	<!-- HEADER START -->
+	<header class="hidden-xs" id="sectionTop">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 header-pad-l">
+					<a href="/" class="header-logo">
+						<img src="/img/logo.png" class="img-responsive" alt="Logo">
+					</a>
+				</div>
+				<div class="col-sm-6 header-pad-r text-right">
+					<%= $banner.banner_header_top.html_safe %>
+					<div class="header-login text-right">
+						<%= link_to 'Submit content', new_listing_path(id: 25), class: 'btn-pink start-selling-button' %>
+						<% if user_signed_in? %>
+						<%= link_to "<i class='ico ico-signup'></i> <span>My profile</span>".html_safe, user_path(current_user) %>
+						<%= link_to "<i class='ico ico-login'></i> <span>Sign out</span>".html_safe, destroy_user_session_path, method: :delete %>
+						<% else %>
+						<a href="#login-popup" class="popup-with-zoom-anim"><i class='ico ico-login'></i> <span>Log in</span></a>
+						<a href="#signup-popup" class="popup-with-zoom-anim"><i class='ico ico-signup'></i> <span>Sign up</span></a>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="row pt15">
+				<div class="col-sm-6 header-pad-l">
+
+				<%= form_for(Search.new, :url => search_path, :method => 'POST', :html => {:id => "search-form", :class => 'header-search-form'}) do |f| %>
+						<div class="form-inline">
+							<div class="multiple-form">
+
+					<%= f.text_field :keywords, placeholder: "I am looking for ...", class: 'text-search' %>
+						<div class="select">
+                        <%= select_tag('search[main_category]', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
+						</div>
+							</div>
+							<%= f.text_field :location, placeholder: "Location", class: "loc-search" %>
+
+ 					 <%= button_tag "Go" %>
+  						</div>
+
+				<% end %>
+
+				<!-- Elastic form -->
+
+				<% form_tag(listings_path, :method => "get", id: "search-form", class: "header-search-form") do %>
+						<div class="form-inline">
+							<div class="multiple-form">
+ 						 <%= text_field_tag :search, params[:search], placeholder: "I am looking for ...", class: "text-search" %>
+  								<div class="select">
+                                <%= select_tag('search_cat', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
+								</div>
+							</div>
+							<%= text_field_tag :search_loc, params[:search_loc], placeholder: "Location", class: "loc-search" %>
+
+ 					 <%= button_tag "Go" %>
+  						</div>
+				<% end %>
+
+				</div>
+				<div class="col-sm-6 header-pad-r text-right">
+					<%= link_to 'Start selling', start_selling_path, class: 'btn-pink start-selling-button' %>
+					<a href="/listings/new/1" class="btn-pink">Add company</a>
+					<a href="#free-ad-popup" class="popup-with-zoom-anim btn-pink">Post free ad</a>
+					<!--<%= link_to "Post free ad", new_listing_path, class: 'btn-pink' %>-->
+					<!--<%= link_to "Contact us", contact_path, class: 'btn-pink' %>-->
+					<a href="/listings/new/26" class="btn-pink">Post deal</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section class="header-menu hidden-xs">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="header-menu-list">
+						<% $all_cats.each do |c| %>
+							<li class="have-ul"><%= link_to c.name, slugged_category_path(c.slug) %>
+							<ul class="header-submenu-list">
+							<div class="row">
+								<div class="col-sm-2">
+									<% c.subcategories.limit(5).each do |sub| %>
+									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+									<% end %>
+								</div>
+								<div class="col-sm-2">
+									<% c.subcategories.limit(5).offset(5).each do |sub| %>
+									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+									<% end %>
+								</div>
+								<div class="col-sm-2">
+									<% c.subcategories.limit(5).offset(10).each do |sub| %>
+									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+									<% end %>
+								</div>
+								<div class="col-sm-2">
+									<% c.subcategories.limit(5).offset(15).each do |sub| %>
+									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+									<% end %>
+								</div>
+								<div class="col-sm-2">
+									<% c.subcategories.limit(5).offset(20).each do |sub| %>
+									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+									<% end %>
+								</div>
+							</div>
+							</ul>
+							</li>
+						<% end %>
+						<!--<li class="have-ul"><a href="#">Services</a>
+						<ul class="header-submenu-list">
+							<div class="row">
+								<div class="col-sm-2">
+									<span class="header-submenu-category">Category</span>
+									<a href="#">Subcategory</a>
+								</div>
+							</div>
+						</ul>
+						</li>
+						-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- mobile header -->
+	<header class="mobile-header visible-xs">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3">
+					<button class="hamburger hamburger--collapse" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</div>
+				<div class="col-xs-6 text-center">
+					<a href="/"><span class="header-logo header-logo--mobile"></span></a>
+				</div>
+
+				<!--<div class="col-xs-3 text-right">
+					<div id="sb-search" class="sb-search">
+						<form class="mobile-header-search-form" id="demo-2">
+							<input type="search" placeholder="Search">
+						</form>
+					</div>
+				</div>-->
+				<div class="col-xs-3 text-right">
+					<div class="ico-search-header-xs-wrap">
+						<i class="ico ico-search-header-ico--xs" id="show-mobile-searchbar"></i>
+					</div>
+				</div>
+				<div class="mobile-search col-xs-12">
+
+					<form class="header-search-form mobile-header-search-form" action="<%= search_path %>" accept-charset="UTF-8" method="post">
+						<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+						<div class="form-inline">
+							<div class="multiple-form">
+								<input type="text" name="search[keywords]" id="search_keywords" placeholder="I am looking for ..." class="text-search">
+								<div class="select">
+                                  <%= select_tag('search[main_category]', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
+								</div>
+							</div>
+							<input type="text" name="search[location]" id="search_distance" placeholder="Location" class="loc-search">
+							<button type="submit">GO</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="mobile-nav">
+		<ul class="main-navi">
+			<div class="header-login text-center" style="color: white; maring-top: 10px; margin-bottom: 15px;">
+				<% if user_signed_in? %>
+				<%= link_to "<span>My profile</span>".html_safe, user_path(current_user) %>
+				<%= link_to "<span>Sign out</span>".html_safe, destroy_user_session_path, method: :delete %>
+				<% else %>
+				<a href="#login-popup" class="popup-with-zoom-anim"> <span>Log in</span></a>
+				<a href="#signup-popup" class="popup-with-zoom-anim"> <span>Sign up</span></a>
+				<% end %>
+			</div>
+			<hr>
+			<li><%= link_to 'Start selling', start_selling_path %></li>
+			<li><a href="/listings/new/1">Add company</a></li>
+			<li><a href="#free-ad-popup" class="popup-with-zoom-anim">Post free ad</a></li>
+			<li><%= link_to "Contact us", contact_path %></li>
+			<li><%= link_to "How it works", how_it_works_path %></li>
+			<li><%= link_to "Help", support_topic_path(1) %></li>
+			<hr>
+			<!-- categories -->
+			<% $all_cats.each do |c| %>
+				<li><%= link_to c.name, slugged_category_path(c.slug) %>
+					<ul class="second-menu">
+						<% c.subcategories.each do |sub| %>
+						<li><%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %></li>
+						<% end %>
+					</ul>
+				</li>
+			<% end %>
+			<!--<li><a href="#">Services</a>
+				<ul class="second-menu">
+					<li><a href="#">Subcategory 1</a></li>
+					<li><a href="#">Subcategory 2</a></li>
+					<li><a href="#">Subcategory 3</a></li>
+					<li><a href="#">Subcategory 3</a></li>
+					<li><a href="#">Subcategory 4</a></li>
+				</ul>
+			</li>-->
+		</ul>
+	</section>
+	<!-- HEADER: END -->
+
+ <%= render 'layouts/popup'%>
