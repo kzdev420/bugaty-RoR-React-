@@ -8,15 +8,39 @@
 					</a>
 				</div>
 				<div class="col-sm-6 header-pad-r text-right">
-					<%= $banner.banner_header_top.html_safe %>
 					<div class="header-login text-right">
-						<%= link_to 'Submit content', new_listing_path(id: 25), class: 'btn-pink start-selling-button' %>
 						<% if user_signed_in? %>
-						<%= link_to "<i class='ico ico-signup'></i> <span>My profile</span>".html_safe, user_path(current_user) %>
-						<%= link_to "<i class='ico ico-login'></i> <span>Sign out</span>".html_safe, destroy_user_session_path, method: :delete %>
+							<ul class="nav navbar-nav navbar-right" style="margin-top:-15px">
+								<li>
+									<%= link_to "<span>My Shop <i class='fa fa-circle' style='color:red;margin-top:-15px'></i> </span>".html_safe, incoming_requests_path, class: "btn-green", style: "margin-right: 15px;padding:10px" %>
+								</li>
+								<li class="nav-item avatar dropdown">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:0px" role="button" aria-haspopup="true" aria-expanded="false">
+											<% if current_user.profile_photo? %>
+												<img src="<%= current_user.profile_photo %>" style="width: 55px; border-radius: 50px;">
+											<% else %>
+												<img src="images/no-avatar.png" style="width: 55px; border-radius: 50px;">
+											<% end %>
+											<i class="fa fa-circle" style="margin-left:-15px;color:green"></i>
+											<%= current_user.first_name+" "+current_user.last_name %>
+											<span class="caret"></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><%= link_to "<span>View Profile</span>".html_safe, user_path(current_user) %></li>
+											<li><%= link_to "<span>Account Settings</span>".html_safe, edit_user_path(current_user) %></li>
+											<li><%= link_to "<span>Purchase</span>".html_safe, sent_requests_path %></li>
+											<li><%= link_to "<span>My Favourites</span>".html_safe, my_favorites_path(current_user) %></li>
+											<li><%= link_to "<span>Log out</span>".html_safe, destroy_user_session_path, method: :delete %></li>
+										</ul>
+							  		</li>
+								</li>
+								<li><a href="#"><i class="fa fa-shopping-basket" style="font-size:30px;margin-top:-6px"></i></a></li>
+							</ul>
 						<% else %>
-						<a href="#login-popup" class="popup-with-zoom-anim"><i class='ico ico-login'></i> <span>Log in</span></a>
-						<a href="#signup-popup" class="popup-with-zoom-anim"><i class='ico ico-signup'></i> <span>Sign up</span></a>
+							<a href="#signup-popup" class="popup-with-zoom-anim btn-green">sign up</a>
+							<a href="#login-popup" class="popup-with-zoom-anim btn-green">Log in</a>
+							<a href="#"><i class="fa fa-shopping-basket" style=" font-size: 30px; left: 120%; top: 18px; position: absolute;"></i></a>
 						<% end %>
 					</div>
 				</div>
@@ -28,14 +52,13 @@
 						<div class="form-inline">
 							<div class="multiple-form">
 
-					<%= f.text_field :keywords, placeholder: "I am looking for ...", class: 'text-search' %>
-						<div class="select">
-                        <%= select_tag('search[main_category]', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
-						</div>
+								<%= f.text_field :keywords, placeholder: "I am looking for ...", class: 'text-search' %>
+								<div class="select">
+									<%= select_tag('search[main_category]', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
+								</div>
 							</div>
 							<%= f.text_field :location, placeholder: "Location", class: "loc-search" %>
-
- 					 <%= button_tag "Go" %>
+ 					 		<%= button_tag "Go" %>
   						</div>
 
 				<% end %>
@@ -45,25 +68,19 @@
 				<% form_tag(listings_path, :method => "get", id: "search-form", class: "header-search-form") do %>
 						<div class="form-inline">
 							<div class="multiple-form">
- 						 <%= text_field_tag :search, params[:search], placeholder: "I am looking for ...", class: "text-search" %>
+ 						 		<%= text_field_tag :search, params[:search], placeholder: "I am looking for ...", class: "text-search" %>
   								<div class="select">
-                                <%= select_tag('search_cat', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
+                                	<%= select_tag('search_cat', options_for_select(category_collection), prompt: 'All', id: 'search_cat') %>
 								</div>
 							</div>
 							<%= text_field_tag :search_loc, params[:search_loc], placeholder: "Location", class: "loc-search" %>
-
- 					 <%= button_tag "Go" %>
+ 					 		<%= button_tag "Go" %>
   						</div>
 				<% end %>
 
 				</div>
 				<div class="col-sm-6 header-pad-r text-right">
-					<%= link_to 'Start selling', start_selling_path, class: 'btn-pink start-selling-button' %>
-					<a href="/listings/new/1" class="btn-pink">Add company</a>
-					<a href="#free-ad-popup" class="popup-with-zoom-anim btn-pink">Post free ad</a>
-					<!--<%= link_to "Post free ad", new_listing_path, class: 'btn-pink' %>-->
-					<!--<%= link_to "Contact us", contact_path, class: 'btn-pink' %>-->
-					<a href="/listings/new/26" class="btn-pink">Post deal</a>
+					<a href="#" class="btn btn-success"> Sell on Bugaty </a>
 				</div>
 			</div>
 		</div>
@@ -76,35 +93,35 @@
 					<ul class="header-menu-list">
 						<% $all_cats.each do |c| %>
 							<li class="have-ul"><%= link_to c.name, slugged_category_path(c.slug) %>
-							<ul class="header-submenu-list">
-							<div class="row">
-								<div class="col-sm-2">
-									<% c.subcategories.limit(5).each do |sub| %>
-									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
-									<% end %>
-								</div>
-								<div class="col-sm-2">
-									<% c.subcategories.limit(5).offset(5).each do |sub| %>
-									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
-									<% end %>
-								</div>
-								<div class="col-sm-2">
-									<% c.subcategories.limit(5).offset(10).each do |sub| %>
-									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
-									<% end %>
-								</div>
-								<div class="col-sm-2">
-									<% c.subcategories.limit(5).offset(15).each do |sub| %>
-									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
-									<% end %>
-								</div>
-								<div class="col-sm-2">
-									<% c.subcategories.limit(5).offset(20).each do |sub| %>
-									<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
-									<% end %>
-								</div>
-							</div>
-							</ul>
+								<ul class="header-submenu-list">
+									<div class="row">
+										<div class="col-sm-2">
+											<% c.subcategories.limit(5).each do |sub| %>
+												<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+											<% end %>
+										</div>
+										<div class="col-sm-2">
+											<% c.subcategories.limit(5).offset(5).each do |sub| %>
+												<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+											<% end %>
+										</div>
+										<div class="col-sm-2">
+											<% c.subcategories.limit(5).offset(10).each do |sub| %>
+												<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+											<% end %>
+										</div>
+										<div class="col-sm-2">
+											<% c.subcategories.limit(5).offset(15).each do |sub| %>
+												<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+											<% end %>
+										</div>
+										<div class="col-sm-2">
+											<% c.subcategories.limit(5).offset(20).each do |sub| %>
+												<%= link_to sub.name, slugged_subcategory_path(c.slug, sub.slug) %>
+											<% end %>
+										</div>
+									</div>
+								</ul>
 							</li>
 						<% end %>
 						<!--<li class="have-ul"><a href="#">Services</a>
@@ -173,11 +190,11 @@
 		<ul class="main-navi">
 			<div class="header-login text-center" style="color: white; maring-top: 10px; margin-bottom: 15px;">
 				<% if user_signed_in? %>
-				<%= link_to "<span>My profile</span>".html_safe, user_path(current_user) %>
-				<%= link_to "<span>Sign out</span>".html_safe, destroy_user_session_path, method: :delete %>
+					<%= link_to "<span>My profile</span>".html_safe, user_path(current_user) %>
+					<%= link_to "<span>Sign out</span>".html_safe, destroy_user_session_path, method: :delete %>
 				<% else %>
-				<a href="#login-popup" class="popup-with-zoom-anim"> <span>Log in</span></a>
-				<a href="#signup-popup" class="popup-with-zoom-anim"> <span>Sign up</span></a>
+					<a href="#login-popup" class="popup-with-zoom-anim"> <span>Log in</span></a>
+					<a href="#signup-popup" class="popup-with-zoom-anim"> <span>Sign up</span></a>
 				<% end %>
 			</div>
 			<hr>

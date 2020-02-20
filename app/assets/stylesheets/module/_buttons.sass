@@ -52,6 +52,22 @@
 		color: white
 		@include transition(background .4s ease)
 
+.btn-green
+	border: 1.5px solid $green
+	font-size: 13px
+	border-radius: 15px
+	padding: 6px 5px
+	text-transform: uppercase
+	display: inline-block
+	margin-right: 5px
+	margin-top: 3px
+	min-width: 90px
+	text-align: center
+	&.active, &:hover, &.have-fill
+		@include linear-gradient(0deg, #33cc33, #d0e3f7)
+		color: white
+		@include transition(background .4s ease)
+
 .btn-favourite
 	text-transform: uppercase
 	font-size: 10px

@@ -16,10 +16,9 @@
   a
     display: inline-block
     margin-right: 15px
+    color: black
     &:last-child
       margin-right: 0
-  span
-    vertical-align: 3px
 
 .header-search-form
   font-size: 19px
@@ -207,10 +206,10 @@
 
     &:after
       display: inline-block
-      width: 9px
-      height: 9px
-      background: $green
-      border: 1px solid $pink
+      width: 2px
+      height: 2px
+      // background: $green
+      // border: 1px solid $pink
       content: ' '
       vertical-align: 3px
       margin-left: 5px
@@ -229,8 +228,13 @@
         display: block
     &.have-ul
       &:hover
-        background: $pink
+        background: $green
         color: white
+      a
+        color: black
+        font-weight: bold
+        &:hover
+          color: green
 
 .header-submenu-list
   &:hover
@@ -239,7 +243,7 @@
   color: $fontColor
   position: absolute
   background: #f2f2f4
-  border-top: 5px solid $pink
+  border-top: 5px solid $green
   padding-top: 20px
   padding-bottom: 50px
   padding-left: 20px
@@ -279,28 +283,32 @@
   height: 430px
   width: 100%
   padding-left: 40%
-  padding-top: 7%
+  padding-right: 19%
   @include mq($until: desktop)
     height: 350px
   @include mq($until: tablet)
     height: 200px
     background-size: cover
-  h3
-    font-size: 34px
-    color: white
-    margin-bottom: 20px
-    @include mq($until: tablet)
-      font-size: 20px
-      margin-top: 5px
-      margin-bottom: 5px
+  .image-overlap
+    width: 100%
+    .input-group
+      top: 150px
+    h3
+      font-size: 25px
+      color: white
+      margin-bottom: 20px
+      @include mq($until: tablet)
+        font-size: 20px
+        margin-top: 5px
+        margin-bottom: 5px
 
-  p
-    font-size: 20px
-    color: white
-    @include mq($until: desktop)
-      font-size: 15px
-    @include mq($until: tablet)
-      font-size: 12px
+    p
+      font-size: 20px
+      color: white
+      @include mq($until: desktop)
+        font-size: 15px
+      @include mq($until: tablet)
+        font-size: 12px
 
 .contact-slide
   background-image: url('../images/contact-us-pic.png')
@@ -308,6 +316,11 @@
 #owl-mainpage
   p
     padding-bottom: 9%
+
+.how_it_works_section
+  text-align: center
+  .how_it_works_section_title
+    font-weight: bold
 
 .owl-dots
   position: absolute
@@ -391,7 +404,7 @@
     display: block
     width: 100%
     height: 10px
-    background: url('../img/sprite.png') repeat-x -2px -82px
+    #background: url('../img/sprite.png') repeat-x -2px -82px
     content: ' '
 
 .ad-card

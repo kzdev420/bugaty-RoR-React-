@@ -3,6 +3,7 @@ class StaticsController < ApplicationController
   include Blog::SetHeaderValues
 
   def index
+    @all_ads = Listing.all
     @job_ads = Listing.active.not_hidden.where(category_id: 5, published: 2).
       order('GREATEST(urgent_date, featured_home_date) DESC NULLS LAST, created_at DESC').limit(5)
     @company_ads = Listing.active.not_hidden.where(category_id: 1, published: 2).
@@ -13,7 +14,7 @@ class StaticsController < ApplicationController
     other_cat_ids = $all_cats.pluck(:id).reject { |id| [1, 4, 5, 25].include?(id) }
     @other_ads = Listing.active.not_hidden.where(published: 2).where(category_id: other_cat_ids).
       order('GREATEST(urgent_date, featured_home_date) DESC NULLS LAST, created_at DESC').limit(16)
-    @sliders = SliderText.order(:id)
+    @sliders = SliderText.all
     session[:redirect_to] = params[:to]
   end
 

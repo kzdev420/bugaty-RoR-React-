@@ -3,7 +3,21 @@
   <div class="owl-carousel" id="owl-mainpage">
     <% (1..7).each do |i| %>
       <div class="mainpage-slider-slide" style="background-image: url('images/homepage_slides/<%= i %>.png')">
-
+        <div class="image-overlap">
+          <div class="mainpage-slider-slide-title"> This is Bugaty.com </div>
+          <h3 class="mainpage-slider-slide-text">
+            RVM in ubuntu 
+            - source /home/good-dev/.rvm/scripts/rvm
+            - rvm install 2.5.1 (version)
+            - gem install rails -v 5.0.1 (version)
+          </h3>
+          <div class="input-group" style="width:70%">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="button">Search</button>
+            </span>
+          </div>
+        </div>
       </div>
     <% end -%>
   </div>

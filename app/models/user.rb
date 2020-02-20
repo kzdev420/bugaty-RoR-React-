@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :confirmable, :lastseenable, :omniauth_providers => [:facebook, :google_oauth2]
+         :omniauthable, :lastseenable, :omniauth_providers => [:facebook, :google_oauth2]
 
   friendly_id :name_with_title, use: [:slugged, :finders]
 
