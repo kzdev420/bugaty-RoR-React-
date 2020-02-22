@@ -12,7 +12,10 @@
 						<% if user_signed_in? %>
 							<ul class="nav navbar-nav navbar-right" style="margin-top:-15px">
 								<li>
-									<%= link_to "<span>My Shop <i class='fa fa-circle' style='color:red;margin-top:-15px'></i> </span>".html_safe, incoming_requests_path, class: "btn-green", style: "margin-right: 15px;padding:10px" %>
+									<%= link_to "<span>My Shop </span>".html_safe, incoming_requests_path, class: "btn-green", style: "margin-right: 15px;padding:10px" %>
+								</li>
+								<li>
+									<i class='fa fa-circle' style='color:red;margin-top:-15px; left:-24px; position:relative; font-size:13px'></i>
 								</li>
 								<li class="nav-item avatar dropdown">
 									<li class="dropdown">
@@ -20,10 +23,10 @@
 											<% if current_user.profile_photo? %>
 												<img src="<%= current_user.profile_photo %>" style="width: 55px; border-radius: 50px;">
 											<% else %>
-												<img src="images/no-avatar.png" style="width: 55px; border-radius: 50px;">
+												<img src="/images/no-avatar.png" style="width:55px; border-radius:50px; border: solid 1px;">
 											<% end %>
-											<i class="fa fa-circle" style="margin-left:-15px;color:green"></i>
-											<%= current_user.first_name+" "+current_user.last_name %>
+											<i class="fa fa-circle" style="margin-left:-15px; color:green; top:-15px; position:relative;"></i>
+											<span><%= current_user.first_name+" "+current_user.last_name %></span>
 											<span class="caret"></span>
 										</a>
 										<ul class="dropdown-menu">
@@ -188,7 +191,7 @@
 	</header>
 	<section class="mobile-nav">
 		<ul class="main-navi">
-			<div class="header-login text-center" style="color: white; maring-top: 10px; margin-bottom: 15px;">
+			<div class="header-login text-center" style="color: white; maring-top: 10px; mrgin-bottom: 15px;">
 				<% if user_signed_in? %>
 					<%= link_to "<span>My profile</span>".html_safe, user_path(current_user) %>
 					<%= link_to "<span>Sign out</span>".html_safe, destroy_user_session_path, method: :delete %>

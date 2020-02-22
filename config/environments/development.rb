@@ -69,34 +69,34 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
 
-    # config.action_mailer.smtp_settings = {
-    #   :user_name => 'cb5dec417ca2e9',
-    #   :password => '57493d847c5a54',
-    #   :address => 'mailtrap.io',
-    #   :domain => 'mailtrap.io',
-    #   :port => '2525',
-    #   :authentication => :cram_md5
-    # }
+  config.action_mailer.smtp_settings = {
+    :user_name => 'cb5dec417ca2e9',
+    :password => '57493d847c5a54',
+    :address => 'mailtrap.io',
+    :domain => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
+
+  # config.after_initialize do
+  #   ActiveMerchant::Billing::Base.mode = :test
+  #   ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
+  #   paypal_options = {
+  #     login: ENV['PAYPAL_LOGIN'],
+  #     password: ENV['PAYPAL_PASSWORD'],
+  #     signature: ENV['PAYPAL_SECRET']
+  #   }
+  #   ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+  # end
 
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test
-    ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
     paypal_options = {
-      login: ENV['PAYPAL_LOGIN'],
-      password: ENV['PAYPAL_PASSWORD'],
-      signature: ENV['PAYPAL_SECRET']
+      login: 'test22323_api1.me.com',
+      password: '3NLBEU6JTXTL7CFX',
+      signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31AGsFLJIELCKgwNQxVTvKEddfeQMq'
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
   end
-
-# config.after_initialize do
-#   ActiveMerchant::Billing::Base.mode = :test
-#   paypal_options = {
-#     login: 'test22323_api1.me.com',
-#     password: '3NLBEU6JTXTL7CFX',
-#     signature: 'AFcWxV21C7fd0v3bYYYRCpSSRl31AGsFLJIELCKgwNQxVTvKEddfeQMq'
-#   }
-#   ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-# end
 
 end
