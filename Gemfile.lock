@@ -320,7 +320,7 @@ GEM
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (2.99.3)
-    mini_magick (4.5.1)
+    mini_magick (4.10.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     money (6.7.1)
