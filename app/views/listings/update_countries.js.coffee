@@ -1,0 +1,7 @@
+$("#country_id").prop('disabled', false)
+$("#region_id").val('')
+$("#listing_city_id").val('')
+$("#region_id").prop('disabled', true)
+$("#listing_city_id").prop('disabled', true)
+$("#country_id").empty()
+  .append($("<option></option>")).append("<%= escape_javascript(render(:partial => @countries)) %>")

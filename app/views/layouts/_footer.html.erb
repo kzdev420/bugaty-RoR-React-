@@ -1,0 +1,139 @@
+<% unless content_for(:footer).present? %>
+
+<%= render :inline => $template.global_footer, :layout => false %>
+
+<% if controller_name == 'users' %>
+	<% if action_name == 'edit' %>
+
+<!-- Change pass -->
+
+<div id="change-pass-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Find jobs in uk london" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold text-center">Change your <span>Password</span></div>
+    <%= render ('devise/registrations/edit')%>
+  </div>
+</div>
+
+<!-- Change email -->
+
+<div id="change-mail-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Free employer job posting uk" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold text-center">Change your <span>email</span></div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "contact-form" }) do |f| %>
+        <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, class: 'form-control ico-email-bg', placeholder: 'Enter New email' %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :current_password, autocomplete: "on", class: 'form-control ico-pass-bg--filled', placeholder: 'Enter current password' %>
+          </div>
+        </div>
+        </div>
+        <div class="popup-action text-center">We will send a verification email to this new address</div>
+        <div class="two-row-btns pt20">
+          <button type="submit" class="btn-pink have-fill">Submit</button>
+          <button type="" class="btn-blue have-fill">CANCEL</button>
+        </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Upload cv -->
+
+<div id="upload-cv-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Website to sell stuff locally" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold text-center">Upload your <span>CV</span></div>
+    <div class="popup-action text-center">Upload your CV and it will be instantly available to send every time you apply for a job.</div>
+<%= form_for(@user, url: upload_cv_path, :html => {:id => "upload-cv-box", :class => "contact-form", :multipart => true} ) do |f| %>
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+        <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="form-group">
+            <div class="fileform">
+              <div id="fileformlabel" class="form-control ico-file-bg">Choice your CV</div>
+              <div class="selectbutton">Choose file</div>
+              <input id="upload" type="file" name="cv" onchange="getName(this.value);" />
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="two-row-btns pt20">
+          <button type="submit" class="btn-pink have-fill">Save</button>
+          <button type="" class="btn-blue have-fill">CANCEL</button>
+        </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+
+<!-- Deactivate acc -->
+
+<div id="deactivate-account-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Online buying and selling websites in uk" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold text-center">Deactivate your <span>account</span></div>
+    <div class="popup-action text-center">Please let us know why you are deactivating your account </div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "contact-form" }) do |f| %>
+        <div class="form-group row">
+          <div class="col-sm-6 col-sm-offset-3 form-group">
+            <div class="radiobox">
+              <input type="radio" name="delete_acc" id="delete_acc_1">
+              <label for="delete_acc_1">I do not have what to sell</label>
+            </div>
+            <div class="radiobox">
+              <input type="radio" name="delete_acc" id="delete_acc_2">
+              <label for="delete_acc_2">I would rather sell somewhere else </label>
+            </div>
+            <div class="radiobox">
+              <input type="radio" name="delete_acc" id="delete_acc_3">
+              <label for="delete_acc_3">I haven’t receive any response to my ad  </label>
+            </div>
+            <div class="radiobox">
+              <input type="radio" name="delete_acc" id="delete_acc_4">
+              <label for="delete_acc_4">I would rather not say</label>
+            </div>
+            <div class="radiobox">
+              <input type="radio" name="delete_acc" id="delete_acc_5">
+              <label for="delete_acc_5">Other</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control ico-textarea-bg" rows="4" placeholder="Please tell us more why you are deactivating account"></textarea>
+        </div>
+
+        <div class="two-row-btns pt20">
+          <%= button_to "Deactivate", registration_path(resource_name), data: { confirm: "Are you sure? You want to delete account? " }, method: :delete, class: 'btn-pink have-fill' %>
+          <button type="" class="btn-blue have-fill">CANCEL</button>
+        </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+	<% else %>
+
+	<% end %>
+<% else %>
+
+<% end %>
+<%else%>
+  <%= yield :footer %>
+<%end%>

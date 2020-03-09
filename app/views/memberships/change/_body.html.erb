@@ -1,0 +1,55 @@
+<section class="membership-change-body">
+    <div class="container">
+        <div class="membership-change-body-title">
+            <span>Membership</span>
+        </div>
+        <div class="membership-change-body-content">
+            <div class="membership-change-body-box">
+                
+            </div>
+            <div class="membership-change-body-upgade">
+                <div class="membership-change-body-upgrade-section row">
+                    <div class="membership-change-body-upgade-left col-sm-6">
+                        <div class="membership-change-body-upgade-left-title">
+                            <span>Plan</span>
+                        </div>
+                        <div class="membership-change-body-upgade-left-level">
+                            <span class="brand">Bugaty</span>
+                            <span class="level"> &nbsp &nbsp Basic</span>
+                        </div>
+                        <div class="membership-change-body-upgade-left-duration">
+                            <span>Free 30 days/£1/month afterwards</span>
+                        </div>
+                    </div>
+                    <div class="membership-change-body-upgade-right col-sm-6">
+                        <%= link_to "<span>Upgrade Plan</span>".html_safe, memberships_pay_path, class: "btn-success" %>
+                    </div>
+                </div>
+                <div class="membership-change-body-upgrade-section row">
+                    <div class="membership-change-body-upgade-left  col-sm-6">
+                        <div class="membership-change-body-upgade-left-title">
+                            <span>Billing Method</span>
+                        </div>
+                        <div class="membership-change-body-upgade-left-level">
+                            <span class="brand">PayPal</span>
+                        </div>
+                    </div>
+                    <div class="membership-change-body-upgade-right col-sm-6">
+                        <%= link_to "<span>Edit Method</span>".html_safe, memberships_pay_path, class: "btn-success" %>
+                    </div>
+                </div>
+                <div class="membership-change-body-upgrade-section row">
+                    <div class="membership-change-body-upgade-left  col-sm-6">
+                        
+                    </div>
+                    <div class="membership-change-body-upgade-right col-sm-6">
+                        <a href="#cancell-subscription-popup" class="popup-with-zoom-anim btn-success"> <span>Cancell Subscription</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= render 'popup' %>
+

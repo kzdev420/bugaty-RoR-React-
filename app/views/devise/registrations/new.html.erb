@@ -1,0 +1,70 @@
+<%= provide(:title, "Confimration") %>
+
+<%= render ('layouts/header') %>
+
+
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 65px; margin-bottom: 40px;">
+
+      <div class="whitebox">
+        <div class="ad-titles single-title text-center" style="margin-bottom: 20px">
+        Sign up
+        </div>
+
+<%= form_for(User.new, url: registration_path(:user), :html => {:id => "register-box", :class => "contact-form", :'data-type' => 'json'}, :remote => true ) do |f| %>
+
+        <div class="form-group">
+          <%= f.text_field :first_name, autofocus: true, class: 'form-control ico-name-bg', placeholder: 'Your first name' %>
+        </div>
+        <div class="form-group">
+          <%= f.text_field :last_name, class: 'form-control ico-name-bg', placeholder: 'Your last name' %>
+        </div>
+        <div class="form-group">
+          <%= f.email_field :email, class: 'form-control ico-email-bg', placeholder: 'Your email' %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "off", class: 'form-control ico-pass-bg', placeholder: 'Your password' %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control ico-pass-bg', placeholder: 'Confirm password' %>
+        </div>
+
+        <div class="login-socials">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= link_to user_facebook_omniauth_authorize_path do %>
+              <div class="login-with-facebook"><i class="ico ico-loginwith-fb"></i>
+                <span>Log in with facebook</span>
+              </div>
+              <% end %>
+            </div>
+            <div class="col-xs-6">
+              <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+              <div class="login-with-google"><i class="ico ico-loginwith-google"></i>
+                <span>Log in with google</span>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="text-center pt30">
+          <%= f.button "<i class='ico ico-signup'></i> <span>Sign up</span>".html_safe, :class => "btn-invisible btn-popup-login" %>
+        </div>
+        <div class="login-helpers text-center have-pad-50">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, inventore dolorum eaque sapient
+        </div>
+        <div class="text-center popup-login-newmember">
+          <span>Already a member?</span>
+          <a href="#login-popup" class="popup-with-zoom-anim align-fix"><i class="ico ico-login"></i> <span>Log in</span></a>
+        </div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+

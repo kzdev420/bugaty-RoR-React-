@@ -1,0 +1,85 @@
+<%= content_for(:title, @page.title.presence || @page.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @page.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @page.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 65px; margin-bottom: 40px;">
+
+        <div class="whitebox">
+        <div class="ad-titles single-title text-center" style="margin-bottom: 20px">
+        Log in
+        </div>
+
+<%= form_for(User.new, url: session_path(:user), :html => {:id => "login-page-box", :class => "contact-form"} ) do |f| %>
+  
+  <div class="form-group">
+    <%= f.email_field :email, :autofocus => true, :placeholder => "Your username (email)", :class => 'form-control ico-email-bg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password, :class => "form-control ico-pass-bg", :placeholder => "Your password", autocomplete: "off" %>
+  </div>
+
+  <div class="login-socials">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= link_to user_facebook_omniauth_authorize_path do %>
+        <div class="login-with-facebook"><i class="ico ico-loginwith-fb"></i>
+          <span>Log in with facebook</span>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+        <div class="login-with-google"><i class="ico ico-loginwith-google"></i>
+          <span>Log in with google</span>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center pt30">
+    <%= f.button "<i class='ico ico-login'></i> <span>Login</span>".html_safe, :class => "btn-invisible btn-popup-login" %>
+  </div>
+
+  <div class="login-helpers">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="checkbox">
+         <% if devise_mapping.rememberable? -%>
+         <%= f.check_box :remember_me %>
+         <%= f.label :remember_me, "Remember me" %>
+         <% end -%>
+        </div>
+      </div>
+      <div class="col-xs-6 text-right">
+        <a href="#forget-pass-popup" class="popup-with-zoom-anim" style="margin-top: 10px; display: inline-block;">Forgot your password?</a>
+        <!--<a href="#">Forgot your username</a>-->
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center popup-login-newmember">
+    <span>Don’t have an Account?</span>
+    <a href="#signup-popup" class="popup-with-zoom-anim align-fix"><i class="ico ico-signup"></i> <span>Sign up</span></a>
+    <span>It’s free!</span>
+  </div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>
+</section>

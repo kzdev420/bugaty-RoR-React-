@@ -1,0 +1,71 @@
+<div id="report-ad-popup" class="zoom-anim-dialog mfp-hide">
+	<div class="popup-logo text-center">
+		<img src="/img/logo.png" alt="Free business advertising sites uk" class="img-responsive center-block">
+	</div>
+	<div class="popup-content">
+		<div class="popup-heading popup-heading--bold text-center">Report ad</div>
+<%= form_for(@listing, url: report_ad_path, :html => {:id => "send-report-box", :class => "contact-form", :'data-type' => 'json'}, :remote => true ) do |f| %>
+<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %> 
+
+<input type="hidden" name="report_subject" id="condition_nil" value="0">
+
+				<div class="form-group row">	
+					<div class="col-sm-6 col-sm-offset-3 form-group">
+						<div class="radiobox">
+							<input type="radio" name="report_subject" id="condition_1" value="Ad is in wrong category">
+							<label for="condition_1">Ad is in wrong category</label>
+						</div>
+						<div class="radiobox">
+							<input type="radio" name="report_subject" id="condition_2" value="Ad is spam">
+							<label for="condition_2">Ad is spam</label>
+						</div>
+						<div class="radiobox">
+							<input type="radio" name="report_subject" id="condition_3" value="Ad seems to be fraudulent">
+							<label for="condition_3">Ad seems to be fraudulent </label>
+						</div>
+						<div class="radiobox">
+							<input type="radio" name="report_subject" id="condition_4" value="Ad is violating Terms & Conditions">
+							<label for="condition_4">Ad is violating Terms & Conditions </label>
+						</div>
+						<div class="radiobox">
+							<input type="radio" name="report_subject" id="condition_5" value="Other">
+							<label for="condition_5">Other</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<textarea name="message" class="form-control ico-textarea-bg" rows="4" placeholder="Please tell us more why you are reporting this ad "></textarea>
+				</div>
+
+				<div class="two-row-btns pt20">
+					<button type="submit" class="btn-pink have-fill">Report</button>
+					<button type="" class="btn-blue have-fill">CANCEL</button>
+				</div>
+<% end %>
+		</div>
+	</div>
+
+
+
+    <script>
+		$(document).ready(function(){
+		    $('input[name="report_subject"]').on('change', function(){
+		    	$('input[name="report_subject"]#condition_nil').remove();
+		    });
+		  $('#send-report-box').on('submit' ,function(e){
+		    var namenil = $(this).find('input[name="report_subject"]#condition_nil').val();
+		    var name = $(this).find('input[name="report_subject"]:checked').val();
+		    var message = $(this).find('input[name="message"]').val();
+
+		    $(this).find('.alert').remove();
+		    if (namenil == 0){
+		      $(this).prepend('<div class="alert alert-danger">Please select the subject</div>');
+		    }
+
+		  });
+		});
+
+      $('#send-report-box .btn-blue').click(function(){
+        $.magnificPopup.close();
+      });
+    </script>

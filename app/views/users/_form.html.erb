@@ -1,0 +1,74 @@
+<%= form_for(@user, :html => {:class => 'contact-form pt130 user-profile-form', :multipart => true}) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+            <div class="form-group">
+              <%= f.text_field :first_name, class: "form-control ico-name-bg", placeholder: "Your first name" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :last_name, class: "form-control ico-name-bg", placeholder: "Your last name" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :location, class: "form-control ico-name-bg", placeholder: "Your country" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :language, class: "form-control ico-lang-bg", placeholder: "Your language" %>
+            </div>
+            <div class="form-group">
+              <div class="fileform">
+                <div id="fileformlabel" class="form-control">Update Profile Picture</div>
+                <div class="selectbutton">Choose photo</div>
+                <%= f.file_field :profile_photo, class: 'upload' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="fileform">
+                <div id="fileformlabel" class="form-control">Update Cover Photo</div>
+                <div class="selectbutton">Choose photo</div>
+                <%= f.file_field :cover_photo, class: 'upload' %>
+              </div>
+            </div>
+            <!---->
+            <div class="form-group">
+              <%= f.text_field :phone, class: "form-control ico-phone-bg", placeholder: "Your phone" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :email, class: "form-control ico-email-bg", placeholder: "Your email"%>
+            </div>
+            <div class="form-group">
+              <%= f.text_area :description, class: "form-control ico-textarea-bg", placeholder: 'Enter profile description', rows: 4 %>
+              <div class="error-description"></div>
+            </div>
+            <div class="two-row-btns">
+              <%= f.button "SAVE CHANGES", class: 'btn-pink have-fill' %>
+              <div class="s" style="display:inline-block; margin-left: 15px;">
+                <%= link_to "CANCEL", :back, class: 'btn-pink have-fill' %>
+              </div>
+
+            </div>
+
+<% end %>
+<script type="text/javascript">
+  $(function() {
+    $('form').submit(function(e) {
+      var nWords = $('textarea#user_description').val().split(/\s+/).length;
+      if(nWords > 100) {
+        $('textarea#user_description').addClass('has-errors').siblings('.error-description').show().text('100 words or less please.');
+        return false;
+      } else {
+        $(this).find('.has-errors').removeClass('has-errors');
+        $(this).find('.error-description').text('');
+        return true;
+      }
+    });
+  });
+</script>

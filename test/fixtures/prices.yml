@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  featured_home_price: MyString
+  featured_cat_price: MyString
+  featured_all_price: MyString
+  urgent_price: MyString
+  company_displayed_30_price: MyString
+  company_displayed_90_price: MyString
+  company_displayed_180_price: MyString
+  company_displayed_365_price: MyString
+
+two:
+  featured_home_price: MyString
+  featured_cat_price: MyString
+  featured_all_price: MyString
+  urgent_price: MyString
+  company_displayed_30_price: MyString
+  company_displayed_90_price: MyString
+  company_displayed_180_price: MyString
+  company_displayed_365_price: MyString

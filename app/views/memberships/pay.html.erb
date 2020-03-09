@@ -1,0 +1,99 @@
+
+<%= provide(:title, "Pay for your listing features") %>
+<section class="only-logo-header">
+  <div class="container">
+    <%= link_to "<span>Bugaty</span>".html_safe, root_path, class:"only-logo-header-title" %>
+    <hr style="margin-bottom:0px; border-top: 2px solid #eeeeee; margin-left: -10%; margin-right: -10%;">
+  </div>
+</section>
+
+<section class="ads">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="">
+          <div class="ads-list-title">
+            <span>Pay for your</span> MEMBERSHIP SUBSCRIPTION
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="gradient-bg">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="membership-plans-plan-durations" style="text-align: center;">
+                <div id="membership-plans-plan-duration-monthly" class="membership-plans-plan-duration active-green">
+                    <span class="membership-plans-plan-duration-title">Monthly</span>
+                    </br>
+                    <span class="membership-plans-plan-duration-service">Up to 25% discount</span>
+                </div>
+                <div id="membership-plans-plan-duration-annual" class="membership-plans-plan-duration">
+                    <span class="membership-plans-plan-duration-title">Annual</span>
+                    </br>
+                    <span class="membership-plans-plan-duration-service">Up to 25% discount</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6" style="text-align: center">
+              <div class="title">
+                Your selection
+              </div>
+              <div>
+                <!-- feature type: featured on category page, featured on homepage, urgent -->
+                <%= select_tag(:feature_type, options_for_select(["stripe", "paypal"], 1)) %>
+              </div>
+            </div>
+          </div>
+          <div class="title">
+            Payment method
+          </div>
+          <div class='image-container'>
+            <%= image_tag('paypal', alt: 'PayPal', id: 'paypal-payment', class: 'payment-method-active') %>
+          </div>
+          <div class='image-container'>
+            <%= image_tag('card', alt: 'Card via Stripe', id: 'stripe-payment') %>
+          </div>
+          <div class="title">
+            Promotional code
+          </div>
+          <div>
+            <p>Click here to enter your promotional code</p>
+            <%= form_for(:coupon, :html => { class: 'form-inline coupon' }) do |f| %>
+              <%= f.text_field :promotional_code, class: 'form-control', placeholder: 'Coupon code' %>
+              <%= f.button 'APPLY COUPON', class: 'form-control btn btn-success', id: 'apply_coupon' %>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="gradient-bg total-subscription">
+          <div class="title">
+            Your Selection
+          </div>
+          <div class='subscription-details'>
+            <span>$200</span>
+            <ul>
+              <li id='subscription-options-price'>$200</li>
+              <li id='subscription-options-method'>Pay with PayPal</li>
+              <li id='subscription-options-coupon'>Code not applied</li>
+            </ul>
+              <p>Your listing has featured on category page</p>
+          </div>
+          <%= render 'orders/payment_button' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>    
+  $("#membership-plans-plan-duration-monthly").click(function(event){
+      $(this).addClass('active-green');
+      $("#membership-plans-plan-duration-annual").removeClass('active-green');
+  })
+  $("#membership-plans-plan-duration-annual").click(function(event){
+      $(this).addClass('active-green');
+      $("#membership-plans-plan-duration-monthly").removeClass('active-green');
+  })
+</script>

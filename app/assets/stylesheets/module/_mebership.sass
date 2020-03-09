@@ -1,0 +1,327 @@
+.membership-landingpage-first
+    text-align: center
+    .membership-landingpage-first-title
+        font-size: 40px
+        font-weight: bold
+        padding-bottom: 20px
+    .membership-landingpage-first-image
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        width: 100%
+        padding-left: 40%
+        padding-right: 19%
+        min-height: 450px
+        @include mq($until: tablet)
+            padding-left: 0
+            padding-right: 0
+        .image-overlap
+            span
+                color: white
+            .membership-landingpage-first-image-title
+                font-size: 50px
+                font-weight: bold
+                padding-top: 80px
+            .membership-landingpage-first-image-text
+                font-size: 30px
+                padding-top: 15px
+                min-height: 200px
+        .start-free-trial-button
+            padding: 20px 0
+            a
+                font-size: 20px
+                font-weight: bold
+
+.membership-landingpage-testimonial
+    padding-top: 70px
+    .membership-landingpage-testimonial-content
+        text-align: center
+        color: black
+        .membership-landingpage-testimonial-item
+            margin-bottom: 40px
+            .membership-landingpage-testimonial-item-title
+                font-size: 25px
+            .membership-landingpage-testimonial-item-content
+                font-size: 15px
+            .membership-landingpage-testimonial-item-button
+                margin-top: 15px
+                a                
+                    border: 1px solid green
+                    border-radius: 5px
+                    padding: 5px 15px
+                    font-size: 18px
+                    color: black
+                    &:hover
+                        text-decoration: none
+                        background-color: green
+
+.membership-landingpage-third
+    padding-bottom: 30px
+
+.membership-landingpage-third-title
+    text-align: center
+    font-size: 35px
+    color: black
+    font-weight: bold
+    margin-bottom: 30px
+
+.membership-landingpage-third-item
+    margin: 10px 0
+.membership-landingpage-third-item-title
+    color: black
+    font-size: 20px
+    margin-top: -25px
+    padding-left: 30px
+    height: 56px
+.membership-landingpage-third-item-content
+    font-size: 15px
+    padding-left: 30px
+
+.membership-landingpage-fourth
+    .membership-landingpage-fourth-image
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        width: 100%
+        min-height: 450px
+        span
+            color: black
+        .membership-landingpage-fourth-image-title
+            font-size: 35px
+            font-weight: bold
+            padding-top: 60px
+            text-align: center
+        .image-overlap
+            padding-left: 55%
+            padding-right: 20%
+            @include mq($until: tablet)
+                padding-left: 0
+                padding-right: 0
+                text-align: center
+            .membership-landingpage-fourth-image-mini-title
+                font-size: 20px
+                font-weight: bold
+                padding-top: 20px
+                padding-bottom: 10px            
+            .membership-landingpage-fourth-image-mini-text
+                font-size: 17px
+                min-height: 150px    
+            .membership-landingpage-fourth-image-button
+                padding-top: 20px
+                padding-bottom: 20px
+                a
+                    font-size: 20px
+
+.membership-landingpage-sixth
+    .membership-landingpage-sixth-image
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
+        width: 100%
+        min-height: 450px
+        span
+            color: black
+        .image-overlap
+            padding-left: 20%
+            padding-right: 55%
+            @include mq($until: tablet)
+                padding-left: 0
+                padding-right: 0
+                text-align: center 
+            .membership-landingpage-sixth-image-title
+                font-size: 35px
+                font-weight: bold
+                padding-top: 120px
+            .membership-landingpage-sixth-image-mini-text
+                font-size: 20px
+                min-height: 150px
+                padding-top: 10px  
+            .membership-landingpage-sixth-image-button
+                padding-top: 20px
+                padding-bottom: 20px
+                a
+                    font-size: 20px
+ 
+.membership-plans-plan            
+    text-align: center
+    color: black
+    .container
+        .membership-plans-plan-title
+            font-size: 42px
+            line-height: 42px
+            padding: 0 25%
+            @include mq($until: tablet)
+                padding: 0
+        .membership-plans-plan-title-comment
+            font-size: 17px
+            margin-bottom: 20px 
+        .membership-plans-plan-content
+            margin: 30px 0
+            .membership-plans-plan-info
+                border: solid 1px #b1acac
+                padding-left: 35px
+                @include mq($until: tablet)
+                    padding-left: 0px
+                hr
+                    margin-top: 0            
+                .membership-plans-plan-level
+                    text-align: left
+                    font-size: 40px
+                    i
+                        margin-right: 20px
+                .membership-plans-plan-service-items
+                    margin-bottom: 30px
+                    hr
+                        width: 75%
+                        margin-left: 12%
+                    .membership-plans-plan-service-item
+                        text-align: left
+                        font-size: 18px
+                        i 
+                            color: #b1acac
+                            margin-right: 10px
+                .membership-plans-plan-service-fees
+                    font-size: 23px
+                .membership-plans-plan-service-monthly-fees
+                    .membership-plans-plan-service-monthly-fees-price
+                        font-size: 39px
+                    .membership-plans-plan-service-monthly-fees-duration
+                        font-size: 23px
+                .membership-plans-plan-start-button
+                    margin: 30px 0px
+                    a
+                        font-size: 28px
+                        border: solid 1px green
+                        border-radius: 7px
+                        color: green
+                        padding: 10px 40px
+                        &:hover
+                            background-color: green
+                            color: white
+                            text-decoration: none
+        .active-display
+            display: none
+.membership-plans-plan-durations
+    display: inline-flex
+    .membership-plans-plan-duration
+        width: 160px
+        border: solid 1.5px #eeeeee
+        border-radius: 7px
+        padding: 5px
+        margin: 20px 10px
+        @include mq($until: tablet)
+            margin: 0 10px
+            width: auto
+        &:hover
+            cursor: pointer
+            border: solid 1.5px red
+        .membership-plans-plan-duration-title
+            font-size: 22px
+    .active-red
+        border: solid 1.5px red
+    .active-green
+        border: solid 1.5px green
+
+           
+.membership-plans-testimonial-title
+    font-size: 35px
+    text-align: center
+    color: black
+    font-weight: bold
+    margin-bottom: 20px 
+.membership-plans-testimonial-description
+    text-align: center
+    font-size: 17px
+    color: black
+    margin-bottom: 20px
+
+.membership-menu-list
+    font-size: 22px
+    text-transform: none
+    margin: 0 10px
+
+.membership-change-body
+    color: black
+    .membership-change-body-title
+        text-align: center
+        font-size: 35px
+        font-weight: bold
+    .membership-change-body-content
+        border: 1px solid #cac7c7
+        border-radius: 7px
+        .membership-change-body-box
+            background-color: #cac7c7
+            height: 100px
+        .membership-change-body-upgade
+            padding: 3% 10%
+            .membership-change-body-upgrade-section
+                margin-top: 30px
+                .membership-change-body-upgade-left
+                    .membership-change-body-upgade-left-title
+                        font-size: 22px
+                        font-weight: bold
+                    .membership-change-body-upgade-left-level
+                        font-size: 20px
+                        .brand
+                            
+                        .level
+                            color: #cac7c7
+                    .membership-change-body-upgade-left-duration
+                        font-size: 17px
+                .membership-change-body-upgade-right
+                    text-align: right
+                    font-size: 17px
+                    margin-top: 4%
+                    a
+                        border: 1px solid green
+                        padding: 5px 10px
+                        border-radius: 5px
+
+
+#cancell-subscription-popup
+    text-align: center
+    max-width: 950px
+    margin: auto
+    .alert-title
+        background-color: #a20a0a
+        color: white
+        padding: 30px
+        .warning
+            // padding-top: 30px
+            font-size: 50px
+        .membership-cancelation
+            font-size: 40px
+            // padding-bottom: 30px
+    .description
+        background-color: white
+        color: black
+        padding: 30px 0
+        .title
+            font-size: 35px
+            padding-bottom: 15px
+        .text
+            font-size: 23px
+            padding: 15px 8%
+    .mfp-close
+        background-color: #a20a0a
+        color: white
+        font-size: 60px
+        background: none
+        margin-right: 30px 
+    .cancell-subscription-popup-buttons
+        display: inline-flex
+        .cancell-subscription-popup-button
+            color: white
+            font-size: 18px
+            text-decoration: none
+            width: 300px
+            padding: 10px
+            div
+                padding: 10px 0
+            .yes
+                background-color: green
+            .no
+                background-color: #a20a0a
+        @include mq($until: tablet)
+            display: block
+            

@@ -1,0 +1,10 @@
+<div class="ad-reviews ad-reviews--smaller">
+<%= number_to_stars(rating).html_safe %>
+<span class="ad-reviews-rating"><%= rating %></span>
+<span class="ad-reviews-counter">
+<% if defined?(:comments) %>
+  <% str = (@category.present? && !@category.payable?) ? 'comment' : 'review' %>
+  ( <%= pluralize(comments, str) %> )
+<% end %>
+</span>
+</div>

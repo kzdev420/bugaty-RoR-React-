@@ -1,0 +1,311 @@
+.form-group
+  label
+    font-size: 25px
+    color: $brown
+    font-family: 'Calibri', sans-serif
+    @include mq($until: bp1040)
+      font-size: 20px
+      vertical-align: 3px
+    @include mq($until: bp970)
+      font-size: 17px
+      vertical-align: -8px
+  .green-label
+    color: $green
+    font-weight: 700
+
+.has-errors
+  border: 1px solid #ff0000
+.error-description
+  color: #ff0000
+
+.form-control
+  &:focus
+    outline: none
+    @include box-shadow(0,2px,2px,rgba(black, .3))
+
+.one-line-group--right
+  .selectbox
+    float: right
+
+.one-line-input
+  label
+    font-size: 20px
+    font-weight: 400
+  input
+    max-width: 30%
+    &.form-control
+      float: none
+      height: 30px
+      font-size: 14px
+      border-radius: 4px !important
+      margin: 0 5px
+
+.selectbox
+  display: inline-block
+  height: 35px
+  border: 1px solid #dedede
+  border-radius: 4px
+  min-width: 120px
+  background: white
+  background-image: url('../img/dropdown-menu.png')
+  background-repeat: no-repeat
+  background-position: 95% center
+  position: relative
+  overflow: hidden
+  &.small-paginator
+    width: 52px
+    min-width: 52px
+    margin-left: 10px
+    height: 28px
+    background-image: url('../img/dropdown-menu-small.png')
+    select
+      height: 28px
+      padding-left: 10px
+  select
+    border: none
+    box-shadow: none
+    background: transparent
+    background-image: none
+    outline: none
+    -webkit-appearance: none
+    height: 35px
+    width: 130%
+    padding-left: 10px
+    padding-right: 20px
+    &:focus
+      outline: none
+  &.selectbox--gradient
+    @include linear-gradient(to top, #f2f2f2, white)
+    background-image: url('../img/dropdown-menu.png')
+    background-repeat: no-repeat
+    background-position: 95% center
+    height: 32px
+    padding-left: 15px
+    margin-bottom: 10px
+  &.selectbox--blue-gradient
+    @include linear-gradient(to top, #e3f4fc, white)
+    background-image: url('../img/dropdown-menu.png')
+    background-repeat: no-repeat
+    background-position: 95% center
+    width: 100%
+    margin-bottom: 15px
+    select
+      padding-left: 30px
+
+.selectbox-multiple
+  height: 170px
+  ::-webkit-scrollbar
+    width: 13px
+    background: #eeeeee
+    border-left: 1px solid #696969
+  ::-webkit-scrollbar-track
+    padding-top: 4px
+    padding-bottom: 4px
+  ::-webkit-scrollbar-thumb
+    background: #37a440
+    border-radius: 6px
+    margin-top: 4px
+    margin-bottom: 4px
+    padding-left: 2px
+
+
+
+.radiobox
+  input[type="radio"]
+    display: none
+  label
+    font-size: 14px
+    color: $brown
+    font-family: 'Calibri', sans-serif
+    font-weight: 400
+    cursor: pointer
+    &:before
+      display: inline-block
+      width: 15px
+      height: 15px
+      border: 2px solid $blue
+      background: transparent
+      content: ' '
+      border-radius: 50%
+      margin-right: 5px
+  input[type="radio"]:checked + label:before
+    background: #f329ab
+    border-color: #f329ab
+    padding: 3px
+.inline-radios
+  .radiobox
+    display: inline-block
+    label:before
+      margin-right: 5px
+
+.checkbox
+  &.inline
+    display: inline-block
+    margin-right: 10px
+    label:before
+      margin-right: 5px
+    input[type="checkbox"]:checked + label:before
+      margin-right: 3px
+  input[type="checkbox"]
+    display: none
+  label
+    font-size: 18px
+    color: $brown
+    font-family: 'Calibri', sans-serif
+    font-weight: 400
+    padding-left: 0
+    &:before
+      display: inline-block
+      width: 13px
+      height: 13px
+      border: 1px solid $blue
+      border-radius: 3px
+      margin-right: 17px
+      content: ' '
+  input[type="checkbox"]:checked + label:before
+    background: url('../img/checkbox-checked.png') no-repeat 0 0
+    width: 15px
+    height: 15px
+    margin-right: 15px
+    border: none
+
+.js .fileform, .js .fileform-multiple
+  position: relative
+  width: 100% !important
+  cursor: pointer !important
+  z-index: 0
+  height: 45px
+  background: transparent
+  .selectbutton
+    background-color: transparent
+    border: 1px solid #f21aa5
+    border-radius: 20px
+    color: #3d3142
+    position: absolute
+    right: 0
+    top: 1px
+    font-size: 14px
+    font-family: 'Calibri', sans-serif
+    font-weight: 700
+    height: 37px
+    float: right
+    overflow: hidden
+    padding: 8px 15px
+    text-align: center
+    display: table-cell
+    vertical-align: middle
+    width: 30%
+    cursor: pointer
+    @include mq($until: tablet)
+      line-height: 1.2em
+      padding: auto 15px
+      vertical-align: middle
+    @include mq($until: bp460)
+      padding: 2px 15px
+    &:hover
+      @include transition(all .4s ease)
+      background: #f21aa5
+      color: white
+  #upload
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    -moz-opacity: 0
+    filter: alpha(opacity = 0)
+    opacity: 0
+    font-size: 15px
+    height: 40px
+    z-index: 20
+  #fileformlabel
+    width: 65%
+    float: left
+    padding-left: 30px
+    overflow: hidden
+  .MultiFile-wrap
+    display: inline-block
+  .inputfile
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    z-index: -1
+  // .inputfile + label
+  label
+    width: 65%
+    float: left
+    padding-left: 35px
+    font-size: 16px
+    font-weight: 400
+    display: inline-block
+    cursor: pointer
+    overflow: hidden
+    padding-top: 8px
+    height: 37px
+    margin-top: 1px
+    background-image: url('../img/clip.svg')
+    background-repeat: no-repeat
+    background-position: 10px center
+    background-size: 20px
+
+  .inputfile:focus + label,
+  .inputfile + label:hover
+    background-color: #f8f8f8
+  small
+    float: left
+    opacity: .7
+    font-size: 12px
+  .inputfile-list
+    float: left
+    width: 100%
+  .MultiFile-remove
+    color: tomato
+    opacity: .55
+  .MultiFile-label
+    margin-right: 10px
+    display: inline-block
+    margin-bottom: 5px
+.no-js
+  .inputfile + label
+    display: none
+
+.switch
+  width: 120px
+  height: 38px
+  position: relative
+  border: 1px solid #d8d6d9
+  border-radius: 4px
+  display: inline-block
+  font-size: 0
+  input
+    opacity: 0
+    background: transparent
+    border: none
+    position: absolute
+    top: 0
+    left: 0
+  input:checked + label
+    @include linear-gradient(to top, #37a440 0%, #23722a 90%, #1e6924 100%)
+  .first:checked + label
+    border-right: 1px solid black
+  .second:checked + label
+    border-left: 1px solid black
+    @include linear-gradient(to bottom, #37a440 0%, #23722a 90%, #1e6924 100%)
+  label
+    font-family: 'Calibri', sans-serif
+    font-weight: 700
+    color: black
+    font-size: 20px
+    display: inline-block
+    height: 36px
+    width: 59px
+    margin-bottom: 0
+    padding-top: 5px
+    text-align: center
+    cursor: pointer
+
+.car-max-w .selectbox
+  max-width: 50%
+  select
+    padding-right: 60px

@@ -1,0 +1,83 @@
+<%= render('meta') %>
+
+<%= render ('layouts/header')%>
+
+<!-- START SLIDER -->
+<!-- <section class="mainpage-slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="owl-carousel" id="owl-carousel">
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/1.jpg')">
+            <div class="mainpage-slider-slide-title">About us</div>
+          </div>
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/slider1.jpg')"></div>
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/slider2.jpg')"></div>
+          <div class="mainpage-slider-slide" style="background-image: url('images/about_slides/slider5.jpg')"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- END SLIDER -->
+<div class="container">
+  <div class="col-sm-7">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="about/founders">Founders & Teams <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/about">About</a>
+        <a class="nav-item nav-link" href="/page/news">News</a>
+      </div>
+  </nav>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="content-holder">
+          <%= @page.text.html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--- CONTENT -->
+
+
+
+<style>
+  body{
+    background-color: #FFFFFF !important;
+  }
+  .text-page h1 {
+    text-align: center !important;
+    color: #424040 !important;
+    font-size: 20px; !important;
+  }
+  .text-page p {
+    font-size: 12px;
+  }
+  .navbar-nav{
+    margin-top: 75px;
+    font-size: 20px;
+    font-family: sans-serif !important;
+    height: 93px;
+    letter-spacing: -1px;
+    font-family: "Poppins";
+    font-weight: 200;
+    text-align: center;
+  }
+  .navbar-nav a{
+    display: inline-block;
+    margin-right: 15px;
+  }
+  .navbar-nav a:hover{
+    text-decoration: underline !important;
+  }
+  .content-holder{
+    border: none !important;
+  }
+</style>

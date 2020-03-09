@@ -1,0 +1,43 @@
+<%= provide(:title, "Change your password") %>
+
+<%= render ('layouts/header') %>
+
+
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3" style="margin-top: 65px; margin-bottom: 30px;">
+
+        <div class="whitebox">
+        <div class="ad-titles single-title text-center" style="margin-bottom: 20px">
+        Change your password
+        </div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+        <div class="form-group">
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control ico-pass-bg', placeholder: 'Enter your new password' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control ico-pass-bg', placeholder: 'Confirm new password' %>
+        </div>
+
+        <div class="text-center pt30">
+          <%= f.button "<span>Change my password</span>".html_safe, :class => "btn-pink have-fill" %>
+        </div>
+<% end %>
+
+        </div>
+
+</div>
+</div>
+</div>
+</section>
+
+<style>
+.ico-pass-bg{
+  padding-left: 50px;
+}
+</style>

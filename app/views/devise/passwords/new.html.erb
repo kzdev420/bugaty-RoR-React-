@@ -1,0 +1,32 @@
+<%= provide(:title, "Forgot your password?") %>
+
+<%= render ('layouts/header') %>
+
+
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3" style="margin-top: 65px; margin-bottom: 40px;">
+
+        <div class="whitebox">
+        <div class="ad-titles single-title text-center" style="margin-bottom: 20px">
+        Forgot your password?
+        </div>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+        <div class="form-group">
+          <%= f.email_field :email, class: 'form-control ico-email-bg', placeholder: 'Your email' %>
+        </div>
+
+        <div class="text-center pt30">
+          <%= f.button "<span>Send me reset password instructions</span>".html_safe, :class => "btn-pink have-fill" %>
+        </div>
+<% end %>
+
+</div>
+</div>
+</div>
+</div>
+</section>

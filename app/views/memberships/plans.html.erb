@@ -1,0 +1,10 @@
+<%= render ('header') %>
+<%= render ('memberships/plans/plans_section') %>
+
+<% if user_signed_in? %>
+    <%= render ('memberships/plans/memeberships_compare') %>
+<% else %>
+    <%= render ('memberships/plans/testimonial') %>
+    <%= render ('memberships/plans/portfolio') %>
+    <%= render ('memberships/plans/question_section') %>
+<% end %>

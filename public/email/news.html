@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+	<title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+	<!-- Web Font / @font-face : BEGIN -->
+	<!-- NOTE: If web fonts are not required, lines 9 - 26 can be safely removed. -->
+	
+	<!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+	<!--[if mso]>
+		<style>
+			* {
+				font-family: sans-serif !important;
+			}
+		</style>
+	<![endif]-->
+	
+	<!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+	<!--[if !mso]><!-->
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,70' rel='stylesheet' type='text/css'>
+	<!--<![endif]-->
+
+	<!-- Web Font / @font-face : END -->
+	
+	<!-- CSS Reset -->
+    <style type="text/css">
+
+		/* What it does: Remove spaces around the email design added by some email clients. */
+		/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+	        margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+        
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin:0 !important;
+        }
+        
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+                
+        /* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            Margin: 0 auto !important;
+        }
+        table table table {
+            table-layout: auto; 
+        }
+        
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+        
+        /* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+        .yshortcuts a {
+            border-bottom: none !important;
+        }
+        
+        /* What it does: A work-around for iOS meddling in triggered links. */
+        .mobile-link--footer a,
+        a[x-apple-data-detectors] {
+            color:inherit !important;
+            text-decoration: underline !important;
+        }
+      
+    </style>
+    
+    <!-- Progressive Enhancements -->
+    <style>
+        
+        /* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 480px) {
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid,
+            .fluid-centered {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+            /* And center justify these ones. */
+            .fluid-centered {
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+        
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                Margin-left: auto !important;
+                Margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+                
+        }
+
+    </style>
+
+</head>
+<body width="100%" bgcolor="#f8f8f8" style="Margin: 0;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#f8f8f8" style="border-collapse:collapse;"><tr><td valign="top">
+    <center style="width: 100%;">
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
+            (Optional) This text will appear in the inbox preview, but not the email body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!--    
+            Set the email width. Defined in two places:
+            1. max-width for all clients set with Outlook, allowing the email to squish on narrow but never go wider than 600px.
+            2. MSO tags for Desktop Windows Outlook enforce a 600px width.
+        -->
+        <div style="max-width: 600px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table cellspacing="0" cellpadding="0" border="0" width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+            
+            <!-- Email Body : BEGIN -->
+            <table cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff" width="100%" style="max-width: 600px">
+
+                <!-- Background Image with Text : BEGIN -->
+                <tr>
+                    <!-- Bulletproof Background Images c/o https://backgrounds.cm -->
+                    <td background="email-header-bg.png" bgcolor="#fff" valign="middle" style="text-align: center; background-position: center center !important; background-size: cover !important;">
+                        <!--[if gte mso 9]>
+                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:175px; background-position: center center !important;">
+                        <v:fill type="tile" src="http://email-header-bg.png" color="#222222" />
+                        <v:textbox inset="0,0,0,0">
+                        <![endif]-->
+                        <div>
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="left" width="500">
+                            <tr>
+                            <td align="left" valign="top" width="580">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="left" width="100%" style="max-width:580px; Margin: auto;">
+                                <tr>
+                                    <td valign="middle" style="text-align: left; padding: 10px 20px 10px 40px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #ffffff;">
+                                        <a href="#"><img src="soc-fb.png" alt="facebook" width="25"/></a>
+                                        <a href="#"><img src="soc-tw.png" alt="twitter" width="25"/></a>
+                                        <a href="#"><img src="soc-google.png" alt="google plus" width="25"/></a>
+                                        <a href="#"><img src="soc-youtube.png" alt="youtube" width="25"/></a>
+                                        <a href="#"><img src="soc-insta.png" alt="instagram" width="25"/></a>
+                                    </td>
+                                    <td valign="middle" style="text-align: right; padding: 10px 20px; font-family: 'Roboto Slab', serif; font-weight: 300; font-size: 18px; mso-height-rule: exactly; line-height: 20px; color: #ffffff;">
+                                        <a href="#" style="color: #ffffff; text-decoration: none; padding-right: 10px;">Home</a>
+                                        <a href="#" style="color: #ffffff; text-decoration: none;">Contact</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </div>
+                        <div>
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="500">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; Margin: auto;">
+                                <tr>
+                                    <td valign="middle" style="text-align: center; padding: 10px 20px 40px 20px; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #ffffff;">
+                                        <a href="#"><img src="logo.png" alt="logo" width="100%"/></a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </div>
+                        <!--[if gte mso 9]>
+                        </v:textbox>
+                        </v:rect>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Background Image with Text : END -->
+
+                <!-- Content : BEGIN -->
+                <tr>
+                    <!-- Bulletproof Background Images c/o https://backgrounds.cm -->
+                    <td bgcolor="#fff" valign="middle" style="text-align: center;">
+                        <!--[if gte mso 9]>
+                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
+                        <v:fill type="tile" src=""/>
+                        <v:textbox inset="0,0,0,0">
+                        <![endif]-->
+                        <div>
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="500">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; Margin: auto;">
+                                <tr>
+                                    <td style="padding: 20px; text-align: center; font-family: 'Roboto Slab', serif; font-weight: 700;font-size: 18px; mso-height-rule: exactly; line-height: 22px; color: #007cff;">
+                                        Hello  Dear Username,<br> Thank you for using our servise! 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0px; height: 1px; text-align: center; font-family: 'Roboto Slab', serif; font-weight: 700;font-size: 18px; mso-height-rule: exactly; line-height: 22px; color: #007cff; background: #b1b1b1" bgcolor="b1b1b1">
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="500">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; Margin: auto;">
+                                <tr>
+                                    <td valign="top" style="text-align: left; padding: 10px 20px 10px 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #000;" width="60%">
+                                        <span style="">Any title of same news from our site</span><br>
+                                        <span style="font-size: 12px; font-weight: 300; line-height: 16px;">
+                                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequatt ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a 
+                                        </span>
+                                    </td>
+                                    <td valign="top" style="text-align: right; padding: 10px 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #000;" width="40%">
+                                         <img src="sample-img.png" width="100%" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="500">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; Margin: auto;">
+                                <tr>
+                                  <td valign="middle" style="text-align: left; padding: 10px 0 30px 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #000;" width="70%">
+                                        <span style="font-size: 12px; font-weight: 300; line-height: 16px;">
+                                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu i
+                                        </span>
+                                        <br><br>
+                                        <!-- Button : Begin -->
+                                        <table cellspacing="0" cellpadding="0" border="0" align="left" style="Margin: auto">
+                                            <tr>
+                                                <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
+                                                    <a href="#" style="background: #37a440; border: 3px solid #37a440; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 12px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">Read more</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- Button : END -->
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0px; height: 1px; text-align: center; font-family: 'Roboto Slab', serif; font-weight: 700;font-size: 18px; mso-height-rule: exactly; line-height: 22px; color: #007cff; background: #b1b1b1" bgcolor="b1b1b1">
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+
+                            <!-- NEXT ARTICLE -->
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="500">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; Margin: auto;">
+                                <tr>
+                                    <td valign="top" style="text-align: left; padding: 10px 20px 10px 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #000;" width="60%">
+                                        <span style="">Any title of same news from our site</span><br>
+                                        <span style="font-size: 12px; font-weight: 300; line-height: 16px;">
+                                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequatt ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a 
+                                        </span>
+                                    </td>
+                                    <td valign="top" style="text-align: right; padding: 10px 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #000;" width="40%">
+                                         <img src="sample-img.png" width="100%" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="500">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:500px; Margin: auto;">
+                                <tr>
+                                  <td valign="middle" style="text-align: left; padding: 10px 0 80px 0; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #000;" width="70%">
+                                        <span style="font-size: 12px; font-weight: 300; line-height: 16px;">
+                                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu i
+                                        </span>
+                                        <br><br>
+                                        <!-- Button : Begin -->
+                                        <table cellspacing="0" cellpadding="0" border="0" align="left" style="Margin: auto">
+                                            <tr>
+                                                <td style="border-radius: 3px; background: #222222; text-align: center;" class="button-td">
+                                                    <a href="#" style="background: #37a440; border: 3px solid #37a440; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 12px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;" class="button-a">
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ffffff">Read more</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- Button : END -->
+                                        <br>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+
+                        </div>
+                        <!--[if gte mso 9]>
+                        </v:textbox>
+                        </v:rect>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Content : END -->
+               
+
+
+                <!-- Background Image with Text : BEGIN -->
+                <tr>
+                    <!-- Bulletproof Background Images c/o https://backgrounds.cm -->
+                    <td background="email-footer-bg.png" bgcolor="#222222" valign="middle" style="text-align: center; background-position: center center !important; background-size: cover !important;">
+                        <!--[if gte mso 9]>
+                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:175px; background-position: center center !important;">
+                        <v:fill type="tile" src="email-footer-bg.png" color="#222222" />
+                        <v:textbox inset="0,0,0,0">
+                        <![endif]-->
+                        <div>
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="580">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:580px; Margin: auto;">
+                                <tr>
+                                    <td valign="top" style="text-align: left; padding: 20px 20px 10px 40px; ffont-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px;  mso-height-rule: exactly; line-height: 20px; color: #ffffff;" width="65%">
+                                        Freewholesalerdirtectory.com<br><br>
+                                        <span style="font-size: 12px;">
+                                            www.freewholesalerdirectory.com<br>
+                                            Grate Britain, London<br>
+                                            16 ORCHARD GARDENS, SUTTON, SM1 2QD<br>
+                                        </span>
+                                    </td>
+                                    <td valign="bottom" style="text-align: right; padding: 10px 20px; font-family: 'Roboto Slab', serif; font-weight: 700; font-size: 14px; mso-height-rule: exactly; line-height: 20px; color: #ffffff;" width="35%">
+                                        Follow us<br>
+
+                                        <a href="#"><img src="soc-fb.png" alt="facebook" width="25"/></a>
+                                        <a href="#"><img src="soc-tw.png" alt="twitter" width="25"/></a>
+                                        <a href="#"><img src="soc-google.png" alt="google plus" width="25"/></a>
+                                        <a href="#"><img src="soc-youtube.png" alt="youtube" width="25"/></a>
+                                        <a href="#"><img src="soc-insta.png" alt="instagram" width="25"/></a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="580">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:580px; Margin: auto;">
+                                <tr>
+                                    <td valign="top" style="text-align: left; padding: 10px 20px 20px 40px; ffont-family: 'Roboto Slab', serif; font-weight: 700; font-size: 18px;  mso-height-rule: exactly; line-height: 20px; color: #ffffff;">
+                                        <span style="font-size: 12px;">
+                                            tel: 01303 680311;  mob: 07889 635427      name@yourdomain.com
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </div>
+                        <!--[if gte mso 9]>
+                        </v:textbox>
+                        </v:rect>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Background Image with Text : END -->
+               <!-- Background Image with Text : BEGIN -->
+                <tr>
+                    <!-- Bulletproof Background Images c/o https://backgrounds.cm -->
+                    <td bgcolor="#0a7ff8" valign="middle" style="text-align: center; background-position: center center !important; background-size: cover !important;">
+                        <!--[if gte mso 9]>
+                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;height:175px; background-position: center center !important;">
+                        <v:fill type="tile" color="#0a7ff8" />
+                        <v:textbox inset="0,0,0,0">
+                        <![endif]-->
+                        <div>
+                            <!--[if mso]>
+                            <table border="0" cellspacing="0" cellpadding="0" align="center" width="500">
+                            <tr>
+                            <td align="center" valign="top" width="580">
+                            <![endif]-->
+                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" style="max-width:580px; Margin: auto;">
+                                <tr>
+                                    <td valign="top" style="text-align: center; padding: 5px 20px 10px 40px; ffont-family: 'Roboto Slab', serif; font-weight: 400; font-size: 12px;  mso-height-rule: exactly; line-height: 20px; color: #ffffff;" width="70%">
+                                    <a href="#" style="color: #fff; text-decoration: underline; padding-right: 30px;">Terms and Conditions</a>
+                                    <a href="#" style="color: #fff; text-decoration: underline; padding-right: 30px;">Privacy Policy</a>
+                                    <a href="#" style="color: #fff; text-decoration: underline; padding-right: 30px;">Help and Support</a>
+                                    <a href="#" style="color: #fff; text-decoration: underline; padding-right: 00px;">Email notification setting</a>
+                                    <br>
+                                    <span>© Freewholesalerdirectory Limited2016. All Rights Reserved</span>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if (gte mso 9)|(IE)]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </div>
+                        <!--[if gte mso 9]>
+                        </v:textbox>
+                        </v:rect>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Background Image with Text : END -->
+
+			</table>
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : END -->
+
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </center>
+</td></tr></table>
+</body>
+</html>
+

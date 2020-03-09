@@ -1,0 +1,120 @@
+.total-subscription {
+  div {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  button {
+    // background-color: #f21ea7;
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+
+  p {
+    margin-top: 15px;
+  }
+}
+.gradient-bg {
+  .title {
+    hr {
+      border-width: 1px;
+      border-style: solid;
+    }
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  #subscription_plan, #feature_type {
+    // margin-bottom: 50px;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+    min-width: 160px;
+    border-color: #82898e;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .image-container {
+    display: inline-block;
+    margin-right: 20px;
+    padding-bottom: 50px;
+  }
+
+  .payment-method-active {
+    border: 3px solid #08820c;
+    border-radius: 5px
+  }
+
+  form.coupon {
+    input {
+      font-size: 12px;
+      margin-right: 50px;
+    }
+
+    button {
+      max-width: 100%;
+      padding-left: 30px;
+      padding-right: 30px;
+      font-size: 12px;
+    }
+  }
+  .subscription-details {
+    span {
+      color: green;
+      font-weight: bolder;
+      font-size: 16px;
+    }
+
+    ul {
+      margin-top: 50px;
+      margin-bottom: 30px;
+      list-style: none;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    li::before {
+      content: "• ";
+      color: green;
+    }
+  }
+}
+
+.subscription-testimonial{
+  color: black;
+  text-align: center;
+  .subscription-testimonial-title{
+    font-size: 35px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .container{
+    .subscription-testimonial-portfolio{
+      background-color: #eeeeee;
+      .row{
+        padding: 10px 5%;
+        .title{
+          font-weight: bold;
+        }
+      }
+    }
+    .subscription-testimonial-image{
+      min-height: 350px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      a{
+        font-size: 18px;
+        padding: 5px 15px;
+        font-weight: bold;
+        margin-top: 300px;
+      }
+    }
+  }
+}

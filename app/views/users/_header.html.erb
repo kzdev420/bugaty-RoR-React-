@@ -1,0 +1,60 @@
+  <!-- USER PROFILE : START -->
+  <% if @user.cover_photo.present? %>
+  <section class="profile-header" style="background-image: url('<%= "#{@user.cover_photo.huge.url}" %>')">
+  <% else %>
+  <section class="profile-header" style="background-image: url('/images/profile-blank-pic.png')">
+
+  <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <% if @user == current_user %>
+          <div class="profile-header-info"><%= link_to "Edit", edit_user_path(current_user) %> User’s Profile Cover Picture<br>(1346x347 pixels)
+          </div>
+          <% end %>
+          <div class="profile-header-name"><%= "#{@user.first_name}" + " " + "#{@user.last_name}" %></div>
+          <!--<div class="profile-header-stars">
+
+            <i class="ico ico-star"></i> <i class="ico ico-star"></i> <i class="ico ico-star"></i> <i class="ico ico-star ico-star--half"></i> <i class="ico ico-star ico-star--blank"></i>
+            <span class="ad-reviews-rating">4.8</span>
+            <span class="ad-reviews-counter"> (4 reviews) </span>
+
+          </div>-->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="profile-header-sub">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 have-pad-50">
+          <div class="profile-header-picture">
+            <div class="profile-header-wrap">
+              <% if @user.profile_photo.present? %>
+              <%= image_tag @user.profile_photo.small.url, alt: 'User photo', class: 'img-responsive img-circle' %>
+              <% else %>
+              <img src="/images/no-avatar.png" class="img-responsive img-circle" alt='No user photo' />
+              <% end %>
+            </div>
+          </div>
+          <div class="profile-header-joined-ago">
+            <div class='blank-left'></div>
+            <div class='ad-reviews'>
+              <a href='#reviews_link' id="reviews_link">
+                <% rating = get_listings_rating_for(@user).to_f %>
+                <%= number_to_stars(rating).html_safe %>
+                <span class="ad-reviews-rating"><%= rating %></span>
+                <span class="ad-reviews-counter"><%= pluralize(@user.listings.pluck(:comments_count).sum, 'review') %></span>
+              </a>
+              <span class='blue'><%= pluralize(@user.sales_count, 'Sale') %></span>
+              <span class='blue'><%= pluralize(@user.payment_requests.accepted.count, 'Purchase') %></span>
+            </div>
+            <div class="text-right">
+              <span>Member since</span> : <%= @user.created_at.strftime("%d.%m.%Y") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- USER PROFILE: END -->

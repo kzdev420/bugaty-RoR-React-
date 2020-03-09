@@ -1,0 +1,553 @@
+////////////
+//TEXT PAGES
+////////////
+
+
+.content-holder
+  background: white
+  padding: 10px 55px 110px 55px
+  border-left: 3px solid #f9f7e7
+  border-right: 3px solid #f9f7e7
+  margin-top: 0px
+  @include mq($until: desktop)
+    padding: 10px 40px 60px 40px
+  @include mq($until: tablet)
+    padding: 10px 25px 40px 25px
+  &.no-pad-b
+    padding-bottom: 0
+  &.smaller-left-pad
+    padding-left: 35px
+    padding-bottom: 0
+    @include mq($until: desktop)
+      padding-left: 15px
+    @include mq($until: tablet)
+      padding-left: 15px
+
+
+
+.mainpage-slider-slide-title
+  font-size: 48px
+  font-weight: 700
+  color: white
+  @include text-shadow(-1px,-1px,2px,rgba(black,.7))
+  padding-left: 40px
+  padding-top: 25px
+  text-transform: uppercase
+  @include mq($until: desktop)
+    font-size: 32px
+  @include mq($until: tablet)
+    font-size: 26px
+
+.mainpage-slider-slide-btn
+  position: absolute
+  bottom: 15px
+  right: 40px
+  @include mq($until: tablet)
+    bottom: 30px
+    right: 10px
+
+// CONTACT US PAGE
+
+.contact-form
+  .form-control
+    @include box-shadow(0px,-2px,2px,rgba(black,.7))
+    padding-left: 70px
+    font-family: 'Calibri', sans-serif
+    width: 100%
+    margin-bottom: 20px
+    @include mq($until: desktop)
+      padding-left: 50px
+    @include mq($until: tablet)
+      padding-left: 40px
+  .btn-pink
+    padding-left: 40px
+    padding-right: 40px
+    @include box-shadow(0,2px,4px,rgba(black,.25))
+    &:hover
+      @include box-shadow(0,2px,4px,rgba(black,.15))
+  select
+    width: 100%
+    margin-bottom: 5px
+    height: 40px
+  .captcha-container
+    padding-left: 20%
+    margin-top: 20px
+    margin-bottom: 20px
+
+.ico-name-bg
+  background: url('../img/ico-name.png') no-repeat 10px center
+
+.ico-email-bg
+  background: url('../img/ico-email.png') no-repeat 10px center
+
+.ico-email
+  background: url('../img/ico-email.png') no-repeat center
+  width: 26px
+  height: 17px
+
+.ico-phone-bg
+  background: url('../img/ico-phone.png') no-repeat 10px center
+
+.ico-textarea-bg
+  background: url('../img/ico-textarea.png') no-repeat 10px 7px
+
+.ico-lang-bg
+  background: url('../img/ico-lang2.png') no-repeat 10px 7px
+
+.ico-company-bg
+  background: url('../img/ico-compnay-bg.png') no-repeat 10px center
+.ico-position-bg
+  background: url('../img/ico-position-bg.png') no-repeat 10px center
+
+.ico-country-bg
+  background: url('../img/ico-country-bg.png') no-repeat 10px center
+
+.ico-say-bg
+  background: url('../img/ico-say-bg.png') no-repeat 10px 7px
+
+.ico-pass-bg
+  background: url('../img/ico-pass-bg.png') no-repeat 10px center
+
+.ico-pass-bg--filled
+  background: url('../img/ico-lock-filled-green.png') no-repeat 10px center
+.ico-pass-bg--filled--blue
+  background: url('../img/ico-lock-filled-blue.png') no-repeat 10px center
+
+
+//contact -right part
+
+.border-left--gradient
+  position: relative
+  background: url('../img/border-left-dash.png') repeat-y 0 0
+  padding-left: 30px
+  padding-bottom: 120px
+  margin-top: -10px
+  @include mq($until: desktop)
+    padding-bottom: 50px
+  @include mq($until: tablet)
+    background: white
+    margin-top: 0
+
+.border-right--gradient
+  position: relative
+  background: url('../img/border-left-dash.png') repeat-y right 0
+  padding-right: 30px
+  padding-bottom: 120px
+  margin-top: -10px
+  @include mq($until: desktop)
+    padding-bottom: 50px
+  @include mq($until: tablet)
+    background: white
+    margin-top: 0
+
+.contact-row
+  font-size: 14px
+  color: $brown
+  a
+    color: $blue
+
+.ico-phone2
+  background: url('../img/ico-phone2.png') no-repeat 0 0
+  width: 16px
+  height: 17px
+.ico-mobile2
+  background: url('../img/ico-mobile2.png') no-repeat 0 0
+  width: 11px
+  height: 19px
+.ico-location2
+  background: url('../img/ico-location2.png') no-repeat 0 0
+  width: 12px
+  height: 19px
+
+.contact-socials
+  margin: 30px 0
+  .ico
+    margin-right: 3px
+    &:hover
+      opacity: .7
+      @include transition(all .4s ease)
+.ico-fb--grayscale
+  background: url('../img/sprite.png') no-repeat 0 -345px
+  width: 27px
+  height: 27px
+.ico-tw--grayscale
+  background: url('../img/sprite.png') no-repeat -32px -345px
+  width: 27px
+  height: 27px
+.ico-gplus--grayscale
+  background: url('../img/sprite.png') no-repeat -63px -345px
+  width: 27px
+  height: 27px
+.ico-youtube--grayscale
+  background: url('../img/sprite.png') no-repeat -95px -345px
+  width: 27px
+  height: 27px
+.ico-insta--grayscale
+  background: url('../img/sprite.png') no-repeat -127px -345px
+  width: 27px
+  height: 27px
+.ico-linkedin--grayscale
+  background: url('../img/sprite.png') no-repeat -191px -345px
+  width: 27px
+  height: 27px
+.ico-pinterest--grayscale
+  background: url('../img/sprite.png') no-repeat -159px -345px
+  width: 27px
+  height: 27px
+
+.contact-map
+  border: 1px solid #787978
+  border-radius: 50%
+  width: 300px
+  height: 300px
+  @include mq($until: tablet)
+    width: auto
+    height: auto
+
+///////////
+//feedback
+///////////
+.feedback
+  border: 1px solid #d2d2d2
+  border-radius: 10px
+  padding: 15px 15px 5px 15px
+  margin-top: 45px
+  margin-bottom: 45px
+  &-image
+    max-width: 160px
+    max-height: 160px
+    border-radius: 50%
+    overflow: hidden
+    border: 1px solid #e7e6e4
+    position: relative
+  .img-rounded
+    border-radius: 50%
+    @include mq($until: tablet)
+      margin: 0 auto
+  p
+    font-family: 'Roboto Slab', serif
+    font-weight: 300
+    margin-top: 15px
+  span
+    color: $green
+.feedback-name
+  color: $green
+  font-size: 20px
+  font-family: 'Roboto Slab', serif
+  font-weight: 700
+  margin-bottom: 20px
+  margin-top: 20px
+
+.feedback-ico-row
+  margin-bottom: 5px
+  font-family: 'Roboto Slab', serif
+
+.ico-company
+  background: url('../img/ico-compnay-bg.png') no-repeat center
+  width: 24px
+  height: 20px
+  margin-right: 5px
+  vertical-align: -4px
+.ico-position
+  background: url('../img/ico-position-bg.png') no-repeat center
+  width: 24px
+  height: 32px
+  margin-right: 5px
+  vertical-align: -10px
+  @include transform(scale(.8))
+.ico-country
+  background: url('../img/ico-country-bg.png') no-repeat center
+  width: 25px
+  height: 20px
+  margin-right: 5px
+  vertical-align: -4px
+
+.pagination-slider
+  margin: 0 auto
+
+.paginator_p
+  display: inline-block
+  font-size: 18px
+  font-family: 'Roboto Slab', serif
+  color: $blue
+  margin-right: 1% !important
+  margin-left: 1% !important
+  padding: 0px 2%
+  cursor: pointer
+  &.selected
+    background: #f329ab
+    color: white
+
+.paginator_p_wrap
+  width: 100% !important
+  margin-bottom: 10px
+  max-height: 30px
+  overflow: hidden
+
+div.paginator_slider.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all
+  width: 100% !important
+.ui-widget.ui-widget-content
+  border: 1px solid transparent
+
+.ui-widget-content
+  background: #cdcdcd
+  height: 5px
+
+.ui-state-default, .ui-widget-content .ui-state-default
+  background: #363636
+  border: none
+
+.ui-slider .ui-slider-handle
+  width: 80px
+  height: 5px
+  margin-left: 0
+  top: -1px
+
+.total-pages-paginator
+  color: #818181
+  font-size: 15px
+  margin-top: 5px
+
+
+// SUPPORT PAGE
+
+.support-sudibar
+
+.support-sudibar-heading
+  color: #f326aa
+  font-size: 25px
+  font-family: 'Calibri', sans-serif
+  text-transform: uppercase
+  font-weight: 700
+  margin-top: 40px
+
+.sidebar-navigation
+  margin-top: 40px
+  list-style: none
+  font-family: 'Calibri', sans-serif
+  border-left: 2px solid #f326aa
+
+  &>li
+    font-size: 22px
+    color: $blue
+    font-weight: 700
+    display: block
+    position: relative
+    &:before
+      display: block
+      position: absolute
+      left: -5px
+      top: 19px
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background: white
+      border: 2px solid #f326aa
+      content: ' '
+      z-index: 2
+    a
+      display: inline-block
+      padding: 7px 15px
+      &:hover
+        color: #f326aa
+        @include transition(all .4s ease)
+
+    &>ul
+      list-style: none
+      padding-left: 20px
+      &>li
+      font-size: 20px
+      font-weight: 400
+      display: block
+      a
+        display: inline-block
+        padding: 6px 15px
+        color: #32281e
+
+
+.support-search
+  margin-top: 30px
+
+  .form-control
+    background: white url('../img/ico-search-blue.png') no-repeat 10px center
+    -webkit-box-shadow: inset 1px 0px 5px 0px rgba(0,0,0,0.75)
+    -moz-box-shadow: inset 1px 0px 5px 0px rgba(0,0,0,0.75)
+    box-shadow: inset 1px 0px 5px 0px rgba(0,0,0,0.75)
+    border: 1px solid #d8d6d9
+    width: 90%
+    display: inline-block
+    @include mq($until: desktop)
+      width: 80%
+    @include mq($until: tablet)
+      width: 75%
+  button
+    max-width: 18%
+    background: #37a440
+    border-radius: 5px
+    border: 1px solid #d8d6d9
+    color: white
+    outline: none
+    padding: 5px 3px
+    font-size: 20px
+    vertical-align: -1px
+    display: inline-block
+    float: right
+
+.support-heading
+  color: $blue
+  font-size: 22px
+  font-weight: 700
+  margin-top: 20px
+
+.ico-help
+  background: url('../img/ico-help.png') no-repeat 0 0
+  width: 31px
+  height: 31px
+  margin-right: 8px
+  vertical-align: -5px
+
+.create-ticket
+  margin-top: 30px
+  a:hover
+    opacity: .7
+
+.ticket-content
+  margin-top: 20px
+  margin-bottom: 40px
+  p
+    font-size: 12px
+    font-weight: 300
+
+
+
+
+.ico-how-it-works
+  background: url("../img/howitworks-icon.png") no-repeat center
+  width: 45px
+  height: 37px
+
+.how-it-works-heading
+  padding-top: 50px
+  padding-bottom: 50px
+  border-bottom: 1px solid #e8e8e8
+  font-family: "Roboto Slab", serif
+  font-weight: 400
+  .ico
+    margin-right: 10px
+    vertical-align: -10px
+
+.trust-safety-heading .ico
+  margin-right: 10px
+  vertical-align: -10px
+
+.how-it-works-heading span, .trust-safety-heading span
+  font-size: 24px
+
+.how-it-works-paragraph
+  padding-top: 60px
+  padding-bottom: 45px
+  font-family: "Roboto Slab", serif
+  font-weight: 400
+  .text-blue
+    font-size: 23px
+  p
+    font-family: "Roboto Slab", serif
+    font-weight: 400
+    font-size: 14px
+
+.text-blue
+  color: #399ede
+
+
+
+.ul-shift-right
+  padding-left: 15px
+
+.how-it-works-list li
+  font-family: 'Roboto Slab', serif
+
+.how-it-works-projects_img
+  vertical-align: middle
+  margin-top: 25px
+
+
+
+.bg_blue
+  background-color: #399ede
+
+.how-it-works-scenarios
+  padding-bottom: 50px
+  h3
+    font-size: 23px
+    font-weight: 400
+    border-bottom: 1px solid #fff
+    padding-bottom: 18px
+    span
+      display: block
+      font-size: 14px
+      margin-bottom: -13px
+
+.text-white, .how-it-works-scenarios ul
+  color: #fff
+
+
+
+.how-it-works-sell
+  padding: 60px 0 75px
+  h3
+    margin-top: 40px
+    font-weight: 400
+    color: #399ede
+    font-size: 23px
+    &:first-child
+      margin-top: 0
+  img
+    margin-bottom: 85px
+  p
+    font-weight: 400
+
+.how-it-works-sell_big_img
+  padding: 0
+  img
+    float: left
+    width: 100%
+
+
+
+.ico-trust-safety
+  background: url("../img/trustsafety-icon.png") no-repeat center
+  width: 64px
+  height: 52px
+
+.trust-safety-heading
+  padding-top: 50px
+  padding-bottom: 50px
+  font-family: "Roboto Slab", serif
+  font-weight: 400
+
+.trust-safety-buyers-heading, .trust-safety-freelancers-heading
+  background-color: #e8e8e8
+  width: 100%
+  padding: 1px 10px
+  border-radius: 5px
+  margin-bottom: 50px
+  font-weight: 400
+
+.trust-safety-buyers-heading h3, .trust-safety-freelancers-heading h3
+  margin-top: 10px
+  padding-left: 15px
+
+.trust-safety-buyers h3, .trust-safety-freelancers h3
+  margin-top: 0
+  color: #399ede
+  font-weight: 400
+
+.trust-safety-buyers p, .trust-safety-freelancers p
+  font-weight: 400
+  margin-bottom: 30px
+
+.trust-safety-buyers ul
+  margin-bottom: 30px
+
+.ul-shift-right
+  padding-left: 15px

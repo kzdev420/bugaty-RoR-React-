@@ -1,0 +1,21 @@
+<%= render('meta') %>
+
+<%= render ('layouts/header')%>
+
+
+<!-- CONTENT -->
+<section class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 have-pad-50">
+        <div class="content-holder smaller-left-pad">
+
+          <%= @page.text.html_safe %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--- CONTENT -->

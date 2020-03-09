@@ -1,0 +1,90 @@
+<% l.comments.each do |c| %>
+  <% action_text = l.content_ad? ? 'comment' : 'review' %>
+  <div class="comment-parent">
+    <div class="row">
+      <div class="col-xs-3 no-pad-r text-center">
+        <div class="comment-left">
+          <span class="reviewer-heading"><%=action_text.capitalize%>er</span>
+          <div class="reviewer-image">
+            <% if c.user.profile_photo.present? %>
+              <img src="<%= "#{c.user.profile_photo.thumb.url}" %>" class="img-responsive img-circle">
+            <% else %>
+              <img src="/images/no-avatar.png" class="img-responsive img-circle" alt='No avatar'>
+            <% end %>
+          </div>
+          <div class="reviewer-name"><%= username(c.user) %></div>
+          <div class="reviewer-count"><%= comments_count_string(c.user) %></div>
+          <% unless l.content_ad? %>
+            <div class="ad-reviews">
+              <%= number_to_stars(c.rating.to_f).html_safe %>
+              <span class="ad-reviews-rating"><%= c.rating %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <!-- right-->
+      <div class="col-xs-9">
+        <div class="comment-right">
+          <div class="comment-title"><%= c.title %></div>
+          <div class="comment-metrics">
+            <%= action_text.capitalize %> was given: <span class="green"><%= time_ago_in_words(c.created_at) + " ago" %></span>
+            <% unless l.content_ad? %>
+              <div class="comment-metrics-star">
+                <div class="ad-reviews">
+                  <%= number_to_stars(c.rating.to_f).html_safe %>
+                  <span class="ad-reviews-rating"><%= c.rating %></span>
+                </div>
+              </div>
+            <% end %>
+            <div class="comment-content"><%= c.content.html_safe %></div>
+            <% if current_user && l.user == current_user %>
+              <% @all_rev = c.comment_replies.where(comment_id: c.id, user_id: current_user.id) %>
+            <% else %>
+              <% @all_rev = nil %>
+            <% end %>
+            <% if !@all_rev.present? && @all_rev != nil %>
+              <div class="comment-reply-to">
+                <a href="#" data-listing="<%= l.id %>" data-comment="<%= c.id %>">Reply to this review</a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% c.comment_replies.each do |r| %>
+    <div class="comment-child">
+      <div class="row">
+        <div class="col-xs-1 no-pad-r">
+          <img src="/img/reply-ico.png" alt="" class="img-responsive">
+        </div>
+        <div class="col-xs-2 no-pad-r text-center">
+          <div class="comment-left">
+            <div class="reviewer-image">
+              <% if r.user.profile_photo.present? %>
+                <img src="<%= "#{r.user.profile_photo.thumb.url}" %>" class="img-responsive img-circle">
+              <% else %>
+                <img src="/images/no-avatar.png" class="img-responsive img-circle" alt='No avatar'>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-9">
+          <div class="comment-right">
+            <div class="comment-metrics">
+              Reply was given: <span class="green"><%= time_ago_in_words(r.created_at) %></span>
+              <div class="comment-metrics-star">
+                <!--<div class="ad-reviews">
+                <i class="ico ico-star"></i> <i class="ico ico-star"></i> <i class="ico ico-star"></i> <i class="ico ico-star ico-star--half"></i> <i class="ico ico-star ico-star--blank"></i>
+                <span class="ad-reviews-rating">4.8</span>
+                </div>-->
+              </div>
+              <div class="comment-content"><%= r.content %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

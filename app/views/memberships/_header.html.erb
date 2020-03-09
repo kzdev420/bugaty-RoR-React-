@@ -1,0 +1,54 @@
+<header class="hidden-xs" id="sectionTop">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 header-pad-l">
+				<a href="/" class="header-logo">
+					<img src="/img/logo.png" class="img-responsive" alt="Logo">
+				</a>
+			</div>
+			<div class="col-sm-6 header-pad-r text-right">
+				<div class="header-login text-right">
+					<% if user_signed_in? %>
+						<ul class="nav navbar-nav navbar-right" style="margin-top:-15px">
+							<li style="text-transform: none; margin-top: 8px; margin-right: 7px;">
+								<ul class="">
+									<li style="list-style-type: none;"><%= link_to "<span>Settings</span>".html_safe, edit_user_path(current_user) %></li>
+									<li style="list-style-type: none;"><%= link_to "<span>Log out</span>".html_safe, destroy_user_session_path, method: :delete %></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding:0px" role="button" aria-haspopup="true" aria-expanded="false">
+								<% if current_user.profile_photo.present? %>
+									<%= image_tag current_user.profile_photo.small.url, alt: 'User photo', class: 'img-circle', style: 'width: 55px' %>
+								<% else %>
+									<img src="/images/no-avatar.png" class="img-circle" alt='No user photo' style='width: 55px'/>
+								<% end %>
+								<i class="fa fa-circle" style="margin-left:-15px; color:green; top:-15px; position:relative;"></i>
+							</li>
+						</ul>
+					<% else %>
+						<a href="#signup-popup" class="popup-with-zoom-anim btn-green">sign up</a>
+						<a href="#login-popup" class="popup-with-zoom-anim btn-green">Log in</a>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<% if user_signed_in? %>
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-sm-6 header-pad-l">
+				<%= link_to "<span> Sell on Bugaty </span>".html_safe, root_path, class: 'btn-online-success', style: "text-decoration: none; font-size: 22px;" %>
+			</div>
+			<div class="col-sm-6 header-pad-r text-right">
+				<div class="header-login text-right">
+					<%= link_to "<span>Membership</span>".html_safe, root_path, class: "membership-menu-list" %>
+					<%= link_to "<span>Community</span>".html_safe, root_path, class: "membership-menu-list" %>
+					<%= link_to "<span>Help Center</span>".html_safe, root_path, class: "membership-menu-list" %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		<hr style="margin-bottom:0px; border-top: 2px solid #eeeeee; margin-left: -10%; margin-right: -10%;">
+    </div>
+</header>
+
+<%= render 'layouts/popup'%>

@@ -1,0 +1,49 @@
+                <!-- single ad -->
+                <% if @listing && @listing.content_ad? %>
+                  <% section_title = 'RELATED POSTS' %>
+                <% else %>
+                  <% section_title = 'SIMILAR ADS' %>
+                <% end %>
+                <div class="single-similar-heading"><%= section_title %></div>
+
+                <% if params[:controller] == "listings" %>
+                  <% @similar = Listing.active.where(published: 2, category_id: @listing.category_id).limit(6).order("RANDOM()") %>
+                <% elsif params[:controller] == "users" %>
+                  <% @similar = Listing.active.where(published: 2, user_id: @user.id).limit(6).order("RANDOM()") %>
+                <% end %>
+
+                <div class="row owl-carousel" id="similar-items">
+                <% @similar.each do |listing| %>
+                  <!-- next -->
+                  <div class="col-xs-12">
+                    <div class="similar-container">
+                      <div class="single-heading text-center"><%= link_to listing.name, listing_path(listing) %></div>
+                      <div class="single-img-holder">
+                      <%= link_to listing do %>
+                        <% if listing.photos.present? %>
+                                  <%= image_tag listing.photos.first.image.small.url, class: 'img-responsive', alt: "#{listing.name}" %>
+                                  <% else %>
+                                  <img src="/images/nophoto-170.png" class="img-responsive" alt='No photo'>
+                                  <% end %>
+                      <% end %>
+                      </div>
+                      <% if listing.price.present? && listing.price.to_i > 0 %>
+                        <div class="similar-price text-center">
+                          <i class="ico ico-price"></i> Price: <%= listing.price %>
+                        </div>
+                      <% else %>
+                        <div class="similar-price text-center">
+                        </div>
+                      <% end %>
+                      <div class="similar-added-by text-center">
+                        <span>Added by: </span>
+                        <% if listing.user.first_name.present? %>
+                        <%= link_to "#{listing.user.first_name}" + " " + "#{listing.user.last_name}", user_path(listing.user) %>
+                        <% else %>
+                        <%= link_to listing.user.email, user_path(listing.user) %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                </div>

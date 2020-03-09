@@ -1,0 +1,2 @@
+class MembershipPlanQuestion < ApplicationRecord
+end

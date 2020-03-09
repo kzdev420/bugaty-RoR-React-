@@ -1,0 +1,35 @@
+<% if listing.price.present? %>
+  <div class="single-char-line">
+    <i class="ico ico-single-price"></i> Price: <span><%= $price.currency%> <%= listing_price(listing.price) %> <%= listing.price_per %></span> <%= buy_link(listing).html_safe %>
+  </div>
+  <% unless listing.price_open_to_offers.to_i.zero? %>
+    <div class='single-char-line'>
+      <i class="ico ico-open-to-offers ml30"></i><span>Open to offers</span> <%= offer_link(listing).html_safe %>
+    </div>
+  <% end %>
+  <div id="buy-popup" class="zoom-anim-dialog mfp-hide">
+    <div class="popup-logo text-center">
+      <span class="login-nearlogo"><%= listing.name %></span>
+    </div>
+    <div class="popup-content">
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <%= render 'listings/show/buy', listing: listing %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="offer-popup" class="zoom-anim-dialog mfp-hide">
+    <div class="popup-logo text-center">
+      <span class="login-nearlogo"><%= listing.name %></span>
+    </div>
+    <div class="popup-content">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <%= render 'listings/show/offer', listing: listing %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,102 @@
+<%= content_for(:title, @bugaty_legal.title.presence || @bugaty_legal.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @bugaty_legal.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @bugaty_legal.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header')%>
+
+	<!-- CONTENT -->
+	<section class="text-page">
+    <div class="row title">
+      <p class="bugaty">Bugaty
+        <span class="legal">Legal</span>
+      </p>
+    </div>
+    <div class="row info">
+      <div class="info-box col-md-12">
+        <div class="col-md-4">
+          <ul>
+            <% @bugaty_legal.support_articles.each do |article| %>
+              <%if params[:support_general_article_slug] == article.slug %>
+                <li><b><%= link_to article.name, slugged_support_general_article_path(article), class: "active" %></b></li>
+              <% else %>
+                <li><b><%= link_to article.name, slugged_support_general_article_path(article) %></b></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="article col-md-8">
+          <%= @bugaty_legal_article.content.html_safe %>
+        </div>
+      </div>
+    </div>
+    <div class="row copyright">
+      <div class="container">
+        <p class="copyright-text">Copyright © 2020
+          <span class="bugaty-copy">Bugaty Inc.</span>
+          <hr>
+        </p>
+      </div>
+    </div>
+
+
+	</section>
+	<!--- CONTENT -->
+
+<style type="text/css">
+		body{
+			font-family: AdobeInvisFont, ﻿MyriadPro-Regular !important;
+		}
+		.text-page{
+			background-color: #FFFFFF !important;
+		}
+    .title{
+      height: 80px;
+      text-align: center;
+    }
+    .info-box{
+      padding: 50px 100px;
+      background-color: #e8e8e8;
+    }
+    .copyright{
+      background-color: #aaa9aa;
+      padding-top: 20px;0px;
+      text-align: center;
+      color: white;
+    }
+    .active{
+      color: #55b055;
+      border-bottom: 1px solid #55b055;
+    }
+    .bugaty{
+      padding-top: 40px;
+      font-size: 48px !important;
+    }
+    .legal{
+      font-size: 30px !important;
+    }
+    .article{
+      background-color: #FFFFFF !important;
+      padding-bottom: 50px;
+      min-height: 400px;
+    }
+    ul{
+      list-style: none;
+    }
+    li{
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .bugaty-copy{
+      font-size:18px;
+      color: #55b055;
+    }
+    .copyright-text{
+      padding-top: 20px;
+      font-size: 20px !important;
+    }
+</style>

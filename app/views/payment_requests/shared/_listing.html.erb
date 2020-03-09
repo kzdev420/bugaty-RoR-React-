@@ -1,0 +1,20 @@
+<div class="ad-card-picture center-image">
+  <%= link_to listing do %>
+    <% if listing.photos.present? %>
+      <span class="hidden-xs"><%= image_tag listing.photos.first.image.small.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+      <span class="hidden-sm hidden-lg hidden-md"><%= image_tag listing.photos.first.image.big.url, class: 'img-responsive photo-small-img', alt: "#{listing.name}" %></span>
+    <% else %>
+      <img src="/images/nophoto-170.png", class="img-responsive" alt='no photo'>
+    <% end %>
+  <% end %>
+</div>
+<div class="ad-reviews">
+  <% rating = get_listing_rating(listing) %>
+  <%= number_to_stars(rating).html_safe %>
+  <span class="ad-reviews-rating"><%= rating %></span>
+  <span class="ad-reviews-counter">
+    <% if listing.comments.present? %>
+      ( <%= pluralize(listing.comments.length, "review") %> )
+    <% end %>
+  </span>
+</div>

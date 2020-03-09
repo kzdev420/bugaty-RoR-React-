@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-desc">
+      Key Features
+      <% if %w(2 3 6 7 8 9).include? @selected_category %>
+        <span class="info-tooltip" data-tooltip="Describe your item’s key features, use the words your potential buyers will look for.">i</span>
+      <% elsif @selected_category == '1' %>
+        <span class="info-tooltip" data-tooltip="Describe your company’s key features, use the words your potential buyers will look for.">i</span>
+      <% elsif @selected_category == '5' %>
+        <span class="info-tooltip" data-tooltip="Describe your job key features, use the words your potential employers/employees will look for.">i</span>
+      <% elsif @selected_category == '4' %>
+        <span class="info-tooltip" data-tooltip="Describe your service features, use the words your potential employers/employees will look for.">i</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if @listing.key_features.any? %>
+        <% @listing.key_features.each_with_index do |key_feature, i| %>
+          <div class="key-features-field-group input-group">
+            <%= text_field_tag "listing[key_features][]", key_feature, placeholder: 'Enter Key Features', class: 'form-control key-features-field' %>
+            <a href="#remove" class="input-group-addon remove-key-features-field-button">×</a>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="key-features-field-group input-group">
+          <%= text_field_tag "listing[key_features][]", '', placeholder: 'Enter Key Features', class: 'form-control key-features-field' %>
+          <a href="#remove" class="input-group-addon remove-key-features-field-button">×</a>
+        </div>
+      <% end %>
+
+      <button id="add-key-features-button" class="btn pull-right">Add more</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function removeKeyFeaturesField(e) {
+    e.preventDefault();
+
+    if($('.key-features-field-group').length > 1)
+      $(this).parents('.key-features-field-group').remove();
+  }
+
+  $(function() {
+    $('#add-key-features-button').click(function(e) {
+      e.preventDefault();
+
+      var n = $('input.key-features-field').length;
+      var field = $('input.key-features-field:last').parent().clone();
+      field.find('input').val('');
+      field.find('a').off('click').click(removeKeyFeaturesField);
+      field.insertAfter($('input.key-features-field:last').parent());
+    });
+
+    $('.remove-key-features-field-button').click(removeKeyFeaturesField);
+  });
+</script>

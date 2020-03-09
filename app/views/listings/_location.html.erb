@@ -1,0 +1,49 @@
+    <!-- Continent - Country - Region - City -->
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Continent</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= select_tag :cont_id, options_from_collection_for_select(@continents, :id, :name, @listing.continent.try(:id)), include_blank: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Country</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= select_tag :country_id, options_from_collection_for_select(@countries, :id, :name, @listing.country.try(:id)), include_blank: true, disabled: !@listing.persisted? %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">Region</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <%= select_tag :region_id, options_from_collection_for_select(@regions, :id, :name, @listing.region.try(:id)), include_blank: true, disabled: !@listing.persisted? %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="field-desc">City</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <% html_options = @listing.persisted? ? {} : {disabled: 'disabled'} %>
+          <%= f.collection_select :city_id, @cities, :id, :name, {include_blank: true}, html_options %>
+        </div>
+        <div class="checkbox w40">
+          <input type="checkbox" name="showonmap" id="showonmap">
+          <label for="showonmap">Show on the map </label>
+        </div>
+      </div>
+    </div>

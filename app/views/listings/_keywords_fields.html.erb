@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-desc">
+      <% if @listing.content_ad? %>
+        SEO
+      <% end %>
+      Keywords:
+      <% if %w(2 3 6 7 8 9).include? @selected_category %>
+        <span class="info-tooltip" data-tooltip="Enter up to 5 keywords that describe your item , be accurate to attract the right buyers.">i</span>
+      <% elsif @selected_category == '1' %>
+        <span class="info-tooltip" data-tooltip="Enter up to 5 keywords that describe your company, be accurate to attract the right potential customers.">i</span>
+      <% elsif @selected_category == '5' %>
+        <span class="info-tooltip" data-tooltip="Enter up to 5 keywords that describe your job.">i</span>
+      <% elsif @selected_category == '4' %>
+        <span class="info-tooltip" data-tooltip="Enter up to 5 keywords that describe your service.">i</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if @listing.keywords.any? %>
+        <% @listing.keywords.each_with_index do |keyword, i| %>
+          <div class="keywords-field-group input-group">
+            <%= text_field_tag "listing[keywords][]", keyword, placeholder: 'Enter Keyword', class: 'form-control keywords-field' %>
+            <a href="#remove" class="input-group-addon remove-keywords-field-button">×</a>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="keywords-field-group input-group">
+          <%= text_field_tag "listing[keywords][]", '', placeholder: 'Enter Keywords', class: 'form-control keywords-field' %>
+          <a href="#remove" class="input-group-addon remove-keywords-field-button">×</a>
+        </div>
+      <% end %>
+
+      <button id="add-keywords-button" class="btn pull-right">Add more</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function removeKeywordsField(e) {
+    e.preventDefault();
+
+    if($('.keywords-field-group').length > 1)
+      $(this).parents('.keywords-field-group').remove();
+  }
+
+  $(function() {
+    $('#add-keywords-button').click(function(e) {
+      e.preventDefault();
+
+      var n = $('input.keywords-field').length;
+      if(n < 5) {
+        var field = $('input.keywords-field:last').parent().clone();
+        field.find('input').val('');
+        field.find('a').off('click').click(removeKeywordsField);
+        field.insertAfter($('input.keywords-field:last').parent());
+      }
+    });
+
+    $('.remove-keywords-field-button').click(removeKeywordsField);
+  });
+</script>

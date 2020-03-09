@@ -1,0 +1,73 @@
+<%= form_for(coupon_code, :html => {:class => 'add-new-form', :multipart => true}) do |f| %>
+  <% if coupon_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(coupon_code.errors.count, "coupon code") %> prohibited this coupon code from being saved:</h2>
+      <ul>
+        <% coupon_code.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="field-desc">
+        Coupon Title
+        <span class="info-tooltip" data-tooltip="Any combination of letters and numbers up to 20 characters">i</span>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: "Enter title", required: true, maxlength: 20 %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-8 col-sm-offset-4'>
+      <p>This is used on coupon code to share with your potential buyers<br />Please use only alphanumeric characters</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="field-desc">
+        Discount percentage
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= f.number_field :discount, class: "form-control", required: true, step: 0.1, min: 1, max: 99 %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-8 col-sm-offset-4'>
+      <p>Discount percentage will be deducted from the total value of the order.<br />Please enter any number from 1-99</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="field-desc">
+        Expiration date
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= f.date_field :expiration_date, class: "form-control", required: true %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-8 col-sm-offset-4'>
+      <p>Select the date when coupon code will expire</p>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= f.button 'GENERATE COUPON CODE', class: 'btn-pink btn-large have-fill btn-width-auto' %>
+    <br />
+    <small>This coupon code will be valid for all your ads</small>
+  </div>
+<% end %>

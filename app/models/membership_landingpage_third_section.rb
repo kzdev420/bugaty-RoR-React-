@@ -1,0 +1,2 @@
+class MembershipLandingpageThirdSection < ApplicationRecord
+end

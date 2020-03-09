@@ -1,0 +1,62 @@
+@import '../../../styles/variables'
+
+.mobileHeader
+  background: white !important
+  .headerTitle
+    margin-top: 0 !important
+  .hambugerInner
+    background: #32353b !important
+    &:after, &:before
+      background: #32353b !important
+.headerTitle
+  font-size: 42px
+  font-weight: 800
+  height: 50px
+  margin-top: 35px
+  white-space: nowrap
+  span
+    font-weight: 500
+    font-size: 32px
+
+.headerMenu
+  color: #776f6f
+  display: flex
+  flex-flow: row nowrap
+  justify-content: center
+  align-items: center
+
+
+
+.freeAdButton
+  cursor: pointer
+  background: $green
+  color: white
+  border: none
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 132px
+  height: 32px
+  font-size: 18px
+  border-radius: 10px
+  &:hover
+    background: $green-dark
+
+.joinCommunityButton
+  &:hover
+    cursor: pointer
+    color: black
+    background: $grey
+  cursor: pointer
+  background: white
+  color: black
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 192px
+  height: 32px
+  font-size: 18px
+  border-color: $green
+  border-size: 2px
+  border-style: solid
+  border-radius: 10px

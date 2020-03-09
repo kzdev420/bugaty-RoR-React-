@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-desc">
+      Tags:
+      <span class="info-tooltip" data-tooltip="Enter up to 4 tags that describe your item.">i</span>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if @listing.tags.any? %>
+        <% @listing.tags.each_with_index do |tag, i| %>
+          <div class="keywords-field-group input-group">
+            <%= text_field_tag "listing[tags][]", tag, placeholder: 'Enter Tag', class: 'form-control tags-field' %>
+            <a href="#remove" class="input-group-addon remove-tags-field-button">×</a>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="tags-field-group input-group">
+          <%= text_field_tag "listing[tags][]", '', placeholder: 'Enter Tag', class: 'form-control tags-field' %>
+          <a href="#remove" class="input-group-addon remove-tags-field-button">×</a>
+        </div>
+      <% end %>
+
+      <button id="add-tags-button" class="btn pull-right">Add more</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function removeTagsField(e) {
+    e.preventDefault();
+
+    if($('.tags-field-group').length > 1)
+      $(this).parents('.tags-field-group').remove();
+  }
+
+  $(function() {
+    $('#add-tags-button').click(function(e) {
+      e.preventDefault();
+
+      var n = $('input.tags-field').length;
+      if(n < 5) {
+        var field = $('input.tags-field:last').parent().clone();
+        field.find('input').val('');
+        field.find('a').off('click').click(removeTagsField);
+        field.insertAfter($('input.tags-field:last').parent());
+      }
+    });
+
+    $('.remove-tags-field-button').click(removeTagsField);
+  });
+</script>

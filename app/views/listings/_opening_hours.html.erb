@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="field-desc">
+      Opening hours
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="form-group">
+      <% if @listing.opening_hours.reject(&:empty?).any? %>
+        <% @listing.opening_hours.reject(&:empty?).map do |hours_item| %>
+          <div class="opening-hours-field-group input-group">
+            <%= text_field_tag "listing[opening_hours][]", hours_item, class: 'form-control opening-hours-field' -%>
+            <a href="#remove" class="input-group-addon remove-opening-hours-field-button">×</a>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="opening-hours-field-group input-group hidden">
+          <%= text_field_tag "listing[opening_hours][]", '', class: 'form-control opening-hours-field' -%>
+          <a href="#remove" class="input-group-addon remove-opening-hours-field-button">×</a>
+        </div>
+      <% end %>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="col-sm-3">
+              <%= select_tag :weekday, options_for_select(Date::ABBR_DAYNAMES.rotate), class: 'form-control' %>
+            </div>
+            <div class="col-sm-3">
+              <%= select_tag :start_time, options_for_select(opening_hours_items), class: 'form-control' %>
+            </div>
+            <div class="col-sm-3">
+              <%= select_tag :end_time, options_for_select(opening_hours_items), class: 'form-control' %>
+            </div>
+            <div class="col-sm-3">
+              <button id="add-opening-hours-button" class="btn pull-right">Add Hours</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="sitemap-column">
+  <ul class="sitemap">
+    <% column_number = 1 %>
+    <% ind = 0 %>
+    <% common_count = sitemap_weight(links) %>
+      <% links.each do |link| %>
+        <% if ind > (common_count / 4.0 * column_number) %>
+          </ul>
+        </div>
+        <div class="sitemap-column">
+          <ul class="sitemap">
+          <% column_number += 1 %>
+        <% end %>
+        <%= sitemap_link(link, css_class).html_safe %>
+        <% ind += link[:weight] %>
+      <% end %>
+  </ul>
+</div>

@@ -1,0 +1,84 @@
+<section class="membership-landingpage-testimonial">
+    <div class="container">
+        <% if @testimonial[0] %>
+
+            <div class="membership-plans-testimonial-title">
+                <span><%= @testimonial[0].title %></span>
+            </div>
+            <div class="membership-plans-testimonial-description">
+                <span><%= @testimonial[0].description %></span>
+            </div>
+
+            <div class="row">
+                <div class="row membership-landingpage-testimonial-content">
+                    <% (1..@testimonial.length).each do |i| %>
+                    <% if @testimonial[i] %>
+                    <div class="col-sm-4 membership-landingpage-testimonial-item">
+                        <img src="<%= @testimonial[i].image %>" />
+                        <div class="membership-landingpage-testimonial-item-title"><%= @testimonial[i].title %></div>
+                        <span class="membership-landingpage-testimonial-item-content">
+                            <%= @testimonial[i].description %>
+                        </span>
+                    </div>
+                    <% end %>
+                    <% end %>
+                </div>
+            </div>
+
+        <% else %>
+
+        <div class="membership-plans-testimonial-title">
+            <span>Best Benefits of Selling on Marketplacing</span>
+        </div>
+        <div class="membership-plans-testimonial-description">
+            <span>this is very good Ruby on Rails site</span>
+        </div>
+        <div class="row">
+            <div class="row membership-landingpage-testimonial-content">
+                <div class="col-sm-4 membership-landingpage-testimonial-item">
+                    <img src="/images/1.png" />
+                    <div class="membership-landingpage-testimonial-item-title"><%= "item.title" %></div>
+                    <span class="membership-landingpage-testimonial-item-content">
+                        <%= "item.description" %>
+                    </span>
+                </div>
+                <div class="col-sm-4 membership-landingpage-testimonial-item">
+                    <img src="/images/1.png" />
+                    <div class="membership-landingpage-testimonial-item-title"><%= "item.title" %></div>
+                    <span class="membership-landingpage-testimonial-item-content">
+                        <%= "item.description" %>
+                    </span>
+                </div>
+                <div class="col-sm-4 membership-landingpage-testimonial-item">
+                    <img src="/images/1.png" />
+                    <div class="membership-landingpage-testimonial-item-title"><%= "item.title" %></div>
+                    <span class="membership-landingpage-testimonial-item-content">
+                        <%= "item.description" %>
+                    </span>
+                </div>
+                <div class="col-sm-4 membership-landingpage-testimonial-item">
+                    <img src="/images/1.png" />
+                    <div class="membership-landingpage-testimonial-item-title"><%= "item.title" %></div>
+                    <span class="membership-landingpage-testimonial-item-content">
+                        <%= "item.description" %>
+                    </span>
+                </div>
+                <div class="col-sm-4 membership-landingpage-testimonial-item">
+                    <img src="/images/1.png" />
+                    <div class="membership-landingpage-testimonial-item-title"><%= "item.title" %></div>
+                    <span class="membership-landingpage-testimonial-item-content">
+                        <%= "item.description" %>
+                    </span>
+                </div>
+                <div class="col-sm-4 membership-landingpage-testimonial-item">
+                    <img src="/images/1.png" />
+                    <div class="membership-landingpage-testimonial-item-title"><%= "item.title" %></div>
+                    <span class="membership-landingpage-testimonial-item-content">
+                        <%= "item.description" %>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</section>

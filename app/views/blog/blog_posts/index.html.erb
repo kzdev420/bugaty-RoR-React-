@@ -1,0 +1,16 @@
+<%= render ('header')%>
+
+<%=
+  react_component( 'BlogPostIndex', {
+    category: @category,
+    subcategory: @subcategory,
+    featuredPosts: @featured_posts,
+    blogPosts: @blog_posts,
+    page: @page,
+    perPage: @per_page,
+    totalItems: @total_items,
+    searchQuery: @search
+  }, tag: :div, class: 'container' )
+%>
+
+<%= render ('layouts/popup')%>

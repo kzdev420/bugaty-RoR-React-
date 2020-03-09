@@ -1,0 +1,24 @@
+<!-- START SLIDER -->
+<section class="mainpage-slider">
+  <div class="owl-carousel" id="owl-mainpage">
+    <% (1..7).each do |i| %>
+      <div class="mainpage-slider-slide" style="background-image: url('images/homepage_slides/<%= i %>.png')">
+        <div class="image-overlap">
+          <% if @sliders.length >= i %>
+            <div class="mainpage-slider-slide-title"> <%= @sliders[i-1].header %> </div>
+            <h3 class="mainpage-slider-slide-text"> <%= @sliders[i-1].slogan %> </h3>
+          <% end %>
+        </div>
+        <%= form_for(@search, url: search_path, method: 'POST') do |f| %>
+        <div class="input-group">
+            <%= f.text_field :keywords, class: 'form-control', placeholder: 'What product are you looking for?' %>
+            <span class="input-group-btn">
+              <%= f.button "Search", class:' btn btn-success' %>
+            </span>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<!-- END SLIDER -->

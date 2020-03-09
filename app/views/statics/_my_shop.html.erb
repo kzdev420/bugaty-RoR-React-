@@ -1,0 +1,24 @@
+<section class="my-shop-section">
+    <% if @my_shop_section[0] %>
+    <div class="my-shop-section-image" style="background-image: url('<%= @my_shop_section[0].image %>')">
+        <% if user_signed_in? %>
+            <div class="my-shop-section-title">
+                <span> <%= @my_shop_section[0].title_after_sign %></span>
+            </div>
+            <div class="my-shop-section-text">
+                <span> <%= @my_shop_section[0].description_after_sign %></span>
+            </div>
+            <div class="go-to-my-shop">
+                <%= link_to "<span>My Shop</span>".html_safe %>
+            </div>
+        <% else %>
+            <div class="my-shop-section-title">
+                <span> <%= @my_shop_section[0].title_before_sign %></span>
+            </div>
+            <div class="my-shop-section-text">
+                <span> <%= @my_shop_section[0].description_before_sign %></span>
+            </div>
+        <% end %>
+    </div>
+    <% end %>
+</section>

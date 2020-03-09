@@ -1,0 +1,77 @@
+<%= content_for(:title, @category.title.presence || @category.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @category.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @category.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+
+	<!-- CONTENT -->
+	<section class="ads">
+		<div class="container">
+			<div class="row">
+				<% if @category.payable? %>
+					<%= render ('categories/sidebar-search') %>
+				<% else %>
+					<%= render ('listings/content_sidebar') %>
+				<% end %>
+				<!-- START WITH BUSINESS LISTINGS -->
+				<div class="col-sm-6">
+					<div class="gradient-bg">
+			      <div class="ads-list-title"><%= ads_list_title(@category, @listings_count) %></div>
+					</div>
+          <% unless @category.content.blank? %>
+	          <div class="whitebox gradient-bg">
+	              <div class="row"><%= @category.content.html_safe %></div>
+	          </div>
+          <% end %>
+					<% if %w[stuff-for-sale services wholesale content].include?(@category.slug) %>
+					<div class="whitebox">
+						<div class="row">
+					<% end %>
+
+
+					<%= render partial: 'listings/listings', locals: { listings: @listings } %>
+
+					<% if %w[stuff-for-sale services wholesale content].include?(@category.slug) %>
+						</div>
+					</div>
+					<% end %>
+					<div class="ads-pagination">
+						<div class="row">
+							<div class="col-sm-3 pt5">
+								<%= page_entries_info(@listings, entry_name: 'Listing').html_safe %>
+							</div>
+							<div class="col-sm-5 text-center">
+								<%= pagination_link %>
+							</div>
+							<div class="col-sm-4 text-right">
+								Display #
+								<div class="selectbox small-paginator">
+									<%= form_tag(slugged_category_path(@category.slug), class: 'paginator-form', method: 'get') do |f| %>
+                                      <%= select_tag 'pagination_select', options_for_select(pagination_options, params[:pagination_select]), include_blank: false %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="banner-bottom text-center">
+						<%= render('shared/banner-bottom')%>
+					</div>
+				</div>
+				<!-- ANOTHER ADS -->
+				<div class="col-sm-3">
+					<div class="gradient-bg gradient-bg--ads">
+						<%= render ('shared/banner-right-sidebar-long') %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--- CONTENT -->

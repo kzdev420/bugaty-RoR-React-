@@ -1,0 +1,124 @@
+<% listing = payment_request.listing %>
+<div class="ad-card ad-card--editable">
+  <div class="row">
+    <div class="col-sm-4 col-md-3 no-pad-r">
+      <%= render 'payment_requests/shared/listing', listing: listing %>
+    </div>
+    <div class="col-sm-8 col-md-9">
+      <div class="ad-title">
+        <%= link_to listing.name, listing_path(listing.id) %>
+      </div>
+      <div class="ad-add-favourites">
+        <% if payment_request.open? %>
+          <%= link_to "<i class='ico ico-tick'></i> ACCEPT".html_safe,   "#accept-request-#{payment_request.id}", class: 'btn-favourite popup-with-move-anim' %>
+          <%= link_to "<i class='ico ico-delete'></i> REJECT".html_safe,   "#reject-request-#{payment_request.id}", class: 'btn-favourite  popup-with-move-anim' %>
+        <% elsif payment_request.accepted? %>
+          <div class='green'><strong>Accepted & Payment Details Sent</strong></div>
+        <% else %>
+          <div class='red'><strong>Rejected</strong></div>
+        <% end %>
+        <%= link_to "<i class='ico ico-edit'></i> MESSAGE".html_safe,   '#send-u-message-popup', class: 'btn-favourite  popup-with-move-anim', style: 'float: right;' %>
+      </div>
+      <div class="ad-category">
+        <i class="ico ico-category"></i> Listed in <%=link_to listing.category.name, listing_path(listing.id) %></a>
+      </div>
+
+      <div class="row ad-metrics">
+        <% if listing.price.present? %>
+          <div class="col-sm-5">
+            <div class="ad-metrics-row">
+              <strong>Price: <%= $price.currency %> <%= listing_price(listing.price) %> <%= listing.price_per %></strong>
+            </div>
+          </div>
+        <% end %>
+        <% if listing.delivery_cost.present? %>
+          <div class="col-sm-5">
+            <div class="ad-metrics-row">
+              <strong>Delivery cost: <%= $price.currency %> <%= listing.delivery_cost %></strong>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-sm-5">
+          <div class="ad-metrics-row">
+            <strong>Payment method: <%= payment_request.payment_method %></strong>
+          </div>
+        </div>
+        <% if payment_request.discount_code.present? %>
+          <div class="col-sm-5">
+            <div class="ad-metrics-row">
+              <strong>Discount code: <%= payment_request.discount_code %></strong>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-sm-5">
+          <div class="ad-metrics-row">
+            <strong>Total:</strong> <i class="ico ico-price"></i><%= $price.currency %> <%= payment_request.total_amount %>
+          </div>
+        </div>
+      </div>
+      <% if payment_request.message.present? %>
+        <div class='ad-description'>
+          <strong><%=link_to 'Message from buyer', user_path(payment_request.user) %>:</strong><p><%= payment_request.message %></p>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div id="accept-request-<%="#{payment_request.id}"%>" class="request-popup zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <span class="login-nearlogo"><%= listing.name %></span>
+  </div>
+  <div class="popup-content">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <%= render 'payment_requests/shared/action', payment_request: payment_request, action: 'accept' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="reject-request-<%="#{payment_request.id}"%>" class="request-popup zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <span class="login-nearlogo"><%= listing.name %></span>
+  </div>
+  <div class="popup-content">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <%= render 'payment_requests/shared/action', payment_request: payment_request, action: 'reject' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Send message ad -->
+
+<div id="send-u-message-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Online buying and selling websites in uk" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading popup-heading--bold popup-heading--blue text-center">Send a message</div>
+    <div class="row">
+
+      <%= form_for(payment_request.user, url: new_u_message_path(payment_request.user), :html => {:id => "send-u-message-box", :class => "contact-form", :'data-type' => 'json'}, :remote => true ) do |f| %>
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+              <div class="form-group">
+                <textarea name="message" class="form-control ico-textarea-bg" rows="4" placeholder="Your Description"></textarea>
+              </div>
+              <div class="text-center captcha-popup row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <%= recaptcha_tags %>
+                </div>
+              </div>
+              <div class="two-row-btns pt20">
+                <button type="submit" class="btn-pink have-fill">SEND</button>
+                <button type="" class="btn-blue have-fill">CANCEL</button>
+              </div>
+            </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

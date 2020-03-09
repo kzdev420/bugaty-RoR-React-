@@ -1,0 +1,38 @@
+<%= provide(:title, "Confimration") %>
+
+<%= render ('layouts/header') %>
+
+
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 65px;">
+
+        <div class="ad-titles single-title text-center" style="margin-bottom: 20px">
+        Resend confirmation instructions
+        </div>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.email_field :email, :autofocus => true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :class => 'form-control ico-email-bg' %>
+  </div>
+
+
+  <div class="text-center pt30">
+    <%= f.button "<span>Resend confirmation instructions</span>".html_safe, :class => "btn-invisible btn-popup-login" %>
+  </div>
+
+
+  <div class="text-center popup-login-newmember">
+    <%= render "devise/shared/links" %>
+  </div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</section>
+

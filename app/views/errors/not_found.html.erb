@@ -1,0 +1,2 @@
+<%= content_for(:title, @page.try(:title).presence || @page.try(:name)) %>
+<%= render :inline => @page.try(:text) %>

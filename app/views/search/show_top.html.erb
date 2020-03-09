@@ -1,0 +1,88 @@
+<%= provide(:title, "Search results") %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+
+	<!-- CONTENT -->
+	<section class="ads">
+		<div class="container">
+			<div class="row">
+				<%= render ('categories/sidebar-search') %>
+				<!-- START WITH BUSINESS LISTINGS -->
+				<div class="col-sm-6">
+					<div class="gradient-bg">
+						<% if @category.present? %>
+						<div class="ads-list-title"><span><%= @category.name %> </span> LISTINGS search</div>
+						<% else %>
+						<div class="ads-list-title"><span>Search</span> results</div>
+						<% end %>
+					</div>
+					<% if @category.present?%>
+					<% if @category.id == 3 || @category.id == 4 || @category.id == 9 %>
+					<div class="whitebox">
+						<div class="row">
+					<% end %>
+					<% end %>
+
+
+					<%= render partial: 'listings/listings', locals: { listings: @listings } %>
+					<% if @category.present?%>
+					<% if @category.id == 3 || @category.id == 4 || @category.id == 9 %>
+						</div>
+					</div>
+					<% end %>
+					<% end %>
+
+					<div style="clear: both"></div>
+
+					<div class="ads-pagination">
+						<div class="row">
+							<div class="col-sm-3 pt5">
+								<%= page_entries_info(@listings, :entry_name => 'Listing').html_safe %>
+							</div>
+							<div class="col-sm-5 text-center">
+								<%= will_paginate @listings %>
+							</div>
+							<div class="col-sm-4 text-right">
+								Display #
+								<div class="selectbox small-paginator">
+									<%= form_tag(search_path(@search), class: 'paginator-form', method: 'get') do |f| %>
+									<select name="pagination_select">
+										<option value="10" <%= 'selected="selected"'.html_safe if params[:pagination_select] == '10' %>>10</option>
+										<option value="25" <%= 'selected="selected"'.html_safe if params[:pagination_select] == '25' %>>25</option>
+										<option value="50" <%= 'selected="selected"'.html_safe if params[:pagination_select] == '50' %>>50</option>
+										<option value="100" <%= 'selected="selected"'.html_safe if params[:pagination_select] == '100' %>>100</option>
+										<option value="500" <%= 'selected="selected"'.html_safe if params[:pagination_select] == '500' %>>500</option>
+									</select>
+									<% end %>
+									<script>
+									$(document).ready(function(){
+										$(".paginator-form").change(function() {
+     										$(this).submit();
+										});
+									});
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="banner-bottom text-center">
+						<%= render('shared/banner-bottom')%>
+					</div>
+				</div>
+				<!-- ANOTHER ADS -->
+				<div class="col-sm-3">
+					<div class="gradient-bg">
+						<div class="ads-list-title"><span>ADVERTISEMENTS</span></div>
+					</div>
+					<div class="gradient-bg gradient-bg--ads">
+						<%= render ('shared/banner-right-sidebar-long') %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--- CONTENT -->

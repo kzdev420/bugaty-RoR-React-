@@ -1,0 +1,35 @@
+<%= provide(:title, "Create new listing") %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+
+  <!-- CONTENT -->
+  <section class="ads editable">
+    <div class="container">
+      <div class="row">
+        <!-- START WITH BUSINESS LISTINGS -->
+        <div class="col-sm-10 col-sm-offset-1 header-pad-l">
+          <div class="gradient-bg">
+            <div class="ads-list-title">
+            <% if @listing.stuff_for_sale_ad? %>
+              <span>Stuff </span> for sale
+            <% elsif @listing.content_ad? %>
+              <span>Submit</span> content
+            <% else %>
+              <span>POST</span> <%= @category.name %>
+            <% end %>
+            </div>
+          </div>
+          <div class="whitebox post-new-box">
+            <%= render 'form', listing: @listing %>
+          </div>
+          <div class="banner-bottom text-center pt130">
+            <%= render ('shared/banner-bottom') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- CONTENT -->

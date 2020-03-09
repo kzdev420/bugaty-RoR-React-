@@ -1,0 +1,30 @@
+
+		<div class="popup-heading popup-heading--bold text-center">Forgot your <span>Password</span></div>
+		<div class="popup-action">Please enter the email address for your account.  A verification code 
+will be sent to you. Once you have received the verification code, 
+you will be able to choose a new password for your account.</div>
+
+<%= form_for(User.new, url: password_path(:user), :html => {:id => "forget-box", :class => "contact-form", :'data-type' => 'json'}, :remote => true ) do |f| %>
+				<div class="row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="form-group">
+
+						<%= f.text_field :email, :autofocus => true, :placeholder => "Enter Your email", :class => 'form-control ico-email-bg' %>
+
+					</div>
+				</div>
+				</div>
+
+				<div class="two-row-btns pt20">
+					<%= f.button "Sumbit", :class => "btn-pink have-fill" %>
+					<button type="" class="btn-blue have-fill">CANCEL</button>
+				</div>
+<% end %>
+		</div>
+
+
+		<script type="text/javascript">
+			$('#forget-box .btn-blue').click(function(){
+				$.magnificPopup.close();
+			});
+		</script>

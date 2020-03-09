@@ -1,0 +1,40 @@
+  <section class="single-add">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 style="padding-bottom: 60px; padding-top: 80px;">
+
+      <div class="form-container radius-box glassy-bg small-10 small-centered medium-8 large-6 columns">
+        <h2 class="mbs">Pay for your listing options</h2>
+      </div>
+      <div class="form-container radius-box glassy-bg small-10 small-centered medium-8 large-6 columns">
+        <div style="margin-top: 10px; margin-bottom: 20px; font-weight: 700;">
+          <ul>
+            <%= "<li>Feature on homepage – #{$price.featured_home_price}#{$price.currency}</li>".html_safe if @listing.featured_home.present? %>
+            <%= "<li>Feature on category– #{$price.featured_cat_price}#{$price.currency}</li>".html_safe if @listing.featured_cat.present? %>
+            <%= "<li>Urgent – #{$price.urgent_price}#{$price.currency}</li>".html_safe if @listing.urgent.present? %>
+          </ul>
+        </div>
+            <div class="text-center" style="margin-top: 10px; margin-bottom: 20px;">
+            <%= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_checkout_path) %>
+            </div>
+
+        <%= form_tag stripe_checkout_do_path(@listing), id: 'payment-form' do %>
+          <div class="text-center">
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= ENV['STRIPE_PUB_KEY'] %>"
+              data-amount="<%= (@listing.amount_to_pay * 100).to_i.to_s %>"
+              data-currency="<%= @listing.amount_to_pay_currency %>"
+              data-email="<%= current_user.email %>"
+              data-name="Bugaty Ad"
+              data-description="<%= @listing.payment_description %>"
+              data-image="https://bugaty.com/img/stripe_logo.png"
+              data-locale="auto">
+            </script>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

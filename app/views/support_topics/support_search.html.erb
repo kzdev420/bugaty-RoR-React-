@@ -1,0 +1,242 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= provide(:title, "Support") %>
+
+<%= render ('layouts/header')%>
+
+<%= render ('shared/banner-top')%>
+
+<!-- START SLIDER -->
+<!--%= render ('shared/support_slider') %-->
+<!-- END SLIDER -->
+
+<!-- CONTENT -->
+<section class="text-page"">
+	<div class="container search-container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="content-holder smaller-left-pad">
+					<div class="search-image">
+						<div class="centered">
+							<h3 style="color:white;"> How can we help?</h3>
+							<br>
+							<%= form_tag(support_search_path, :method => "post", id: "search-support-form") do %>
+								<input type="text" name="search" placeholder="Type your question" class="form-control search-field">
+								<a><i class="fa fa-search"></i><a>
+							<% end %>
+						</div>
+					</div>
+					<div class="row">
+						<% if !@search_results.present? %>
+							<div class="col-md-12 headings">
+								<br>
+								<a href="#" class="heading-links">Shopping on Marketplace</a>
+								&nbsp;&nbsp
+								<a href="#" class="active heading-links">Selling with Marketplace</a>
+								<hr clas="line">
+							</div>
+							<a href="/support/getting-started">
+								<div class="column">
+									<div class="card" style="text-align: center;">
+										Getting Started
+										<img class="card_image" src="/images/support_card.png"/>
+									</div>
+								</div>
+							</a>
+							<a href="/support/account">
+								<div class="column">
+									<div class="card" style="text-align: center;">
+										Account & Profile Settings
+										<img class="card_image" src="/images/2.png"/>
+									</div>
+
+								</div>
+							</a>
+							<a href="/support/orders-buyers">
+								<div class="column">
+									<div class="card" style="text-align: center;">
+										Orders & Buyers
+										<img class="card_image" src="/images/3.png"/>
+									</div>
+								</div>
+							</a>
+							<a href="/support/payment">
+								<div class="column">
+									<div class="card" style="text-align: center;">
+										Getting Paid
+										<img class="card_image" src="/images/4.png"/>
+									</div>
+								</div>
+							</a>
+							<a href="/support/levels-warnings-status">
+								<div class="column">
+									<div class="card" style="text-align: center;">
+										Levels, Warnings and Status
+										<img class="card_image" src="/images/5.png"/>
+									</div>
+								</div>
+							</a>
+							<a href="/support/account">
+								<div class="column">
+									<div class="card" style="text-align: center;">
+										Account & Profile Settings
+										<img class="card_image" src="/images/6.png"/>
+									</div>
+								</div>
+							</a>
+						<%end%>
+						<% if @search_results.present? %>
+							<div class="col-sm-12 ticket-content">
+								<% @search_results.each do |res| %>
+								  <div style="margin-top: 10px">
+									  <%= link_to res.name, slugged_support_article_path(res.support_topic, res) %>
+									</div>
+									<div>
+										<%= truncate(res.content, length: 200) %>
+									</div>
+								<% end %>
+							</div>
+						<%end%>
+					</div>
+				</div>
+				<br><br>
+				<div class="lower-banner">
+					<h2> Some unanswered questions?</h2>
+					<p>Our support team will be happy to assist. </p>
+					<%= link_to "Contact Us", contact_path, class: 'banner-button' %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--- CONTENT -->
+
+<style type="text/css">
+	body{
+		font-family: AdobeInvisFont, MyriadPro-Regular;
+	}
+	.text-page{
+		background-color: #FFFFFF !important;
+	}
+	.content-holder {
+		border: none !important;
+		padding: 0px !important;
+	}
+	@media (min-width: 768px)
+		.col-sm-offset-2 {
+			margin-left: 15.666667% !important;
+	}
+	.centered {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.search-image{
+		background-image: url('/images/support_search_background.jpeg');
+		width: 100%;
+		height: 300px;
+		background-size: 100%;
+		background-position: center;
+		position: relative;
+		text-align: center;
+	}
+	.form-control{
+		padding: 17px !important;
+	}
+	.card-image{
+		background-image: url('/images/support_card.png');
+		width: 100%;
+		height: 300px;
+		background-size: 100%;
+		background-position: center;
+		position: relative;
+		text-align: center;
+	}
+	.search-field{
+		border-radius: 25px;
+		height: 30px;
+		width: 350px;
+		font-size: 20px;
+		font-family: sans-serif;
+	}
+	.headings{
+		text-align: center;
+		color: #666666;
+		font-size: 16px;
+		font-family: AdobeInvisFont,MyriadPro-Regular;
+	}
+	.heading-links{
+		display: inline;
+	}
+	.active{
+		border-bottom: 3px solid #379F00;
+	}
+	.line{
+		margin: 0px;
+	}
+	.card:hover {
+		box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+	}
+	.column {
+		box-sizing: border-box;
+		float: left;
+		width: 33%;
+		padding: 0 10px;
+		margin-bottom: 15px;
+	}
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	@media screen and (max-width: 600px) {
+		.column {
+			width: 100%;
+			display: block;
+			margin-bottom: 20px;
+		}
+	}
+	.card {
+		padding: 16px;
+		text-align: center;
+		border-radius: 10px;
+		border: 2px solid #ededed;
+		min-height: 200px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column-reverse;
+	}
+	.lower-banner{
+		margin-bottom: 50px;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		background: #e8e8e8;
+		min-height: 200px;
+		width: 100%;
+		border-radius: 5px;
+		text-align: center;
+	}
+	.banner-button {
+		background-color: Transparent;
+		border: 1px solid black;
+		border-radius: 5px;
+		padding: 3px 10px 3px 10px;
+	}
+	p{
+		padding-top: -5px;
+		padding-bottom: 15px;
+		color: #666666;
+	}
+	.fa-search{
+		position: relative;
+		float: right;
+		color: #656565;
+		margin-top: -26px;
+		font-size: 18px !important;
+		margin-right: 11px;
+	}
+	/* .heading-links:hover{
+	border-bottom: 3px solid #379F00;
+	} */
+</style>

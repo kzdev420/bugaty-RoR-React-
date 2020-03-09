@@ -1,0 +1,59 @@
+body {
+  background: #f2f2f4 url("../img/404.png") no-repeat;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+}
+
+.info {
+  font-family: "Calibri", sans-serif;
+  margin-left: 38%;
+  color: #3b3a3a;
+  margin-top: 20%;
+  width: 50%;
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: 900;
+  text-align: left;
+  margin-left: 0%;
+}
+
+p.desc {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-bottom:0px;
+}
+
+p.second-desc{
+  margin-top: 0px;
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+p {
+  margin-top: 0px;
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-left: 0px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-left: 140px;
+}
+
+a {
+  color: #1b930f;
+  font-size: 1.2em;
+  font-weight: 500;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

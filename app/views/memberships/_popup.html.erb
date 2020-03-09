@@ -1,0 +1,40 @@
+<div id="cancell-subscription-popup" class="zoom-anim-dialog mfp-hide">
+    <div class="alert-title">
+        <div class="warning">
+            <%= @cancel_text[0].nil? ? "WARNING" : @cancel_text[0].title_1 %>
+        </div>
+        <div class="membership-cancelation">
+            <%= @cancel_text[0].nil? ? "Membership Cancelation" : @cancel_text[0].title_2 %>
+        </div>
+    </div>
+	<div class="description">
+        <div class="title">
+            <span>
+                <%= @cancel_text[0].nil? ? "Private Message From Bryan Dulaney" : @cancel_text[0].title_3 %>
+            </span>
+            <!-- <span>Private Message From Bryan Dulaney</span> -->
+        </div>
+        <div class="text">
+            <span>
+                <%= @cancel_text[0].nil? ? "Always I am a pretty passion developer and dedicate hard to meet project the deadline.
+                Also, I am ready for a variety of requirements of the Client.
+                Because I have been a pretty quick learner, which is why I can adapt to new things quickly and I can get through suddenly happen issues fast.
+
+                I am happy to get on a call with you to discuss this further.
+                Let's make your dream a reality!" : @cancel_text[0].title_1 %> 
+            </span>
+        </div>
+        <div class="cancell-subscription-popup-buttons">
+            <%= link_to "<div class='yes'>
+                <span>Yes, Keep</span>
+                </br>
+                <span>my subscription</span>
+            </div>".html_safe, memberships_change_path, class: "cancell-subscription-popup-button" %>
+            <%= link_to "<div class='no'>
+                <span>No Thanks, Cancel</span>
+                </br>
+                <span>my subscription</span>
+            </div>".html_safe, memberships_change_path, class: "cancell-subscription-popup-button" %>
+        </div>
+    </div>
+</div>

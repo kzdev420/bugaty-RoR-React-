@@ -1,0 +1,19 @@
+default:
+  toolbar:
+    - styleselect | bold italic | undo redo
+    - image | link
+  plugins:
+    - image
+    - link
+    - code
+  link_context_toolbar: true
+  target_list: false
+alternate:
+  toolbar:
+    - styleselect | bold italic | undo redo
+    - link
+  plugins:
+    - link
+    - maxchars
+  link_context_toolbar: true
+  target_list: false

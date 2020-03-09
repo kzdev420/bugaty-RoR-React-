@@ -1,0 +1,142 @@
+@import '../../../../styles/variables'
+
+.authorPhoto
+  width: 90px
+  height: 90px
+  border-radius: 50%
+  object-fit: cover
+  object-position: center right
+
+.postContainer
+  max-width: 1200px
+  padding: 0
+  @media (max-width: 768px)
+    padding: 0
+  .blogSubcategory
+    color: $green
+    font-size: 16px
+
+  .postTitle
+    font-size: 34px
+    font-weight: 500
+
+  .shareSocial
+    justify-content: space-between
+    div
+      flex-direction: row !important
+    button
+      margin-right: 8px
+      float: right
+  .postCoverPhoto
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    min-height: 500px
+    max-height: 500px
+    width: 100%
+
+  .postData
+    .authorName
+      color: $green
+    img
+      width: 40px
+      height: 40px
+
+  .nextPreviousPost
+    border-top-color: #dcdcdc
+    border-top-style: solid
+    border-top-width: 1px
+    border-bottom-color: #dcdcdc
+    border-bottom-style: solid
+    border-bottom-width: 1px
+    .previousPost
+      border-right-color: #dcdcdc
+      border-right-style: solid
+      border-right-width: 1px
+      &:hover
+        cursor: pointer
+        background: $grey
+      p:last-child
+        font-weight: 700
+    .nextPost
+      &:hover
+        cursor: pointer
+        background: $grey
+      p:last-child
+        font-weight: 700
+  .authorInformation
+    .authorName
+      color: $green
+  .recommendedTitle, .commentsAmount
+    font-size: 32px
+  .signedInAddYourOwn
+    font-weight: 600
+    font-size: 18px
+    color: $green
+  .signedInWarning
+    margin-bottom: 75px
+    font-weight: 600
+    font-size: 16px
+    a
+      color: $green
+  .commentData
+    .commentAuthor
+      color: black
+      font-weight: 300
+      a
+        margin-right: 4px
+        font-weight: 700
+
+  .commentAuthorPhoto img
+    width: 75px
+    height: 75px
+    @media (max-width: 768px)
+      width: 40px
+      height: 40px
+  .commentBoxContainer
+    margin-bottom: 75px
+    .commentAlert
+      div
+        max-width: 700px
+        width: 100%
+    .commentBox
+      p
+        color: #555555
+        font-size: 12px
+      button
+        padding-right: 10px
+        padding-left: 10px
+        background: $green
+        font-weight: 600
+        color: white
+        border: none
+
+      textarea
+        &:focus
+          border: none
+        border-top-color: #dfdfdf
+        border-top-style: solid
+        border-top-width: 1px
+        resize: none
+        width: 100%
+        height: 115px
+        border-radius: 10px
+        padding: 10px
+.carousel
+  width: 100%
+  overflow: hidden
+  position: relative
+.badges
+  margin-right: 8px
+  padding: 6px 18px
+  background: rgba($green, 0.6)
+  border: 0
+  font-size: 11px
+  letter-spacing: 0.05em
+  text-transform: uppercase
+  line-height: 28px
+  -webkit-font-smoothing: initial
+  color: white
+  .badges:hover
+    cursor: pointer
+    background: rgba($green, 0.8)

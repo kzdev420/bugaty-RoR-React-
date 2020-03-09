@@ -1,0 +1,54 @@
+<section class="membership-landingpage-fourth">
+    <div class="membership-landingpage-fourth-image" style="background-color: antiquewhite">
+        <div class="container">
+            <div class="membership-landingpage-fourth-image-title" style="font-size: 45px;">
+                <span> Got Questions? </span>
+            </div>
+            <div class="membership-landingpage-fourth-image-title" style="font-size: 45px; padding-top: 0; padding-bottom: 30px">
+                <span> We've got answers! </span>
+            </div>
+            <div class="row">
+                <% @question.each do |question| %>
+                <div class="col-sm-6">
+                    <div class="membership-landingpage-fourth-image-mini-text" style="font-size: 20px; width: max-content; max-width: 100%; cursor: pointer;"> 
+                        <span><%= question.question %> </span>
+                        <hr style="border-color: green; margin-top: 0;  max-width: 100%;">
+                    </div>
+                </div>
+                <% end %>
+                <% if @question.length == 0 %>
+                <div class="col-sm-6">
+                    <div class="membership-landingpage-fourth-image-mini-text" style="font-size: 20px; width: max-content; max-width: 100%"> 
+                        <span><%= "@sliders[i-1].slogan" %> </span>
+                        <hr style="border-color: green; margin-top: 0;  max-width: 100%;">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="membership-landingpage-fourth-image-mini-text" style="font-size: 20px; width: max-content; max-width: 100%"> 
+                        <span><%= "@sliders[i-1].slogan" %> </span>
+                        <hr style="border-color: green; margin-top: 0;  max-width: 100%;">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="membership-landingpage-fourth-image-mini-text" style="font-size: 20px; width: max-content; max-width: 100%"> 
+                        <span><%= "@sliders[i-1].slogan" %> </span>
+                        <hr style="border-color: green; margin-top: 0;  max-width: 100%;">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="membership-landingpage-fourth-image-mini-text" style="font-size: 20px; width: max-content; max-width: 100%"> 
+                        <span><%= "@sliders[i-1].slogan" %> </span>
+                        <hr style="border-color: green; margin-top: 0;  max-width: 100%;">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="membership-landingpage-fourth-image-mini-text" style="font-size: 20px; width: max-content; max-width: 100%"> 
+                        <span><%= "@sliders[i-1].slogan" %> </span>
+                        <hr style="border-color: green; margin-top: 0;  max-width: 100%;">
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>

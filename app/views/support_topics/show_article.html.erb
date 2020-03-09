@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= content_for(:title, @support_article.title.presence || @support_article.name) %>
+<%= content_for(:meta_tags) do %>
+  <% %w(keywords description).each do |key| %>
+    <% unless @support_article.send(key).blank? %>
+      <meta property="<%= key %>" content="<%= @support_article.send(key) %>" />
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= render ('layouts/header')%>
+
+<%= render ('shared/banner-top')%>
+  <!-- CONTENT -->
+  <section class="text-page">
+    <div class="heading-div">
+      <div class="container">
+        <div class="col-md-6">
+          <b><p class="heading">Buyer Help Center</p></b>
+        </div>
+        <div class="col-md-6">
+          <%= form_tag(support_search_path, :method => "post", id: "search-support-form") do %>
+            <input type="text" name="search" placeholder="Search the Help & Education Center" class="form-control search-field">
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-2"></div> -->
+    <div class="container">
+      <div class="col-sm-12">
+        <div class="content-holder smaller-left-pad">
+          <div class="topic-name-div">
+            <% @all_topics.each do |topic| %>
+              <% if topic.slug != params["support_topic_slug"] %>
+                <span class="topic-name"><%= link_to topic.name, slugged_support_topic_path(topic), style: "text-align: center;"%></span>
+              <% else %>
+                <span class="active topic-name"><%= link_to topic.name, slugged_support_topic_path(topic), style: "text-align: center;"%></span>
+              <% end %>
+            <% end %>
+          </div>
+          <br><br><br>
+          <h2><%= @support_topic.name %></h2>
+          <div class="row">
+            <div class="col-md-12 content">
+              <div class="col-md-4">
+                <ul>
+                  <% @support_topic.support_articles.each do |article| %>
+                    <% if article.slug != params["support_article_slug"] %>
+                      <li><b><%= link_to article.name, slugged_support_article_path(@support_topic, article) %></b><hr></li>
+                    <% else %>
+                      <li><b><%= link_to article.name, slugged_support_article_path(@support_topic, article), class: "active-article" %></b><hr></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="col-md-8">
+                <%= @support_article.content.html_safe %>
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <div class="lower-banner">
+            <h2> Some unanswered questions?</h2>
+            <p>Our support team will be happy to assist. </p>
+            <%= link_to "Contact Us", contact_path, class: 'banner-button' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--- CONTENT -->
+
+    <style type="text/css">
+  		body{
+  			font-family: AdobeInvisFont, ﻿MyriadPro-Regular !important;
+  		}
+  		.text-page{
+  			background-color: #FFFFFF !important;
+  		}
+  		.content-holder {
+  		border: none !important;
+  		padding: 0px !important;
+  		}
+  		@media (min-width: 768px)
+  		.col-sm-offset-2 {
+  		margin-left: 15.666667% !important;
+  		}
+      .heading-div{
+        height: 75px;
+        background: #f9f9f9;
+      }
+      .content{
+        padding: 0px;
+      }
+      .heading{
+        margin-top: 25px;
+        float: left;
+        font-size: 30px !important;
+        color: #379F00;
+      }
+      #search-support-form{
+        margin-top: 20px;
+        float: right;
+      }
+  		.search-field{
+  			border-radius: 25px;
+  			height: 40px;
+  			width: 400px;
+  		}
+      .topic-name-div{
+        margin-top: 10px;
+      }
+      .topic-name{
+        font-size: 20px;
+        color: #a3a3a3;
+        margin-right: 10px;
+      }
+      .active{
+        color: #379F00;
+      }
+      .active-article{
+        border-bottom: 1px solid #379F00;
+      }
+      ul{
+        padding: 10px;
+        border: 1px solid #ededed;
+        list-style: none;
+      }
+  		.lower-banner{
+  			margin-bottom: 50px;
+  			padding-top: 50px;
+  			padding-bottom: 50px;
+  			background: #e8e8e8;
+  			min-height: 200px;
+  			width: 100%;
+  			border-radius: 5px;
+  			text-align: center;
+  		}
+  		.banner-button {
+  			background-color: Transparent;
+  			border: 1px solid black;
+  			border-radius: 5px;
+  			padding: 3px 10px 3px 10px;
+  		}
+  		p{
+  			padding-top: -5px;
+  			padding-bottom: 15px;
+  			color: #666666;
+  		}
+      .fa-search{
+  			position: relative;
+  	    float: right;
+  	    color: #656565;
+  	    margin-top: -30px;
+  			font-size: 18px !important;
+  	    margin-right: 11px;
+  		}
+      .heading{
+        font-family: sans-serif;
+        font-weight: 500 !important;
+      }
+    </style>

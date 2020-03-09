@@ -1,0 +1,66 @@
+<%= provide(:title, "Listings search") %>
+
+<%= render ('layouts/header') %>
+
+<%= render ('shared/banner-top') %>
+
+
+    <!-- CONTENT -->
+    <section class="ads">
+        <div class="container">
+            <div class="row">
+                <!-- START WITH BUSINESS LISTINGS -->
+                <div class="col-sm-8 header-pad-l">
+                    <div class="gradient-bg">
+                        <div class="ads-list-title"><span>Search</span> Results</div>
+                    </div>
+
+<%= render ('categories/listing-fav')%>
+
+                    <div class="ads-pagination">
+                        <div class="row">
+                            <div class="col-sm-3 pt5">
+
+                                Result 1- 10 0f 37
+                            </div>
+                            <div class="col-sm-5 text-center">
+
+                                <!--<div class="pagination-list">
+                                    <a href="#">Start</a>
+                                    <a href="#">Prev</a>
+                                    <a href="#" class="active">1</a>
+                                    <a href="#">2</a>
+                                    <a href="#">Next</a>
+                                    <a href="#">End</a>
+                                </div>-->
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                Display #
+                                <div class="selectbox small-paginator">
+                                    <select>
+                                        <option>all</option>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>15</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="banner-bottom text-center">
+                        <%= render('shared/banner-bottom')%>
+                    </div>
+                </div>
+                <!-- ANOTHER ADS -->
+                <div class="col-sm-4 header-pad-r">
+                    <div class="gradient-bg">
+                        <div class="ads-list-title"><span>ADVERTISEMENTS</span></div>
+                    </div>
+                    <div class="gradient-bg gradient-bg--ads">
+                        <%= render ('shared/banner-right-sidebar-long') %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--- CONTENT -->

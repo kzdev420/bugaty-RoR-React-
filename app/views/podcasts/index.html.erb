@@ -1,0 +1,34 @@
+<%= render ('header')%>
+<div class="podcast-hero-image"
+  style="background-image: url(<%= $template.podcast_header_image&.url%>)"
+>
+  <p class="podcast-hero-text ">
+    <%= $template.podcast_header_text%>
+  </p>
+</div>
+
+<%=
+  react_component(
+    'PodcastIndex',
+    {
+      podcastEpisodes: @podcast_episodes,
+      podcastHost: @podcast_host,
+      page: @page,
+      perPage: @per_page,
+      totalItems: @total_items,
+      contactMessage: $template.podcast_contact_info,
+      subcriptionPodcast: $template.podcast_subscribe_images
+    },
+    tag: :div, class: 'container'
+  )
+%>
+<%=
+  react_component(
+    'PodcastNewsletter',
+    {
+      descriptionMessage: $template.podcast_newsletter,
+      authenticity_token:  form_authenticity_token,
+    }
+  )
+%>
+

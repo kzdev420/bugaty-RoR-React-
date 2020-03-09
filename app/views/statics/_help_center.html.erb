@@ -1,0 +1,67 @@
+<section class="benefits">
+    <% if @help_center_sections[0] %>
+    <div class="help-center-contents" style="background-image: url('<%= @help_center_sections[0].background %>')">
+        <div class="help-center-title">
+            <span> <%= @help_center_sections[0].title %> </span>
+        </div>
+        <div class="help-center-title-mini">
+            <span> <%= @help_center_sections[0].mini_title %> </span>
+        </div>
+        <div class="row">
+            <div class="col-xs-0 col-md-1"></div>
+            <div class="col-xs-12 col-md-10">
+                <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <div class="title-mini">
+                                <span> <%= @help_center_sections[0].title_1 %> </span>
+                            </div>
+                            <div class="title-description">
+                                <span> <%= @help_center_sections[0].description_1 %> </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="title-mini">
+                                <span> <%= @help_center_sections[0].title_2 %> </span>
+                            </div>
+                            <div class="title-description">
+                                <span> <%= @help_center_sections[0].description_2 %> </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="title-mini">
+                                <span> <%= @help_center_sections[0].title_3 %> </span>
+                            </div>
+                            <div class="title-description">
+                                <span> <%= @help_center_sections[0].description_3 %> </span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="col-xs-0 col-md-1"></div>
+        </div>
+        <div class="go-to-help-center">
+            <%= link_to "<span>#{@help_center_sections[0].button_title}</span>".html_safe, slugged_support_topic_path("getting-started") %>
+        </div>
+        <% else %>
+        <div class="help-center-contents" style="background-image: url('/images/homepage_slides/7.png')">
+            <div class="help-center-title">
+                <span> This is help center section </span>
+            </div>
+            <div class="help-center-title-mini">
+                <span> please init data into admin </span>
+            </div>
+            <div class="row">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
+                    <div class="row">
+                            
+                    </div>
+                </div>
+                <div class="col-xs-0 col-md-1"></div>
+            </div>
+            <div class="go-to-help-center">
+                <%= link_to "<span>Go to Help Center</span>".html_safe, slugged_support_topic_path("getting-started") %>
+            </div>
+        <% end %>
+    </div>
+</section>

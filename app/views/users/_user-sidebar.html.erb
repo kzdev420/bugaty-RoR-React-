@@ -1,0 +1,188 @@
+
+                <div class="profile-stats">
+                  <div class="profile-stats-heading">Account Verification:</div>
+                  <div class="row profile-stats-verification-row">
+                    <div class="col-xs-7 col-xs-offset-2">
+                      <i class="ico ico-email--fill"></i> <span class="profile-stats-verification-name">Email</span>
+                    </div>
+                    <div class="col-xs-3">
+                    <% if @user.confirmed_at.present? %>
+                    <span class="profile-stats-verification-status"><span>Verified</span></span>
+                    <% else %>
+                    <span class="profile-stats-verification-status"><span style="background-color: tomato;">Not verified</span></span>
+                    <% end %>
+                    </div>
+                  </div>
+                  <div class="row profile-stats-verification-row">
+                    <div class="col-xs-7 col-xs-offset-2">
+                      <i class="ico ico-fb--fill"></i> <span class="profile-stats-verification-name">Facebook</span>
+                    </div>
+                    <div class="col-xs-3">
+                      <% if @identity_fb.present? %>
+                      <span class="profile-stats-verification-status"><span>Verified</span></span>
+                      <% else %>
+                        <% if @user == current_user %>
+                          <span class="profile-stats-verification-status"><span style="background-color: tomato;"><%= link_to "Connect", user_omniauth_upgrade_path( :facebook ) %></span></span>
+                        <% else %>
+                          <span class="profile-stats-verification-status"><span style="background-color: tomato;">No</span></span>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="row profile-stats-verification-row">
+                    <div class="col-xs-7 col-xs-offset-2">
+                      <i class="ico ico-google--fill"></i> <span class="profile-stats-verification-name">Google+</span>
+                    </div>
+                    <div class="col-xs-3">
+                      <% if @identity_g.present? %>
+                      <span class="profile-stats-verification-status"><span>Verified</span></span>
+                      <% else %>
+                        <% if @user == current_user %>
+                          <span class="profile-stats-verification-status"><span style="background-color: tomato;"><%= link_to "Connect",user_omniauth_upgrade_path( :google_oauth2 ) %></span></span>
+                        <% else %>
+                          <span class="profile-stats-verification-status"><span style="background-color: tomato;">No</span></span>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!--
+                  <div class="row profile-stats-verification-row">
+                    <div class="col-xs-7 col-xs-offset-2">
+                      <i class="ico ico-tw--fill"></i> <span class="profile-stats-verification-name">Twitter Verified</span>
+                    </div>
+                    <div class="col-xs-3">
+                      <span class="profile-stats-verification-status"><i class="ico ico-tick--white"></i></span>
+                    </div>
+                  </div>
+                  -->
+                </div>
+                <div class="profile-stats">
+                  <div class="profile-stats-heading pr30">Account statistics:</div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-4">
+                      <% if @user_jobs.present? %>
+                      <div class="profile-stats-link"><%= @user_jobs.length %> Jobs active</div>
+                      <% end %>
+                      <% if @user_services.present? %>
+                      <div class="profile-stats-link"><%= @user_services.length %> Services active</div>
+                      <% end %>
+                      <% if @user_ads.present? %>
+                      <div class="profile-stats-link"><%= @user_ads.length %> Ad active</div>
+                      <% end %>
+                      <% if @user_co.present? %>
+                      <div class="profile-stats-link"><%= @user_co.length %> Company listed</div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                <!-- buttons -->
+                <div class="profile-stats buttons">
+                  <div class="row">
+                    <div class="col-sm-10 col-sm-offset-2">
+                      <% if @user == current_user %>
+                      <% if action_name == 'show' %>
+                      <div class="profile-stat-btn--line">
+                        <%= link_to "<i class='ico ico-change-user--big'></i> <span>Edit profile</span>".html_safe, edit_user_path(@user), class: 'btn-favourite btn-large' %>
+                      </div>
+                      <!--<div class="profile-stat-btn--line">
+                        <a href="#" class="btn-favourite btn-large"><i class="ico ico-edit--big"></i> <span>Edit company</span></a>
+                      </div>-->
+                      <div class="profile-stat-btn--line">
+                        <a href="/listings/new/1" class="btn-favourite btn-large"><i class="ico ico-upload--big"></i> <span>Add company</span></a>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <%= link_to "<i class='ico ico-edit--big'></i> <span>Manage ads</span>".html_safe, user_all_listings_path(@user), class: 'btn-favourite btn-large' %>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <%= link_to "<i class='ico ico-fav-counter'> #{current_user.new_requests_count} </i> <i class='ico ico-edit--big'></i> <span>Sold ads</span>".html_safe, incoming_requests_path, class: 'btn-favourite btn-large' %>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <%= link_to "<i class='ico ico-fav-counter'> #{current_user.new_replies_count} </i> <i class='ico ico-edit--big'></i> <span>Purchases</span>".html_safe, sent_requests_path, class: 'btn-favourite btn-large' %>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <a href="#free-ad-popup" class="popup-with-zoom-anim btn-favourite btn-large"><i class="ico ico-upload--big"></i> <span>Add ads</span></a>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <%= link_to "<i class='ico ico-upload--big'></i> <span>Add Coupon Code</span>".html_safe, coupon_codes_path, class: 'btn-favourite btn-large' %>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <%= link_to "<i class='ico ico-fav-counter'> #{current_user.favorites.count} </i> <i class='ico ico-star--big'></i> <span>My favourites</span>".html_safe, my_favorites_path(@user), class: 'btn-favourite btn-large' %>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <a href="#email-reference-popup" class="popup-with-zoom-anim btn-favourite btn-large"><i class="ico ico-change-email--big"></i> <span>Email preference</span></a>
+                      </div>
+                      <% elsif action_name == 'edit' %>
+                      <div class="profile-stat-btn--line">
+                        <a href="#change-pass-popup" class="btn-favourite btn-large popup-with-zoom-anim"><i class="ico ico-change-user--big"></i> <span>Change password</span></a>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <a href="#change-mail-popup" class="btn-favourite btn-large popup-with-zoom-anim"><i class="ico ico-change-email--big"></i> <span>Change email</span></a>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <a href="#upload-cv-popup" class="btn-favourite btn-large popup-with-zoom-anim"><i class="ico ico-upload--big"></i> <span>Upload your CV</span></a>
+                      </div>
+                      <div class="profile-stat-btn--line">
+                        <a href="#deactivate-account-popup" class="btn-favourite btn-large popup-with-zoom-anim"><i class="ico ico-deactivate--big"></i> <span>Deactivate account</span></a>
+                      </div>
+
+                      <% end %>
+                      <% end %>
+
+<div id="email-reference-popup" class="zoom-anim-dialog mfp-hide">
+  <div class="popup-logo text-center">
+    <img src="/img/logo.png" alt="Websites to sell items online for free" class="img-responsive center-block">
+  </div>
+  <div class="popup-content">
+    <div class="popup-heading text-center">Email <span>Preference</span></div>
+    <div class="popup-action text-center">Receive email notifacation:</div>
+    <%= form_for(@user, url: set_email_preferences_path, :html => {:id => "set-email-references-box", :'data-type' => 'json'}, :remote => true ) do |f| %>
+    <div class="row popup-switch">
+      <div class="col-xs-6">
+        New company added
+      </div>
+      <div class="col-xs-6 pull-right">
+        <div class="switch">
+          <input type="radio" name="receive_new_companies" id="switch-1-1" class="first" value="true" <%= "#{(@user.receive_new_companies == true) ? "checked" : "nil"}"%>>
+          <label for="switch-1-1">Yes</label>
+          <input type="radio" name="receive_new_companies" id="switch-1-2" class="second" value="no" <%= "#{(@user.receive_new_companies == false) ? "checked" : "nil"}"%>>
+          <label for="switch-1-2">No</label>
+        </div>
+      </div>
+    </div>
+    <div class="row popup-switch">
+      <div class="col-xs-6">
+        New ad posted
+      </div>
+      <div class="col-xs-6 pull-right">
+        <div class="switch">
+          <input type="radio" name="receive_new_ads" id="switch-2-1" class="first" value="true" <%= "#{(@user.receive_new_ads == true) ? "checked" : "nil"}"%> >
+          <label for="switch-2-1">Yes</label>
+          <input type="radio" name="receive_new_ads" id="switch-2-2" class="second" value="no" <%= (@user.receive_new_ads == false) ? "checked" : "nil"%> >
+          <label for="switch-2-2">No</label>
+        </div>
+      </div>
+    </div>
+    <div class="row popup-switch">
+      <div class="col-xs-6">
+        New updates and news
+      </div>
+      <div class="col-xs-6 pull-right">
+        <div class="switch">
+          <input type="radio" name="receive_updates" id="switch-3-1" class="first" value="true" <%= "#{(@user.receive_updates == true) ? "checked" : "nil"}"%> >
+          <label for="switch-3-1">Yes</label>
+          <input type="radio" name="receive_updates" id="switch-3-2" class="second" value="no" <%= "#{(@user.receive_updates == false) ? "checked" : "nil"}"%> >
+          <label for="switch-3-2">No</label>
+        </div>
+      </div>
+    </div>
+    <div class="two-row-btns">
+      <button type="submit" class="btn-pink have-fill">SAVE</button>
+      <button type="" class="btn-blue have-fill">CANCEL</button>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+                    </div>
+                  </div>
+                </div>

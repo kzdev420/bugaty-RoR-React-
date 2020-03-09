@@ -1,0 +1,5581 @@
+@import "https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700";
+/*************************
+GENERAL RULES
+*************************/
+/* line 5, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 10, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+body {
+  font-family: 'Roboto Slab', serif;
+  color: #32281e;
+  font-size: 14px;
+  background-color: #efefef;
+  overflow-x: hidden;
+}
+@media (max-width: 47.99em) {
+  /* line 10, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+  body {
+    font-size: 12px;
+  }
+}
+
+/* line 20, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+a {
+  color: inherit;
+}
+
+/* line 24, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Typography */
+/* line 31, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+
+/* line 37, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+h1 {
+  font-size: 24px;
+  color: #369fe0;
+  margin-bottom: 20px;
+}
+
+/* line 43, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+h2 {
+  font-size: 2em;
+  margin-bottom: 25px;
+}
+
+/* line 48, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+p {
+  line-height: 1.7em;
+}
+
+/* line 52, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+b {
+  font-weight: 700;
+  font-style: bold;
+}
+
+/* line 57, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.ico {
+  display: inline-block;
+  content: ' ';
+}
+
+/* Helpers */
+/* line 63, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.center {
+  text-align: center;
+}
+
+/* line 66, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.center-block {
+  margin: 0 auto;
+}
+
+/* line 70, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.clearfix, .clear {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+/* line 79, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.form-control {
+  font-size: 20px;
+  border: 1px solid #d8d6d9;
+  border-radius: 5px;
+  height: 40px;
+}
+
+/* line 87, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.form-inline.search-keyword input {
+  max-width: 80%;
+}
+@media (max-width: 61.99em) {
+  /* line 87, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+  .form-inline.search-keyword input {
+    font-size: 14px;
+    max-width: 75%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 87, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+  .form-inline.search-keyword input {
+    max-width: 85%;
+    display: inline-block;
+  }
+}
+/* line 98, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.form-inline.search-keyword button {
+  vertical-align: -4px;
+}
+@media (max-width: 61.99em) {
+  /* line 98, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+  .form-inline.search-keyword button {
+    font-size: 14px;
+    height: 40px;
+    vertical-align: -2px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 98, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+  .form-inline.search-keyword button {
+    vertical-align: 0;
+  }
+}
+/* line 110, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/base/_general.scss */
+.form-inline button {
+  max-width: 18%;
+  background: #37a440;
+  border-radius: 5px;
+  border: 1px solid #d8d6d9;
+  color: white;
+  outline: none;
+  padding: 5px 3px;
+  font-size: 20px;
+  vertical-align: -1px;
+}
+
+/* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.no-pad-r {
+  padding-right: 0;
+}
+@media (max-width: 47.99em) {
+  /* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .no-pad-r {
+    padding-right: 15px;
+  }
+}
+
+/* line 7, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.smaller-pad {
+  padding: 0 7px;
+}
+@media (max-width: 47.99em) {
+  /* line 7, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .smaller-pad {
+    padding: 0 15px;
+  }
+}
+
+/* line 12, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.all-listing-pads {
+  padding-right: 50px;
+}
+@media (max-width: 47.99em) {
+  /* line 12, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .all-listing-pads {
+    padding-right: 15px;
+  }
+}
+
+/* line 16, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pt5 {
+  padding-top: 7px;
+}
+
+/* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pt15 {
+  padding-top: 15px;
+}
+
+/* line 20, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pt30 {
+  padding-top: 30px;
+}
+
+/* line 22, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pb25 {
+  padding-bottom: 25px;
+}
+
+/* line 24, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pt50 {
+  padding-top: 50px;
+}
+
+/* line 26, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.have-pad-50 {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+@media (max-width: 61.99em) {
+  /* line 26, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .have-pad-50 {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* line 32, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.have-pad-150 {
+  padding-right: 150px;
+  padding-left: 150px;
+}
+@media (max-width: 61.99em) {
+  /* line 32, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .have-pad-150 {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 32, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .have-pad-150 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* line 43, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pt130 {
+  padding-top: 130px;
+}
+@media (max-width: 61.99em) {
+  /* line 43, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .pt130 {
+    padding-top: 80px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 43, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .pt130 {
+    padding-top: 40px;
+  }
+}
+
+/* line 51, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.pr30 {
+  padding-right: 30px;
+}
+@media (max-width: 61.99em) {
+  /* line 51, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .pr30 {
+    padding-right: 0;
+  }
+}
+
+/* line 56, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* line 60, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+header {
+  background: white;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  font-family: "Calibri", sans-serif;
+}
+
+/* line 66, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.header-pad-l {
+  padding-left: 50px;
+}
+@media (max-width: 61.99em) {
+  /* line 66, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .header-pad-l {
+    padding-left: 15px;
+  }
+}
+
+/* line 71, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.header-pad-r {
+  padding-right: 50px;
+}
+@media (max-width: 61.99em) {
+  /* line 71, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .header-pad-r {
+    padding-right: 15px;
+  }
+}
+
+/* line 76, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+footer {
+  background: #3f3f3f;
+  color: white;
+  padding-top: 45px;
+  padding-bottom: 150px;
+}
+@media (max-width: 74.99em) {
+  /* line 76, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  footer {
+    padding-bottom: 100px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 76, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  footer {
+    padding-bottom: 60px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 76, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  footer {
+    text-align: center;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 87, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  footer .img-responsive {
+    margin: 0 auto;
+  }
+}
+
+/* line 91, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.under-footer {
+  background: #171717;
+  color: white;
+  padding: 15px 0px 10px 0;
+  font-family: "Calibri", sans-serif;
+}
+@media (max-width: 47.99em) {
+  /* line 91, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .under-footer {
+    text-align: center !important;
+  }
+}
+
+/* line 99, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.header-menu {
+  background: #f2f2f4;
+  border-top: 2px solid #d1d1d1;
+  padding: 0;
+  border-bottom: 2px solid #d1d1d1;
+  font-family: "Calibri", sans-serif;
+}
+
+/* line 107, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.mainpage-slider {
+  position: relative;
+}
+/* line 109, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.mainpage-slider:after {
+  display: block;
+  background: url("../img/slider-shade.png") no-repeat center bottom;
+  width: 100%;
+  height: 27px;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  z-index: 1;
+  content: " ";
+}
+
+/* line 120, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.whitebox {
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #dedede;
+  padding: 0 10px 40px 10px;
+}
+
+/* line 126, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.ads-list {
+  margin-top: 25px;
+}
+
+/* line 128, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.ads-list-more {
+  margin-top: 25px;
+}
+
+/* line 131, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.benefits {
+  margin-top: 90px;
+}
+@media (max-width: 74.99em) {
+  /* line 131, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .benefits {
+    margin-top: 70px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 131, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .benefits {
+    margin-top: 50px;
+  }
+}
+
+/* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.benefits-icons {
+  margin-top: 85px;
+}
+@media (max-width: 74.99em) {
+  /* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .benefits-icons {
+    margin-top: 65px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .benefits-icons {
+    margin-top: 50px;
+  }
+}
+
+/* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.featured-in {
+  margin-top: 75px;
+  margin-bottom: 100px;
+}
+@media (max-width: 74.99em) {
+  /* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .featured-in {
+    margin-bottm: 60px;
+    margin-top: 60px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .featured-in {
+    margin-bottom: 60px;
+    margin-top: 40px;
+  }
+}
+
+/* line 159, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.text-page p {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 300;
+}
+/* line 163, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.text-page h1 {
+  margin-top: 30px;
+}
+
+/* line 167, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.banner-top {
+  padding: 25px 0;
+  background: #e1e5e5;
+  position: relative;
+  overflow: visible;
+}
+/* line 172, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.banner-top:after {
+  display: block;
+  background: url("../img/top-ad-shade.png") no-repeat center bottom;
+  width: 100%;
+  height: 27px;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  z-index: -1;
+  content: " ";
+}
+
+/* line 183, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.banner-bottom {
+  margin-bottom: 100px;
+}
+@media (max-width: 47.99em) {
+  /* line 183, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+  .banner-bottom {
+    margin-bottom: 50px;
+  }
+}
+
+/* line 188, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/layout/_layout.sass */
+.ads {
+  padding-top: 20px;
+}
+
+/* line 4, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-logo {
+  display: inline-block;
+}
+
+/* line 7, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-banner-top {
+  text-align: right;
+  display: inline-block;
+}
+
+/* line 11, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-login {
+  margin-top: 15px;
+  color: #3d3142;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+/* line 16, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-login a {
+  display: inline-block;
+  margin-right: 15px;
+}
+/* line 19, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-login a:last-child {
+  margin-right: 0;
+}
+/* line 21, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-login span {
+  vertical-align: 3px;
+}
+
+/* line 24, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form {
+  font-size: 19px;
+}
+/* line 26, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form input[type="text"] {
+  color: #32281e;
+  border-radius: 5px;
+  border: 1px solid #d8d6d9;
+  padding: 5px 10px;
+}
+/* line 31, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+/* line 34, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form button {
+  background: #37a440;
+  border-radius: 5px;
+  border: 1px solid #d8d6d9;
+  color: white;
+  outline: none;
+  padding: 5px 3px;
+}
+/* line 41, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form button:hover {
+  -webkit-animation: blinker 1s linear infinite;
+          animation: blinker 1s linear infinite;
+}
+/* line 44, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form .text-search {
+  width: 100%;
+  padding-left: 70px !important;
+}
+/* line 47, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form .loc-search {
+  width: 30%;
+}
+/* line 50, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form {
+  font-size: 16px;
+}
+/* line 52, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form input[type="text"] {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #32281e;
+}
+/* line 56, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form input[type="text"]::-webkit-input-placeholder {
+  color: #777;
+}
+/* line 58, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form input[type="text"]::-moz-placeholder {
+  color: #777;
+}
+/* line 60, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form input[type="text"]:-ms-input-placeholder {
+  color: #777;
+}
+/* line 62, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form input[type="text"]:-moz-placeholder {
+  color: #777;
+}
+/* line 64, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-search-form.mobile-header-search-form button {
+  max-width: 10%;
+  padding: 7px 3px;
+}
+@media (max-width: 47.99em) {
+  /* line 67, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-search-form.mobile-header-search-form .multiple-form {
+    width: 57%;
+  }
+}
+@media (max-width: 21.24em) {
+  /* line 67, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-search-form.mobile-header-search-form .multiple-form {
+    width: 50%;
+  }
+}
+
+@-webkit-keyframes blinker {
+  50% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.65;
+  }
+}
+/* line 77, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.multiple-form {
+  position: relative;
+  display: inline-block;
+  width: 60%;
+}
+@media (max-width: 55.615em) {
+  /* line 77, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .multiple-form {
+    width: 55%;
+  }
+}
+/* line 84, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.multiple-form .select {
+  background: #f1f1f1;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  height: 37px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 60px;
+}
+/* line 93, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.multiple-form .select select {
+  background: transparent;
+  border: none;
+  height: 37px;
+  width: 60px;
+}
+
+/* line 100, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-login {
+  background: url("../img/sprite.png") no-repeat -22px -20px;
+  width: 15px;
+  height: 19px;
+}
+
+/* line 105, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-signup {
+  background: url("../img/sprite.png") no-repeat -48px -18px;
+  width: 19px;
+  height: 19px;
+}
+
+/* line 114, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 1em;
+  text-align: justify;
+  padding-left: 35px;
+  padding-right: 35px;
+  position: relative;
+}
+@media (max-width: 61.99em) {
+  /* line 114, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-menu-list {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* line 127, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list:after {
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  content: " ";
+}
+/* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list li {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 23px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+@media (max-width: 72.1775em) {
+  /* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-menu-list li {
+    font-size: 21px;
+  }
+}
+@media (max-width: 69.365em) {
+  /* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-menu-list li {
+    font-size: 19px;
+  }
+}
+@media (max-width: 58.115em) {
+  /* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-menu-list li {
+    font-size: 16px;
+  }
+}
+/* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list li:after {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: #37a440;
+  border: 1px solid #f21aa5;
+  content: " ";
+  vertical-align: 3px;
+  margin-left: 5px;
+}
+@media (max-width: 69.365em) {
+  /* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-menu-list li:after {
+    vertical-align: 2px;
+  }
+}
+@media (max-width: 58.115em) {
+  /* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .header-menu-list li:after {
+    width: 7px;
+    height: 7px;
+    vertical-align: 2px;
+    margin-left: 4px;
+  }
+}
+/* line 161, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list li:last-child:after {
+  display: none;
+}
+/* line 163, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list li:hover {
+  color: #f21aa5;
+}
+/* line 165, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list li:hover > .header-submenu-list {
+  display: block;
+}
+/* line 168, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-menu-list li.have-ul:hover {
+  background: #f21aa5;
+  color: white;
+}
+
+/* line 172, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-submenu-list {
+  display: none;
+  color: #32281e;
+  position: absolute;
+  background: #f2f2f4;
+  border-top: 5px solid #f21aa5;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  font-size: 16px;
+  line-height: 1.2em;
+}
+/* line 173, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-submenu-list:hover {
+  display: block;
+}
+/* line 190, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-submenu-list a {
+  display: block;
+  margin-top: 5px;
+}
+/* line 193, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-submenu-list a:hover {
+  color: #f21aa5;
+}
+
+/* line 196, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.header-submenu-category {
+  font-size: 24px;
+  font-weight: 700;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+/* line 204, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.mainpage-slider-slide {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 430px;
+  width: 100%;
+}
+@media (max-width: 61.99em) {
+  /* line 204, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .mainpage-slider-slide {
+    height: 350px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 204, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .mainpage-slider-slide {
+    height: 200px;
+    background-size: cover;
+  }
+}
+
+/* line 215, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+@media (max-width: 47.99em) {
+  /* line 215, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .owl-dots {
+    bottom: 5px;
+  }
+}
+/* line 222, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-dots .owl-dot {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  content: " ";
+}
+/* line 231, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-dots .owl-dot.active {
+  background: white;
+}
+
+/* line 234, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-prev {
+  background: url("../img/sprite.png") no-repeat -1px -48px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  font-size: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* line 245, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-prev:hover {
+  opacity: 1;
+}
+
+/* line 248, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-next {
+  background: url("../img/sprite.png") no-repeat -35px -48px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  font-size: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/* line 259, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.owl-next:hover {
+  opacity: 1;
+}
+
+/* line 264, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.col-sm-3 .ads-list-title {
+  font-size: 28px;
+}
+@media (max-width: 74.99em) {
+  /* line 264, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .col-sm-3 .ads-list-title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 264, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .col-sm-3 .ads-list-title {
+    font-size: 20px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 264, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .col-sm-3 .ads-list-title {
+    font-size: 24px;
+  }
+}
+
+/* line 273, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ads-list-title {
+  font-size: 32px;
+  color: #32281e;
+  font-family: "Calibri", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 15px 15px 10px 15px;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+@media (max-width: 61.99em) {
+  /* line 273, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ads-list-title {
+    font-size: 28px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 273, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ads-list-title {
+    font-size: 24px;
+  }
+}
+/* line 286, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ads-list-title span {
+  font-weight: 700;
+}
+/* line 288, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ads-list-title:after {
+  display: block;
+  width: 100%;
+  height: 10px;
+  background: url("../img/sprite.png") repeat-x -2px -82px;
+  content: " ";
+}
+
+/* line 295, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card {
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  padding: 10px 10px 5px 10px;
+  margin-top: 15px;
+  color: #343434;
+  background: -webkit-linear-gradient(-270deg, rgba(214, 214, 214, 0.5) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: -webkit-linear-gradient(bottom, rgba(214, 214, 214, 0.5) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: linear-gradient(0deg, rgba(214, 214, 214, 0.5) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+}
+
+/* line 304, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card--no-cat .ad-title {
+  margin-bottom: 10px;
+}
+
+/* line 306, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card--featured {
+  background: -webkit-linear-gradient(-270deg, rgba(251, 108, 199, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: -webkit-linear-gradient(bottom, rgba(251, 108, 199, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: linear-gradient(0deg, rgba(251, 108, 199, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+}
+
+/* line 308, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card--urgent {
+  background: -webkit-linear-gradient(-270deg, rgba(250, 164, 98, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: -webkit-linear-gradient(bottom, rgba(250, 164, 98, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: linear-gradient(0deg, rgba(250, 164, 98, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  border: 2px solid #ff7f00;
+}
+
+/* line 311, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service {
+  padding: 3px 7px;
+}
+
+/* line 313, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-picture {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #7e7b7b;
+  background: white;
+  position: relative;
+  margin-bottom: 15px;
+}
+@media (max-width: 47.99em) {
+  /* line 313, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-card-picture {
+    width: 95%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 322, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-card-picture img {
+    width: 100%;
+  }
+}
+/* line 325, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-picture a:hover {
+  @icnlude transition(all .4s ease);
+  opacity: 0.85;
+}
+
+/* line 329, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-picture-tag {
+  position: absolute;
+  top: 3px;
+  left: -1px;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1em;
+  color: white;
+  font-family: "Calibri", sans-serif;
+  padding: 2px 10px;
+  border: 1px solid #366b00;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+/* line 341, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-picture-tag:before {
+  display: block;
+  position: absolute;
+  top: 18px;
+  left: -1px;
+  background: url("../img/sprite.png") no-repeat -1px -105px;
+  width: 10px;
+  height: 10px;
+  content: " ";
+  z-index: 2;
+}
+
+/* line 352, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.tag--featured {
+  background-color: #f21aa5;
+  background-image: -webkit-linear-gradient(-270deg, #f21aa5, #fc9fdb);
+  background-image: -webkit-linear-gradient(bottom,#f21aa5, #fc9fdb);
+  background-image: linear-gradient(0deg,#f21aa5, #fc9fdb);
+}
+
+/* line 354, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.tag--urgent {
+  background-color: #c96b00;
+  background-image: -webkit-linear-gradient(-270deg, #c96b00, #ff7103);
+  background-image: -webkit-linear-gradient(bottom,#c96b00, #ff7103);
+  background-image: linear-gradient(0deg,#c96b00, #ff7103);
+}
+
+/* line 356, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.tag--service {
+  top: 7px;
+  left: -6px;
+  padding: 2px 15px;
+}
+
+/* line 360, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-posted-ago {
+  font-size: 10px;
+  margin-bottom: 5px;
+  font-family: "Roboto Slab", serif;
+}
+/* line 364, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-posted-ago span {
+  font-weight: 700;
+}
+
+/* line 367, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-posted-ago {
+  width: 13px;
+  height: 13px;
+  background: url("../img/sprite.png") no-repeat -14px -105px;
+  margin-right: 4px;
+  vertical-align: -2px;
+}
+
+/* line 374, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-reviews {
+  font-size: 10px;
+  font-family: "Roboto Slab", serif;
+}
+
+/* line 378, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.add-rev {
+  color: #369fe0;
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+/* line 383, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-reviews--smaller {
+  font-size: 8px;
+}
+/* line 385, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-reviews--smaller .ico-star {
+  -webkit-transform: scale(0.65);
+  transform: scale(0.65);
+  margin-left: -4px;
+  margin-right: -3px;
+  vertical-align: -5px;
+}
+/* line 390, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-reviews--smaller .ad-reviews-rating {
+  font-size: 7px;
+  padding: 2px 2px;
+}
+
+/* line 394, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-star {
+  width: 14px;
+  height: 15px;
+  margin-right: 0px;
+  background: url("../img/sprite.png") no-repeat -31px -104px;
+  vertical-align: -3px;
+  font-size: 0;
+}
+/* line 401, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-star.ico-star--blank {
+  background-position: -92px -104px;
+}
+/* line 403, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-star.ico-star--half {
+  background-position: -77px -104px;
+}
+
+/* line 406, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-reviews-rating {
+  background: #37a440;
+  color: white;
+  border-radius: 5px;
+  font-size: 11px;
+  padding: 2px;
+}
+
+/* line 415, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #369fe0;
+  font-family: "Roboto Slab", serif;
+  display: inline-block;
+}
+@media (max-width: 47.99em) {
+  /* line 415, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-title {
+    margin-top: 10px;
+  }
+}
+
+/* line 425, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-add-favourites {
+  float: right;
+}
+/* line 427, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-add-favourites:after {
+  clear: both;
+  content: " ";
+  display: block;
+}
+
+/* line 431, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-add-favourites--services-absolute {
+  position: absolute;
+  top: 7px;
+  right: 2px;
+}
+
+/* line 436, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-category {
+  color: #716f6f;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  margin-top: 15px;
+  margin-bottom: 7px;
+}
+/* line 442, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-category a {
+  color: #369fe0;
+}
+
+/* line 445, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-category {
+  width: 12px;
+  height: 12px;
+  background: url("../img/sprite.png") no-repeat -33px -133px;
+  vertical-align: -1px;
+  margin-right: 5px;
+}
+
+/* line 452, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-metrics {
+  color: #32281e;
+  font-size: 12px;
+  font-family: "Roboto Slab", serif;
+}
+
+/* line 456, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-metrics-row {
+  font-family: "Roboto Slab", serif;
+}
+/* line 458, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-metrics-row span {
+  font-weight: 700;
+}
+
+/* line 460, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-price {
+  width: 16px;
+  height: 14px;
+  background: url("../img/sprite.png") no-repeat -3px -121px;
+  vertical-align: -2px;
+}
+
+/* line 466, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-web {
+  background: url("../img/sprite.png") no-repeat -5px -136px;
+  width: 14px;
+  height: 15px;
+  vertical-align: -2px;
+  margin-right: 3px;
+}
+
+/* line 473, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-location {
+  background: url("../img/sprite.png") no-repeat -5px -155px;
+  width: 17px;
+  height: 14px;
+  vertical-align: -3px;
+}
+
+/* line 479, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-phone {
+  background: url("../img/sprite.png") no-repeat -5px -175px;
+  width: 16px;
+  height: 11px;
+  vertical-align: 0px;
+}
+
+/* line 485, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-mobile {
+  background: url("../img/sprite.png") no-repeat -5px -189px;
+  width: 16px;
+  height: 13px;
+  vertical-align: -1px;
+}
+
+/* line 490, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-cal {
+  background: url("../img/sprite.png") no-repeat -1px -447px;
+  width: 16px;
+  height: 17px;
+  vertical-align: -2px;
+}
+
+/* line 495, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-fuel {
+  background: url("../img/sprite.png") no-repeat -2px -466px;
+  width: 15px;
+  height: 17px;
+  vertical-align: -4px;
+}
+
+/* line 501, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-engine {
+  background: url("../img/sprite.png") no-repeat 0px -486px;
+  width: 17px;
+  height: 12px;
+  vertical-align: 0px;
+}
+
+/* line 506, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-mileage {
+  background: url("../img/sprite.png") no-repeat -1px -505px;
+  width: 17px;
+  height: 12px;
+  vertical-align: 0px;
+}
+
+/* line 512, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-property-type {
+  background: url("../img/sprite.png") no-repeat -25px -466px;
+  width: 14px;
+  height: 18px;
+  vertical-align: -4px;
+}
+
+/* line 517, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-date-available {
+  background: url("../img/sprite.png") no-repeat -25px -487px;
+  width: 17px;
+  height: 18px;
+  vertical-align: -4px;
+}
+
+/* line 523, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-pet {
+  background: url("../img/sprite.png") no-repeat -22px -444px;
+  width: 17px;
+  height: 14px;
+  vertical-align: -2px;
+}
+
+/* line 529, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-moq {
+  background: url("../img/sprite.png") no-repeat -23px -507px;
+  width: 17px;
+  height: 13px;
+  vertical-align: -2px;
+}
+
+/* line 535, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-description {
+  font-family: "Roboto Slab", serif;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 14px;
+}
+/* line 540, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-description p {
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+}
+/* line 545, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-description a {
+  color: #369fe0;
+}
+/* line 547, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-description a:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: #32281e;
+}
+
+/* line 550, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-author {
+  font-family: "Roboto Slab", serif;
+  text-align: right;
+  font-size: 12px;
+}
+/* line 554, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-author.no-align {
+  text-align: left;
+}
+/* line 556, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-author span {
+  color: #343434;
+}
+/* line 558, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-author a {
+  color: #369fe0;
+}
+
+/* line 562, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service .ad-card-picture {
+  margin-bottom: 10px;
+}
+/* line 564, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service .ad-title {
+  margin-bottom: 45px;
+}
+@media (max-width: 61.99em) {
+  /* line 564, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-card-service .ad-title {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 564, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-card-service .ad-title {
+    margin-bottom: 20px;
+  }
+}
+/* line 570, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service .ad-serv-location {
+  font-size: 9px;
+  font-family: "Roboto Slab", serif;
+}
+/* line 573, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service .ico-location {
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  margin-left: -4px;
+  margin-right: -4px;
+}
+/* line 577, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service .ad-author {
+  font-size: 10px;
+}
+/* line 579, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-card-service .ad-posted-ago {
+  margin-bottom: 3px;
+}
+
+/* line 582, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-author-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #c2a2ae;
+  background-position: 50% 50%;
+  background-size: cover;
+  margin-bottom: 5px;
+}
+
+/* line 593, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-price {
+  text-align: right;
+  margin-bottom: 30px;
+}
+/* line 596, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ad-price span {
+  background: #369fe0;
+  font-family: "Roboto Slab", serif;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 2px 15px;
+  display: inline-block;
+  color: white;
+  line-height: 1em;
+}
+@media (max-width: 74.99em) {
+  /* line 596, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-price span {
+    font-size: 24px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 596, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ad-price span {
+    font-size: 20px;
+    padding: 2px 10px;
+  }
+}
+
+/* line 611, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-box {
+  background: white url("../images/benefits-bg.png") no-repeat right top;
+  padding: 0;
+}
+@media (max-width: 74.99em) {
+  /* line 611, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-box {
+    background-size: cover;
+  }
+}
+
+/* line 617, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-ico-box {
+  padding: 0 30px 70px 30px;
+}
+@media (max-width: 61.99em) {
+  /* line 617, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-box {
+    padding: 0 30px 40px 30px;
+  }
+}
+
+/* line 622, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-title {
+  color: #369fe0;
+  font-size: 38px;
+  font-family: "Calibri", sans-serif;
+  line-height: 1em;
+  padding-top: 15px;
+}
+@media (max-width: 47.99em) {
+  /* line 622, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-title {
+    font-size: 24px;
+  }
+}
+/* line 631, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-title span {
+  font-size: 48px;
+}
+@media (max-width: 47.99em) {
+  /* line 631, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-title span {
+    font-size: 28px;
+  }
+}
+
+/* line 636, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-list {
+  list-style: none;
+  margin-top: 10px;
+}
+/* line 639, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-list li {
+  margin-bottom: 5px;
+  position: relative;
+}
+@media (max-width: 47.99em) {
+  /* line 639, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-list li {
+    margin-bottom: 30px;
+  }
+}
+/* line 645, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-list li:before {
+  background: url("../img/sprite.png") no-repeat -77px -55px;
+  display: inline-block;
+  margin-right: 10px;
+  width: 19px;
+  height: 19px;
+  content: " ";
+  vertical-align: 3px;
+}
+@media (max-width: 47.99em) {
+  /* line 645, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-list li:before {
+    margin-left: 5px;
+  }
+}
+/* line 656, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-list span {
+  font-family: "Calibri", sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #000000;
+  margin-left: 30px;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  line-height: 14px;
+}
+@media (max-width: 61.99em) {
+  /* line 656, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-list span {
+    font-size: 14px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 656, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-list span {
+    font-size: 12px;
+    left: 0;
+  }
+}
+
+/* line 672, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.benefits-ico-title {
+  font-size: 60px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+@media (max-width: 74.99em) {
+  /* line 672, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-title {
+    font-size: 50px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 672, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-title {
+    font-size: 40px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 672, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-title {
+    font-size: 22px;
+    line-height: 24px;
+    margin-top: 10px;
+  }
+}
+
+/* line 688, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-benefit-1 {
+  background: url("../img/sprite.png") no-repeat -43px -150px;
+  width: 124px;
+  height: 170px;
+}
+
+/* line 692, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-benefit-2 {
+  background: url("../img/sprite.png") no-repeat -181px -150px;
+  width: 165px;
+  height: 170px;
+}
+
+/* line 696, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-benefit-3 {
+  background: url("../img/sprite.png") no-repeat -354px -143px;
+  width: 124px;
+  height: 170px;
+}
+
+@media (max-width: 74.99em) {
+  /* line 702, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-box .ico {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 702, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-box .ico {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    margin-top: -30px;
+    margin-bottom: -30px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 702, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .benefits-ico-box .ico {
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+    margin-top: -40px;
+  }
+}
+
+/* line 714, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-benefit-heading {
+  font-size: 28px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  display: block;
+  margin-top: 20px;
+}
+@media (max-width: 74.99em) {
+  /* line 714, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ico-benefit-heading {
+    font-size: 24px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 714, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ico-benefit-heading {
+    font-size: 20px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 714, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ico-benefit-heading {
+    font-size: 18px;
+    margin-top: -10px;
+  }
+}
+
+/* line 728, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-benefit-description {
+  font-size: 16px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+@media (max-width: 74.99em) {
+  /* line 728, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ico-benefit-description {
+    font-size: 14px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 728, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .ico-benefit-description {
+    font-size: 12px;
+  }
+}
+
+/* line 739, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.featured-box {
+  padding: 45px 70px 35px 70px;
+}
+@media (max-width: 74.99em) {
+  /* line 739, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .featured-box {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 739, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .featured-box {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 739, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .featured-box {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* line 750, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.featured-in-list {
+  list-style: none;
+  text-align: justify;
+  line-height: 0em;
+}
+@media (max-width: 47.99em) {
+  /* line 750, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .featured-in-list {
+    text-align: center;
+  }
+}
+/* line 756, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.featured-in-list:after {
+  display: inline-block;
+  content: " ";
+  width: 100%;
+  height: 1px;
+}
+/* line 761, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.featured-in-list li {
+  line-height: 1em;
+  display: inline-block;
+}
+/* line 764, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.featured-in-list li:hover {
+  opacity: 0.7;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+@media (max-width: 47.99em) {
+  /* line 761, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .featured-in-list li {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* line 775, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+footer .col-sm-2 a {
+  font-size: 16px;
+  display: block;
+  font-family: "Roboto Slab", serif;
+}
+@media (max-width: 74.99em) {
+  /* line 775, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  footer .col-sm-2 a {
+    font-size: 14px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 775, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  footer .col-sm-2 a {
+    font-size: 12px;
+  }
+}
+/* line 783, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+footer .col-sm-2 a:hover {
+  opacity: 0.7;
+}
+
+/* line 785, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.footer-col {
+  font-size: 20px;
+  font-family: "Roboto Slab", serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+}
+@media (max-width: 74.99em) {
+  /* line 785, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .footer-col {
+    font-size: 16px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 785, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .footer-col {
+    font-size: 13px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 785, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .footer-col {
+    margin-top: 10px;
+  }
+}
+
+/* line 799, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.footer-desc {
+  margin-top: 50px;
+  display: inline-block;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  font-size: 16px;
+}
+@media (max-width: 74.99em) {
+  /* line 799, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .footer-desc {
+    font-size: 14px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 799, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .footer-desc {
+    font-size: 12px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 799, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .footer-desc {
+    margin-top: 20px;
+  }
+}
+
+/* line 812, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-fb {
+  width: 42px;
+  height: 42px;
+  background: url("../img/sprite.png") no-repeat -150px -14px;
+}
+
+/* line 817, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-tw {
+  width: 42px;
+  height: 42px;
+  background: url("../img/sprite.png") no-repeat -199px -14px;
+}
+
+/* line 821, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-gplus {
+  width: 42px;
+  height: 42px;
+  background: url("../img/sprite.png") no-repeat -248px -14px;
+}
+
+/* line 825, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.ico-youtube {
+  width: 42px;
+  height: 42px;
+  background: url("../img/sprite.png") no-repeat -298px -14px;
+}
+
+/* line 829, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.socials .ico {
+  margin-right: 5px;
+}
+@media (max-width: 61.99em) {
+  /* line 829, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+  .socials .ico {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+}
+/* line 835, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.socials .ico:hover {
+  opacity: 0.7;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* line 842, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_index.sass */
+.underfooter-navi a:first-child {
+  margin-right: 15px;
+  display: inline-block;
+}
+
+/* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header {
+  padding: 0;
+  background: #32281e;
+}
+
+/* line 7, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.header-logo--mobile {
+  padding-top: 10px;
+  display: inline-block;
+  position: relative;
+}
+/* line 11, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.header-logo--mobile:after {
+  font-size: 24px;
+  background: url("../img/logo-footer.png") no-repeat 0 0;
+  content: ' ';
+  width: 250px;
+  height: 74px;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  -webkit-transform: translateX(-50%) scale(0.7);
+  transform: translateX(-50%) scale(0.7);
+}
+
+/* line 29, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.hamburger {
+  margin-top: 20px;
+  padding: 10px 0px;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* line 36, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.hamburger-box {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: auto;
+}
+
+/* line 42, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before {
+  background-color: white;
+  border-radius: 3px;
+  height: 5px;
+  width: 30px;
+}
+
+/* line 48, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav {
+  display: none;
+  background: rgba(242, 26, 165, 0.9);
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+/* line 56, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li {
+  display: block;
+  margin-bottom: 7px;
+  text-transform: uppercase;
+}
+/* line 58, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li ul {
+  display: none;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+/* line 60, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li ul.active {
+  display: block;
+}
+/* line 61, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li ul li {
+  font-size: 13px;
+  margin-bottom: 5px;
+  text-transform: none;
+}
+/* line 64, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+/* line 65, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li:hover ul a {
+  color: white;
+}
+/* line 66, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-nav .main-navi li:hover a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* line 74, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.ico-search--header {
+  background: url("../img/ico-search-header.svg") no-repeat 0 0;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+/* line 81, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.ico-search--header:hover {
+  opacity: 0.7;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* line 88, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.header-search-input {
+  height: 36px;
+  width: 100%;
+  background: white url("../img/ico-search-blue.svg") no-repeat 96% 10px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 0px;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 9px 18px;
+  color: #ccc;
+}
+@media (max-width: 61.99em) {
+  /* line 88, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+  .header-search-input {
+    font-size: 14px;
+  }
+}
+/* line 100, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.header-search-input:focus {
+  box-shadow: 3px 3px 0 #f21aa5;
+  border: none;
+  outline: none;
+}
+
+/* line 107, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form {
+  position: relative;
+}
+/* line 109, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input {
+  outline: none;
+}
+/* line 112, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input[type=search] {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent url("../img/ico-search-header.svg") no-repeat 0 0;
+  border: none;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  width: 30px;
+  height: 30px;
+  color: transparent;
+  cursor: pointer;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+/* line 134, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input[type=search]:hover {
+  opacity: 0.7;
+}
+/* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input[type=search]:focus {
+  opacity: 1;
+  background: transparent url("../img/ico-search-blue.svg") no-repeat 8px 6px;
+  width: 150px;
+  background-color: #fff;
+  border-color: 1px solid #ccc;
+  padding-left: 32px;
+  padding-right: 10px;
+  color: #000;
+  background-color: #fff;
+  cursor: auto;
+  border-radius: 10em;
+  box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+}
+/* line 158, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input::-webkit-search-decoration,
+.mobile-header-search-form input::-webkit-search-cancel-button {
+  display: none;
+}
+/* line 162, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input:-moz-placeholder {
+  color: transparent;
+}
+/* line 165, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-header-search-form input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+/* line 170, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.ico-search-header-ico--xs {
+  background: transparent url("../img/ico-search-header.svg") no-repeat 0 0;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+/* line 178, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.ico-search-header-ico--xs:hover {
+  opacity: 0.7;
+}
+
+/* line 182, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-search {
+  display: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #f21aa5;
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 188, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-search .mobile-search-form {
+  height: 34px;
+  width: 100%;
+  background: white url("../img/ico-search-blue.svg") no-repeat 96% 8px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 0px;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 8px 18px;
+  color: #ccc;
+}
+/* line 199, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_header_mobile.scss */
+.mobile-search .mobile-search-form:focus {
+  border: none;
+  outline: none;
+}
+
+/* line 6, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.content-holder {
+  background: white;
+  padding: 10px 55px 110px 55px;
+  border-left: 3px solid #f9f7e7;
+  border-right: 3px solid #f9f7e7;
+  margin-top: 0px;
+}
+@media (max-width: 61.99em) {
+  /* line 6, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .content-holder {
+    padding: 10px 40px 60px 40px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 6, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .content-holder {
+    padding: 10px 25px 40px 25px;
+  }
+}
+/* line 16, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.content-holder.no-pad-b {
+  padding-bottom: 0;
+}
+/* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.content-holder.smaller-left-pad {
+  padding-left: 35px;
+  padding-bottom: 0;
+}
+@media (max-width: 61.99em) {
+  /* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .content-holder.smaller-left-pad {
+    padding-left: 15px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .content-holder.smaller-left-pad {
+    padding-left: 15px;
+  }
+}
+
+/* line 28, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.mainpage-slider-slide-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  -webkit-text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.7);
+  -moz-text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.7);
+  text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.7);
+  padding-left: 40px;
+  padding-top: 25px;
+  text-transform: uppercase;
+}
+@media (max-width: 61.99em) {
+  /* line 28, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .mainpage-slider-slide-title {
+    font-size: 32px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 28, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .mainpage-slider-slide-title {
+    font-size: 26px;
+  }
+}
+
+/* line 41, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.mainpage-slider-slide-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 40px;
+}
+@media (max-width: 47.99em) {
+  /* line 41, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .mainpage-slider-slide-btn {
+    bottom: 30px;
+    right: 10px;
+  }
+}
+
+/* line 52, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-form .form-control {
+  box-shadow: 0px -2px 2px rgba(0, 0, 0, 0.7);
+  padding-left: 70px;
+  font-family: "Calibri", sans-serif;
+  width: 100%;
+  margin-bottom: 20px;
+}
+@media (max-width: 61.99em) {
+  /* line 52, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .contact-form .form-control {
+    padding-left: 50px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 52, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .contact-form .form-control {
+    padding-left: 40px;
+  }
+}
+/* line 62, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-form .btn-pink {
+  padding-left: 40px;
+  padding-right: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+/* line 66, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-form .btn-pink:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* line 69, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-name-bg {
+  background: url("../img/ico-name.png") no-repeat 10px center;
+}
+
+/* line 72, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-email-bg {
+  background: url("../img/ico-email.png") no-repeat 10px center;
+}
+
+/* line 75, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-email {
+  background: url("../img/ico-email.png") no-repeat center;
+  width: 26px;
+  height: 17px;
+}
+
+/* line 80, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-phone-bg {
+  background: url("../img/ico-phone.png") no-repeat 10px center;
+}
+
+/* line 83, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-textarea-bg {
+  background: url("../img/ico-textarea.png") no-repeat 10px 7px;
+}
+
+/* line 86, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-lang-bg {
+  background: url("../img/ico-lang2.png") no-repeat 10px 7px;
+}
+
+/* line 89, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-company-bg {
+  background: url("../img/ico-compnay-bg.png") no-repeat 10px center;
+}
+
+/* line 91, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-position-bg {
+  background: url("../img/ico-position-bg.png") no-repeat 10px center;
+}
+
+/* line 94, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-country-bg {
+  background: url("../img/ico-country-bg.png") no-repeat 10px center;
+}
+
+/* line 97, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-say-bg {
+  background: url("../img/ico-say-bg.png") no-repeat 10px 7px;
+}
+
+/* line 100, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-pass-bg {
+  background: url("../img/ico-pass-bg.png") no-repeat 10px center;
+}
+
+/* line 103, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-pass-bg--filled {
+  background: url("../img/ico-lock-filled-green.png") no-repeat 10px center;
+}
+
+/* line 105, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-pass-bg--filled--blue {
+  background: url("../img/ico-lock-filled-blue.png") no-repeat 10px center;
+}
+
+/* line 111, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.border-left--gradient {
+  position: relative;
+  background: url("../img/border-left-dash.png") repeat-y 0 0;
+  padding-left: 30px;
+  padding-bottom: 120px;
+  margin-top: -10px;
+}
+@media (max-width: 61.99em) {
+  /* line 111, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .border-left--gradient {
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 111, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .border-left--gradient {
+    background: white;
+    margin-top: 0;
+  }
+}
+
+/* line 123, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.border-right--gradient {
+  position: relative;
+  background: url("../img/border-left-dash.png") repeat-y right 0;
+  padding-right: 30px;
+  padding-bottom: 120px;
+  margin-top: -10px;
+}
+@media (max-width: 61.99em) {
+  /* line 123, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .border-right--gradient {
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 123, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .border-right--gradient {
+    background: white;
+    margin-top: 0;
+  }
+}
+
+/* line 135, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-row {
+  font-size: 14px;
+  color: #32281e;
+}
+/* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-row a {
+  color: #369fe0;
+}
+
+/* line 141, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-phone2 {
+  background: url("../img/ico-phone2.png") no-repeat 0 0;
+  width: 16px;
+  height: 17px;
+}
+
+/* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-mobile2 {
+  background: url("../img/ico-mobile2.png") no-repeat 0 0;
+  width: 11px;
+  height: 19px;
+}
+
+/* line 149, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-location2 {
+  background: url("../img/ico-location2.png") no-repeat 0 0;
+  width: 12px;
+  height: 19px;
+}
+
+/* line 154, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-socials {
+  margin: 30px 0;
+}
+/* line 156, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-socials .ico {
+  margin-right: 3px;
+}
+/* line 158, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-socials .ico:hover {
+  opacity: 0.7;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* line 161, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-fb--grayscale {
+  background: url("../img/sprite.png") no-repeat 0 -345px;
+  width: 27px;
+  height: 27px;
+}
+
+/* line 165, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-tw--grayscale {
+  background: url("../img/sprite.png") no-repeat -32px -345px;
+  width: 27px;
+  height: 27px;
+}
+
+/* line 169, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-gplus--grayscale {
+  background: url("../img/sprite.png") no-repeat -63px -345px;
+  width: 27px;
+  height: 27px;
+}
+
+/* line 173, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-youtube--grayscale {
+  background: url("../img/sprite.png") no-repeat -95px -345px;
+  width: 27px;
+  height: 27px;
+}
+
+/* line 177, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-insta--grayscale {
+  background: url("../img/sprite.png") no-repeat -127px -345px;
+  width: 27px;
+  height: 27px;
+}
+
+/* line 182, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.contact-map {
+  border: 1px solid #787978;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+}
+@media (max-width: 47.99em) {
+  /* line 182, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .contact-map {
+    width: auto;
+    height: auto;
+  }
+}
+
+/* line 194, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.feedback {
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  padding: 15px 15px 5px 15px;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+/* line 200, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.feedback .img-rounded {
+  border: 1px solid #e7e6e4;
+  border-radius: 50%;
+}
+@media (max-width: 47.99em) {
+  /* line 200, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .feedback .img-rounded {
+    margin: 0 auto;
+  }
+}
+/* line 205, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.feedback p {
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  margin-top: 15px;
+}
+/* line 209, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.feedback span {
+  color: #37a440;
+}
+
+/* line 211, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.feedback-name {
+  color: #37a440;
+  font-size: 20px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* line 219, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.feedback-ico-row {
+  margin-bottom: 5px;
+  font-family: "Roboto Slab", serif;
+}
+
+/* line 223, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-company {
+  background: url("../img/ico-compnay-bg.png") no-repeat center;
+  width: 24px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 229, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-position {
+  background: url("../img/ico-position-bg.png") no-repeat center;
+  width: 24px;
+  height: 32px;
+  margin-right: 5px;
+  vertical-align: -10px;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+/* line 236, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-country {
+  background: url("../img/ico-country-bg.png") no-repeat center;
+  width: 25px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 243, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.pagination-slider {
+  margin: 0 auto;
+}
+
+/* line 246, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.paginator_p {
+  display: inline-block;
+  font-size: 18px;
+  font-family: "Roboto Slab", serif;
+  color: #369fe0;
+  margin-right: 1% !important;
+  margin-left: 1% !important;
+  padding: 0px 2%;
+  cursor: pointer;
+}
+/* line 255, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.paginator_p.selected {
+  background: #f329ab;
+  color: white;
+}
+
+/* line 259, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.paginator_p_wrap {
+  width: 100% !important;
+  margin-bottom: 10px;
+  max-height: 30px;
+  overflow: hidden;
+}
+
+/* line 265, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+div.paginator_slider.ui-slider.ui-slider-horizontal.ui-widget.ui-widget-content.ui-corner-all {
+  width: 100% !important;
+}
+
+/* line 267, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ui-widget.ui-widget-content {
+  border: 1px solid transparent;
+}
+
+/* line 270, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ui-widget-content {
+  background: #cdcdcd;
+  height: 5px;
+}
+
+/* line 274, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ui-state-default, .ui-widget-content .ui-state-default {
+  background: #363636;
+  border: none;
+}
+
+/* line 278, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ui-slider .ui-slider-handle {
+  width: 80px;
+  height: 5px;
+  margin-left: 0;
+  top: -1px;
+}
+
+/* line 284, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.total-pages-paginator {
+  color: #818181;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+/* line 294, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.support-sudibar-heading {
+  color: #f326aa;
+  font-size: 25px;
+  font-family: "Calibri", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 40px;
+}
+
+/* line 302, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation {
+  margin-top: 40px;
+  list-style: none;
+  font-family: "Calibri", sans-serif;
+  border-left: 2px solid #f326aa;
+}
+/* line 308, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation > li {
+  font-size: 22px;
+  color: #369fe0;
+  font-weight: 700;
+  display: block;
+  position: relative;
+}
+/* line 314, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation > li:before {
+  display: block;
+  position: absolute;
+  left: -5px;
+  top: 19px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #f326aa;
+  content: " ";
+  z-index: 2;
+}
+/* line 326, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation > li a {
+  display: inline-block;
+  padding: 7px 15px;
+}
+/* line 329, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation > li a:hover {
+  color: #f326aa;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+/* line 333, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation > li > ul {
+  list-style: none;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  display: block;
+}
+/* line 340, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.sidebar-navigation > li > ul a {
+  display: inline-block;
+  padding: 6px 15px;
+  color: #32281e;
+}
+
+/* line 346, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.support-search {
+  margin-top: 30px;
+}
+/* line 349, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.support-search .form-control {
+  background: white url("../img/ico-search-blue.png") no-repeat 10px center;
+  box-shadow: inset 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  border: 1px solid #d8d6d9;
+  width: 90%;
+  display: inline-block;
+}
+@media (max-width: 61.99em) {
+  /* line 349, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .support-search .form-control {
+    width: 80%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 349, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+  .support-search .form-control {
+    width: 75%;
+  }
+}
+/* line 361, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.support-search button {
+  max-width: 18%;
+  background: #37a440;
+  border-radius: 5px;
+  border: 1px solid #d8d6d9;
+  color: white;
+  outline: none;
+  padding: 5px 3px;
+  font-size: 20px;
+  vertical-align: -1px;
+  display: inline-block;
+  float: right;
+}
+
+/* line 374, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.support-heading {
+  color: #369fe0;
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+/* line 380, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ico-help {
+  background: url("../img/ico-help.png") no-repeat 0 0;
+  width: 31px;
+  height: 31px;
+  margin-right: 8px;
+  vertical-align: -5px;
+}
+
+/* line 387, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.create-ticket {
+  margin-top: 30px;
+}
+/* line 389, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.create-ticket a:hover {
+  opacity: 0.7;
+}
+
+/* line 392, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ticket-content {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+/* line 395, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/text.sass */
+.ticket-content p {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+/* line 5, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gradient-bg {
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(-270deg, #f2f2f2, white);
+  background-image: -webkit-linear-gradient(bottom,#f2f2f2, white);
+  background-image: linear-gradient(0deg,#f2f2f2, white);
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  padding: 20px 15px;
+  margin-bottom: 20px;
+}
+/* line 11, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gradient-bg .ads-list-title {
+  padding: 0;
+  line-height: 1.3em;
+}
+/* line 14, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gradient-bg .ads-list-title:after {
+  display: none;
+}
+
+/* line 17, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gradient-bg--ads img {
+  margin-bottom: 20px;
+}
+
+/* line 20, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.blue-text {
+  font-size: 25px;
+  color: #369fe0;
+  text-transform: uppercase;
+  font-family: "Calibri", sans-serif;
+}
+@media (max-width: 61.99em) {
+  /* line 20, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .blue-text {
+    font-size: 20px;
+    display: block;
+  }
+}
+/* line 28, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.blue-text span {
+  font-weight: 700;
+}
+
+/* line 32, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.search-form .btn-pink {
+  margin-bottom: 20px;
+  background-color: #ebebe7;
+  background-image: -webkit-linear-gradient(-270deg, #ebebe7, white);
+  background-image: -webkit-linear-gradient(bottom,#ebebe7, white);
+  background-image: linear-gradient(0deg,#ebebe7, white);
+}
+
+/* line 39, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .whitebox, .tab-content-content .whitebox {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* line 43, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .btn-favourite, .tab-content-content .ad-card-service .btn-favourite {
+  font-size: 8px;
+  line-height: 9;
+  letter-spacing: -1px;
+  padding: 4px 5px 4px 0px;
+}
+/* line 48, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .btn-favourite .ico-favourite, .tab-content-content .ad-card-service .btn-favourite .ico-favourite {
+  -webkit-transform: scale(0.6);
+  transform: scale(0.6);
+  margin-bottom: -2px;
+  margin-left: 0px;
+}
+/* line 52, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-add-favourites--services-absolute, .tab-content-content .ad-card-service .ad-add-favourites--services-absolute {
+  top: -20px;
+}
+/* line 55, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-title, .tab-content-content .ad-card-service .ad-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 16px;
+}
+/* line 59, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-picture-tag, .tab-content-content .ad-card-service .ad-picture-tag {
+  padding: 3px 5px;
+  font-size: 8px;
+}
+/* line 62, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-picture-tag:before, .tab-content-content .ad-card-service .ad-picture-tag:before {
+  top: 14px;
+}
+/* line 64, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-author-avatar, .tab-content-content .ad-card-service .ad-author-avatar {
+  width: 40px;
+  height: 40px;
+}
+/* line 67, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-price, .tab-content-content .ad-card-service .ad-price {
+  margin-bottom: 17px;
+}
+/* line 69, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads .ad-card-service .ad-price span, .tab-content-content .ad-card-service .ad-price span {
+  font-size: 20px;
+  padding: 2px 5px;
+}
+
+/* line 76, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ads-pagination {
+  background: white;
+  border: 1px solid #cdc8c4;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 110px;
+  font-family: "Roboto Slab", serif;
+}
+@media (max-width: 47.99em) {
+  /* line 76, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .ads-pagination {
+    margin-bottom: 40px;
+  }
+  /* line 87, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .ads-pagination a {
+    display: inline-block;
+    margin-right: 3px;
+  }
+  /* line 90, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .ads-pagination a.active, .ads-pagination a:hover {
+    color: #369fe0;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 92, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .ads-pagination .text-right {
+    text-align: left !important;
+    margin-top: 5px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 96, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .ads-pagination .small-paginator {
+    vertical-align: -10px;
+  }
+}
+
+/* line 101, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.pagination-list {
+  font-size: 12px;
+  padding-top: 7px;
+}
+/* line 104, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.pagination-list a {
+  color: #369fe0;
+  padding: 0 3px;
+}
+
+/* line 111, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-ad {
+  font-family: "Roboto Slab", serif;
+}
+
+/* line 113, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-title {
+  font-size: 20px;
+  color: #369fe0;
+  margin-top: 20px;
+}
+
+/* line 118, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.signle-id {
+  float: right;
+  font-size: 15px;
+  color: #343434;
+  margin-top: 3px;
+}
+
+/* line 124, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-reviews {
+  font-size: 15px;
+  margin-top: 5px;
+}
+/* line 127, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-reviews .ad-rew {
+  color: #369fe0;
+  font-weight: 300;
+  padding-left: 20px;
+}
+
+/* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-category {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+/* line 136, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-posted-ago {
+  font-size: 15px;
+}
+
+/* line 139, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-posted-ago--plus {
+  background: url("../img/sprite.png") no-repeat -1px -217px;
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+  margin-right: 5px;
+}
+
+/* line 146, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-showonmap {
+  float: right;
+}
+
+/* line 148, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-location--big {
+  background: url("../img/sprite.png") no-repeat -1px -239px;
+  width: 25px;
+  height: 18px;
+  vertical-align: -3px;
+  margin-right: 5px;
+}
+
+/* line 155, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-gallery {
+  background-color: #e5c1d8;
+  background-image: -webkit-linear-gradient(bottom, #e5c1d8, #e6e6e6);
+  background-image: -webkit-linear-gradient(bottom,#e5c1d8, #e6e6e6);
+  background-image: linear-gradient(to top,#e5c1d8, #e6e6e6);
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* line 161, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-main-img {
+  position: relative;
+  margin-bottom: 45px;
+}
+/* line 164, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-main-img .owl-next {
+  background: url("../img/gal-slider-next.png") no-repeat 0 0;
+  width: 35px;
+  height: 35px;
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 15px;
+}
+/* line 175, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-main-img .owl-prev {
+  background: url("../img/gal-slider-prev.png") no-repeat 0 0;
+  width: 35px;
+  height: 35px;
+  content: " ";
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 15px;
+}
+
+/* line 185, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-thumbs {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 0;
+}
+/* line 190, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-thumbs .owl-thumb-item {
+  display: inline-block;
+  border: 3px solid transparent;
+  margin-left: -3px;
+}
+/* line 194, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-thumbs .owl-thumb-item.active {
+  border: 3px solid #f21aa5;
+}
+/* line 196, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-thumbs .owl-next {
+  background: url("../img/gal-slider-next-sm.png") no-repeat 0 0;
+  width: 26px;
+  height: 26px;
+  content: " ";
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 0px;
+}
+/* line 205, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.gal-thumbs .owl-prev {
+  background: url("../img/gal-slider-prev-sm.png") no-repeat 0 0;
+  width: 26px;
+  height: 26px;
+  content: " ";
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0px;
+}
+
+/* line 215, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-controls {
+  margin-top: 10px;
+}
+
+/* line 218, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-report {
+  float: right;
+}
+
+/* line 221, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-report {
+  background: url("../img/sprite.png") no-repeat -1px -264px;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  vertical-align: -6px;
+}
+
+/* line 228, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-chars {
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+/* line 232, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-char-line {
+  color: #32281e;
+  margin-bottom: 7px;
+}
+/* line 235, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-char-line span {
+  font-weight: 700;
+}
+
+/* line 238, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ml30 {
+  margin-left: 30px;
+}
+
+/* line 240, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-price {
+  background: url("../img/sprite.png") no-repeat -217px -110px;
+  width: 23px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+/* line 247, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-location {
+  background: url("../img/sprite.png") no-repeat -318px -329px;
+  width: 26px;
+  height: 19px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 254, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-make {
+  background: url("../img/sprite.png") no-repeat -320px -354px;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  vertical-align: -5px;
+}
+
+/* line 262, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-car {
+  background: url("../img/sprite.png") no-repeat -319px -382px;
+  width: 24px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 269, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-registration {
+  background: url("../img/sprite.png") no-repeat -320px -409px;
+  width: 22px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 276, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-gearbox {
+  background: url("../img/sprite.png") no-repeat -320px -438px;
+  width: 22px;
+  height: 19px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 283, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-mileage {
+  background: url("../img/sprite.png") no-repeat -320px -464px;
+  width: 22px;
+  height: 17px;
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+/* line 289, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-deliverytime {
+  background: url("../img/sprite.png") no-repeat -320px -490px;
+  width: 22px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -5px;
+}
+
+/* line 296, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-pickup-only {
+  background: url("../img/sprite.png") no-repeat -359px -487px;
+  width: 27px;
+  height: 25px;
+  margin-right: 5px;
+  vertical-align: -8px;
+}
+
+/* line 303, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-enginesize {
+  background: url("../img/sprite.png") no-repeat -359px -351px;
+  width: 22px;
+  height: 15px;
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+/* line 311, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-fuletype {
+  background: url("../img/sprite.png") no-repeat -359px -379px;
+  width: 22px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+/* line 319, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-body {
+  background: url("../img/sprite.png") no-repeat -357px -407px;
+  width: 26px;
+  height: 16px;
+  margin-right: 0px;
+  vertical-align: -5px;
+}
+
+/* line 326, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-colour {
+  background: url("../img/sprite.png") no-repeat -359px -432px;
+  width: 22px;
+  height: 19px;
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+/* line 333, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-propertytype {
+  background: url("../img/sprite.png") no-repeat -272px -325px;
+  width: 25px;
+  height: 22px;
+  margin-right: 3px;
+  vertical-align: -5px;
+}
+
+/* line 339, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-propertysize {
+  background: url("../img/sprite.png") no-repeat -275px -352px;
+  width: 25px;
+  height: 20px;
+  margin-right: 3px;
+  vertical-align: -4px;
+}
+
+/* line 346, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-condition {
+  background: url("../img/sprite.png") no-repeat -240px -326px;
+  width: 21px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 353, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-single-job {
+  background: url("../img/sprite.png") no-repeat -237px -355px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+/* line 361, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-open-to-offers {
+  background: url("../img/sprite.png") no-repeat 0px -291px;
+  width: 28px;
+  height: 19px;
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+/* line 368, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-description {
+  padding: 20px;
+}
+@media (max-width: 47.99em) {
+  /* line 368, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .single-description {
+    padding: 20px 0;
+  }
+}
+/* line 372, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-description p {
+  font-size: 14px;
+  font-weight: 300;
+}
+/* line 375, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-description p span {
+  color: #37a440;
+}
+
+/* line 381, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-similar-heading {
+  color: #37a440;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* line 388, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+#similar-items {
+  margin-bottom: 100px;
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 393, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+#similar-items .col-xs-12 {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+/* line 396, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+#similar-items .owl-next {
+  background: url("../img/gal-slider-next-sm.png") no-repeat 0 0;
+  width: 26px;
+  height: 26px;
+  content: " ";
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: -15px;
+}
+/* line 405, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+#similar-items .owl-prev {
+  background: url("../img/gal-slider-prev-sm.png") no-repeat 0 0;
+  width: 26px;
+  height: 26px;
+  content: " ";
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: -15px;
+}
+
+/* line 416, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.similar-container {
+  border-radius: 5px;
+  border: 1px solid #e2e2e2;
+  padding: 5px 10px 5px 10px;
+  background: -webkit-linear-gradient(-270deg, rgba(214, 214, 214, 0.5) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: -webkit-linear-gradient(bottom, rgba(214, 214, 214, 0.5) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  background: linear-gradient(0deg, rgba(214, 214, 214, 0.5) 0%, rgba(255, 255, 255, 0.1) 50%, white 100%);
+  font-family: "Roboto Slab", serif;
+  margin-right: 5px;
+}
+
+/* line 424, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-heading {
+  font-size: 11px;
+  font-weight: 700;
+  color: #369fe0;
+}
+
+/* line 429, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-img-holder {
+  border-radius: 4px;
+  border: 1px solid #8f8c8c;
+  padding: 5px;
+  margin-bottom: 8px;
+}
+
+/* line 435, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.similar-price {
+  color: #32281e;
+  font-size: 10px;
+}
+
+/* line 438, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.similar-added-by {
+  font-size: 10px;
+}
+/* line 440, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.similar-added-by span {
+  color: #369fe0;
+}
+
+/* line 446, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar {
+  padding-top: 40px;
+}
+@media (max-width: 47.99em) {
+  /* line 446, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .single-sidebar {
+    padding-top: 0;
+  }
+}
+
+/* line 450, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: #37a440;
+  margin-bottom: 10px;
+}
+/* line 455, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-heading.blue {
+  font-size: 20px;
+  color: #369fe0;
+  font-weight: 700;
+}
+
+/* line 460, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-profile-pic {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+/* line 464, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-profile-pic .profile-header-wrap {
+  display: inline-block;
+}
+
+/* line 466, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-heading--big {
+  font-size: 20px;
+  font-weight: 700;
+  color: #37a440;
+  margin-top: 15px;
+}
+
+/* line 472, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-icons {
+  margin-top: 40px;
+}
+
+/* line 475, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-ico-row {
+  margin-bottom: 7px;
+}
+/* line 477, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-ico-row a {
+  color: #369fe0;
+}
+/* line 479, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-ico-row .ico-email {
+  margin-right: 4px;
+}
+
+/* line 482, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-online, .ico-offline {
+  background: #37a440;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: -3px;
+}
+
+/* line 489, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-offline {
+  background: gray;
+}
+
+/* line 492, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-chat {
+  background: url("../img/sprite.png") no-repeat -248px -106px;
+  width: 23px;
+  height: 23px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 499, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-response-time {
+  background: url("../img/sprite.png") no-repeat -274px -106px;
+  width: 23px;
+  height: 23px;
+  margin-right: 5px;
+  vertical-align: -5px;
+}
+
+/* line 505, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-language {
+  background: url("../img/sprite.png") no-repeat -321px -106px;
+  width: 17px;
+  height: 20px;
+  margin-right: 15px;
+  vertical-align: -4px;
+}
+
+/* line 511, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-person {
+  background: url("../img/sprite.png") no-repeat -301px -106px;
+  width: 17px;
+  height: 17px;
+  margin-right: 10px;
+  vertical-align: -2px;
+}
+
+/* line 518, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-desc {
+  margin-top: 40px;
+  padding-left: 25px;
+}
+@media (max-width: 47.99em) {
+  /* line 518, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .single-sidebar-desc {
+    margin-top: 20px;
+    padding-left: 0;
+  }
+}
+/* line 524, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-desc p {
+  font-size: 14px;
+  font-weight: 300;
+}
+/* line 527, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-desc p span {
+  color: #37a440;
+}
+/* line 529, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-desc .read-more {
+  font-weight: 300;
+  color: #369fe0;
+  border-bottom: 1px dashed #369fe0;
+}
+
+/* line 534, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-note {
+  margin-top: 100px;
+}
+@media (max-width: 61.99em) {
+  /* line 534, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .single-sidebar-note {
+    margin-top: 60px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 534, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .single-sidebar-note {
+    margin-top: 25px;
+  }
+}
+/* line 540, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-note p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* line 544, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-banners {
+  margin-top: 15px;
+}
+/* line 546, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.single-sidebar-banners img {
+  margin-bottom: 10px;
+}
+
+/* line 554, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-location-listing {
+  background: url("../img/sprite.png") no-repeat -353px -106px;
+  width: 14px;
+  height: 17px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+/* line 561, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-web-listing {
+  background: url("../img/sprite.png") no-repeat -419px -106px;
+  width: 19px;
+  height: 18px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+/* line 568, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-phone-listing {
+  background: url("../img/sprite.png") no-repeat -372px -106px;
+  width: 22px;
+  height: 15px;
+  margin-right: 5px;
+  vertical-align: -1px;
+}
+
+/* line 575, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-mobile-listing {
+  background: url("../img/sprite.png") no-repeat -402px -106px;
+  width: 10px;
+  height: 17px;
+  margin-right: 10px;
+  vertical-align: -2px;
+}
+
+/* line 582, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-followus {
+  margin-top: 30px;
+}
+/* line 584, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-followus .follow-us {
+  font-weight: 700;
+  font-size: 13px;
+  vertical-align: 7px;
+  margin-right: 10px;
+  color: #37a440;
+}
+
+/* line 592, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-tags {
+  margin-top: 30px;
+}
+/* line 594, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-tags .follow-us {
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 10px;
+  color: #37a440;
+}
+/* line 600, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-tags .tags {
+  float: right;
+  width: 65%;
+}
+/* line 603, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-tags a {
+  display: inline-block;
+  background: #d1d1d1;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #369fe0;
+  min-width: 65px;
+  text-align: center;
+  padding: 2px 5px;
+  margin: 2px 2px 2px 0px;
+}
+/* line 613, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listing-tags a:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  opacity: 0.7;
+}
+
+/* line 618, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+/* line 621, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .nav-tabs {
+  border-color: transparent;
+  margin-left: 15px;
+}
+/* line 625, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .nav-tabs > li > a {
+  font-family: "Roboto Slab", serif;
+  margin-right: 2px;
+  line-height: 1em;
+  border: 1px solid #dedede;
+  background-color: #dbdbdb;
+  background-image: -webkit-linear-gradient(bottom, #dbdbdb, white);
+  background-image: -webkit-linear-gradient(bottom,#dbdbdb, white);
+  background-image: linear-gradient(to top,#dbdbdb, white);
+  font-size: 13px;
+  color: #369fe0;
+  border-radius: 4px 4px 0 0;
+}
+/* line 634, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .nav-tabs > li.active > a, .listings-tabs .nav-tabs > li.active > a:focus, .listings-tabs .nav-tabs > li.active > a:hover {
+  background-color: #f21aa5;
+  background-image: -webkit-linear-gradient(top, #f21aa5 0%, white 100%);
+  background-image: -webkit-linear-gradient(top,#f21aa5 0%, white 100%);
+  background-image: linear-gradient(to bottom,#f21aa5 0%, white 100%);
+  color: white;
+}
+/* line 637, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content {
+  border-radius: 15px;
+  border: 1px solid #d7d7d7;
+  padding: 20px 0;
+}
+/* line 642, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: #32281e;
+}
+/* line 646, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-heading span {
+  padding: 0 20px 15px 20px;
+  display: inline-block;
+}
+/* line 649, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-heading span span.green {
+  color: #37a440;
+  padding: 0;
+}
+/* line 652, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-heading .ad-reviews-rating {
+  color: white !important;
+  padding: 2px 5px;
+}
+/* line 655, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-heading:after {
+  display: block;
+  width: 100%;
+  height: 17px;
+  background: url("../img/dash-line.png") repeat-x center;
+  content: " ";
+}
+/* line 662, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-content {
+  padding: 10px 20px 0 20px;
+}
+/* line 664, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .tab-content-content p {
+  font-size: 16px;
+  color: #32281e;
+}
+/* line 669, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .owl-carousel {
+  margin-bottom: 40px;
+  position: relative;
+}
+/* line 672, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .owl-next {
+  background: url("../img/gal-slider-next.png") no-repeat 0 0;
+  width: 34px;
+  height: 34px;
+  content: " ";
+  display: block;
+  top: auto;
+  bottom: -60px;
+  right: 0px;
+}
+/* line 681, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .owl-prev {
+  background: url("../img/gal-slider-prev.png") no-repeat 0 0;
+  width: 34px;
+  height: 34px;
+  content: " ";
+  display: block;
+  top: auto;
+  bottom: -60px;
+  left: 0px;
+}
+/* line 690, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.listings-tabs .ads-slide {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+@media (max-width: 47.99em) {
+  /* line 697, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-parent .col-xs-3 {
+    width: 100%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 700, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-parent .col-xs-9 {
+    width: 100%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 703, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-parent .col-xs-2 {
+    width: 80%;
+  }
+}
+
+/* line 706, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-left {
+  border: 1px solid #dedede;
+  border-left: 1px solid #f43cb2;
+  padding: 5px 15px;
+}
+
+/* line 711, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-right {
+  border: 1px solid #dedede;
+  padding: 2px 15px;
+}
+
+/* line 715, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.reviewer-heading {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* line 718, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.reviewer-image {
+  padding: 4px;
+  border-radius: 50%;
+  border: 1px solid #dadada;
+  display: inline-block;
+}
+
+/* line 724, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.reviewer-name {
+  font-size: 12px;
+  color: #37a440;
+  margin-top: 0px;
+}
+
+/* line 728, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.reviewer-count {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 735, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #369fe0;
+  margin-top: 5px;
+  margin-bottom: 16px;
+}
+
+/* line 742, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-metrics {
+  color: #32281e;
+}
+/* line 744, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-metrics .ad-reviews {
+  margin-top: 5px;
+}
+/* line 746, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-metrics span.green {
+  color: #37a440;
+}
+
+/* line 750, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-metrics-star {
+  float: right;
+}
+
+/* line 753, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-content {
+  font-size: 12px;
+  margin-top: 15px;
+  color: #32281e;
+}
+
+/* line 758, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-reply-to {
+  margin-top: 5px;
+}
+/* line 760, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-reply-to a {
+  color: #369fe0;
+  font-size: 12px;
+}
+
+/* line 764, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-child {
+  margin-top: 4px;
+}
+/* line 766, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-child .reviewer-image {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+@media (max-width: 47.99em) {
+  /* line 769, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-child .col-xs-3 {
+    width: 100%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 772, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-child .col-xs-9 {
+    width: 100%;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 775, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-child .col-xs-2 {
+    width: 80%;
+  }
+}
+
+/* line 778, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-form {
+  margin-top: 40px;
+}
+/* line 780, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-form .bg {
+  background-color: #dbdbdb;
+  background-image: -webkit-linear-gradient(bottom, #dbdbdb, white);
+  background-image: -webkit-linear-gradient(bottom,#dbdbdb, white);
+  background-image: linear-gradient(to top,#dbdbdb, white);
+  border-radius: 5px;
+  padding-bottom: 10px;
+}
+/* line 784, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-form .heading {
+  color: #37a440;
+  font-size: 16px;
+  padding: 5px 30px 15px 30px;
+  font-weight: 700;
+  display: inline-block;
+  background-color: #dbdbdb;
+  background-image: -webkit-linear-gradient(bottom, #dbdbdb, white);
+  background-image: -webkit-linear-gradient(bottom,#dbdbdb, white);
+  background-image: linear-gradient(to top,#dbdbdb, white);
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+}
+@media (max-width: 47.99em) {
+  /* line 784, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-form .heading {
+    width: 100%;
+  }
+}
+/* line 795, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-form .ratings {
+  float: right;
+  display: inline-block;
+  color: #d8d6d9;
+  font-weight: 300;
+  padding-top: 7px;
+  padding-right: 15px;
+}
+@media (max-width: 47.99em) {
+  /* line 795, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-form .ratings {
+    margin-top: 20px;
+  }
+}
+/* line 804, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.comment-form textarea {
+  border: 1px solid #d8d6d9;
+  padding: 5px 15px;
+  width: 100%;
+  display: inline-block;
+  border-radius: 5px;
+  margin-top: -20px;
+}
+@media (max-width: 47.99em) {
+  /* line 804, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .comment-form textarea {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* line 814, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.ico-start-emtpy {
+  background: url("../img/ico-star-silver.png") no-repeat 0 0;
+  width: 19px;
+  height: 19px;
+  margin-right: 5px;
+  vertical-align: -4px;
+}
+
+/* line 822, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+.all-ads-pagination {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media (max-width: 61.99em) {
+  /* line 822, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ads.sass */
+  .all-ads-pagination {
+    padding: 50px;
+  }
+}
+
+/* line 1, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.post-new-box {
+  padding: 15px 0 50px 40px;
+}
+
+/* line 4, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .field-desc {
+  font-size: 18px;
+  font-family: "Roboto Slab", serif;
+  padding-top: 10px;
+}
+/* line 8, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .form-control {
+  height: 32px;
+  font-size: 20px;
+  font-family: "Calibri", sans-serif;
+}
+/* line 12, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form textarea.form-control {
+  height: auto;
+}
+/* line 14, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .two-cols-plus-checkbox {
+  width: 30%;
+  display: inline-block;
+  margin-right: 2%;
+}
+/* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .w30 {
+  width: 30%;
+  margin-right: 2%;
+  display: inline-block;
+}
+/* line 22, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .w30.tr {
+  text-align: right;
+}
+/* line 25, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .w60 {
+  width: 60%;
+  margin-right: 5%;
+  display: inline-block;
+}
+/* line 29, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .w50 {
+  width: 50%;
+  display: inline-block;
+}
+/* line 32, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .w40 {
+  width: 45%;
+  display: inline-block;
+  text-align: right;
+}
+/* line 36, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .w20 {
+  width: 20%;
+  display: inline-block;
+}
+/* line 39, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .selectbox-multiple {
+  height: 170px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+/* line 43, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .selectbox-multiple .form-control {
+  height: 170px;
+}
+/* line 46, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .fileform {
+  height: 32px;
+}
+/* line 49, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .fileform .selectbutton {
+  height: 32px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+/* line 53, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.add-new-form .fileform #fileformlabel {
+  color: #999;
+  padding-top: 1px;
+}
+
+/* line 57, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_new_add.sass */
+.form-group label.feature-label {
+  font-size: 20px;
+  font-family: "Calibri", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 7, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ad-card--editable .btn-favourite {
+  display: block;
+  margin-bottom: 10px;
+}
+/* line 10, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ad-card--editable .ad-category {
+  margin: 0;
+}
+
+/* line 13, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ad-viewed {
+  text-align: right;
+  font-size: 12px;
+}
+
+/* line 24, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header {
+  background: #e1e5e5;
+  padding-top: 35px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 80px;
+}
+
+/* line 31, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-info {
+  color: #adb0ad;
+  font-size: 24px;
+}
+/* line 35, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-info a {
+  color: #369fe0;
+}
+
+/* line 39, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-name {
+  font-size: 80px;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+}
+@media (max-width: 47.99em) {
+  /* line 39, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-name {
+    font-size: 40px;
+  }
+}
+
+/* line 46, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-stars {
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #c6c4c4;
+  padding: 5px 70px;
+  display: inline-block;
+}
+@media (max-width: 61.99em) {
+  /* line 46, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-stars {
+    padding: 5px 30px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 46, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-stars {
+    padding: 5px 15px;
+  }
+}
+
+/* line 58, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-sub {
+  background: #eff1f1;
+  padding: 10px 0;
+  border-top: 2px solid #d1d1d1;
+  border-bottom: 2px solid #d1d1d1;
+  position: relative;
+}
+/* line 64, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-sub:after {
+  display: block;
+  background: url("../img/slider-shade.png") no-repeat center bottom;
+  width: 100%;
+  height: 27px;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  z-index: 1;
+  content: " ";
+}
+
+/* line 75, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-picture {
+  border-radius: 50%;
+  border: 1px solid #aeafaf;
+  background: white;
+  display: inline-block;
+  position: absolute;
+  top: -115px;
+  z-index: 9;
+  max-width: 180px;
+}
+@media (max-width: 47.99em) {
+  /* line 75, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-picture {
+    max-width: 100px;
+    top: -50px;
+  }
+}
+
+/* line 89, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-wrap {
+  padding: 7px;
+  border: 1px solid #aeafaf;
+  border-radius: 50%;
+  position: relative;
+}
+@media (max-width: 47.99em) {
+  /* line 89, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-wrap {
+    padding: 3px;
+  }
+}
+
+/* line 97, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.change-image-link {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+  color: #369fe0;
+  text-shadow: 0 -2px 0 #FFFFFF, 0 -2px 0 #FFFFFF, 0 2px 0 #FFFFFF, 0 2px 0 #FFFFFF, -2px 0 0 #FFFFFF, 2px 0 0 #FFFFFF, -2px 0 0 #FFFFFF, 2px 0 0 #FFFFFF, -1px -2px 0 #FFFFFF, 1px -2px 0 #FFFFFF, -1px 2px 0 #FFFFFF, 1px 2px 0 #FFFFFF, -2px -1px 0 #FFFFFF, 2px -1px 0 #FFFFFF, -2px 1px 0 #FFFFFF, 2px 1px 0 #FFFFFF, -2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 2px 2px 0 #FFFFFF, -2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 2px 2px 0 #FFFFFF;
+  z-index: 10;
+}
+
+/* line 109, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-joined-ago {
+  font-size: 14px;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+  padding-right: 80px;
+}
+@media (max-width: 74.99em) {
+  /* line 109, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-joined-ago {
+    padding-right: 60px;
+  }
+}
+@media (max-width: 61.99em) {
+  /* line 109, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-header-joined-ago {
+    padding-right: 30px;
+  }
+}
+/* line 118, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-header-joined-ago span {
+  color: #37a440;
+}
+
+/* line 121, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.two-row-btns {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media (max-width: 61.99em) {
+  /* line 121, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .two-row-btns {
+    padding-top: 30px;
+    padding-top: 30px;
+  }
+}
+/* line 127, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.two-row-btns .btn-pink, .two-row-btns .btn-blue {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Calibri", sans-serif;
+  padding: 5px 5px;
+  width: 180px;
+  border-radius: 30px;
+}
+/* line 135, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.two-row-btns .btn-pink:hover, .two-row-btns .btn-blue:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  opacity: 0.7;
+}
+/* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.two-row-btns .btn-pink {
+  float: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+/* line 141, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.two-row-btns .btn-blue {
+  float: right;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+@media (max-width: 61.99em) {
+  /* line 141, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .two-row-btns .btn-blue {
+    float: left;
+    margin-top: 15px;
+  }
+}
+
+/* line 151, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats {
+  font-family: "Roboto Slab", serif;
+  padding-top: 60px;
+}
+/* line 155, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats.buttons .profile-stat-btn--line {
+  display: block;
+  margin-bottom: 10px;
+}
+/* line 158, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats.buttons .btn-favourite {
+  height: 38px;
+  border-radius: 5px;
+  width: 190px;
+  padding-right: 0;
+  display: inline-block;
+  text-transform: none;
+}
+/* line 165, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats.buttons .btn-favourite .ico {
+  vertical-align: -10px;
+}
+/* line 167, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats.buttons .btn-favourite span {
+  vertical-align: 2px;
+}
+/* line 169, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats.ads {
+  padding-top: 45px;
+  padding-left: 30px;
+}
+@media (max-width: 61.99em) {
+  /* line 169, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-stats.ads {
+    padding-left: 15px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 169, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-stats.ads {
+    padding-left: 0px;
+  }
+}
+/* line 176, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats.ads img {
+  margin-bottom: 5px;
+}
+
+/* line 180, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-heading {
+  color: #37a440;
+  font-size: 18px;
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* line 186, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-verification-row {
+  padding-top: 7px;
+}
+/* line 188, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-verification-row .ico {
+  margin-right: 5px;
+  vertical-align: -3px;
+}
+
+/* line 191, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ico-email--fill {
+  background: url("../img/sprite.png") no-repeat 0 -387px;
+  width: 18px;
+  height: 18px;
+}
+
+/* line 195, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ico-fb--fill {
+  background: url("../img/sprite.png") no-repeat -86px -387px;
+  width: 18px;
+  height: 18px;
+}
+
+/* line 199, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ico-google--fill {
+  background: url("../img/sprite.png") no-repeat -65px -387px;
+  width: 18px;
+  height: 18px;
+}
+
+/* line 203, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ico-tw--fill {
+  background: url("../img/sprite.png") no-repeat -42px -387px;
+  width: 18px;
+  height: 18px;
+}
+
+/* line 207, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ico-tick--white {
+  background: url("../img/sprite.png") no-repeat -22px -387px;
+  width: 18px;
+  height: 18px;
+  margin-right: 0;
+}
+
+/* line 213, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-verification-name {
+  color: #369fe0;
+}
+
+/* line 216, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-verification-status {
+  text-align: right;
+  float: right;
+}
+/* line 219, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-verification-status span {
+  background: #37a440;
+  color: white;
+  font-weight: 700;
+  padding: 2px 5px;
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+/* line 229, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-link a {
+  color: #369fe0;
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+}
+/* line 233, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-stats-link a:hover {
+  color: #f21aa5;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* line 242, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.user-metrics {
+  margin-top: 35px;
+  margin-left: -50px;
+}
+@media (max-width: 61.99em) {
+  /* line 242, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .user-metrics {
+    margin-left: -30px;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 242, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .user-metrics {
+    margin-left: -15px;
+  }
+}
+/* line 250, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.user-metrics .col-sm-4 {
+  padding-right: 0;
+}
+
+/* line 253, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.btn-contact {
+  border-radius: 25px;
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(bottom, #f2f2f2, white);
+  background-image: -webkit-linear-gradient(bottom,#f2f2f2, white);
+  background-image: linear-gradient(to top,#f2f2f2, white);
+  color: #369fe0;
+  display: inline-block;
+  padding: 4px 15px 4px 10px;
+  border: 1px solid #eaeaea;
+}
+/* line 260, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.btn-contact .ico {
+  vertical-align: -4px;
+}
+/* line 262, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.btn-contact:hover {
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(top, #f2f2f2, white);
+  background-image: -webkit-linear-gradient(top,#f2f2f2, white);
+  background-image: linear-gradient(to bottom,#f2f2f2, white);
+  color: #2294db;
+}
+
+/* line 266, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.user-metrics-row {
+  margin-bottom: 7px;
+  color: #32281e;
+}
+@media (max-width: 61.99em) {
+  /* line 266, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .user-metrics-row {
+    font-size: 12px;
+  }
+}
+/* line 271, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.user-metrics-row .green {
+  color: #37a440;
+}
+/* line 273, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.user-metrics-row .ico-mobile2 {
+  margin-right: 11px;
+  margin-left: 5px;
+}
+/* line 276, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.user-metrics-row .ico-email {
+  margin-right: 5px;
+}
+
+/* line 279, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.ico-seen {
+  background: url("../img/ico-lastseen.png") no-repeat 0 0;
+  width: 24px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: -2px;
+}
+
+/* line 286, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-description-text {
+  border-top: 2px solid #d1d1d1;
+  margin-top: 15px;
+  padding-top: 60px;
+  padding-bottom: 120px;
+}
+@media (max-width: 47.99em) {
+  /* line 286, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+  .profile-description-text {
+    padding-bottom: 40px;
+    padding-top: 30px;
+  }
+}
+/* line 294, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_user.sass */
+.profile-description-text .green {
+  color: #37a440;
+}
+
+/* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.form-group label {
+  font-size: 25px;
+  color: #32281e;
+  font-family: "Calibri", sans-serif;
+}
+@media (max-width: 64.99em) {
+  /* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+  .form-group label {
+    font-size: 20px;
+    vertical-align: 3px;
+  }
+}
+@media (max-width: 60.615em) {
+  /* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+  .form-group label {
+    font-size: 17px;
+    vertical-align: -8px;
+  }
+}
+/* line 12, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.form-group .green-label {
+  color: #37a440;
+  font-weight: 700;
+}
+
+/* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* line 23, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.one-line-group--right .selectbox {
+  float: right;
+}
+
+/* line 27, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.one-line-input label {
+  font-size: 20px;
+  font-weight: 400;
+}
+/* line 30, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.one-line-input input {
+  max-width: 30%;
+}
+/* line 32, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.one-line-input input.form-control {
+  float: none;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 4px !important;
+  margin: 0 5px;
+}
+
+/* line 39, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox {
+  display: inline-block;
+  height: 35px;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  min-width: 120px;
+  background: white;
+  background-image: url("../img/dropdown-menu.png");
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  position: relative;
+  overflow: hidden;
+}
+/* line 51, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox.small-paginator {
+  width: 52px;
+  min-width: 52px;
+  margin-left: 10px;
+  height: 28px;
+  background-image: url("../img/dropdown-menu-small.png");
+}
+/* line 57, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox.small-paginator select {
+  height: 28px;
+  padding-left: 10px;
+}
+/* line 60, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox select {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  outline: none;
+  -webkit-appearance: none;
+  height: 35px;
+  width: 130%;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+/* line 71, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox select:focus {
+  outline: none;
+}
+/* line 73, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox.selectbox--gradient {
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(bottom, #f2f2f2, white);
+  background-image: -webkit-linear-gradient(bottom,#f2f2f2, white);
+  background-image: linear-gradient(to top,#f2f2f2, white);
+  background-image: url("../img/dropdown-menu.png");
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  height: 32px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+/* line 81, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox.selectbox--blue-gradient {
+  background-color: #e3f4fc;
+  background-image: -webkit-linear-gradient(bottom, #e3f4fc, white);
+  background-image: -webkit-linear-gradient(bottom,#e3f4fc, white);
+  background-image: linear-gradient(to top,#e3f4fc, white);
+  background-image: url("../img/dropdown-menu.png");
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+/* line 88, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox.selectbox--blue-gradient select {
+  padding-left: 30px;
+}
+
+/* line 91, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox-multiple {
+  height: 170px;
+}
+/* line 93, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox-multiple ::-webkit-scrollbar {
+  width: 13px;
+  background: #eeeeee;
+  border-left: 1px solid #696969;
+}
+/* line 97, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox-multiple ::-webkit-scrollbar-track {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+/* line 100, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.selectbox-multiple ::-webkit-scrollbar-thumb {
+  background: #37a440;
+  border-radius: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 2px;
+}
+
+/* line 110, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.radiobox input[type="radio"] {
+  display: none;
+}
+/* line 112, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.radiobox label {
+  font-size: 18px;
+  color: #32281e;
+  font-family: "Calibri", sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+/* line 118, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.radiobox label:before {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #369fe0;
+  background: transparent;
+  content: " ";
+  border-radius: 50%;
+  margin-right: 15px;
+}
+/* line 127, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.radiobox input[type="radio"]:checked + label:before {
+  background: #f329ab;
+  border-color: #f329ab;
+  padding: 3px;
+}
+
+/* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.inline-radios .radiobox {
+  display: inline-block;
+}
+/* line 134, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.inline-radios .radiobox label:before {
+  margin-right: 5px;
+}
+
+/* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox.inline {
+  display: inline-block;
+  margin-right: 10px;
+}
+/* line 141, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox.inline label:before {
+  margin-right: 5px;
+}
+/* line 143, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox.inline input[type="checkbox"]:checked + label:before {
+  margin-right: 3px;
+}
+/* line 145, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+/* line 147, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox label {
+  font-size: 18px;
+  color: #32281e;
+  font-family: "Calibri", sans-serif;
+  font-weight: 400;
+  padding-left: 0;
+}
+/* line 153, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox label:before {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #369fe0;
+  border-radius: 3px;
+  margin-right: 17px;
+  content: " ";
+}
+/* line 161, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.checkbox input[type="checkbox"]:checked + label:before {
+  background: url("../img/checkbox-checked.png") no-repeat 0 0;
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
+  border: none;
+}
+
+/* line 169, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.fileform {
+  position: relative;
+  width: 100% !important;
+  cursor: pointer !important;
+  z-index: 0;
+  height: 42px;
+  background: transparent;
+}
+/* line 176, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.fileform .selectbutton {
+  background-color: transparent;
+  border: 1px solid #f21aa5;
+  border-radius: 20px;
+  color: #3d3142;
+  position: absolute;
+  right: 0;
+  top: 1px;
+  font-size: 14px;
+  font-family: "Calibri", sans-serif;
+  font-weight: 700;
+  height: 37px;
+  float: right;
+  overflow: hidden;
+  padding: 8px 15px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 30%;
+  cursor: pointer;
+}
+@media (max-width: 47.99em) {
+  /* line 176, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+  .fileform .selectbutton {
+    line-height: 1.2em;
+    padding: auto 15px;
+    vertical-align: middle;
+  }
+}
+@media (max-width: 28.74em) {
+  /* line 176, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+  .fileform .selectbutton {
+    padding: 2px 15px;
+  }
+}
+/* line 202, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.fileform .selectbutton:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  background: #f21aa5;
+  color: white;
+}
+/* line 206, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.fileform #upload {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  font-size: 150px;
+  height: 30px;
+  z-index: 20;
+}
+/* line 217, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.fileform #fileformlabel {
+  width: 65%;
+  float: left;
+  padding-left: 30px;
+  overflow: hidden;
+}
+
+/* line 223, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.switch {
+  width: 120px;
+  height: 38px;
+  position: relative;
+  border: 1px solid #d8d6d9;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 0;
+}
+/* line 231, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.switch input {
+  opacity: 0;
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 238, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.switch input:checked + label {
+  background-color: #37a440;
+  background-image: -webkit-linear-gradient(bottom, #37a440 0%, #23722a 90%, #1e6924 100%);
+  background-image: -webkit-linear-gradient(bottom,#37a440 0%, #23722a 90%, #1e6924 100%);
+  background-image: linear-gradient(to top,#37a440 0%, #23722a 90%, #1e6924 100%);
+}
+/* line 240, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.switch .first:checked + label {
+  border-right: 1px solid black;
+}
+/* line 242, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.switch .second:checked + label {
+  border-left: 1px solid black;
+  background-color: #37a440;
+  background-image: -webkit-linear-gradient(top, #37a440 0%, #23722a 90%, #1e6924 100%);
+  background-image: -webkit-linear-gradient(top,#37a440 0%, #23722a 90%, #1e6924 100%);
+  background-image: linear-gradient(to bottom,#37a440 0%, #23722a 90%, #1e6924 100%);
+}
+/* line 245, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_ui.sass */
+.switch label {
+  font-family: "Calibri", sans-serif;
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+  display: inline-block;
+  height: 36px;
+  width: 59px;
+  margin-bottom: 0;
+  padding-top: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-pink {
+  border: 1px solid #f21aa5;
+  font-size: 13px;
+  border-radius: 15px;
+  padding: 6px 5px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 3px;
+  min-width: 90px;
+  text-align: center;
+}
+@media (max-width: 69.365em) {
+  /* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+  .btn-pink {
+    font-size: 12px;
+    min-width: 65px;
+  }
+}
+@media (max-width: 57.49em) {
+  /* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+  .btn-pink {
+    min-width: 50px;
+  }
+}
+@media (max-width: 55.615em) {
+  /* line 2, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+  .btn-pink {
+    min-width: 30px;
+    font-size: 11px;
+    margin-right: 0px;
+  }
+}
+/* line 22, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-pink:last-child {
+  margin-right: 0;
+}
+/* line 24, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-pink.active, .btn-pink:hover, .btn-pink.have-fill {
+  background-color: #f21aa5;
+  background-image: -webkit-linear-gradient(-270deg, #f21aa5, #fbc8e9);
+  background-image: -webkit-linear-gradient(bottom,#f21aa5, #fbc8e9);
+  background-image: linear-gradient(0deg,#f21aa5, #fbc8e9);
+  color: white;
+  -webkit-transition: background 0.4s ease;
+  transition: background 0.4s ease;
+}
+/* line 28, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-pink.btn-large {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Calibri", sans-serif;
+  padding: 6px 30px 6px 30px;
+  border-radius: 25px;
+}
+/* line 34, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-pink.with-white-bg {
+  background: white;
+}
+/* line 36, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-pink.with-white-bg:hover, .btn-pink.with-white-bg:focus {
+  background-color: #f21aa5;
+  background-image: -webkit-linear-gradient(-270deg, #f21aa5, #fbc8e9);
+  background-image: -webkit-linear-gradient(bottom,#f21aa5, #fbc8e9);
+  background-image: linear-gradient(0deg,#f21aa5, #fbc8e9);
+  color: white;
+}
+
+/* line 40, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-blue {
+  border: 1px solid #369fe0;
+  font-size: 13px;
+  border-radius: 15px;
+  padding: 6px 5px;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 5px;
+  margin-top: 3px;
+  min-width: 90px;
+  text-align: center;
+}
+/* line 51, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-blue.active, .btn-blue:hover, .btn-blue.have-fill {
+  background-color: #0a7ff8;
+  background-image: -webkit-linear-gradient(-270deg, #0a7ff8, #d0e3f7);
+  background-image: -webkit-linear-gradient(bottom,#0a7ff8, #d0e3f7);
+  background-image: linear-gradient(0deg,#0a7ff8, #d0e3f7);
+  color: white;
+  -webkit-transition: background 0.4s ease;
+  transition: background 0.4s ease;
+}
+
+/* line 56, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-favourite {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: "Roboto Slab", serif;
+  position: relative;
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(-270deg, #f2f2f2, white);
+  background-image: -webkit-linear-gradient(bottom,#f2f2f2, white);
+  background-image: linear-gradient(0deg,#f2f2f2, white);
+  border-radius: 3px;
+  border: 1px solid #dedede;
+  padding: 6px 10px 6px 3px;
+}
+/* line 65, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-favourite.btn-large {
+  font-size: 14px;
+  padding: 6px 10px 6px 10px;
+}
+@media (max-width: 61.99em) {
+  /* line 56, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+  .btn-favourite {
+    font-size: 8px;
+  }
+}
+/* line 71, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-favourite:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(-450deg, #f2f2f2, #d0e3f7);
+  background-image: -webkit-linear-gradient(top,#f2f2f2, #d0e3f7);
+  background-image: linear-gradient(180deg,#f2f2f2, #d0e3f7);
+}
+
+/* line 75, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-favourite {
+  width: 21px;
+  height: 21px;
+  background: url("../img/sprite.png") no-repeat -113px -104px;
+  vertical-align: -6px;
+  margin-right: 3px;
+}
+
+/* line 82, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-edit {
+  width: 20px;
+  height: 15px;
+  background: url("../img/sprite.png") no-repeat -140px -110px;
+  vertical-align: -4px;
+  margin-right: 3px;
+}
+
+/* line 89, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-delete {
+  width: 16px;
+  height: 15px;
+  background: url("../img/sprite.png") no-repeat -162px -112px;
+  vertical-align: -4px;
+  margin-right: 3px;
+}
+
+/* line 96, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-change-user--big {
+  background: url("../img/sprite.png") no-repeat -1px -411px;
+  width: 34px;
+  height: 29px;
+}
+
+/* line 100, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-change-email--big {
+  background: url("../img/sprite.png") no-repeat -38px -411px;
+  width: 34px;
+  height: 29px;
+}
+
+/* line 104, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-edit--big {
+  background: url("../img/sprite.png") no-repeat -148px -411px;
+  width: 34px;
+  height: 29px;
+}
+
+/* line 108, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-star--big {
+  background: url("../img/sprite.png") no-repeat -186px -411px;
+  width: 34px;
+  height: 29px;
+}
+
+/* line 112, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-fav-counter {
+  background: #ff0000;
+  font-style: normal;
+  color: white;
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  padding: 4px 1px;
+  line-height: 1em;
+  font-size: 12px;
+}
+
+/* line 122, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-upload--big {
+  background: url("../img/sprite.png") no-repeat -75px -411px;
+  width: 34px;
+  height: 29px;
+}
+
+/* line 126, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.ico-deactivate--big {
+  background: url("../img/sprite.png") no-repeat -111px -411px;
+  width: 34px;
+  height: 29px;
+}
+
+/* line 132, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-cta--green {
+  color: white;
+  display: inline-block;
+  background: #94d363;
+  font-size: 18px;
+  font-style: 700;
+  border-radius: 7px;
+  text-transform: uppercase;
+  padding: 12px 10px;
+  box-shadow: 0 3px 0 #62bd19;
+  margin-bottom: 14px;
+}
+/* line 143, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-cta--green:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  background: #62bd19;
+  color: white;
+}
+
+/* line 148, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-invisible {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px 20px;
+}
+
+/* line 154, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-popup-login span {
+  vertical-align: 5px;
+  font-size: 16px;
+  color: #3d3142;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* line 161, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-submit-comment {
+  background-color: #f9a6f2;
+  background-image: -webkit-linear-gradient(bottom, #f9a6f2, white);
+  background-image: -webkit-linear-gradient(bottom,#f9a6f2, white);
+  background-image: linear-gradient(to top,#f9a6f2, white);
+  border: 1px solid #d8d6d9;
+  border-radius: 5px;
+  padding: 5px 30px;
+  color: #369fe0;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+}
+/* line 170, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_buttons.sass */
+.btn-submit-comment:hover {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  background-color: #f9a6f2;
+  background-image: -webkit-linear-gradient(top, #f9a6f2, white);
+  background-image: -webkit-linear-gradient(top,#f9a6f2, white);
+  background-image: linear-gradient(to bottom,#f9a6f2, white);
+}
+
+/* line 1, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popups {
+  margin-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* line 5, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+button.mfp-close {
+  background: url("../img/sprite.png") no-repeat -94px -19px;
+  content: " ";
+}
+
+/* line 8, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.mfp-close {
+  width: 40px;
+  height: 40px;
+  line-height: 0em;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  opacity: 0.85;
+  padding: 0 0 18px 10px;
+  font-size: 0px;
+}
+/* line 18, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.mfp-close:active {
+  top: 25px;
+}
+
+/* line 22, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+#deactivate-account-popup, #upload-cv-popup, #change-mail-popup, #forget-pass-popup, #change-pass-popup, #email-reference-popup, #leave-feedback-popup, #login-popup, #signup-popup, #user-registration-popup, #free-ad-popup, #send-message-popup, #apply-job-popup, #report-ad-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  text-align: left;
+  margin: 40px auto;
+  position: relative;
+  max-width: 600;
+}
+
+/* line 31, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+#upload-cv-popup, #change-mail-popup, #forget-pass-popup, #change-pass-popup, #email-reference-popup, #report-ad-popup {
+  max-width: 750px;
+}
+
+/* line 34, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+#deactivate-account-popup, #leave-feedback-popup, #login-popup, #signup-popup, #user-registration-popup, #free-ad-popup, #send-message-popup, #apply-job-popup {
+  max-width: 950px;
+}
+
+/* line 42, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-logo {
+  padding-top: 15px;
+}
+@media (max-width: 47.99em) {
+  /* line 44, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-logo img {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+/* line 48, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-logo:after {
+  background: url("../img/dash-line.png") repeat-x center;
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 30px;
+}
+
+/* line 55, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-content {
+  padding: 40px 80px 30px 80px;
+  position: relative;
+}
+@media (max-width: 74.99em) {
+  /* line 55, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* line 61, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-content .two-row-btns {
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+@media (max-width: 61.99em) {
+  /* line 65, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-content .two-row-btns .btn-pink {
+    float: left;
+  }
+  /* line 67, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-content .two-row-btns .btn-blue {
+    float: right;
+    margin-top: 0;
+  }
+}
+@media (max-width: 47.99em) {
+  /* line 71, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-content .two-row-btns .btn-pink {
+    float: none;
+  }
+  /* line 73, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-content .two-row-btns .btn-blue {
+    float: none;
+    margin: 0;
+    margin-top: 20px;
+  }
+}
+/* line 77, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-content .two-row-btns.pt130 {
+  padding-top: 130px;
+}
+
+/* line 79, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-heading {
+  font-size: 24px;
+  font-family: "Roboto Slab", serif;
+  color: #32281e;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+@media (max-width: 47.99em) {
+  /* line 79, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-heading {
+    font-size: 20px;
+  }
+}
+/* line 87, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-heading span {
+  font-weight: 300;
+}
+/* line 89, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-heading.popup-heading--bold {
+  font-size: 23px;
+  font-weight: 700;
+}
+/* line 92, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-heading.popup-heading--blue {
+  color: #369fe0;
+}
+
+/* line 95, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-action {
+  font-size: 20px;
+  font-family: "Calibri", sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+@media (max-width: 47.99em) {
+  /* line 95, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-action {
+    font-size: 16px;
+  }
+}
+
+/* line 103, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-switch {
+  font-size: 20px;
+  font-family: "Calibri", sans-serif;
+  margin-bottom: 10px;
+}
+@media (max-width: 47.99em) {
+  /* line 103, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-switch {
+    font-size: 16px;
+  }
+}
+/* line 109, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-switch .switch {
+  float: right;
+}
+
+/* line 112, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-nearlogo {
+  font-size: 24px;
+  font-family: "Roboto Slab", serif;
+  color: #32281e;
+  margin-right: 10px;
+}
+
+/* line 118, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.not-a-block {
+  display: inline-block !important;
+}
+
+/* line 121, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-socials {
+  padding-top: 20px;
+  border-top: 3px solid #d4d4d4;
+  margin-top: 25px;
+  color: white;
+  font-size: 0px;
+  font-family: "Calibri", sans-serif;
+  text-transform: uppercase;
+}
+
+/* line 129, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-with-facebook {
+  background: #4773a5;
+}
+/* line 131, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-with-facebook span {
+  vertical-align: 15px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+/* line 135, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-with-facebook:hover {
+  opacity: 0.8;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* line 138, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-with-google {
+  background: #cf4332;
+}
+/* line 140, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-with-google span {
+  vertical-align: 15px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+/* line 144, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-with-google:hover {
+  opacity: 0.8;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+/* line 147, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.ico-loginwith-fb {
+  width: 39px;
+  height: 39px;
+  background: url("../img/sprite.png") no-repeat -406px -16px;
+}
+
+/* line 151, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.ico-loginwith-google {
+  width: 39px;
+  height: 39px;
+  background: url("../img/sprite.png") no-repeat -449px -16px;
+}
+
+/* line 156, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-helpers {
+  padding-top: 5px;
+}
+/* line 158, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.login-helpers a {
+  font-size: 16px;
+  text-decoration: underline;
+  color: #0018ff;
+  font-family: "Roboto Slab", serif;
+}
+
+/* line 164, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-login-newmember {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #32281e;
+  padding-top: 40px;
+  padding-bottom: 15px;
+}
+/* line 171, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-login-newmember .align-fix {
+  vertical-align: -3px;
+}
+/* line 173, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-login-newmember .align-fix span {
+  vertical-align: 4px;
+}
+/* line 175, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-login-newmember a {
+  font-size: 15px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+/* line 179, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-login-newmember a:hover {
+  opacity: 0.7;
+}
+
+/* line 182, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.captcha-popup {
+  padding-top: 10px;
+}
+/* line 184, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.captcha-popup img {
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+/* line 188, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.captcha-popup .form-control.small-pad {
+  padding-left: 10px;
+}
+
+/* line 192, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: " ";
+  z-index: 9999;
+  display: none;
+}
+
+/* line 203, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px solid #d2d2d2;
+  max-width: 400px;
+  width: 400px;
+}
+@media (max-width: 47.99em) {
+  /* line 203, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+  .popup-status {
+    max-width: 340px;
+  }
+}
+
+/* line 218, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-ok:before {
+  background: url("../img/popup-ok.png") no-repeat 0 0;
+  display: block;
+  width: 140px;
+  height: 140px;
+  content: " ";
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* line 230, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-fail:before {
+  background: url("../img/popup-fail.png") no-repeat 0 0;
+  display: block;
+  width: 140px;
+  height: 140px;
+  content: " ";
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/* line 241, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-status-heading {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  padding-top: 80px;
+}
+
+/* line 247, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.popup-status-content {
+  font-size: 24px;
+  padding-bottom: 30px;
+}
+
+/* line 251, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.btn-status-btn {
+  font-size: 24px;
+  font-weight: 700;
+  width: 100%;
+  display: inline-block;
+  padding: 17px;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.75);
+  background-color: #27822f;
+  background-image: -webkit-linear-gradient(bottom, #27822f, #37a440);
+  background-image: -webkit-linear-gradient(bottom,#27822f, #37a440);
+  background-image: linear-gradient(to top,#27822f, #37a440);
+}
+/* line 262, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.btn-status-btn.btn-fail {
+  background-color: #ab0000;
+  background-image: -webkit-linear-gradient(bottom, #ab0000, #ff0000);
+  background-image: -webkit-linear-gradient(bottom,#ab0000, #ff0000);
+  background-image: linear-gradient(to top,#ab0000, #ff0000);
+}
+/* line 264, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.btn-status-btn.btn-fail:hover {
+  color: white;
+  background-color: #ab0000;
+  background-image: -webkit-linear-gradient(top, #ab0000, #ff0000);
+  background-image: -webkit-linear-gradient(top,#ab0000, #ff0000);
+  background-image: linear-gradient(to bottom,#ab0000, #ff0000);
+}
+/* line 267, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.btn-status-btn:hover {
+  color: white;
+  background-color: #27822f;
+  background-image: -webkit-linear-gradient(top, #27822f, #37a440);
+  background-image: -webkit-linear-gradient(top,#27822f, #37a440);
+  background-image: linear-gradient(to bottom,#27822f, #37a440);
+}
+
+/* line 277, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-zoom-in .zoom-anim-dialog {
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+/* line 288, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+/* line 295, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  opacity: 0;
+}
+/* line 302, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-zoom-in.mfp-bg {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+/* line 308, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-zoom-in.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+/* line 310, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-zoom-in.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+/* line 315, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-slide-bottom .zoom-anim-dialog {
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg);
+  transform: translateY(-20px) perspective(600px) rotateX(10deg);
+}
+/* line 326, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
+  opacity: 1;
+  -webkit-transform: translateY(0) perspective(600px) rotateX(0);
+  transform: translateY(0) perspective(600px) rotateX(0);
+}
+/* line 333, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
+  opacity: 0;
+  -webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg);
+  transform: translateY(-10px) perspective(600px) rotateX(10deg);
+}
+/* line 340, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-slide-bottom.mfp-bg {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+}
+/* line 346, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-slide-bottom.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+/* line 348, /Users/sergeykhmelevskoy/projects/aws/glob/app/assets/stylesheets/module/_popup.sass */
+.my-mfp-slide-bottom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
