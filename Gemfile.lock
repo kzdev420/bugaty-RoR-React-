@@ -329,7 +329,6 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.5)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
@@ -520,7 +519,7 @@ GEM
       webpacker
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.2)
+    websocket-extensions (0.1.5)
     whenever (0.9.7)
       chronic (>= 0.6.3)
     will_paginate (3.1.5)
@@ -584,7 +583,6 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   mini_magick
-  mysql2
   offsite_payments
   omniauth
   omniauth-facebook
