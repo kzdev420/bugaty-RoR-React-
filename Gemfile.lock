@@ -259,7 +259,7 @@ GEM
       activerecord (>= 4.0.0)
     geo_ip (0.6.2)
       rest-client (~> 1.6)
-    geocoder (1.4.0)
+    geocoder (1.6.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     gon (6.1.0)
@@ -329,7 +329,6 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.5)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
@@ -584,7 +583,6 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   mini_magick
-  mysql2
   offsite_payments
   omniauth
   omniauth-facebook
