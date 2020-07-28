@@ -299,7 +299,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    json (2.0.2)
+    json (2.3.1)
     jsonapi-renderer (0.2.2)
     jwt (2.2.1)
     kaminari (0.17.0)
@@ -329,7 +329,6 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.5)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
@@ -584,7 +583,6 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   mini_magick
-  mysql2
   offsite_payments
   omniauth
   omniauth-facebook
